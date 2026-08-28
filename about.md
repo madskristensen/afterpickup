@@ -1,17 +1,21 @@
 ---
 layout: default
 title: About
-description: Meet the family behind After Pickup, testing school-year systems for kids ages 5, 8, and 10.
+description: Meet the family behind After Pickup — six of us under one remodeled roof, testing school-year systems for kids ages 5, 8, and 10.
 permalink: /about/
 ---
+
 <article class="sheet">
   <h1>About</h1>
   <div class="prose">
+
     <p>We're Caitlin and Mads, plus three kids: a 10-year-old boy, an 8-year-old
-    boy, and a 5-year-old girl who runs the house whether we like it or not. This
-    site is where we write down what we've learned raising them and building a
-    home around them &mdash; the systems that stuck, the ones that didn't, and
-    everything in between.</p>
+    boy, and a 5-year-old girl who runs the house whether we like it or not. A few
+    years ago we remodeled our house and moved Caitlin's mom in with us, so it's
+    six people now, three generations, one kitchen. This site is where we write
+    down what we've learned raising the kids and building a home around all of
+    us &mdash; the systems that stuck, the ones that didn't, and everything in
+    between.</p>
 
     <p>Everything here has been run in our own kitchen and hallway for at least a
     few weeks. When something failed, we say so. When we do not know, we say that
