@@ -1,0 +1,66 @@
+name: Assign Copilot on ready
+
+on:
+  issues:
+    types: [labeled]
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  assign:
+    if: github.event.label.name == 'ready'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Assign the Copilot coding agent
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.COPILOT_ASSIGN_TOKEN || secrets.GITHUB_TOKEN }}
+          script: |
+            const { owner, repo } = context.repo;
+            const issueNumber = context.payload.issue.number;
+
+            const suggested = await github.graphql(
+              `query($owner: String!, $repo: String!, $number: Int!) {
+                 repository(owner: $owner, name: $repo) {
+                   issue(number: $number) { id }
+                   suggestedActors(capabilities: [CAN_BE_ASSIGNED], first: 100) {
+                     nodes { login __typename ... on Bot { id } ... on User { id } }
+                   }
+                 }
+               }`,
+              { owner, repo, number: issueNumber }
+            );
+
+            const issueId = suggested.repository.issue.id;
+            const wanted = ['copilot-swe-agent', 'Copilot'];
+            const actor = suggested.repository.suggestedActors.nodes
+              .find(node => wanted.includes(node.login));
+
+            if (!actor) {
+              core.setFailed('Copilot coding agent is not available as an assignee on this repository.');
+              return;
+            }
+
+            await github.graphql(
+              `mutation($assignableId: ID!, $actorIds: [ID!]!) {
+                 replaceActorsForAssignable(input: { assignableId: $assignableId, actorIds: $actorIds }) {
+                   assignable { ... on Issue { number } }
+                 }
+               }`,
+              { assignableId: issueId, actorIds: [actor.id] }
+            );
+
+            await github.rest.issues.createComment({
+              owner,
+              repo,
+              issue_number: issueNumber,
+              body: [
+                'Assigned to the Copilot coding agent.',
+                '',
+                'The draft PR goes in `_queue/`. Merging it does **not** publish the post —',
+                'merge is not live. The scheduled publish workflow moves the oldest queued',
+                'file into `_posts/` when it is time.'
+              ].join('\n')
+            });
