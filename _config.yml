@@ -1,5 +1,5 @@
 title: After Pickup
-tagline: Systems for the hour the backpacks hit the floor.
+tagline: What actually works between pickup and lights-out.
 description: >-
   Tested, calm systems for the hour after school pickup.
 url: https://afterpickup.com
@@ -31,3 +31,4 @@ exclude:
   - README.md
   - vendor
   - _queue
+  - .vs

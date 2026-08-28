@@ -1,6 +1,6 @@
 # After Pickup
 
-Systems for the hour the backpacks hit the floor. Jekyll on GitHub Pages, served at
+What actually works between pickup and lights-out. Jekyll on GitHub Pages, served at
 [afterpickup.com](https://afterpickup.com).
 
 ## Workflow
