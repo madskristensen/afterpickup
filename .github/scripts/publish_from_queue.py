@@ -39,6 +39,7 @@ def oldest_queued():
 
 def stamp(text, today):
     """Set the date to today and draft to false in the front matter."""
+    text = text.replace("\r\n", "\n")
     match = re.match(r"^---\n(.*?)\n---\n?", text, re.DOTALL)
     if not match:
         raise SystemExit("Queued file has no YAML front matter.")

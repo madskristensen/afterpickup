@@ -202,13 +202,12 @@ main,
 }
 
 /* Full-bleed photos */
-.hero,
-.prose figure {
+.hero {
   margin: 0 -1.25rem 1.5rem;
 }
 
 .prose figure {
-  margin-block: 2rem;
+  margin: 2rem -1.25rem;
 }
 
 figcaption {
