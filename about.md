@@ -1,7 +1,7 @@
 ---
 layout: default
 title: About
-description: Who is behind After Pickup, a family testing school-year systems for kids ages 5, 8, and 10.
+description: Meet the family behind After Pickup, testing school-year systems for kids ages 5, 8, and 10.
 permalink: /about/
 ---
 <article class="sheet">
