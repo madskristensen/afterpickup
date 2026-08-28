@@ -1,6 +1,7 @@
 ---
 layout: default
 title: About
+description: Meet the family behind After Pickup, testing school-year systems for kids ages 5, 8, and 10.
 permalink: /about/
 ---
 <article class="sheet">

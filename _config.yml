@@ -4,6 +4,7 @@ description: >-
   Tested, calm systems for the hour after school pickup.
 url: https://afterpickup.com
 baseurl: ""
+lang: en-US
 
 permalink: /:title/
 timezone: America/Chicago
