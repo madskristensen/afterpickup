@@ -1,0 +1,32 @@
+title: After Pickup
+tagline: Systems for the hour the backpacks hit the floor.
+description: >-
+  Tested, calm systems for the hour after school pickup.
+url: https://afterpickup.com
+baseurl: ""
+
+permalink: /:title/
+timezone: America/Chicago
+
+markdown: kramdown
+kramdown:
+  input: GFM
+
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - vendor
+  - _queue

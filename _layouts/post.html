@@ -1,0 +1,32 @@
+---
+layout: default
+---
+<article class="sheet">
+  {%- if page.image %}
+  <figure class="hero">
+    <img src="{{ page.image | relative_url }}" alt="{{ page.image_alt | default: page.title }}">
+    {%- if page.image_caption %}
+    <figcaption>{{ page.image_caption }}</figcaption>
+    {%- endif %}
+  </figure>
+  {%- endif %}
+
+  <h1>{{ page.title }}</h1>
+  {%- if page.date %}
+  <p class="meta"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time></p>
+  {%- endif %}
+
+  <div class="prose">
+    {{ content }}
+  </div>
+
+  {%- if page.tags and page.tags != empty %}
+  <p class="tags">
+    {%- for tag in page.tags %}<span class="tag">{{ tag }}</span>{% endfor -%}
+  </p>
+  {%- endif %}
+
+  <footer class="post-footer">
+    <a href="{{ '/' | relative_url }}">More from After Pickup</a>
+  </footer>
+</article>
