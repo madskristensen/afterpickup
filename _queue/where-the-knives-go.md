@@ -1,8 +1,8 @@
 ---
 title: "Where the Knives Go"
 description: "A labeled knife organizer in a drawer is how we keep the sharp kitchen knives from wandering every time the dishwasher gets emptied."
-date: 2026-08-29
-image: ""
+date:
+image: "https://github.com/user-attachments/assets/e74eae4c-f687-409a-80f9-71d2663197e6"
 tags: [kitchen, kids]
 ---
 
@@ -13,7 +13,5 @@ We have a 10-year-old boy, an 8-year-old boy, and a 5-year-old girl, and all thr
 What worked was putting a knife organizer in a drawer. One slot per knife, all of them lying flat, separate from the rest of the utensils. The drawer itself became the home, so nobody had to remember a second spot on the counter. When the dishwasher is empty, the knives have one trip left: into that drawer.
 
 The other half of the trick is a label maker. We labeled the organizer so each slot says what belongs there. No guessing from memory. The words do the remembering. We used the label maker we already had, nothing fancy, just something that prints a strip you can stick down and actually read when the drawer is open.
-
-<!-- image: open kitchen drawer with a labeled knife organizer, labels readable, no product packaging -->
 
 That is the whole system. The dishwasher gets emptied, the sharp kitchen knives go in the labeled drawer, and we stop doing a second pass at the sink. The labels are still there, the organizer has not moved, and the kids no longer have to hold a map of the kitchen in their heads for the one thing that used to wander.
