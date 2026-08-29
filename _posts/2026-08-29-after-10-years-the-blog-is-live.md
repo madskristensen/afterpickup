@@ -1,76 +1,25 @@
 ---
 title: "After 10 years, the blog is live"
-description: "A long-overdue outlet for the household tricks we used to only tell friends and family."
+description: "The notes we used to only share at the table finally have a home."
 date: 2026-08-29
 image: ""
 tags: [welcome]
 ---
 
-For ten years the answers lived in the house. Someone would ask how we were making three kids and a remodel work, and we would tell them — at the table, in a doorway, on the way out. Then the conversation ended and the trick went back into the week.
+For years, the only people who got the good stuff were the ones sitting at our table. A friend would ask how we were making three kids and a remodeled house work. We would talk. We would walk them through the little things that had saved us that week — a leftover from the remodel, a habit we brought home from a trip, something a friend had shown us that actually stuck. They would leave with a couple of ideas. The rest of it stayed in the house, waiting for the next person who happened to ask.
 
-We wanted a place that outlasted the conversation. We did not start one. Friends and family got the version that fit in a visit. Everyone else got nothing.
+We have wanted a better place for those notes for a very long time — about ten years, if we are honest. Not another parenting lecture. A resource for parents, and for moms in particular, that felt like that conversation: useful, a little fun, and easy to take home. We kept picturing the person already holding the week, the one who would actually use a trick if someone just wrote it down. We kept meaning to be that someone. We kept not starting.
 
-This is the place.
+Ten years is a long time to tell people you should start a blog. It is also a long time to collect the small, stubborn tricks that only show up when you live with a 5-year-old, an 8-year-old, and a 10-year-old in a house you have taken apart and put back together. The kids are those ages now. The house is the one we remodeled. And we finally have an outlet.
 
-## A resource we meant to build earlier
+After Pickup is that outlet. The name is the hour we think about most — after school, when the backpacks hit the floor and the evening is still ahead of us — but the notes go wider than that. What we figured out at home. What we picked up traveling. What friends, family, bloggers, and YouTubers handed us when we were paying attention.
 
-We have wanted a blog as a resource for parents, and for moms in particular, for a very long time. That is not a thought we had this month. It is an old one we finally put a URL on.
+A remodel with three kids will make you notice what actually has to work. Travel has a way of handing you a better version of something you thought you had already figured out. We came up with a lot of clever things that made our lives easier. We borrowed even more. Both kinds belong here.
 
-We are not going to invent a dramatic reason we waited. We wanted it. We did not ship it. Now we have.
+We are glad the notes no longer have to wait for a visit. We are not trying to run your house. We are trying to hand you the same things we used to hand across the table, so you can take what fits and leave the rest.
 
-What we have is a household with three kids — 5, 8, and 10 — and a house we remodeled, and a long list of things that made the week easier. Some of those things we came up with. A lot of them we did not.
+If something here makes your life a little easier, a little more fun, a little better organized, that is enough. You do not need our house, or kids these ages, or our suitcase. You need one afternoon that could go better than it usually does.
 
-## What we actually have to share
+The 5-year-old, the 8-year-old, and the 10-year-old will show up later the way they show up at home: three different people sharing a hallway. What works for the 10-year-old will not always work for the 5-year-old. We will get into that when there is a real task on the table. This one is just the hello.
 
-A remodeled house with three kids is a good filter. Ideas that only work on paper do not last. The ones that last do not get a trophy. They get used again on Tuesday.
-
-We picked up a lot of tricks to make it all work. That is the honest inventory:
-
-- Things we figured out because the house and the kids required it.
-- Things we brought home from extensive travel.
-- Things friends and family handed us.
-- Things we took from bloggers and YouTubers who were already writing this stuff down.
-
-We are not going to name those people or those trips here. We do not have that list in front of us, and we will not invent one. When a later post uses a borrowed idea, we will say so if we still know where it came from. If we do not remember, we will say that too.
-
-The point of writing it down is simple. The tricks used to stop at the people who already knew how to find us. Now they do not have to.
-
-## What we do at home, and what this site is for
-
-At home, the job is the week. The kids are 5, 8, and 10, which means three different capacities in the same hallway. We will get into that split when a post has a real task that breaks by age. This one does not.
-
-What we can say is the reason we are here: we finally have an outlet to spread the ideas that made our lives easier, and we want yours to be a little easier, a little more fun, and a little better organized. That sentence is the whole assignment.
-
-After Pickup is the name. The line on the site is "What actually works between pickup and lights-out." That stretch of day is where a lot of household systems either hold or fall over. We will write about it when we have something tested. We will also write about the rest of the house when we have the notes — the travel habits, the storage workarounds, the small pieces of organization that are not glamorous and do not need to be.
-
-We write as we. The voice is dry on purpose. If a post is only a welcome, it will read like a welcome, not like a ten-step system. If we do not have steps, we will not number empty ones.
-
-## How we will treat the facts
-
-A lot of parenting writing fills the gaps with a scene that never happened. We are not going to do that.
-
-We will not invent wake times, schools, quotes, brands, or prices. We will not invent a medical claim to make a tip sound important. We will not invent a failure for this post, because we do not have one to report. Wanting a blog for years and not starting it is not the same thing as a method that failed, and we are not going to dress it up as one.
-
-When we do not know something, the post will be shorter. This one is shorter than a how-to because it is a door, not a system. The next posts can be long when they have something to be long about.
-
-If you came here from a friend, you already know the tone. If you did not, the short version is: we will tell you what we actually use. We will not cheerlead you through it.
-
-## Who this is for
-
-Parents. Moms in particular, because that is who we kept picturing when we talked about this and did not start it. Not because dads cannot use a leftover system. Because the person we wanted to hand the notes to was usually the one already holding the week.
-
-You do not need a remodeled house. You do not need three kids, or these ages, or our travel history. You need one afternoon that would go better with a trick someone else already tested. That is the bar.
-
-If an idea only works in our house, we will say so. If we borrowed it, we will say so when we can. If it is just a thing that made our lives easier and we cannot remember who showed it to us, we will still write the thing and skip the origin story.
-
-## What happens next
-
-This post has no steps, no gear list, and no photos. Those will show up when a later post has them. The first useful piece will start with a real problem in the house and the thing we did about it.
-
-Until then, this is the introduction:
-
-We have three kids, 5, 8, and 10. We remodeled the house. We traveled a lot and paid attention. Friends, family, bloggers, and YouTubers filled in the rest. For ten years we told people in person. Now the same notes have a URL.
-
-If that is useful, stay. If a later post is not, skip it. We are not going to make either of those decisions louder than they need to be.
-
-Welcome. The blog is live.
+If you have been here for dinner, you already know how we talk. If you have not, welcome anyway. Pull up a chair. The blog is live.
