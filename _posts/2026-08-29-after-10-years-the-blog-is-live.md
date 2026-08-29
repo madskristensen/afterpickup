@@ -2,13 +2,13 @@
 title: "After 10 years, the blog is live"
 description: "After ten years of telling friends at the table, After Pickup is live."
 date: 2026-08-29
-image: ""
+image: /assets/images/after-10-years-the-blog-is-live.webp
+image_alt: A lived-in family kitchen with a long wooden dining table, matching chairs, and warm pendant lights, looking toward the counters.
+image_caption: Photo by Alexander F Ungerer / Pexels
 tags: [welcome]
 ---
 
 For about ten years, the only people who got the good stuff were the ones sitting at our table. A friend would ask how we were making three kids and a remodeled house work. We would talk. They would leave with a couple of ideas, and the rest stayed in the kitchen until the next visit.
-
-<!-- image: kitchen table after pickup, backpacks on the floor, the house as it actually looks, no staged smiles -->
 
 We're Caitlin and Mads. The kids are a 10-year-old boy, an 8-year-old boy, and a 5-year-old girl who runs the house whether we like it or not. A few years ago we remodeled and moved Caitlin's mom in, so it is six of us now — three generations, one kitchen. This is where we write down what we have learned raising the kids and building a home around all of us.
 
