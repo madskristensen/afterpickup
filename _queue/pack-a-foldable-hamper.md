@@ -10,7 +10,7 @@ tags: [travel]
 
 When we travel, dirty clothes find the floor. The suitcase is still open for the clean stuff. The 10-year-old and the 8-year-old drop shirts wherever they take them off, and the 5-year-old treats the carpet like a drawer. A hotel room does not come with a hamper, so the pile grows in the only empty spot left.
 
-When we travel, the laundry still has to go somewhere. At home there is a place for worn clothes. On the road that place disappears unless we pack it.
+The laundry still has to go somewhere. At home there is a place for worn clothes. On the road that place disappears unless we pack it.
 
 The trick is a foldable hamper. It packs flat and opens to a full-size hamper once we are in the room. Dirty clothes go in it. The floor stays a floor. That is the whole move.
 
