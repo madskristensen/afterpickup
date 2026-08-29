@@ -3,9 +3,14 @@ layout: default
 title: About
 description: Meet the family behind After Pickup — six of us under one remodeled roof, testing school-year systems for kids ages 5, 8, and 10.
 permalink: /about/
+image: /assets/images/family-after-pickup.webp
+image_alt: Caitlin and the kids on the couch after pickup, reading and drawing.
+image_caption: Caitlin and the kids after pickup.
 ---
 
 <article class="post">
+  {% include hero.html %}
+
   <h1>About</h1>
   <div class="prose">
 

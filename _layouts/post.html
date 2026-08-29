@@ -2,14 +2,7 @@
 layout: default
 ---
 <article class="post">
-  {%- if page.image %}
-  <figure class="hero">
-    <img src="{{ page.image | relative_url }}" alt="{{ page.image_alt | default: page.title }}">
-    {%- if page.image_caption %}
-    <figcaption>{{ page.image_caption }}</figcaption>
-    {%- endif %}
-  </figure>
-  {%- endif %}
+  {% include hero.html %}
 
   <h1>{{ page.title }}</h1>
   {%- if page.date %}
