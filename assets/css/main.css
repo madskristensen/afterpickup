@@ -48,7 +48,7 @@ body {
 
 body::before {
   content: "";
-  position: fixed;
+  position: absolute;
   inset: 0;
   z-index: 0;
   pointer-events: none;
@@ -277,11 +277,11 @@ main,
 }
 
 .prose figure {
-  margin: 2rem 0;
+  margin: 2rem -1.25rem;
 }
 
-.prose figure.hero {
-  margin: 2rem -1.25rem;
+.prose figure:not(.hero) {
+  margin: 2rem 0;
 }
 
 figcaption {
