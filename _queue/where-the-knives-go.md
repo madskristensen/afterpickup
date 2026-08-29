@@ -3,8 +3,8 @@ title: "Where the Knives Go"
 description: "A labeled knife organizer in a drawer is how we keep the sharp kitchen knives from wandering every time the dishwasher gets emptied."
 date:
 image: /assets/images/where-the-knives-go.webp
-image_alt: Open kitchen drawers with a cutlery tray and a dedicated knife organizer
-image_caption: Photo by Hakim Santoso / Pexels
+image_alt: A bamboo in-drawer knife organizer with labeled slots for paring, cheese, and serrated knives
+image_caption: The labeled knife drawer in our kitchen.
 tags: [kitchen, kids]
 ---
 
