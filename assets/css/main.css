@@ -4,9 +4,11 @@
 :root {
   --page: #F7F3EC;
   --sheet: #FFFCF7;
+  --sheet-rgb: 255, 252, 247;
   --ink: #2C2620;
   --soft-ink: #6F675E;
   --rule: #E4DCD0;
+  --rule-rgb: 228, 220, 208;
   --accent: #B56A4E;
   --accent-rgb: 181, 106, 78;
   --quiet-green: #6D7F72;
@@ -159,9 +161,9 @@ main,
 
 .post-item {
   padding: 1.15rem 1.25rem 1.25rem;
-  border: 1px solid rgba(228, 220, 208, 0.82);
+  border: 1px solid rgba(var(--rule-rgb), 0.82);
   border-radius: 1rem;
-  background: rgba(255, 252, 247, 0.62);
+  background: rgba(var(--sheet-rgb), 0.62);
   box-shadow: 0 0.75rem 2rem rgba(44, 38, 32, 0.035);
 }
 
@@ -202,7 +204,7 @@ main,
 /* Article sheet */
 .sheet {
   background: var(--sheet);
-  border: 1px solid rgba(228, 220, 208, 0.9);
+  border: 1px solid rgba(var(--rule-rgb), 0.9);
   border-radius: 1.15rem;
   padding: 1.5rem 1.25rem 2rem;
   margin-block: 1rem 2.5rem;
@@ -327,5 +329,5 @@ figcaption {
   font-size: 0.85rem;
   color: var(--soft-ink);
   padding-block: 1rem 2.5rem;
-  border-top: 1px solid rgba(228, 220, 208, 0.82);
+  border-top: 1px solid rgba(var(--rule-rgb), 0.82);
 }
