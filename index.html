@@ -10,8 +10,8 @@ description: Tested, calm systems for the hour the backpacks hit the floor, from
   {%- for post in site.posts %}
   <article class="post-item">
     {%- if post.image %}
-    <a class="post-item-image" href="{{ post.url | relative_url }}">
-      <img src="{{ post.image | relative_url }}" alt="{{ post.image_alt | default: post.title }}" loading="lazy" decoding="async">
+    <a class="post-item-image" href="{{ post.url | relative_url }}" tabindex="-1" aria-hidden="true">
+      <img src="{{ post.image | relative_url }}" alt="" width="1600" height="900" loading="lazy" decoding="async">
     </a>
     {%- endif %}
     <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>

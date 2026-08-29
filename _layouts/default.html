@@ -3,7 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <meta name="theme-color" content="#F7F3EC">
+    <meta name="theme-color" content="#F7F3EC" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#17140F" media="(prefers-color-scheme: dark)">
     <link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/images/favicon-32x32.png' | relative_url }}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{ '/assets/images/favicon-16x16.png' | relative_url }}">
     <link rel="shortcut icon" href="{{ '/assets/images/favicon.ico' | relative_url }}">
@@ -13,6 +14,7 @@
     {%- feed_meta -%}
   </head>
   <body>
+    <a class="skip-link" href="#content">Skip to content</a>
     <header class="site-header">
       <div class="site-header-top">
         {%- if page.url == "/" %}
@@ -20,7 +22,7 @@
         {%- else %}
         <a class="wordmark" href="{{ '/' | relative_url }}">{{ site.title }}</a>
         {%- endif %}
-        <nav class="site-nav">
+        <nav class="site-nav" aria-label="Main">
           <a href="{{ '/about/' | relative_url }}">About</a>
         </nav>
       </div>
@@ -29,7 +31,7 @@
       {%- endif %}
     </header>
 
-    <main id="content">
+    <main id="content" tabindex="-1">
       {{ content }}
     </main>
 
