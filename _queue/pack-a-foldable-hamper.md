@@ -2,7 +2,7 @@
 title: "Pack a foldable hamper"
 description: "A foldable hamper that opens to full size keeps dirty clothes off the hotel-room floor."
 date:
-image: /assets/images/pack-a-foldable-hamper.jpg
+image: /assets/images/pack-a-foldable-hamper.webp
 image_alt: A hand dropping laundry into a woven hamper
 image_caption: Photo by Kader D. Kahraman / Pexels
 tags: [travel]
