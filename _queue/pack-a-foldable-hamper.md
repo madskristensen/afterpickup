@@ -1,14 +1,12 @@
 ---
 title: "Pack a foldable hamper"
 description: "A foldable hamper that opens to full size keeps dirty clothes off the hotel-room floor."
-date: 2026-08-29
-image: ""
+date:
+image: "https://github.com/user-attachments/assets/fb3b6e62-c877-48da-9c1c-8ba504833735"
 tags: [travel]
 ---
 
 When we travel, dirty clothes find the floor. The suitcase is still open for the clean stuff. The 10-year-old and the 8-year-old drop shirts wherever they take them off, and the 5-year-old treats the carpet like a drawer. A hotel room does not come with a hamper, so the pile grows in the only empty spot left.
-
-<!-- image: foldable hamper open in a hotel room, clothes in it not on the floor, no product-packaging shot -->
 
 We're Caitlin and Mads. When this household travels — six people, three kids — the laundry still has to go somewhere. At home the remodeled house has a place for worn clothes. On the road that place disappears unless we pack it.
 
