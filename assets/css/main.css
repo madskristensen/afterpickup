@@ -140,6 +140,19 @@ main,
     margin-block: 1rem 2.5rem;
 }
 
+.post-item-image {
+  display: block;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  border-radius: 0.4rem;
+}
+
+.post-item-image img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
 .post-item h2 {
   margin: 0 0 0.25rem;
   font-size: 2rem;
