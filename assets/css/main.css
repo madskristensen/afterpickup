@@ -271,7 +271,7 @@ main,
   margin: 0 -1.25rem 1.5rem;
 }
 
-.prose figure img {
+.prose figure:not(.hero) img {
   border-radius: 1rem;
 }
 
