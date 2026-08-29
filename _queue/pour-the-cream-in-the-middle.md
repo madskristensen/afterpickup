@@ -8,7 +8,7 @@ image_caption: Photo by Abdulrhman Alkady / Pexels
 tags: [coffee]
 ---
 
-We used to make a cold brew the long way. Fill the glass, pour the cream on top, then stand there looking for a spoon so the cream would not sit in a pale cloud on the surface. Six people, three generations, one kitchen — that spoon is never where you left it, and even when it is, you have just added a thing to wash.
+We used to make a cold brew the long way. Fill the glass, pour the cream on top, then stand there looking for a spoon so the cream would not sit in a pale cloud on the surface. That spoon is never where you left it, and even when it is, you have just added a thing to wash.
 
 What we do now is shorter. Pour half the cold brew into the glass. Add the cream. Pour the rest of the cold brew on top. The last pour makes a little swish in the glass, and that motion is enough to pull the cream through the coffee.
 
