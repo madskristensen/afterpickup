@@ -181,10 +181,6 @@ main,
   box-shadow: 0 0.75rem 2rem rgba(44, 38, 32, 0.035);
 }
 
-.post-item:last-child {
-  border-bottom: 1px solid rgba(228, 220, 208, 0.82);
-}
-
 .post-item h2 {
   margin: 0 0 0.25rem;
   font-size: 1.45rem;
@@ -281,7 +277,7 @@ main,
 }
 
 .prose figure {
-  margin: 2rem -1.25rem;
+  margin: 2rem 0;
 }
 
 figcaption {
