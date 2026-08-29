@@ -3,8 +3,8 @@ title: "Pack a foldable hamper"
 description: "A foldable hamper that opens to full size keeps dirty clothes off the hotel-room floor."
 date:
 image: /assets/images/pack-a-foldable-hamper.webp
-image_alt: A hand dropping laundry into a woven hamper
-image_caption: Photo by Kader D. Kahraman / Pexels
+image_alt: A gray mesh pop-up laundry hamper standing open on a wood floor
+image_caption: The pop-up hamper we pack.
 tags: [travel]
 ---
 
