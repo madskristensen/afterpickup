@@ -1,25 +1,17 @@
 ---
 title: "After 10 years, the blog is live"
-description: "The notes we used to only share at the table finally have a home."
+description: "After ten years of telling friends at the table, After Pickup is live."
 date: 2026-08-29
 image: ""
 tags: [welcome]
 ---
 
-For years, the only people who got the good stuff were the ones sitting at our table. A friend would ask how we were making three kids and a remodeled house work. We would talk. We would walk them through the little things that had saved us that week — a leftover from the remodel, a habit we brought home from a trip, something a friend had shown us that actually stuck. They would leave with a couple of ideas. The rest of it stayed in the house, waiting for the next person who happened to ask.
+For about ten years, the only people who got the good stuff were the ones sitting at our table. A friend would ask how we were making three kids and a remodeled house work. We would talk. They would leave with a couple of ideas, and the rest stayed in the kitchen until the next visit.
 
-We have wanted a better place for those notes for a very long time — about ten years, if we are honest. Not another parenting lecture. A resource for parents, and for moms in particular, that felt like that conversation: useful, a little fun, and easy to take home. We kept picturing the person already holding the week, the one who would actually use a trick if someone just wrote it down. We kept meaning to be that someone. We kept not starting.
+We're Caitlin and Mads. The kids are a 10-year-old boy, an 8-year-old boy, and a 5-year-old girl. A few years ago we remodeled the house and moved Caitlin's mom in, so it is six of us now — three generations, one kitchen. That is the household these notes come from.
 
-Ten years is a long time to tell people you should start a blog. It is also a long time to collect the small, stubborn tricks that only show up when you live with a 5-year-old, an 8-year-old, and a 10-year-old in a house you have taken apart and put back together. The kids are those ages now. The house is the one we remodeled. And we finally have an outlet.
+We have wanted a blog as a resource for parents, and for moms in particular, for a very long time. We kept meaning to start it. We kept not starting it. After Pickup is that start: an outlet for the tricks that used to stop with friends and family.
 
-After Pickup is that outlet. The name is the hour we think about most — after school, when the backpacks hit the floor and the evening is still ahead of us — but the notes go wider than that. What we figured out at home. What we picked up traveling. What friends, family, bloggers, and YouTubers handed us when we were paying attention.
+Some of those tricks we came up with because the house and the kids required them. A lot we picked up traveling, from friends and family, and from bloggers and YouTubers who were already writing this stuff down. If something here makes your life a little easier, a little more fun, and a little better organized, we will be glad we finally wrote it down.
 
-A remodel with three kids will make you notice what actually has to work. Travel has a way of handing you a better version of something you thought you had already figured out. We came up with a lot of clever things that made our lives easier. We borrowed even more. Both kinds belong here.
-
-We are glad the notes no longer have to wait for a visit. We are not trying to run your house. We are trying to hand you the same things we used to hand across the table, so you can take what fits and leave the rest.
-
-If something here makes your life a little easier, a little more fun, a little better organized, that is enough. You do not need our house, or kids these ages, or our suitcase. You need one afternoon that could go better than it usually does.
-
-The 5-year-old, the 8-year-old, and the 10-year-old will show up later the way they show up at home: three different people sharing a hallway. What works for the 10-year-old will not always work for the 5-year-old. We will get into that when there is a real task on the table. This one is just the hello.
-
-If you have been here for dinner, you already know how we talk. If you have not, welcome anyway. Pull up a chair. The blog is live.
+Welcome. We are glad you are here. The blog is live.
