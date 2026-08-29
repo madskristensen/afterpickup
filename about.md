@@ -5,7 +5,7 @@ description: Meet the family behind After Pickup — six of us under one remodel
 permalink: /about/
 ---
 
-<article class="sheet">
+<article class="post">
   <h1>About</h1>
   <div class="prose">
 
