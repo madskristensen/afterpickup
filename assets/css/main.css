@@ -11,7 +11,7 @@
   --accent-rgb: 181, 106, 78;
   --quiet-green: #6D7F72;
   --quiet-green-rgb: 109, 127, 114;
-  --leaf: 157, 174, 141;
+  --leaf-rgb: 157, 174, 141;
   --glow: #EFE4D5;
   --measure: 40rem;
   --body: "Newsreader", Georgia, serif;
@@ -36,7 +36,7 @@ body {
   position: relative;
   background:
     radial-gradient(circle at top left, var(--glow), transparent 19rem),
-    radial-gradient(circle at 85% 8rem, rgba(var(--leaf), 0.18), transparent 16rem),
+    radial-gradient(circle at 85% 8rem, rgba(var(--leaf-rgb), 0.18), transparent 16rem),
     linear-gradient(135deg, var(--page), #F3EADF 58%, #F8F2EA);
   color: var(--ink);
   font-family: var(--body);
@@ -93,7 +93,6 @@ main,
 
 .site-header {
   padding-block: 1.75rem 1.25rem;
-  position: relative;
 }
 
 .site-header::after {
@@ -104,7 +103,7 @@ main,
   margin-top: 1rem;
   background:
     radial-gradient(ellipse 0.45rem 0.75rem at 22% 52%, rgba(var(--quiet-green-rgb), 0.34) 45%, transparent 48%),
-    radial-gradient(ellipse 0.42rem 0.7rem at 48% 34%, rgba(var(--leaf), 0.32) 45%, transparent 48%),
+    radial-gradient(ellipse 0.42rem 0.7rem at 48% 34%, rgba(var(--leaf-rgb), 0.32) 45%, transparent 48%),
     radial-gradient(ellipse 0.38rem 0.64rem at 72% 56%, rgba(var(--quiet-green-rgb), 0.28) 45%, transparent 48%),
     linear-gradient(90deg, transparent 0 6%, rgba(var(--quiet-green-rgb), 0.38) 6% 86%, transparent 86%);
   background-size: 100% 100%, 100% 100%, 100% 100%, 100% 1px;
@@ -256,7 +255,7 @@ main,
 .prose blockquote {
   margin: 1.5rem 0;
   padding: 0.85rem 1rem;
-  border-left: 3px solid rgba(var(--leaf), 0.55);
+  border-left: 3px solid rgba(var(--leaf-rgb), 0.55);
   border-radius: 0 0.9rem 0.9rem 0;
   background: rgba(247, 243, 236, 0.7);
   color: var(--soft-ink);
@@ -308,7 +307,7 @@ figcaption {
   margin-right: 0.75rem;
   padding: 0.12rem 0.5rem;
   border-radius: 999px;
-  background: rgba(var(--leaf), 0.14);
+  background: rgba(var(--leaf-rgb), 0.14);
 }
 
 .post-footer {
