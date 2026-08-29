@@ -2,9 +2,9 @@
 title: "After 10 years, the blog is live"
 description: "After ten years of telling friends at the table, After Pickup is live."
 date: 2026-08-29
-image: /assets/images/after-10-years-the-blog-is-live.webp
-image_alt: A lived-in family kitchen with a long wooden dining table, matching chairs, and warm pendant lights, looking toward the counters.
-image_caption: Photo by Alexander F Ungerer / Pexels
+image: /assets/images/family-after-pickup.webp
+image_alt: Caitlin and the kids on the couch after pickup, reading and drawing.
+image_caption: Caitlin and the kids after pickup.
 tags: [welcome]
 ---
 
