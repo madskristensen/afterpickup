@@ -115,6 +115,32 @@ img {
   display: block;
 }
 
+/* Take the glare off photos on a dark page. Full brightness returns on
+   hover or focus, and when the reader prefers more contrast. */
+@media (prefers-color-scheme: dark) {
+  .hero img,
+  .prose figure img,
+  .post-item-image img {
+    filter: brightness(0.82) contrast(1.02);
+    transition: filter 0.2s ease;
+  }
+
+  .hero img:hover,
+  .prose figure img:hover,
+  .post-item-image:hover img,
+  .post-item-image:focus-visible img {
+    filter: none;
+  }
+}
+
+@media (prefers-color-scheme: dark) and (prefers-contrast: more) {
+  .hero img,
+  .prose figure img,
+  .post-item-image img {
+    filter: none;
+  }
+}
+
 a {
   color: var(--accent);
   text-underline-offset: 0.15em;
