@@ -51,6 +51,10 @@ body {
   body {
     font-size: 20px;
   }
+
+  .hero img {
+    border-radius: 0.4rem;
+  }
 }
 
 img {
@@ -237,11 +241,6 @@ main,
 /* Full-bleed photos */
 .hero {
   margin: 0 -1.25rem 1.5rem;
-}
-
-.hero img{
-  border: 1px solid transparent;
-  border-radius: .4rem;
 }
 
 .prose figure {
