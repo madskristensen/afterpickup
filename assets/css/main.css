@@ -8,7 +8,9 @@
   --soft-ink: #6F675E;
   --rule: #E4DCD0;
   --accent: #B56A4E;
+  --accent-rgb: 181, 106, 78;
   --quiet-green: #6D7F72;
+  --quiet-green-rgb: 109, 127, 114;
   --leaf: 157, 174, 141;
   --glow: #EFE4D5;
   --measure: 40rem;
@@ -51,9 +53,9 @@ body::before {
   z-index: 0;
   pointer-events: none;
   background-image:
-    radial-gradient(ellipse 0.42rem 0.82rem at 11% 17%, rgba(109, 127, 114, 0.15) 45%, transparent 46%),
-    radial-gradient(ellipse 0.38rem 0.74rem at 88% 24%, rgba(181, 106, 78, 0.12) 45%, transparent 46%),
-    radial-gradient(ellipse 0.48rem 0.88rem at 82% 72%, rgba(109, 127, 114, 0.11) 45%, transparent 46%);
+    radial-gradient(ellipse 0.42rem 0.82rem at 11% 17%, rgba(var(--quiet-green-rgb), 0.15) 45%, transparent 46%),
+    radial-gradient(ellipse 0.38rem 0.74rem at 88% 24%, rgba(var(--accent-rgb), 0.12) 45%, transparent 46%),
+    radial-gradient(ellipse 0.48rem 0.88rem at 82% 72%, rgba(var(--quiet-green-rgb), 0.11) 45%, transparent 46%);
 }
 
 .site-header,
@@ -101,10 +103,10 @@ main,
   height: 1rem;
   margin-top: 1rem;
   background:
-    radial-gradient(ellipse 0.45rem 0.75rem at 22% 52%, rgba(109, 127, 114, 0.34) 45%, transparent 48%),
+    radial-gradient(ellipse 0.45rem 0.75rem at 22% 52%, rgba(var(--quiet-green-rgb), 0.34) 45%, transparent 48%),
     radial-gradient(ellipse 0.42rem 0.7rem at 48% 34%, rgba(var(--leaf), 0.32) 45%, transparent 48%),
-    radial-gradient(ellipse 0.38rem 0.64rem at 72% 56%, rgba(109, 127, 114, 0.28) 45%, transparent 48%),
-    linear-gradient(90deg, transparent 0 6%, rgba(109, 127, 114, 0.38) 6% 86%, transparent 86%);
+    radial-gradient(ellipse 0.38rem 0.64rem at 72% 56%, rgba(var(--quiet-green-rgb), 0.28) 45%, transparent 48%),
+    linear-gradient(90deg, transparent 0 6%, rgba(var(--quiet-green-rgb), 0.38) 6% 86%, transparent 86%);
   background-size: 100% 100%, 100% 100%, 100% 100%, 100% 1px;
   background-position: center;
   background-repeat: no-repeat;
@@ -279,6 +281,10 @@ main,
   margin: 2rem 0;
 }
 
+.prose figure.hero {
+  margin: 2rem -1.25rem;
+}
+
 figcaption {
   font-family: var(--ui);
   font-size: 0.85rem;
@@ -332,7 +338,7 @@ figcaption {
   background: var(--accent);
   color: var(--sheet);
   text-decoration: none;
-  box-shadow: 0 0.6rem 1.2rem rgba(181, 106, 78, 0.18);
+  box-shadow: 0 0.6rem 1.2rem rgba(var(--accent-rgb), 0.18);
 }
 
 .site-footer {
