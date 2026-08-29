@@ -2,7 +2,9 @@
 title: "Pour the cream in the middle"
 description: "Pour half the cold brew, add the cream, then finish the pour so it mixes without a spoon."
 date:
-image: "https://github.com/user-attachments/assets/dd905f19-1521-4e6d-96d8-13bf4c5e791b"
+image: /assets/images/pour-the-cream-in-the-middle.jpg
+image_alt: Cream pouring into a glass of iced coffee, swirling through the ice
+image_caption: Photo by Abdulrhman Alkady / Pexels
 tags: [coffee]
 ---
 
