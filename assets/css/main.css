@@ -89,10 +89,8 @@ main,
   background:
     radial-gradient(ellipse 0.75rem 1.15rem at 22% 52%, rgba(var(--quiet-green-rgb), 0.34) 45%, transparent 48%),
     radial-gradient(ellipse 0.7rem 1.05rem at 48% 34%, rgba(var(--leaf-rgb), 0.32) 45%, transparent 48%),
-    radial-gradient(ellipse 0.65rem 0.95rem at 72% 56%, rgba(var(--quiet-green-rgb), 0.28) 45%, transparent 48%),
-    linear-gradient(90deg, transparent 0 6%, rgba(var(--quiet-green-rgb), 0.38) 6% 86%, transparent 86%);
-  background-size: 100% 100%, 100% 100%, 100% 100%, 100% 1px;
-  background-position: center, center, center, center bottom;
+    radial-gradient(ellipse 0.65rem 0.95rem at 72% 56%, rgba(var(--quiet-green-rgb), 0.28) 45%, transparent 48%);
+  border-bottom: 1px solid rgba(var(--quiet-green-rgb), 0.38);
   background-repeat: no-repeat;
   border-radius: 999px;
   opacity: 0.8;
