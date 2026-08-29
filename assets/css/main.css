@@ -37,9 +37,9 @@ body {
   margin: 0;
   min-height: 100vh;
   background:
-    radial-gradient(ellipse 3rem 5.5rem at 11% 17%, rgba(var(--quiet-green-rgb), 0.15) 45%, transparent 46%),
-    radial-gradient(ellipse 2.75rem 5rem at 88% 24%, rgba(var(--accent-rgb), 0.12) 45%, transparent 46%),
-    radial-gradient(ellipse 3.25rem 5.75rem at 82% 72%, rgba(var(--quiet-green-rgb), 0.11) 45%, transparent 46%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 280'%3E%3Cg fill='none' stroke='%236D7F72' stroke-linecap='round' stroke-width='3' opacity='.5'%3E%3Cpath d='M72 274C20 220 137 172 76 12'/%3E%3C/g%3E%3Cg fill='%236D7F72' opacity='.24'%3E%3Cpath d='M49 216c-26-14-28-38-24-48 24 6 37 25 24 48ZM91 187c4-28 25-39 37-40 2 24-13 42-37 40ZM47 143c-23-7-32-25-31-39 22 1 37 15 31 39ZM83 104c6-24 24-33 36-32-1 21-16 34-36 32ZM65 63C45 57 36 42 37 28c19 2 31 15 28 35Z'/%3E%3C/g%3E%3C/svg%3E") 11% 17% / 10rem 17rem no-repeat,
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 280'%3E%3Cg fill='none' stroke='%23B56A4E' stroke-linecap='round' stroke-width='3' opacity='.42'%3E%3Cpath d='M72 274C20 220 137 172 76 12'/%3E%3C/g%3E%3Cg fill='%23B56A4E' opacity='.2'%3E%3Cpath d='M49 216c-26-14-28-38-24-48 24 6 37 25 24 48ZM91 187c4-28 25-39 37-40 2 24-13 42-37 40ZM47 143c-23-7-32-25-31-39 22 1 37 15 31 39ZM83 104c6-24 24-33 36-32-1 21-16 34-36 32ZM65 63C45 57 36 42 37 28c19 2 31 15 28 35Z'/%3E%3C/g%3E%3C/svg%3E") 88% 24% / 9rem 16rem no-repeat,
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 280'%3E%3Cg fill='none' stroke='%236D7F72' stroke-linecap='round' stroke-width='3' opacity='.5'%3E%3Cpath d='M72 274C20 220 137 172 76 12'/%3E%3C/g%3E%3Cg fill='%236D7F72' opacity='.24'%3E%3Cpath d='M49 216c-26-14-28-38-24-48 24 6 37 25 24 48ZM91 187c4-28 25-39 37-40 2 24-13 42-37 40ZM47 143c-23-7-32-25-31-39 22 1 37 15 31 39ZM83 104c6-24 24-33 36-32-1 21-16 34-36 32ZM65 63C45 57 36 42 37 28c19 2 31 15 28 35Z'/%3E%3C/g%3E%3C/svg%3E") 82% 72% / 11rem 18rem no-repeat,
     radial-gradient(circle at top left, var(--glow), transparent 19rem),
     radial-gradient(circle at 85% 8rem, rgba(var(--leaf-rgb), 0.18), transparent 16rem),
     linear-gradient(135deg, var(--page), #F3EADF 58%, #F8F2EA);
@@ -202,7 +202,7 @@ main,
 
 /* Article sheet */
 .sheet {
-  background: var(--sheet);
+  background: rgba(var(--sheet-rgb), 0.88);
   border: 1px solid rgba(var(--rule-rgb), 0.9);
   border-radius: 1.15rem;
   padding: 1.5rem 1.25rem 2rem;
