@@ -255,16 +255,16 @@ main,
   margin: 0 -1.25rem 1.5rem;
 }
 
-.prose figure:not(.hero) img {
-  border-radius: 1rem;
-}
-
 .prose figure {
   margin: 2rem -1.25rem;
 }
 
 .prose figure:not(.hero) {
   margin: 2rem 0;
+}
+
+.prose figure:not(.hero) img {
+  border-radius: 1rem;
 }
 
 figcaption {
