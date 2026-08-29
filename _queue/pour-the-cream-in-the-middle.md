@@ -1,16 +1,14 @@
 ---
 title: "Pour the cream in the middle"
 description: "Pour half the cold brew, add the cream, then finish the pour so it mixes without a spoon."
-date: 2026-08-29
-image: ""
+date:
+image: "https://github.com/user-attachments/assets/dd905f19-1521-4e6d-96d8-13bf4c5e791b"
 tags: [coffee]
 ---
 
 We used to make a cold brew the long way. Fill the glass, pour the cream on top, then stand there looking for a spoon so the cream would not sit in a pale cloud on the surface. Six people, three generations, one kitchen — that spoon is never where you left it, and even when it is, you have just added a thing to wash.
 
 What we do now is shorter. Pour half the cold brew into the glass. Add the cream. Pour the rest of the cold brew on top. The last pour makes a little swish in the glass, and that motion is enough to pull the cream through the coffee.
-
-<!-- image: glass of cold brew mid-pour over cream, kitchen as it actually looks, no staged prop spread -->
 
 The cream sits in the middle of the glass instead of on a full cup, so the second pour has something to move through. You do not need to stir. You do not need to shake the glass. You get an even cup without a spoon.
 
