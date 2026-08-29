@@ -16,4 +16,4 @@ The cream sits in the middle of the glass instead of on a full cup, so the secon
 
 We did not sit down and name this. We were trying not to open a drawer with a glass already in hand, and the pour did the work. After a few weeks it stuck, the same way the other small kitchen habits stick: because it works every time and it does not ask for extra steps.
 
-The glass comes out the color you meant it to be. No cream floating on top, no extra utensil in the sink. Half, cream, the rest — and then you drink it.
+The glass comes out the color you meant it to be. No cream floating on top, no extra utensil in the sink. Half, cream, the rest - and then you drink it.
