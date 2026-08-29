@@ -9,6 +9,8 @@
   --rule: #E4DCD0;
   --accent: #B56A4E;
   --quiet-green: #6D7F72;
+  --leaf: #9DAE8D;
+  --glow: #EFE4D5;
   --measure: 40rem;
   --body: "Newsreader", Georgia, serif;
   --ui: "Source Sans 3", system-ui, sans-serif;
@@ -28,13 +30,37 @@ html {
 
 body {
   margin: 0;
-  background: var(--page);
+  min-height: 100vh;
+  position: relative;
+  background:
+    radial-gradient(circle at top left, var(--glow), transparent 19rem),
+    radial-gradient(circle at 85% 8rem, rgba(157, 174, 141, 0.18), transparent 16rem),
+    linear-gradient(135deg, var(--page), #F3EADF 58%, #F8F2EA);
   color: var(--ink);
   font-family: var(--body);
   font-size: 19px;
   line-height: 1.65;
   font-variation-settings: "opsz" 16;
   -webkit-font-smoothing: antialiased;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(ellipse 0.42rem 0.82rem at 11% 17%, rgba(109, 127, 114, 0.15) 45%, transparent 46%),
+    radial-gradient(ellipse 0.38rem 0.74rem at 88% 24%, rgba(181, 106, 78, 0.12) 45%, transparent 46%),
+    radial-gradient(ellipse 0.48rem 0.88rem at 82% 72%, rgba(109, 127, 114, 0.11) 45%, transparent 46%);
+}
+
+.site-header,
+main,
+.site-footer {
+  position: relative;
+  z-index: 1;
 }
 
 @media (min-width: 40rem) {
@@ -65,6 +91,25 @@ main,
 
 .site-header {
   padding-block: 1.75rem 1.25rem;
+  position: relative;
+}
+
+.site-header::after {
+  content: "";
+  display: block;
+  width: min(10rem, 42vw);
+  height: 1rem;
+  margin-top: 1rem;
+  background:
+    radial-gradient(ellipse 0.45rem 0.75rem at 22% 52%, rgba(109, 127, 114, 0.34) 45%, transparent 48%),
+    radial-gradient(ellipse 0.42rem 0.7rem at 48% 34%, rgba(157, 174, 141, 0.32) 45%, transparent 48%),
+    radial-gradient(ellipse 0.38rem 0.64rem at 72% 56%, rgba(109, 127, 114, 0.28) 45%, transparent 48%),
+    linear-gradient(90deg, transparent 0 6%, rgba(109, 127, 114, 0.38) 6% 86%, transparent 86%);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 100% 1px;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 999px;
+  opacity: 0.8;
 }
 
 .site-header-top {
@@ -95,9 +140,10 @@ main,
   display: inline-block;
   width: 36px;
   height: 36px;
-  border-radius: 8px;
+  border-radius: 14px;
   background: url("/assets/images/logo.png") center / cover no-repeat;
   flex-shrink: 0;
+  box-shadow: 0 0.45rem 1rem rgba(44, 38, 32, 0.08);
 }
 
 .site-nav {
@@ -122,16 +168,21 @@ main,
 }
 
 .post-list {
+  display: grid;
+  gap: 1rem;
   padding-block: 1rem 2rem;
 }
 
 .post-item {
-  padding-block: 1.5rem;
-  border-bottom: 1px solid var(--rule);
+  padding: 1.15rem 1.25rem 1.25rem;
+  border: 1px solid rgba(228, 220, 208, 0.82);
+  border-radius: 1rem;
+  background: rgba(255, 252, 247, 0.62);
+  box-shadow: 0 0.75rem 2rem rgba(44, 38, 32, 0.035);
 }
 
 .post-item:last-child {
-  border-bottom: 0;
+  border-bottom: 1px solid rgba(228, 220, 208, 0.82);
 }
 
 .post-item h2 {
@@ -171,10 +222,12 @@ main,
 /* Article sheet */
 .sheet {
   background: var(--sheet);
-  border: 1px solid var(--rule);
-  border-radius: 2px;
+  border: 1px solid rgba(228, 220, 208, 0.9);
+  border-radius: 1.15rem;
   padding: 1.5rem 1.25rem 2rem;
   margin-block: 1rem 2.5rem;
+  box-shadow: 0 1rem 2.75rem rgba(44, 38, 32, 0.06);
+  overflow: hidden;
 }
 
 .sheet h1 {
@@ -204,8 +257,10 @@ main,
 
 .prose blockquote {
   margin: 1.5rem 0;
-  padding-left: 1rem;
-  border-left: 2px solid var(--rule);
+  padding: 0.85rem 1rem;
+  border-left: 3px solid rgba(157, 174, 141, 0.55);
+  border-radius: 0 0.9rem 0.9rem 0;
+  background: rgba(247, 243, 236, 0.7);
   color: var(--soft-ink);
 }
 
@@ -218,6 +273,11 @@ main,
 /* Full-bleed photos */
 .hero {
   margin: 0 -1.25rem 1.5rem;
+}
+
+.hero img,
+.prose figure img {
+  border-radius: 1rem;
 }
 
 .prose figure {
@@ -243,7 +303,11 @@ figcaption {
 
 .tag {
   color: var(--quiet-green);
+  display: inline-block;
   margin-right: 0.75rem;
+  padding: 0.12rem 0.5rem;
+  border-radius: 999px;
+  background: rgba(157, 174, 141, 0.14);
 }
 
 .post-footer {
@@ -269,10 +333,11 @@ figcaption {
   font-family: var(--ui);
   font-size: 0.95rem;
   padding: 0.6rem 1.1rem;
-  border-radius: 2px;
+  border-radius: 999px;
   background: var(--accent);
   color: var(--sheet);
   text-decoration: none;
+  box-shadow: 0 0.6rem 1.2rem rgba(181, 106, 78, 0.18);
 }
 
 .site-footer {
@@ -280,5 +345,5 @@ figcaption {
   font-size: 0.85rem;
   color: var(--soft-ink);
   padding-block: 1rem 2.5rem;
-  border-top: 1px solid var(--rule);
+  border-top: 1px solid rgba(228, 220, 208, 0.82);
 }
