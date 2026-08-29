@@ -31,12 +31,15 @@
 html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
+  background-color: var(--page);
 }
 
 body {
   margin: 0;
   min-height: 100vh;
-  background:
+  min-height: 100dvh;
+  background-color: var(--page);
+  background-image:
     radial-gradient(circle at top left, var(--glow), transparent 19rem),
     radial-gradient(circle at 85% 8rem, rgba(var(--leaf-rgb), 0.18), transparent 16rem),
     linear-gradient(135deg, var(--page), #F3EADF 28%, #F8F2EA);
@@ -74,12 +77,13 @@ main,
 .site-footer {
   max-width: var(--measure);
   margin-inline: auto;
-  padding-inline: 1.25rem;
+  padding-left: calc(1.25rem + env(safe-area-inset-left));
+  padding-right: calc(1.25rem + env(safe-area-inset-right));
 }
 
 
 .site-header {
-  padding-block: 1.75rem 1.25rem;
+  padding-block: calc(1.75rem + env(safe-area-inset-top)) 1.25rem;
 }
 
 .site-header-top {
@@ -240,11 +244,11 @@ main,
 
 /* Full-bleed photos */
 .hero {
-  margin: 0 -1.25rem 1.5rem;
+  margin: 0 calc(-1.25rem - env(safe-area-inset-right)) 1.5rem calc(-1.25rem - env(safe-area-inset-left));
 }
 
 .prose figure {
-  margin: 2rem -1.25rem;
+  margin: 2rem calc(-1.25rem - env(safe-area-inset-right)) 2rem calc(-1.25rem - env(safe-area-inset-left));
 }
 
 .prose figure:not(.hero) {
@@ -315,6 +319,6 @@ figcaption {
   font-family: var(--ui);
   font-size: 0.85rem;
   color: var(--soft-ink);
-  padding-block: 1rem 2.5rem;
+  padding-block: 1rem calc(2.5rem + env(safe-area-inset-bottom));
   border-top: 1px solid rgba(var(--rule-rgb), 0.82);
 }
