@@ -219,6 +219,10 @@ main,
   font-weight: 600;
 }
 
+.wordmark svg{
+    margin-bottom: 6px;
+}
+
 /* The mark is an inline SVG so it can pick up theme colors. Without
    these two rules the paths fall back to fill:black and the house
    reads as a solid black blob. */
