@@ -11,21 +11,15 @@
   /* Surfaces */
   --page: #F7F3EC;
   --sheet-rgb: 247, 243, 236;
-  --glow: #EFE4D5;
-  --gradient-mid: #F3EADF;
-  --gradient-end: #F8F2EA;
 
   /* Text */
   --ink: #514840;
   --soft-ink: #5F584F;
 
   /* Accents and lines */
-  --accent: #8F4A30;
+  --accent: #2B3A52;
   --rule: #E4DCD0;
   --quiet-green: #4F6157;
-  --leaf-rgb: 157, 174, 141;
-  --leaf-tint: 0.14;
-  --leaf-glow: 0.18;
   --focus: #2C6E9B;
   --photo-filter: none;
 
@@ -42,20 +36,15 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --page: #17140F;
-    --sheet-rgb: 32, 28, 22;
-    --glow: #2A2219;
-    --gradient-mid: #1C1813;
-    --gradient-end: #191510;
+    --page: #2A2621;
+    --sheet-rgb: 42, 38, 33;
 
     --ink: #E4DCD0;
     --soft-ink: #D8CFC2;
 
-    --accent: #E8A288;
-    --rule: #3A342B;
+    --accent: #92AAC7;
+    --rule: #453F37;
     --quiet-green: #B2C4AE;
-    --leaf-tint: 0.2;
-    --leaf-glow: 0.07;
     --focus: #8FC4E8;
 
     /* Take the glare off bright photos on a dark page. */
@@ -90,21 +79,11 @@
   box-sizing: border-box;
 }
 
-/* The gradient lives on html so it propagates to the canvas and paints
-   the full screen, including behind the iOS notch and address bar.
-   Do not add background-attachment: fixed here. On iOS that pins the
-   background to the viewport rect and the top safe area goes white
-   again in portrait. */
 html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
   min-height: 100%;
   background-color: var(--page);
-  background-image:
-    radial-gradient(circle at top left, var(--glow), transparent 19rem),
-    radial-gradient(circle at 85% 8rem, rgba(var(--leaf-rgb), var(--leaf-glow)), transparent 16rem),
-    linear-gradient(135deg, var(--page), var(--gradient-mid) 28%, var(--gradient-end));
-  background-repeat: no-repeat;
 }
 
 body {
@@ -311,12 +290,12 @@ main,
 }
 
 .post-item h2 a {
-  color: var(--ink);
+  color: var(--accent);
 }
 
 .post-item h2 a:hover,
 .post-item h2 a:focus {
-  color: var(--accent);
+  text-decoration: underline;
 }
 
 .dek {
@@ -366,11 +345,9 @@ main,
 
 .prose blockquote {
   margin: 1.5rem 0;
-  padding: 0.85rem 1rem;
+  padding: 0.2rem 0 0.2rem 1.1rem;
   color: var(--soft-ink);
-  background: rgba(var(--sheet-rgb), 0.7);
-  border-left: 3px solid rgba(var(--leaf-rgb), 0.55);
-  border-radius: 0 0.9rem 0.9rem 0;
+  border-left: 3px solid var(--rule);
 }
 
 .prose hr {
@@ -402,12 +379,6 @@ main,
 .prose figure img,
 .post-item-image img {
   filter: var(--photo-filter);
-  transition: filter 0.2s ease;
-}
-
-.prose figure img:hover,
-.post-item-image:hover img {
-  filter: none;
 }
 
 figcaption {
@@ -423,19 +394,22 @@ figcaption {
    --------------------------------------------------------------- */
 .tags {
   margin-top: 2rem;
+  padding-top: 1rem;
   font-family: var(--ui);
   font-size: 0.8rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
+  border-top: 1px solid var(--rule);
 }
 
 .tag {
   display: inline-block;
-  margin-right: 0.75rem;
-  padding: 0.12rem 0.5rem;
+  margin-right: 1rem;
   color: var(--quiet-green);
-  background: rgba(var(--leaf-rgb), var(--leaf-tint));
-  border-radius: 999px;
+}
+
+.tag::before {
+  content: "#";
 }
 
 .site-footer {
