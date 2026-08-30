@@ -15,7 +15,7 @@ layout: default
 
   {%- if page.tags and page.tags != empty %}
   <p class="tags">
-    {%- for tag in page.tags %}<span class="tag">{{ tag }}</span>{% endfor -%}
+    {%- for tag in page.tags %}<a class="tag" href="{{ '/tags/' | relative_url }}#{{ tag | slugify }}">{{ tag }}</a>{% endfor -%}
   </p>
   {%- endif %}
 </article>

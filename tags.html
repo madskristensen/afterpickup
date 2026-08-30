@@ -1,0 +1,27 @@
+---
+layout: default
+title: Tags
+description: Browse After Pickup posts by tag.
+permalink: /tags/
+---
+<article class="post">
+  <h1>Tags</h1>
+  <div class="prose">
+
+    {%- assign tag_names = site.tags | sort %}
+    {%- if tag_names.size == 0 %}
+    <p>No tags yet.</p>
+    {%- endif %}
+
+    {%- for tag in tag_names %}
+    {%- assign tag_name = tag[0] %}
+    {%- assign tag_posts = tag[1] | sort: "date" | reverse %}
+    <h2 id="{{ tag_name | slugify }}">{{ tag_name }}</h2>
+    <ul>
+      {%- for post in tag_posts %}
+      <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
+      {%- endfor %}
+    </ul>
+    {%- endfor %}
+  </div>
+</article>

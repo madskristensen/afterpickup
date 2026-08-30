@@ -343,6 +343,43 @@ main,
   font-weight: 600;
 }
 
+.prose ul,
+.prose ol {
+  margin: 1rem 0;
+  padding-left: 1.1rem;
+}
+
+.prose ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.prose ul li {
+  position: relative;
+  padding-left: 1.2rem;
+  margin-bottom: 0.6rem;
+}
+
+.prose ul li::before {
+  content: "";
+  position: absolute;
+  left: 0.15rem;
+  top: 0.7em;
+  width: 0.4rem;
+  height: 0.4rem;
+  background: var(--quiet-green);
+  border-radius: 50%;
+}
+
+.prose ol li {
+  padding-left: 0.3rem;
+  margin-bottom: 0.6rem;
+}
+
+.prose li:last-child {
+  margin-bottom: 0;
+}
+
 .prose blockquote {
   margin: 1.5rem 0;
   padding: 0.2rem 0 0.2rem 1.1rem;
@@ -406,6 +443,12 @@ figcaption {
   display: inline-block;
   margin-right: 1rem;
   color: var(--quiet-green);
+  text-decoration: none;
+}
+
+.tag:hover,
+.tag:focus {
+  text-decoration: underline;
 }
 
 .tag::before {
