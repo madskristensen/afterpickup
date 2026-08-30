@@ -27,7 +27,11 @@ jobs:
           python-version: "3.12"
 
       - name: Install Pillow
-        run: pip install --quiet Pillow
+        # pillow-avif-plugin guarantees an AVIF encoder. Pillow ships AVIF
+        # support on many builds but not all, and the script only advertises
+        # AVIF in the manifest when every file actually encodes, so a miss
+        # would silently drop the format rather than fail loudly.
+        run: pip install --quiet Pillow pillow-avif-plugin
 
       - name: Generate variants and optimize
         run: python3 .github/scripts/resize_images.py

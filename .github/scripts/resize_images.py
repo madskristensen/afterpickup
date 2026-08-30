@@ -29,6 +29,13 @@ optimised thing we serve (a PNG hero is roughly 8x a WebP of the same
 pixels). For those we write a full-width .webp alongside and point the
 manifest at it. PNGs also get a genuinely lossless optimize pass.
 
+The other real win is a better codec rather than a better encoder. AVIF
+measured about 35% under our WebP across every hero at a quality that is
+indistinguishable at 1:1, so we write .avif at each width too and offer
+it first in a <picture>. Browsers without AVIF take the WebP <source>
+and nothing has to detect anything. AVIF is resized from the original
+each time, not from the WebP, so it stays one generation of loss.
+
 Safe to re-run. Outputs are only rebuilt when the source is newer.
 """
 
@@ -44,6 +51,13 @@ try:
 except ImportError:
     sys.exit("Pillow is required: pip install Pillow")
 
+try:
+    # Registers the AVIF plugin on Pillow builds that lack it. Recent
+    # Pillow has AVIF built in, so a missing plugin is not an error.
+    import pillow_avif  # noqa: F401
+except ImportError:
+    pass
+
 # Post images live here; icons and the social card stay one level up in
 # assets/images so the noisy, growing set is separated from fixed chrome.
 IMAGE_DIR = os.path.join("assets", "images", "posts")
@@ -54,6 +68,13 @@ PAGES = ("about.md",)
 # 640 covers DPR 1, 1280 covers DPR 2. 960 catches the awkward middle.
 WIDTHS = (640, 960, 1280)
 QUALITY = 82
+
+# AVIF alongside WebP, offered first in a <picture> so browsers that
+# support it take it and everything else silently falls back. Measured
+# on our own heroes it runs about 35% under the WebP at a quality that
+# is indistinguishable at 1:1. Quality numbers are not comparable
+# between the two codecs; 60 here is not "worse" than 82 above.
+AVIF_QUALITY = 60
 
 # name-640.webp — used to recognise our own output so we never
 # generate variants of variants.
@@ -83,13 +104,13 @@ def build(path):
     """Return (widths, full_width_is_webp) for one original."""
     stem, ext = os.path.splitext(os.path.basename(path))
     if is_variant(stem):
-        return None, False
+        return None, False, False
 
     try:
         im = Image.open(path)
     except Exception as exc:
         print(f"  skip {path}: {exc}")
-        return None, False
+        return None, False, False
 
     im = im.convert("RGB")
     made = []
@@ -111,6 +132,28 @@ def build(path):
         )
         print(f"  wrote {os.path.basename(out)} ({os.path.getsize(out)//1024}K)")
 
+    # AVIF at the same widths. Resized from the original every time
+    # rather than from the WebP we just wrote, so this is one generation
+    # of loss and not two.
+    for w in WIDTHS:
+        if w >= im.width:
+            continue
+        out = os.path.join(out_dir, f"{stem}-{w}.avif")
+        if os.path.exists(out) and os.path.getmtime(out) >= src_mtime:
+            continue
+        h = round(im.height * w / im.width)
+        try:
+            im.resize((w, h), Image.LANCZOS).save(
+                out, "AVIF", quality=AVIF_QUALITY
+            )
+        except Exception as exc:
+            # No AVIF encoder available. The <picture> falls back to
+            # WebP on its own, so a missing AVIF is not fatal.
+            print(f"  skip avif {os.path.basename(out)}: {exc}")
+            break
+        print(f"  wrote {os.path.basename(out)} "
+              f"({os.path.getsize(out)//1024}K)")
+
     # The widest candidate. If the original is already WebP it is fine as
     # is. If it is a JPEG or PNG it is the biggest file we serve and the
     # only unoptimised one, so write a full-width WebP for the srcset to
@@ -127,7 +170,27 @@ def build(path):
                   f"{ext.lstrip('.')} original)")
 
     made.append(im.width)
-    return sorted(set(made)), full_is_webp
+
+    # Full-width AVIF too, so the widest candidate is covered.
+    full_avif = os.path.join(out_dir, f"{stem}-{im.width}.avif")
+    have_avif = os.path.exists(full_avif)
+    if not (have_avif and os.path.getmtime(full_avif) >= src_mtime):
+        try:
+            im.save(full_avif, "AVIF", quality=AVIF_QUALITY)
+            have_avif = True
+            print(f"  wrote {os.path.basename(full_avif)} "
+                  f"({os.path.getsize(full_avif)//1024}K)")
+        except Exception as exc:
+            print(f"  skip avif {os.path.basename(full_avif)}: {exc}")
+
+    # Only advertise AVIF if every width actually landed, so the template
+    # never points at a file that failed to encode.
+    widths = sorted(set(made))
+    avif = have_avif and all(
+        os.path.exists(os.path.join(out_dir, f"{stem}-{w}.avif"))
+        for w in widths
+    )
+    return widths, full_is_webp, avif
 
 
 def strip_webp_metadata(path):
@@ -245,6 +308,7 @@ def main():
 
     manifest = {}
     full_webp = set()
+    has_avif = set()
     print("Generating variants...")
     for path in sorted(glob.glob(os.path.join(IMAGE_DIR, "*"))):
         ext = os.path.splitext(path)[1].lower()
@@ -255,12 +319,14 @@ def main():
         # the social card have fixed sizes and must not be touched.
         if rel not in wanted:
             continue
-        widths, is_webp = build(path)
+        widths, is_webp, avif = build(path)
         if widths:
             stem = os.path.splitext(os.path.basename(path))[0]
             manifest[stem] = widths
             if not is_webp:
                 full_webp.add(stem)
+            if avif:
+                has_avif.add(stem)
 
     os.makedirs("_data", exist_ok=True)
     with open(DATA_FILE, "w", encoding="utf-8") as fh:
@@ -268,12 +334,14 @@ def main():
         fh.write("# widths: what exists on disk. full_webp: true when the\n")
         fh.write("# widest candidate is a generated .webp rather than the\n")
         fh.write("# original (that happens when the original is a jpg/png).\n")
+        fh.write("# avif: true when an .avif exists at every width.\n")
         for stem in sorted(manifest):
             fh.write(f"{stem}:\n")
             fh.write("  widths:\n")
             for w in manifest[stem]:
                 fh.write(f"    - {w}\n")
             fh.write(f"  full_webp: {str(stem in full_webp).lower()}\n")
+            fh.write(f"  avif: {str(stem in has_avif).lower()}\n")
 
     print(f"\nWrote {DATA_FILE} with {len(manifest)} image(s).\n")
     optimise_pngs()

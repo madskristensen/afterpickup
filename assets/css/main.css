@@ -133,6 +133,13 @@ img {
   display: block;
 }
 
+/* The <picture> wrapper is only there to offer AVIF before WebP. Taking
+   it out of the layout keeps every existing "... img" rule behaving
+   exactly as it did when the img was a direct child. */
+picture {
+  display: contents;
+}
+
 a {
   color: var(--accent);
   text-underline-offset: 0.15em;

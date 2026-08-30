@@ -2,6 +2,7 @@
 # widths: what exists on disk. full_webp: true when the
 # widest candidate is a generated .webp rather than the
 # original (that happens when the original is a jpg/png).
+# avif: true when an .avif exists at every width.
 a-quarter-inch-of-water:
   widths:
     - 640
@@ -9,6 +10,7 @@ a-quarter-inch-of-water:
     - 1280
     - 1600
   full_webp: false
+  avif: true
 family-after-pickup:
   widths:
     - 640
@@ -16,6 +18,7 @@ family-after-pickup:
     - 1280
     - 1600
   full_webp: false
+  avif: true
 pack-a-foldable-hamper:
   widths:
     - 640
@@ -23,6 +26,7 @@ pack-a-foldable-hamper:
     - 1280
     - 1600
   full_webp: false
+  avif: true
 pour-the-cream-in-the-middle:
   widths:
     - 640
@@ -30,6 +34,7 @@ pour-the-cream-in-the-middle:
     - 1280
     - 1600
   full_webp: false
+  avif: true
 where-the-knives-go:
   widths:
     - 640
@@ -37,3 +42,4 @@ where-the-knives-go:
     - 1280
     - 1600
   full_webp: false
+  avif: true

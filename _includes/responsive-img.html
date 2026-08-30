@@ -1,8 +1,12 @@
 {%- comment -%}
-  Renders one <img> with a srcset built from the widths CI actually
+  Renders one <picture> with a srcset built from the widths CI actually
   generated. The manifest is written by .github/scripts/resize_images.py,
   so we never point at a variant that is not on disk. An image with no
   entry (a brand new one, before CI has run) falls back to the original.
+
+  AVIF is offered first and WebP second. A browser takes the first <source>
+  it understands, so anything without AVIF support quietly gets the WebP
+  and anything without either gets the <img> src.
 
   Params:
     src      required, e.g. /assets/images/posts/foo.webp
@@ -30,9 +34,19 @@
 {%- endif -%}
 {%- endfor -%}
 {%- endcapture -%}
-<img src="{{ include.src | relative_url }}"
-     {% if variants %}srcset="{{ srcset | strip_newlines | strip }}" sizes="{{ img_sizes }}"{% endif %}
-     alt="{{ include.alt }}" width="1600" height="900"
-     {% if include.loading %}loading="{{ include.loading }}"{% endif %}
-     {% if include.priority %}fetchpriority="{{ include.priority }}"{% endif %}
-     decoding="async">
+{%- capture avifset -%}
+{%- for w in variants -%}
+{{ img_base | relative_url }}{{ img_stem }}-{{ w }}.avif {{ w }}w{% unless forloop.last %},{% endunless %}
+{%- endfor -%}
+{%- endcapture -%}
+<picture>
+  {%- if variants and entry.avif %}
+  <source type="image/avif" srcset="{{ avifset | strip_newlines | strip }}" sizes="{{ img_sizes }}">
+  {%- endif %}
+  <img src="{{ include.src | relative_url }}"
+       {% if variants %}srcset="{{ srcset | strip_newlines | strip }}" sizes="{{ img_sizes }}"{% endif %}
+       alt="{{ include.alt }}" width="1600" height="900"
+       {% if include.loading %}loading="{{ include.loading }}"{% endif %}
+       {% if include.priority %}fetchpriority="{{ include.priority }}"{% endif %}
+       decoding="async">
+</picture>
