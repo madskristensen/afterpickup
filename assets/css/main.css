@@ -1,59 +1,72 @@
 ---
 ---
 
+/* ---------------------------------------------------------------
+   Design tokens. Light is the default; the dark block below only
+   overrides values, so every rule downstream stays theme-agnostic.
+   --------------------------------------------------------------- */
 :root {
-    color-scheme: light dark;
+  color-scheme: light dark;
 
-    --page: #F7F3EC;
-    --page-rgb: 247, 243, 236;
-    --sheet: #FFFCF7;
-    --sheet-rgb: 247, 243, 236;
-    --ink: #514840;
-    --soft-ink: #5F584F;
-    --rule: #E4DCD0;
-    --rule-rgb: 228, 220, 208;
-    --accent: #8F4A30;
-    --accent-rgb: 143, 74, 48;
-    --accent-ink: #FFFCF7;
-    --quiet-green: #4F6157;
-    --quiet-green-rgb: 79, 97, 87;
-    --leaf-rgb: 157, 174, 141;
-    --leaf-tint: 0.14;
-    --leaf-glow: 0.18;
-    --glow: #EFE4D5;
-    --gradient-mid: #F3EADF;
-    --gradient-end: #F8F2EA;
-    --shadow-rgb: 44, 38, 32;
-    --focus: #2C6E9B;
-    --measure: 40rem;
-    --body: "Charter", "Bitstream Charter", Georgia, serif;
-    --ui: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    --wordmark: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  /* Surfaces */
+  --page: #F7F3EC;
+  --sheet-rgb: 247, 243, 236;
+  --glow: #EFE4D5;
+  --gradient-mid: #F3EADF;
+  --gradient-end: #F8F2EA;
+
+  /* Text */
+  --ink: #514840;
+  --soft-ink: #5F584F;
+
+  /* Accents and lines */
+  --accent: #8F4A30;
+  --rule: #E4DCD0;
+  --quiet-green: #4F6157;
+  --leaf-rgb: 157, 174, 141;
+  --leaf-tint: 0.14;
+  --leaf-glow: 0.18;
+  --focus: #2C6E9B;
+  --photo-filter: none;
+
+  /* Metrics */
+  --measure: 40rem;
+  --gutter: 1.25rem;
+  --bleed-left: calc(-1 * (var(--gutter) + env(safe-area-inset-left)));
+  --bleed-right: calc(-1 * (var(--gutter) + env(safe-area-inset-right)));
+
+  /* Type */
+  --body: "Charter", "Bitstream Charter", Georgia, serif;
+  --ui: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --page: #17140F;
-    --page-rgb: 23, 20, 15;
-    --sheet: #201C16;
     --sheet-rgb: 32, 28, 22;
-    --ink: #E4DCD0;
-    --soft-ink: #D8CFC2;
-    --rule: #3A342B;
-    --rule-rgb: 58, 52, 43;
-    --accent: #E8A288;
-    --accent-rgb: 232, 162, 136;
-    --accent-ink: #1A1611;
-    --quiet-green: #B2C4AE;
-    --quiet-green-rgb: 178, 196, 174;
-    --leaf-rgb: 157, 174, 141;
-    --leaf-tint: 0.2;
-    --leaf-glow: 0.07;
     --glow: #2A2219;
     --gradient-mid: #1C1813;
     --gradient-end: #191510;
-    --shadow-rgb: 0, 0, 0;
+
+    --ink: #E4DCD0;
+    --soft-ink: #D8CFC2;
+
+    --accent: #E8A288;
+    --rule: #3A342B;
+    --quiet-green: #B2C4AE;
+    --leaf-tint: 0.2;
+    --leaf-glow: 0.07;
     --focus: #8FC4E8;
+
+    /* Take the glare off bright photos on a dark page. */
+    --photo-filter: brightness(0.82) contrast(1.02);
+  }
+}
+
+/* Readers who ask for maximum contrast get undimmed photos. */
+@media (prefers-contrast: more) {
+  :root {
+    --photo-filter: none;
   }
 }
 
@@ -68,28 +81,34 @@
   }
 }
 
+/* ---------------------------------------------------------------
+   Base
+   --------------------------------------------------------------- */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
+/* The gradient lives on html so it propagates to the canvas and paints
+   the full screen, including behind the iOS notch and address bar.
+   Do not add background-attachment: fixed here. On iOS that pins the
+   background to the viewport rect and the top safe area goes white
+   again in portrait. */
 html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
+  min-height: 100%;
   background-color: var(--page);
   background-image:
     radial-gradient(circle at top left, var(--glow), transparent 19rem),
     radial-gradient(circle at 85% 8rem, rgba(var(--leaf-rgb), var(--leaf-glow)), transparent 16rem),
     linear-gradient(135deg, var(--page), var(--gradient-mid) 28%, var(--gradient-end));
-  background-attachment: fixed;
   background-repeat: no-repeat;
-  min-height: 100%;
 }
 
 body {
   margin: 0;
-  min-height: 100vh;
   min-height: 100dvh;
   background: transparent;
   color: var(--soft-ink);
@@ -97,53 +116,6 @@ body {
   font-size: 19px;
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
-}
-
-@media (min-width: 40rem) {
-  body {
-    font-size: 20px;
-  }
-
-  .hero img {
-    border-radius: 0.4rem;
-  }
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* Take the glare off photos on a dark page. Full brightness returns on
-   hover or focus, and when the reader prefers more contrast. */
-@media (prefers-color-scheme: dark) {
-  .hero img,
-  .prose figure img,
-  .post-item-image img {
-    filter: brightness(0.82) contrast(1.02);
-    transition: filter 0.2s ease;
-  }
-
-  .hero img:hover,
-  .prose figure img:hover,
-  .post-item-image:hover img,
-  .post-item-image:focus-visible img {
-    filter: none;
-  }
-}
-
-@media (prefers-color-scheme: dark) and (prefers-contrast: more) {
-  .hero img,
-  .prose figure img,
-  .post-item-image img {
-    filter: none;
-  }
-}
-
-a {
-  color: var(--accent);
-  text-underline-offset: 0.15em;
 }
 
 h1,
@@ -155,22 +127,48 @@ h6 {
   color: var(--ink);
 }
 
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: var(--accent);
+  text-underline-offset: 0.15em;
+}
+
 :focus-visible {
   outline: 3px solid var(--focus);
   outline-offset: 2px;
   border-radius: 0.2rem;
 }
 
+/* Links that carry an underline only while interacted with. */
+.wordmark,
+.site-nav a,
+.post-footer a,
+.post-item h2 a {
+  text-decoration: none;
+}
+
+.site-nav a:hover,
+.site-nav a:focus,
+.post-footer a:hover,
+.post-footer a:focus {
+  text-decoration: underline;
+}
+
 .skip-link {
   position: absolute;
-  left: -9999px;
   top: 0;
+  left: -9999px;
   z-index: 10;
+  padding: 0.6rem 1.1rem;
   font-family: var(--ui);
   font-size: 0.95rem;
-  padding: 0.6rem 1.1rem;
-  background: var(--sheet);
   color: var(--accent);
+  background: rgb(var(--sheet-rgb));
   border: 1px solid var(--rule);
   border-radius: 0 0 0.5rem 0;
 }
@@ -179,17 +177,21 @@ h6 {
   left: 0;
 }
 
-/* Layout: one column, wider margins on desktop */
+/* ---------------------------------------------------------------
+   Layout: one column, centred, safe-area aware gutters
+   --------------------------------------------------------------- */
 .site-header,
 main,
 .site-footer {
   max-width: var(--measure);
   margin-inline: auto;
-  padding-left: calc(1.25rem + env(safe-area-inset-left));
-  padding-right: calc(1.25rem + env(safe-area-inset-right));
+  padding-left: calc(var(--gutter) + env(safe-area-inset-left));
+  padding-right: calc(var(--gutter) + env(safe-area-inset-right));
 }
 
-
+/* ---------------------------------------------------------------
+   Header
+   --------------------------------------------------------------- */
 .site-header {
   padding-block: calc(1.75rem + env(safe-area-inset-top)) 1.25rem;
 }
@@ -206,36 +208,38 @@ main,
 }
 
 .wordmark {
-  font-weight: 600;
-  font-size: 2rem;
-  text-decoration: none;
   display: inline-flex;
-  align-items: stretch;
-  gap: .5rem;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 2rem;
+  font-weight: 600;
 }
 
-.wordmark::before {
-  content: "";
-  display: inline-block;
-  width: 36px;
-  height: 36px;
-  background: url("/assets/images/logo.png") center 7px / cover no-repeat;
+/* The mark is an inline SVG so it can pick up theme colors. Without
+   these two rules the paths fall back to fill:black and the house
+   reads as a solid black blob. */
+.logo {
+  width: 1.15em;
+  height: 1.15em;
   flex-shrink: 0;
-  box-shadow: 0 0.45rem 1rem rgba(var(--shadow-rgb), 0.08);
+}
+
+.logo-house {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2.1;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.logo-heart {
+  fill: var(--quiet-green);
+  stroke: none;
 }
 
 .site-nav {
   font-family: var(--ui);
   font-size: 0.95rem;
-}
-
-.site-nav a {
-  text-decoration: none;
-}
-
-.site-nav a:hover,
-.site-nav a:focus {
-  text-decoration: underline;
 }
 
 .tagline {
@@ -245,6 +249,9 @@ main,
   line-height: 1.45;
 }
 
+/* ---------------------------------------------------------------
+   Post list
+   --------------------------------------------------------------- */
 .post-list {
   display: grid;
   gap: 1rem;
@@ -252,8 +259,8 @@ main,
 }
 
 .post-item {
-    padding: 1.5rem 0;
-    margin-block: 1rem 2.5rem;
+  padding: 1.5rem 0;
+  margin-block: 1rem 2.5rem;
 }
 
 .post-item-image {
@@ -278,7 +285,6 @@ main,
 
 .post-item h2 a {
   color: var(--ink);
-  text-decoration: none;
 }
 
 .post-item h2 a:hover,
@@ -299,16 +305,12 @@ main,
   color: var(--soft-ink);
 }
 
-.soft {
-  color: var(--soft-ink);
-}
-
-/* Article post */
+/* ---------------------------------------------------------------
+   Article
+   --------------------------------------------------------------- */
 .post {
-    /*background: rgba(var(--sheet-rgb), 0.50);*/
-    padding: 1.5rem 0;
-    margin-block: 1rem 2.5rem;
-    /*box-shadow: 0 1rem 2.75rem rgba(44, 38, 32, 0.06);*/
+  padding: 1.5rem 0;
+  margin-block: 1rem 2.5rem;
 }
 
 .post h1 {
@@ -338,25 +340,27 @@ main,
 .prose blockquote {
   margin: 1.5rem 0;
   padding: 0.85rem 1rem;
+  color: var(--soft-ink);
+  background: rgba(var(--sheet-rgb), 0.7);
   border-left: 3px solid rgba(var(--leaf-rgb), 0.55);
   border-radius: 0 0.9rem 0.9rem 0;
-  background: rgba(var(--sheet-rgb), 0.7);
-  color: var(--soft-ink);
 }
 
 .prose hr {
+  margin: 2rem 0;
   border: 0;
   border-top: 1px solid var(--rule);
-  margin: 2rem 0;
 }
 
-/* Full-bleed photos */
+/* ---------------------------------------------------------------
+   Photos. Hero and article figures run full bleed on small screens.
+   --------------------------------------------------------------- */
 .hero {
-  margin: 0 calc(-1.25rem - env(safe-area-inset-right)) 1.5rem calc(-1.25rem - env(safe-area-inset-left));
+  margin: 0 var(--bleed-right) 1.5rem var(--bleed-left);
 }
 
 .prose figure {
-  margin: 2rem calc(-1.25rem - env(safe-area-inset-right)) 2rem calc(-1.25rem - env(safe-area-inset-left));
+  margin: 2rem var(--bleed-right) 2rem var(--bleed-left);
 }
 
 .prose figure:not(.hero) {
@@ -367,15 +371,30 @@ main,
   border-radius: 1rem;
 }
 
+.hero img,
+.prose figure img,
+.post-item-image img {
+  filter: var(--photo-filter);
+  transition: filter 0.2s ease;
+}
+
+.hero img:hover,
+.prose figure img:hover,
+.post-item-image:hover img {
+  filter: none;
+}
+
 figcaption {
+  padding: 0.5rem var(--gutter) 0;
   font-family: var(--ui);
   font-size: 0.85rem;
   line-height: 1.45;
   color: var(--soft-ink);
-  padding: 0.5rem 1.25rem 0;
 }
 
-/* Tags */
+/* ---------------------------------------------------------------
+   Tags and footers
+   --------------------------------------------------------------- */
 .tags {
   margin-top: 2rem;
   font-family: var(--ui);
@@ -385,48 +404,39 @@ figcaption {
 }
 
 .tag {
-  color: var(--quiet-green);
   display: inline-block;
   margin-right: 0.75rem;
   padding: 0.12rem 0.5rem;
-  border-radius: 999px;
+  color: var(--quiet-green);
   background: rgba(var(--leaf-rgb), var(--leaf-tint));
+  border-radius: 999px;
 }
 
 .post-footer {
   margin-top: 2rem;
   padding-top: 1.25rem;
+  font-family: var(--ui);
+  font-size: 0.95rem;
   border-top: 1px solid var(--rule);
-  font-family: var(--ui);
-  font-size: 0.95rem;
-}
-
-.post-footer a {
-  text-decoration: none;
-}
-
-.post-footer a:hover,
-.post-footer a:focus {
-  text-decoration: underline;
-}
-
-/* Single button style */
-.button {
-  display: inline-block;
-  font-family: var(--ui);
-  font-size: 0.95rem;
-  padding: 0.6rem 1.1rem;
-  border-radius: 999px;
-  background: var(--accent);
-  color: var(--accent-ink);
-  text-decoration: none;
-  box-shadow: 0 0.6rem 1.2rem rgba(var(--accent-rgb), 0.18);
 }
 
 .site-footer {
+  padding-block: 1rem calc(2.5rem + env(safe-area-inset-bottom));
   font-family: var(--ui);
   font-size: 0.85rem;
   color: var(--soft-ink);
-  padding-block: 1rem calc(2.5rem + env(safe-area-inset-bottom));
-  border-top: 1px solid rgba(var(--rule-rgb), 0.82);
+  border-top: 1px solid var(--rule);
+}
+
+/* ---------------------------------------------------------------
+   Larger screens
+   --------------------------------------------------------------- */
+@media (min-width: 40rem) {
+  body {
+    font-size: 20px;
+  }
+
+  .hero img {
+    border-radius: 0.4rem;
+  }
 }

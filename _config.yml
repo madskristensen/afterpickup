@@ -4,7 +4,7 @@ description: >-
   Tested, calm systems for the hour after school pickup.
 url: https://afterpickup.com
 baseurl: ""
-logo: /assets/images/logo.png
+logo: /assets/images/logo.svg
 lang: en-US
 
 permalink: /:title/

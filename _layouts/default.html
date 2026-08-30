@@ -18,9 +18,9 @@
     <header class="site-header">
       <div class="site-header-top">
         {%- if page.url == "/" %}
-        <h1 class="wordmark-h1"><a class="wordmark" href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
+        <h1 class="wordmark-h1"><a class="wordmark" href="{{ '/' | relative_url }}">{% include logo.html %}{{ site.title }}</a></h1>
         {%- else %}
-        <a class="wordmark" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+        <a class="wordmark" href="{{ '/' | relative_url }}">{% include logo.html %}{{ site.title }}</a>
         {%- endif %}
         <nav class="site-nav" aria-label="Main">
           <a href="{{ '/about/' | relative_url }}">About</a>
