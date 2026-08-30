@@ -265,6 +265,16 @@ main,
   padding-block: 1rem 2rem;
 }
 
+.home-intro {
+  margin-bottom: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+}
+
+.home-intro p {
+  margin: 0;
+}
+
 .post-item {
   padding: 1.5rem 0;
   margin-block: 1rem 2.5rem;
