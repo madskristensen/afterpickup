@@ -7,10 +7,21 @@ next to each original and records what exists in _data/image_variants.yml
 so the template can build a srcset without ever pointing at a missing
 file.
 
-On optimisation: the heroes are lossy WebP carrying no EXIF or ICC, so
-there is nothing left to strip and no lossless win available. Re-encoding
-them would decode and requantise, losing a little quality every run for
-about 3%. So we do not touch existing WebP.
+On optimising WebP losslessly: there is nothing to get. Checked by
+parsing the RIFF container. Every file is a single bare VP8 chunk with
+no EXIF, ICCP or XMP, so the only non-image bytes are the 20 byte header
+(0.03% across all twenty files). There is also no jpegtran equivalent
+for WebP. jpegtran works because JPEG keeps its coefficients in a
+separately huffman-coded layer that can be reshuffled without touching
+them, whereas VP8 fuses prediction and arithmetic coding into one pass,
+so there is no layer to losslessly rewrite.
+
+Two things that look like options but are not. Re-encoding lossy at the
+same quality alters 62% of pixels (max channel deviation 16) to save
+about 3%, and that damage compounds on every CI run. Re-storing as
+lossless VP8L preserves the pixels exactly but is 5.2x LARGER, because
+those pixels carry DCT noise that an entropy coder cannot model. So
+existing WebP is left strictly alone.
 
 What is worth doing is upstream. If someone drops in a JPEG or PNG
 original, that file is the widest srcset candidate and the least
@@ -26,6 +37,7 @@ import io
 import re
 import sys
 import glob
+import struct
 
 try:
     from PIL import Image
@@ -118,6 +130,82 @@ def build(path):
     return sorted(set(made)), full_is_webp
 
 
+def strip_webp_metadata(path):
+    """Drop EXIF/ICC/XMP from a WebP without touching the image data.
+
+    This is the one genuinely lossless win available on WebP. We rebuild
+    the RIFF container keeping only the image chunks, so the compressed
+    VP8 payload is copied byte for byte and never re-encoded. A phone
+    export carrying EXIF and a Display P3 profile sheds about 6%.
+
+    Ours are already clean, so this normally does nothing. It matters
+    when someone uploads a WebP straight from a camera or an editor.
+    """
+    META = {b"EXIF", b"XMP ", b"ICCP"}
+
+    with open(path, "rb") as fh:
+        data = fh.read()
+    if data[:4] != b"RIFF" or data[8:12] != b"WEBP":
+        return 0
+
+    chunks, off = [], 12
+    while off + 8 <= len(data):
+        cid = data[off:off + 4]
+        size = struct.unpack("<I", data[off + 4:off + 8])[0]
+        end = off + 8 + size + (size & 1)
+        chunks.append((cid, data[off:end]))
+        off = end
+
+    if not any(cid in META for cid, _ in chunks):
+        return 0
+
+    ids = {cid for cid, _ in chunks}
+    # Animation needs VP8X to survive and its frame layout is a different
+    # problem, so leave those alone rather than risk corrupting them.
+    if b"ANIM" in ids or b"ANMF" in ids:
+        return 0
+
+    kept = [(cid, raw) for cid, raw in chunks if cid not in META]
+
+    # VP8X exists to advertise optional features in a leading 10 byte
+    # chunk. Having stripped ICC and EXIF we must clear those flag bits,
+    # or a decoder will look for chunks that are no longer there. With
+    # no features left the extended form is pointless, so drop VP8X and
+    # emit the plain single-chunk file a simple decoder expects.
+    has_alpha = b"ALPH" in ids
+    if not has_alpha:
+        kept = [(cid, raw) for cid, raw in kept if cid != b"VP8X"]
+
+    if any(cid == b"VP8X" for cid, _ in kept):
+        # Alpha still needs the extended form. Rewrite the flags,
+        # keeping only the alpha bit (0x10).
+        rebuilt = []
+        for cid, raw in kept:
+            if cid == b"VP8X":
+                payload = bytearray(raw[8:8 + 10])
+                payload[0] &= 0x10
+                rebuilt.append((cid, raw[:8] + bytes(payload)))
+            else:
+                rebuilt.append((cid, raw))
+        kept = rebuilt
+
+    body = b"".join(raw for _, raw in kept)
+    out = b"RIFF" + struct.pack("<I", len(body) + 4) + b"WEBP" + body
+    if len(out) >= len(data):
+        return 0
+
+    # Never write a file we cannot read back.
+    try:
+        Image.open(io.BytesIO(out)).load()
+    except Exception as exc:
+        print(f"  skip strip on {os.path.basename(path)}: {exc}")
+        return 0
+
+    with open(path, "wb") as fh:
+        fh.write(out)
+    return len(data) - len(out)
+
+
 def optimise_pngs():
     """Losslessly shrink the PNGs we ship.
 
@@ -145,6 +233,15 @@ def main():
     wanted = referenced_images()
     if not wanted:
         print("No hero images referenced in posts.")
+
+    # Strip first. Doing it after would bump the original's mtime and make
+    # every variant look stale, forcing a pointless rebuild.
+    print("Stripping WebP metadata...")
+    for path in sorted(glob.glob(os.path.join(IMAGE_DIR, "*.webp"))):
+        saved = strip_webp_metadata(path)
+        if saved:
+            print(f"  {os.path.basename(path)}: {saved} bytes of "
+                  f"metadata removed")
 
     manifest = {}
     full_webp = set()
