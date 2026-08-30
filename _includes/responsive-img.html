@@ -1,12 +1,15 @@
 {%- comment -%}
-  Renders one <picture> with a srcset built from the widths CI actually
-  generated. The manifest is written by .github/scripts/resize_images.py,
-  so we never point at a variant that is not on disk. An image with no
-  entry (a brand new one, before CI has run) falls back to the original.
+  Renders one <picture> with an AVIF srcset built from the widths CI
+  actually generated. The manifest is written by
+  .github/scripts/resize_images.py, so we never point at a variant that
+  is not on disk.
 
-  AVIF is offered first and WebP second. A browser takes the first <source>
-  it understands, so anything without AVIF support quietly gets the WebP
-  and anything without either gets the <img> src.
+  Only two things are ever served: AVIF at several widths, or the plain
+  original (whatever format it was uploaded as) for anything that does
+  not support AVIF or has no manifest entry yet. There is no WebP tier
+  in between; that population is small (AVIF has been Baseline "high"
+  since Jan 2024) and keeping a middle tier only they would use was not
+  worth the extra generated files.
 
   Params:
     src      required, e.g. /assets/images/posts/foo.webp
@@ -20,20 +23,6 @@
 {%- assign entry = site.data.image_variants[img_stem] -%}
 {%- assign variants = entry.widths -%}
 {%- assign img_sizes = include.sizes | default: "(min-width: 40rem) 40rem, 100vw" -%}
-{%- capture srcset -%}
-{%- for w in variants -%}
-{%- if forloop.last and entry.full_webp != true -%}
-{%- comment -%} Original is already WebP, so it is the widest candidate. {%- endcomment -%}
-{{ include.src | relative_url }} {{ w }}w
-{%- else -%}
-{%- comment -%}
-  Either a narrower variant, or a jpg/png original whose full-width WebP
-  we generated. Both live at <base><stem>-<width>.webp.
-{%- endcomment -%}
-{{ img_base | relative_url }}{{ img_stem }}-{{ w }}.webp {{ w }}w{% unless forloop.last %},{% endunless %}
-{%- endif -%}
-{%- endfor -%}
-{%- endcapture -%}
 {%- capture avifset -%}
 {%- for w in variants -%}
 {{ img_base | relative_url }}{{ img_stem }}-{{ w }}.avif {{ w }}w{% unless forloop.last %},{% endunless %}
@@ -44,7 +33,6 @@
   <source type="image/avif" srcset="{{ avifset | strip_newlines | strip }}" sizes="{{ img_sizes }}">
   {%- endif %}
   <img src="{{ include.src | relative_url }}"
-       {% if variants %}srcset="{{ srcset | strip_newlines | strip }}" sizes="{{ img_sizes }}"{% endif %}
        alt="{{ include.alt }}" width="1600" height="900"
        {% if include.loading %}loading="{{ include.loading }}"{% endif %}
        {% if include.priority %}fetchpriority="{{ include.priority }}"{% endif %}
