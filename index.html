@@ -17,9 +17,9 @@ description: Tested, calm systems for the hour after school pickup.
         rest load lazily as the reader scrolls.
       {%- endcomment -%}
       {%- if forloop.first -%}
-      {%- include responsive-img.html src=post.image alt="" priority="high" -%}
+      {%- include responsive-img.html src=post.image alt="" priority="high" sizes="(min-width: 62.5rem) 60rem, 100vw" -%}
       {%- else -%}
-      {%- include responsive-img.html src=post.image alt="" loading="lazy" -%}
+      {%- include responsive-img.html src=post.image alt="" loading="lazy" sizes="(min-width: 62.5rem) 29rem, (min-width: 40rem) calc((100vw - 4.5rem) / 2), 100vw" -%}
       {%- endif -%}
     </a>
     {%- endif %}

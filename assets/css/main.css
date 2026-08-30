@@ -154,15 +154,12 @@ a {
 /* Links that carry an underline only while interacted with. */
 .wordmark,
 .site-nav a,
-.post-footer a,
 .post-item h2 a {
   text-decoration: none;
 }
 
 .site-nav a:hover,
-.site-nav a:focus,
-.post-footer a:hover,
-.post-footer a:focus {
+.site-nav a:focus {
   text-decoration: underline;
 }
 
@@ -200,7 +197,7 @@ main,
    Header
    --------------------------------------------------------------- */
 .site-header {
-  padding-block: calc(1.75rem + env(safe-area-inset-top)) 1.25rem;
+  padding-block: calc(2.25rem + env(safe-area-inset-top)) 1.5rem;
 }
 
 .site-header-top {
@@ -218,7 +215,7 @@ main,
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 2rem;
+  font-size: 2.2rem;
   font-weight: 600;
 }
 
@@ -250,9 +247,12 @@ main,
 }
 
 .tagline {
-  margin: 0.6rem 0 0;
-  color: var(--soft-ink);
-  font-size: 1.05rem;
+  margin: 0.75rem 0 0;
+  color: var(--quiet-green);
+  font-family: var(--ui);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
   line-height: 1.45;
 }
 
@@ -284,13 +284,19 @@ main,
   display: block;
   margin-bottom: 1rem;
   overflow: hidden;
-  border-radius: 0.4rem;
+  border-radius: 0.75rem;
 }
 
 .post-item-image img {
   width: 100%;
   aspect-ratio: 16 / 9;
   object-fit: cover;
+}
+
+.home-main .post-item:first-child .post-item-image {
+  margin-right: var(--bleed-right);
+  margin-left: var(--bleed-left);
+  border-radius: 0;
 }
 
 .post-item h2 {
@@ -332,8 +338,8 @@ main,
 
 .post h1 {
   margin: 0 0 0.4rem;
-  font-size: 1.9rem;
-  line-height: 1.2;
+  font-size: 2.15rem;
+  line-height: 1.15;
   font-weight: 600;
 }
 
@@ -385,7 +391,7 @@ main,
 }
 
 .prose figure:not(.hero) img {
-  border-radius: 1rem;
+  border-radius: 0.75rem;
 }
 
 .hero img,
@@ -395,7 +401,6 @@ main,
   transition: filter 0.2s ease;
 }
 
-.hero img:hover,
 .prose figure img:hover,
 .post-item-image:hover img {
   filter: none;
@@ -429,14 +434,6 @@ figcaption {
   border-radius: 999px;
 }
 
-.post-footer {
-  margin-top: 2rem;
-  padding-top: 1.25rem;
-  font-family: var(--ui);
-  font-size: 0.95rem;
-  border-top: 1px solid var(--rule);
-}
-
 .site-footer {
   padding-block: 1rem calc(2.5rem + env(safe-area-inset-bottom));
   font-family: var(--ui);
@@ -453,7 +450,43 @@ figcaption {
     font-size: 20px;
   }
 
+  .wordmark {
+    font-size: 2.4rem;
+  }
+
+  .post h1 {
+    font-size: 2.6rem;
+  }
+
   .hero img {
-    border-radius: 0.4rem;
+    border-radius: 0.75rem;
+  }
+
+  .site-header,
+  main,
+  .site-footer {
+    max-width: 60rem;
+  }
+
+  .home-main .post-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 2rem;
+  }
+
+  .home-main .post-item {
+    margin-block: 0 1.5rem;
+  }
+
+  .home-main .post-item:first-child {
+    grid-column: 1 / -1;
+    margin-bottom: 2rem;
+  }
+
+  .home-main .post-item:first-child .post-item-image {
+    border-radius: 0.75rem;
+  }
+
+  .home-main .post-item:first-child h2 {
+    font-size: 2.6rem;
   }
 }

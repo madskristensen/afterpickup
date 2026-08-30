@@ -32,7 +32,7 @@
       {%- endif %}
     </header>
 
-    <main id="content" tabindex="-1">
+    <main id="content" tabindex="-1"{% if page.url == "/" %} class="home-main"{% endif %}>
       {{ content }}
     </main>
 

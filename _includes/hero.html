@@ -4,7 +4,8 @@
   {%- include responsive-img.html
        src=page.image
        alt=hero_alt
-       priority="high" -%}
+       priority="high"
+       sizes="(min-width: 62.5rem) 60rem, 100vw" -%}
   {%- if page.image_caption %}
   <figcaption>{{ page.image_caption }}</figcaption>
   {%- endif %}
