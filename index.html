@@ -11,7 +11,7 @@ description: Tested, calm systems for the hour the backpacks hit the floor, from
   <article class="post-item">
     {%- if post.image %}
     <a class="post-item-image" href="{{ post.url | relative_url }}" tabindex="-1" aria-hidden="true">
-      <img src="{{ post.image | relative_url }}" alt="" width="1600" height="900" loading="lazy" decoding="async">
+      <img src="{{ post.image | relative_url }}" alt="" width="1600" height="900"  fetchpriority="high" decoding="async">
     </a>
     {%- endif %}
     <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
