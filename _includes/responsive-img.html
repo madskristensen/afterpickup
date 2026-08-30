@@ -1,0 +1,32 @@
+{%- comment -%}
+  Renders one <img> with a srcset built from the widths CI actually
+  generated. The manifest is written by .github/scripts/resize_images.py,
+  so we never point at a variant that is not on disk. An image with no
+  entry (a brand new one, before CI has run) falls back to the original.
+
+  Params:
+    src      required, e.g. /assets/images/posts/foo.webp
+    alt      required, may be empty for decorative thumbnails
+    sizes    optional, defaults to the article measure
+    loading  optional, "lazy" for below-the-fold images
+    priority optional, "high" for the LCP image
+{%- endcomment -%}
+{%- assign img_stem = include.src | split: "/" | last | split: "." | first -%}
+{%- assign img_base = include.src | split: img_stem | first -%}
+{%- assign variants = site.data.image_variants[img_stem] -%}
+{%- assign img_sizes = include.sizes | default: "(min-width: 40rem) 40rem, 100vw" -%}
+{%- capture srcset -%}
+{%- for w in variants -%}
+{%- if forloop.last -%}
+{{ include.src | relative_url }} {{ w }}w
+{%- else -%}
+{{ img_base | relative_url }}{{ img_stem }}-{{ w }}.webp {{ w }}w,
+{%- endif -%}
+{%- endfor -%}
+{%- endcapture -%}
+<img src="{{ include.src | relative_url }}"
+     {% if variants %}srcset="{{ srcset | strip_newlines | strip }}" sizes="{{ img_sizes }}"{% endif %}
+     alt="{{ include.alt }}" width="1600" height="900"
+     {% if include.loading %}loading="{{ include.loading }}"{% endif %}
+     {% if include.priority %}fetchpriority="{{ include.priority }}"{% endif %}
+     decoding="async">

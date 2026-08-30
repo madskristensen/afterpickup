@@ -1,34 +1,10 @@
 {%- if page.image %}
-{%- comment -%}
-  Build a srcset from the widths CI actually generated. The manifest is
-  written by .github/scripts/resize_images.py, so we never point at a
-  variant that is not on disk. An image with no entry (a brand new one,
-  before CI has run) falls back to the plain original.
-{%- endcomment -%}
-{%- assign img_dir = page.image | split: "/" -%}
-{%- assign img_file = img_dir | last -%}
-{%- assign img_stem = img_file | split: "." | first -%}
-{%- assign img_ext = img_file | split: "." | last -%}
-{%- assign variants = site.data.image_variants[img_stem] -%}
+{%- assign hero_alt = page.image_alt | default: page.title -%}
 <figure class="hero">
-  {%- if variants -%}
-  {%- capture srcset -%}
-  {%- for w in variants -%}
-  {%- if forloop.last -%}
-  {{ page.image | relative_url }} {{ w }}w
-  {%- else -%}
-  /assets/images/{{ img_stem }}-{{ w }}.webp {{ w }}w,
-  {%- endif -%}
-  {%- endfor -%}
-  {%- endcapture -%}
-  <img src="{{ page.image | relative_url }}"
-       srcset="{{ srcset | strip_newlines | strip }}"
-       sizes="(min-width: 40rem) 40rem, 100vw"
-       alt="{{ page.image_alt | default: page.title }}"
-       width="1600" height="900" fetchpriority="high" decoding="async">
-  {%- else -%}
-  <img src="{{ page.image | relative_url }}" alt="{{ page.image_alt | default: page.title }}" width="1600" height="900" fetchpriority="high" decoding="async">
-  {%- endif -%}
+  {%- include responsive-img.html
+       src=page.image
+       alt=hero_alt
+       priority="high" -%}
   {%- if page.image_caption %}
   <figcaption>{{ page.image_caption }}</figcaption>
   {%- endif %}

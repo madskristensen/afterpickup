@@ -3,9 +3,10 @@ name: Resize hero images
 on:
   push:
     paths:
-      - "assets/images/**"
+      - "assets/images/posts/**"
       - "_posts/**"
       - "_queue/**"
+      - "about.md"
       - ".github/scripts/resize_images.py"
   workflow_dispatch:
 
@@ -14,8 +15,8 @@ permissions:
 
 jobs:
   resize:
-    # This job commits back into assets/images, which is one of the paths
-    # that triggers it. Skipping our own bot stops the loop.
+    # This job commits back into assets/images/posts, which is one of the
+    # paths that triggers it. Skipping our own bot stops the loop.
     if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     steps:
@@ -35,7 +36,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A assets/images _data/image_variants.yml
+          git add -A assets/images/posts _data/image_variants.yml
           if git diff --cached --quiet; then
             echo "No new variants."
             exit 0

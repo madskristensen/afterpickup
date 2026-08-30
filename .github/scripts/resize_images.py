@@ -20,9 +20,12 @@ try:
 except ImportError:
     sys.exit("Pillow is required: pip install Pillow")
 
-IMAGE_DIR = os.path.join("assets", "images")
+# Post images live here; icons and the social card stay one level up in
+# assets/images so the noisy, growing set is separated from fixed chrome.
+IMAGE_DIR = os.path.join("assets", "images", "posts")
 DATA_FILE = os.path.join("_data", "image_variants.yml")
 POST_DIRS = ("_posts", "_queue")
+PAGES = ("about.md",)
 
 # 640 covers DPR 1, 1280 covers DPR 2. 960 catches the awkward middle.
 WIDTHS = (640, 960, 1280)
@@ -34,15 +37,17 @@ VARIANT_RE = re.compile(r"-(\d+)$")
 
 
 def referenced_images():
-    """Hero images named in post front matter."""
+    """Hero images named in post and page front matter."""
+    sources = [p for d in POST_DIRS for p in glob.glob(os.path.join(d, "*.md"))]
+    sources += [p for p in PAGES if os.path.exists(p)]
+
     found = set()
-    for d in POST_DIRS:
-        for path in glob.glob(os.path.join(d, "*.md")):
-            with open(path, encoding="utf-8") as fh:
-                for line in fh:
-                    m = re.match(r"^image:\s*(\S+)", line)
-                    if m:
-                        found.add(m.group(1).lstrip("/"))
+    for path in sources:
+        with open(path, encoding="utf-8") as fh:
+            for line in fh:
+                m = re.match(r"^image:\s*(\S+)", line)
+                if m:
+                    found.add(m.group(1).lstrip("/"))
     return found
 
 
@@ -70,7 +75,8 @@ def build(path):
         # Never upscale. A source smaller than the target is already fine.
         if w >= im.width:
             continue
-        out = os.path.join(IMAGE_DIR, f"{stem}-{w}.webp")
+        # Write next to the original so moving the folder needs no edit here.
+        out = os.path.join(os.path.dirname(path), f"{stem}-{w}.webp")
         made.append(w)
         if os.path.exists(out) and os.path.getmtime(out) >= src_mtime:
             continue
