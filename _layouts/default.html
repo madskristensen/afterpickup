@@ -23,9 +23,6 @@
         {%- else %}
         <a class="wordmark" href="{{ '/' | relative_url }}">{% include logo.html %}{{ site.title }}</a>
         {%- endif %}
-        <nav class="site-nav" aria-label="Main">
-          <a href="{{ '/about/' | relative_url }}">About</a>
-        </nav>
       </div>
       {%- if site.tagline %}
       <p class="tagline">{{ site.tagline }}</p>
@@ -37,6 +34,9 @@
     </main>
 
     <footer class="site-footer">
+      <nav class="site-nav" aria-label="Footer">
+        <a href="{{ '/about/' | relative_url }}">Who we are</a>
+      </nav>
       <p>&copy; {{ site.time | date: "%Y" }} {{ site.title }}</p>
     </footer>
   </body>
