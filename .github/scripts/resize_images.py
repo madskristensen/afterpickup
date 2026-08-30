@@ -7,10 +7,22 @@ next to each original and records what exists in _data/image_variants.yml
 so the template can build a srcset without ever pointing at a missing
 file.
 
-Safe to re-run. Variants are only rebuilt when the original is newer.
+On optimisation: the heroes are lossy WebP carrying no EXIF or ICC, so
+there is nothing left to strip and no lossless win available. Re-encoding
+them would decode and requantise, losing a little quality every run for
+about 3%. So we do not touch existing WebP.
+
+What is worth doing is upstream. If someone drops in a JPEG or PNG
+original, that file is the widest srcset candidate and the least
+optimised thing we serve (a PNG hero is roughly 8x a WebP of the same
+pixels). For those we write a full-width .webp alongside and point the
+manifest at it. PNGs also get a genuinely lossless optimize pass.
+
+Safe to re-run. Outputs are only rebuilt when the source is newer.
 """
 
 import os
+import io
 import re
 import sys
 import glob
@@ -56,27 +68,28 @@ def is_variant(stem):
 
 
 def build(path):
-    """Return the list of widths available for one original."""
+    """Return (widths, full_width_is_webp) for one original."""
     stem, ext = os.path.splitext(os.path.basename(path))
     if is_variant(stem):
-        return None
+        return None, False
 
     try:
         im = Image.open(path)
     except Exception as exc:
         print(f"  skip {path}: {exc}")
-        return None
+        return None, False
 
     im = im.convert("RGB")
     made = []
     src_mtime = os.path.getmtime(path)
+    out_dir = os.path.dirname(path)
 
     for w in WIDTHS:
         # Never upscale. A source smaller than the target is already fine.
         if w >= im.width:
             continue
         # Write next to the original so moving the folder needs no edit here.
-        out = os.path.join(os.path.dirname(path), f"{stem}-{w}.webp")
+        out = os.path.join(out_dir, f"{stem}-{w}.webp")
         made.append(w)
         if os.path.exists(out) and os.path.getmtime(out) >= src_mtime:
             continue
@@ -86,9 +99,46 @@ def build(path):
         )
         print(f"  wrote {os.path.basename(out)} ({os.path.getsize(out)//1024}K)")
 
-    # The original is always the widest candidate.
+    # The widest candidate. If the original is already WebP it is fine as
+    # is. If it is a JPEG or PNG it is the biggest file we serve and the
+    # only unoptimised one, so write a full-width WebP for the srcset to
+    # use instead. The original stays on disk untouched as the source of
+    # truth and as the src fallback for anything without WebP support.
+    full_is_webp = ext.lower() == ".webp"
+    if not full_is_webp:
+        out = os.path.join(out_dir, f"{stem}-{im.width}.webp")
+        if not (os.path.exists(out) and os.path.getmtime(out) >= src_mtime):
+            im.save(out, "WEBP", quality=QUALITY, method=6)
+            saved = os.path.getsize(path) - os.path.getsize(out)
+            print(f"  wrote {os.path.basename(out)} "
+                  f"({os.path.getsize(out)//1024}K, {saved//1024}K under the "
+                  f"{ext.lstrip('.')} original)")
+
     made.append(im.width)
-    return sorted(set(made))
+    return sorted(set(made)), full_is_webp
+
+
+def optimise_pngs():
+    """Losslessly shrink the PNGs we ship.
+
+    optimize=True retries zlib settings and picks the smallest. Pixels are
+    untouched, so this is safe for icons where any artefact would show. It
+    does not always win (tiny files can grow when the filter table costs
+    more than it saves), so we only keep a result that is actually smaller.
+    """
+    print("Optimising PNGs...")
+    for path in sorted(glob.glob(os.path.join("assets", "images", "*.png"))):
+        before = os.path.getsize(path)
+        im = Image.open(path)
+        buf = io.BytesIO()
+        # Preserve transparency: favicons are RGBA and must stay that way.
+        im.save(buf, "PNG", optimize=True)
+        after = buf.tell()
+        if after < before:
+            with open(path, "wb") as fh:
+                fh.write(buf.getvalue())
+            print(f"  {os.path.basename(path)}: {before//1024}K -> "
+                  f"{after//1024}K ({(before-after)*100//before}% smaller)")
 
 
 def main():
@@ -97,6 +147,7 @@ def main():
         print("No hero images referenced in posts.")
 
     manifest = {}
+    full_webp = set()
     print("Generating variants...")
     for path in sorted(glob.glob(os.path.join(IMAGE_DIR, "*"))):
         ext = os.path.splitext(path)[1].lower()
@@ -107,21 +158,28 @@ def main():
         # the social card have fixed sizes and must not be touched.
         if rel not in wanted:
             continue
-        widths = build(path)
+        widths, is_webp = build(path)
         if widths:
             stem = os.path.splitext(os.path.basename(path))[0]
             manifest[stem] = widths
+            if not is_webp:
+                full_webp.add(stem)
 
     os.makedirs("_data", exist_ok=True)
     with open(DATA_FILE, "w", encoding="utf-8") as fh:
         fh.write("# Generated by .github/scripts/resize_images.py. Do not edit.\n")
-        fh.write("# Maps an image stem to the widths available on disk.\n")
+        fh.write("# widths: what exists on disk. full_webp: true when the\n")
+        fh.write("# widest candidate is a generated .webp rather than the\n")
+        fh.write("# original (that happens when the original is a jpg/png).\n")
         for stem in sorted(manifest):
             fh.write(f"{stem}:\n")
+            fh.write("  widths:\n")
             for w in manifest[stem]:
-                fh.write(f"  - {w}\n")
+                fh.write(f"    - {w}\n")
+            fh.write(f"  full_webp: {str(stem in full_webp).lower()}\n")
 
-    print(f"\nWrote {DATA_FILE} with {len(manifest)} image(s).")
+    print(f"\nWrote {DATA_FILE} with {len(manifest)} image(s).\n")
+    optimise_pngs()
 
 
 if __name__ == "__main__":

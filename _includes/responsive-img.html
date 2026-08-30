@@ -13,14 +13,20 @@
 {%- endcomment -%}
 {%- assign img_stem = include.src | split: "/" | last | split: "." | first -%}
 {%- assign img_base = include.src | split: img_stem | first -%}
-{%- assign variants = site.data.image_variants[img_stem] -%}
+{%- assign entry = site.data.image_variants[img_stem] -%}
+{%- assign variants = entry.widths -%}
 {%- assign img_sizes = include.sizes | default: "(min-width: 40rem) 40rem, 100vw" -%}
 {%- capture srcset -%}
 {%- for w in variants -%}
-{%- if forloop.last -%}
+{%- if forloop.last and entry.full_webp != true -%}
+{%- comment -%} Original is already WebP, so it is the widest candidate. {%- endcomment -%}
 {{ include.src | relative_url }} {{ w }}w
 {%- else -%}
-{{ img_base | relative_url }}{{ img_stem }}-{{ w }}.webp {{ w }}w,
+{%- comment -%}
+  Either a narrower variant, or a jpg/png original whose full-width WebP
+  we generated. Both live at <base><stem>-<width>.webp.
+{%- endcomment -%}
+{{ img_base | relative_url }}{{ img_stem }}-{{ w }}.webp {{ w }}w{% unless forloop.last %},{% endunless %}
 {%- endif -%}
 {%- endfor -%}
 {%- endcapture -%}
