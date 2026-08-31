@@ -1,11 +1,12 @@
 ---
 title: "Where the Knives Go"
 description: "A labeled knife organizer in a drawer is how we keep the sharp kitchen knives from wandering every time the dishwasher gets emptied."
-date:
+date: 2026-08-31
 image: /assets/images/posts/where-the-knives-go.webp
 image_alt: A bamboo in-drawer knife organizer with labeled slots for paring, cheese, and serrated knives
 image_caption: The labeled knife drawer in our kitchen.
 tags: [kitchen, kids]
+draft: false
 ---
 
 The last thing out of the dishwasher is usually the sharp kitchen knives, and for a long time they had no real home. They would land in a random slot, get nested with the everyday utensils, or sit on the counter until one of us put them away later. Emptying the dishwasher is a job we want the kids to own, but it only works if every piece has a place they can actually remember.
