@@ -1,11 +1,12 @@
 ---
 title: "Pour the cream in the middle"
 description: "Pour half the cold brew, add the cream, then finish the pour so it mixes without a spoon."
-date:
+date: 2026-09-02
 image: /assets/images/posts/pour-the-cream-in-the-middle.webp
 image_alt: Cream pouring into a glass of iced coffee, swirling through the ice
 image_caption: Photo by Abdulrhman Alkady / Pexels
 tags: [coffee]
+draft: false
 ---
 
 We used to make a cold brew the long way. Fill the glass, pour the cream on top, then stand there looking for a spoon so the cream would not sit in a pale cloud on the surface. That spoon is never quite where you left it, and even when it is, you have added a thing to wash.
