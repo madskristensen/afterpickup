@@ -3,8 +3,8 @@ title: "The snack cabinet they can reach"
 description: "A low cabinet of snacks and a small fridge of drinks mean the kids can feed themselves after pickup without asking us every time."
 date:
 image: /assets/images/posts/snack-cabinet.webp
-image_alt: A low kitchen cabinet stocked with snacks the kids can reach on their own.
-image_caption: Our snack cabinet and fridge setup.
+image_alt: Pull-out kitchen drawers with clear bins of bars, seaweed snacks, jerky, and meat sticks the kids can reach.
+image_caption: The kids' snack cabinet, photo from our kitchen.
 tags: [kitchen]
 ---
 
