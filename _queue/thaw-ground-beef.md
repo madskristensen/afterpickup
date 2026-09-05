@@ -8,7 +8,7 @@ image_caption: Ground beef thawing in warm tap water, photo from our kitchen.
 tags: [kitchen]
 ---
 
-Dinner in this house is often decided late, and some nights we realize we forgot to pull anything out, or the day ran long and nobody has the patience for a long thaw. We keep ground beef in the freezer on purpose for those nights, and the fix is almost embarrassingly simple: put the sealed pound in a bowl of warm tap water and leave it alone.
+Dinner in this house is often decided late, and some nights we realize we forgot to pull anything out, or the day ran long and nobody has the patience for a long thaw. We prioritize protein for ourselves and the kids, so keeping meat in the freezer is super convenient on those nights, and the fix is almost embarrassingly simple: put the sealed pound in a bowl of warm tap water and leave it alone.
 
 In about thirty minutes the package softens through, and you can cook it the same way you would have if you had remembered that morning. Warm tap water is enough; you are not boiling anything, and you are not standing over the sink stirring ice. The plastic stays sealed so the water stays outside the meat, which matters for ground beef and matters even more if you try the same trick with a steak.
 
