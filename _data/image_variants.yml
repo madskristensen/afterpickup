@@ -30,6 +30,13 @@ pour-the-cream-in-the-middle:
     - 1280
     - 1600
   avif: true
+snack-cabinet:
+  widths:
+    - 640
+    - 960
+    - 1280
+    - 1600
+  avif: true
 where-the-knives-go:
   widths:
     - 640
