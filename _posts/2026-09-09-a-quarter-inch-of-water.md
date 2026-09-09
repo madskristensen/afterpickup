@@ -1,11 +1,12 @@
 ---
 title: "A quarter inch of water is enough"
 description: "Mads's dad has steamed eggs over a quarter inch of water since Mads was little. Lid on, timer on, done."
-date:
+date: 2026-09-09
 image: /assets/images/posts/a-quarter-inch-of-water.webp
 image_alt: Halved hard-boiled eggs on a plate, yolks dusted with paprika.
 image_caption: Photo by Rosalind Chang / Unsplash
 tags: [kitchen]
+draft: false
 ---
 
 Mads's dad has been making eggs this way since Mads was a kid, which means this house never learned the version where you fill a pot and stand there while it thinks about boiling. Breakfast was a quarter inch of water, a lid, and a timer, and that is still breakfast. After pickup the kids want eggs, and they are usually done before anyone has found the salt.
