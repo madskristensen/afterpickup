@@ -8,8 +8,8 @@ image_caption: The kids' snack cabinet, photo from our kitchen.
 tags: [kitchen]
 ---
 
-After pickup used to start at the cabinet door we kept shut, with someone asking if we could get a snack down, and then another someone, and then the five-year-old who had already decided what she wanted. We got tired of being the ones who had to open it, so we put the snacks they like where their hands already go, in a cabinet they can reach, and set a small fridge beside it with water, milk, snack cheeses, salami, and bubbly water they can grab without finding one of us first.
+After pickup used to start with someone asking us to get a snack down. Then another someone. Then the five-year-old, who already knew what she wanted. We got tired of being the ones who had to open the cabinet.
 
-The rule is plain enough that nobody has to ask what it means. If it is in that cabinet or that little fridge, it is theirs to take, and we restock whatever disappears so the shelf stays an invitation instead of an empty argument. They come in, backpacks still half on, and they are already eating while someone else is still finding shoes. A cheese stick and a bubbly water do not need a meeting in the kitchen doorway.
+So we put the snacks they like where they can reach them. Next to that is a small fridge with water, milk, snack cheeses, salami, and bubbly water. If it is in that cabinet or that fridge, they can take it. We restock what disappears.
 
-What we wanted was the small hunger handled without us standing in the middle of it, and most afternoons that is what happens now. The kitchen stays a little quieter, not because anyone is being especially good, but because snack is one less thing they have to wait on us for, and one less thing we have to get down.
+They come in and they are already eating while someone else is still hanging up a backpack. A cheese stick and a bubbly water do not need us in the middle of it. After pickup still has plenty of asks. Snack is just one less.
