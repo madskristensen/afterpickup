@@ -30,6 +30,13 @@ pour-the-cream-in-the-middle:
     - 1280
     - 1600
   avif: true
+snack-cabinet:
+  widths:
+    - 640
+    - 960
+    - 1280
+    - 1600
+  avif: true
 thaw-ground-beef:
   widths:
     - 640
