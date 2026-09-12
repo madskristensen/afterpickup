@@ -16,6 +16,13 @@ family-after-pickup:
     - 1280
     - 1600
   avif: true
+its-time-to-brush-teeth:
+  widths:
+    - 640
+    - 960
+    - 1280
+    - 1600
+  avif: true
 pack-a-foldable-hamper:
   widths:
     - 640
