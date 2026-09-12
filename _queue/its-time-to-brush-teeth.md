@@ -3,8 +3,8 @@ title: "It's time to brush teeth"
 description: "A smart speaker cue at 8:52 and 8:58 keeps morning brush-and-shoes on track so we are not the ones herding everyone to the door."
 date:
 image: /assets/images/posts/its-time-to-brush-teeth.webp
-image_alt: A child brushing teeth in front of a bathroom mirror in the morning.
-image_caption: Photo by Ketut Subiyanto / Pexels
+image_alt: Two pairs of shoes on a doormat by the front door on a rainy morning.
+image_caption: Photo by Dima Solomin / Pexels
 tags: [mornings]
 ---
 
