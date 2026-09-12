@@ -1,6 +1,6 @@
 ---
 title: "It's time to brush teeth"
-description: "A smart speaker cue at 8:52 and 8:58 keeps morning brush-and-shoes on track so we are not the ones herding everyone to the door."
+description: "We handed the morning brush-and-shoes cues to the smart speaker so we are not the ones herding everyone to the door."
 date:
 image: /assets/images/posts/its-time-to-brush-teeth.webp
 image_alt: Two pairs of shoes on a doormat by the front door on a rainy morning.
@@ -8,10 +8,10 @@ image_caption: Photo by Dima Solomin / Pexels
 tags: [mornings]
 ---
 
-Morning with three kids all headed to school used to mean we were the ones calling every next step. Brush teeth. Shoes on. Again. We were pacing the kids and the clock at the same time, and the door still felt like a scramble.
+Morning with three kids all headed to school used to mean we were the soundtrack. Brush your teeth. Shoes on. Then again from the hallway. We were trying to keep everyone moving and watch the clock at the same time, and somehow the door still felt like a scramble every day.
 
-So we handed the cues to the smart speaker. At 8:52 it says, "It's time to brush teeth." At 8:58 it says, "It's time to put on shoes." Alexa, Siri, or whatever you already have in the house. Same words, same times, every school day.
+So we handed those two cues to the smart speaker. At 8:52 it says, "It's time to brush teeth." At 8:58 it says, "It's time to put on shoes." Whatever speaker you already have in the house works. Same words, same times, every school day, and we do not have to be the ones saying them.
 
-We are not the ones nagging from the hallway anymore. The speaker is. That takes the edge off for us, and it takes the chase out of the morning for them. They hear the cue, they move, and we are not adding stress on top of the clock.
+We are not nagging from the hallway anymore. The speaker is. That takes the edge off for us, and it takes some of the chase out of the morning for them too. They hear the cue and they move, and we get to stay a little calmer while we are also trying to get out the door.
 
-It is a small change. Two announcements. But the mornings run smoother when the reminder is not coming from a parent who is also trying to get out the door.
+It is only two announcements, but mornings feel smoother when the reminder is not coming from a parent who is already half out the door themselves.
