@@ -9,6 +9,13 @@ a-quarter-inch-of-water:
     - 1280
     - 1600
   avif: true
+craft-closet:
+  widths:
+    - 640
+    - 960
+    - 1280
+    - 1600
+  avif: true
 family-after-pickup:
   widths:
     - 640
