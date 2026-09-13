@@ -142,6 +142,10 @@ a {
   text-decoration: underline;
 }
 
+.site-nav a + a {
+  margin-left: 1rem;
+}
+
 .skip-link {
   position: absolute;
   top: 0;
@@ -457,6 +461,31 @@ figcaption {
 
 .tag::before {
   content: "#";
+}
+
+.post-nav {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--rule);
+}
+
+.post-nav p {
+  margin: 0 0 0.5rem;
+  color: var(--ink);
+  font-family: var(--ui);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.post-nav ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.post-nav li + li {
+  margin-top: 0.4rem;
 }
 
 .site-footer {
