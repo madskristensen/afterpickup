@@ -2,6 +2,8 @@
 # widths: avif variants that exist on disk. avif: true when
 # one exists at every width, so the template can offer an
 # AVIF <source> and fall back to the plain original otherwise.
+# source_hash: sha256 of the original; variants rebuild when
+# it changes, because checkout mtimes are not trustworthy.
 a-quarter-inch-of-water:
   widths:
     - 640
@@ -9,6 +11,7 @@ a-quarter-inch-of-water:
     - 1280
     - 1600
   avif: true
+  source_hash: 91ed1d9d6a676f7ab716a1f41ecdbebfae286dd34b9db7f94b68ab1c374d5293
 family-after-pickup:
   widths:
     - 640
@@ -16,6 +19,7 @@ family-after-pickup:
     - 1280
     - 1600
   avif: true
+  source_hash: 630c91a0019dc6d3f7d39b541502d19b81e8595fe9f21b56ec911ca34b2b6ba8
 its-time-to-brush-teeth:
   widths:
     - 640
@@ -23,6 +27,7 @@ its-time-to-brush-teeth:
     - 1280
     - 1600
   avif: true
+  source_hash: 97074db4ed51d96be4f3aafd1078f56ae330c3cb62fad07041476b2d95e1df77
 pack-a-foldable-hamper:
   widths:
     - 640
@@ -30,6 +35,7 @@ pack-a-foldable-hamper:
     - 1280
     - 1600
   avif: true
+  source_hash: a0bf07b61c43838c266a09514aea366a0b116b6217bfbee208d9723ce56ddf17
 pour-the-cream-in-the-middle:
   widths:
     - 640
@@ -37,6 +43,7 @@ pour-the-cream-in-the-middle:
     - 1280
     - 1600
   avif: true
+  source_hash: 85354bff7e9966b7e5f2b15f47a30a299b4f12a3bedb9d5380c22dbcd9a9f36e
 snack-cabinet:
   widths:
     - 640
@@ -44,6 +51,7 @@ snack-cabinet:
     - 1280
     - 1600
   avif: true
+  source_hash: c689692f2c01d406eee963fe6c51e7c3511a99613cba4f5db2b93b9601e2991c
 thaw-ground-beef:
   widths:
     - 640
@@ -51,6 +59,7 @@ thaw-ground-beef:
     - 1280
     - 1600
   avif: true
+  source_hash: 44ddff4c0704c857f7ea5741e87026d561a1e439eb046e3667a23195f62c335e
 where-the-knives-go:
   widths:
     - 640
@@ -58,3 +67,4 @@ where-the-knives-go:
     - 1280
     - 1600
   avif: true
+  source_hash: 2365284a2e31cc14876c2c087a460d1c9e55ebac2fc394830dd0acf5f0cf1928
