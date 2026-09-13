@@ -1,7 +1,7 @@
 ---
 layout: default
-title: About
-description: Meet the family behind After Pickup — six of us under one remodeled roof, testing school-year systems for kids ages 5, 8, and 10.
+title: About After Pickup
+description: How we test, write, and share the family routines and household systems published on After Pickup.
 permalink: /about/
 image: /assets/images/posts/family-after-pickup.webp
 image_alt: Caitlin and the kids on the couch after pickup, reading and drawing.
@@ -11,24 +11,35 @@ image_caption: Caitlin and the kids after pickup.
 <article class="post">
   {% include hero.html %}
 
-  <h1>About</h1>
+  <h1>About After Pickup</h1>
   <div class="prose">
 
-    <p>We're Caitlin and Mads, plus three kids: a 10-year-old boy, an 8-year-old
-    boy, and a 5-year-old girl who runs the house whether we like it or not. A few
-    years ago we remodeled our house and moved Caitlin's mom in with us, so it's
-    six people now, three generations, one kitchen. This site is where we write
-    down what we've learned raising the kids and building a home around all of
-    us &mdash; the systems that stuck, the ones that didn't, and everything in
-    between.</p>
+    <p>Most things on After Pickup begin in the middle of an ordinary day, when a
+    drawer keeps slowing everyone down, a hotel room needs a place for dirty
+    clothes, or breakfast could use one less pot of water. We notice what keeps
+    getting in the way, try a different way of doing it, and pay attention to
+    whether the change still helps once the novelty wears off.</p>
 
-    <p>Everything here has been run in our own kitchen and hallway for at least a
-    few weeks. When something failed, we say so. When we do not know, we say that
-    too.</p>
+    <p>We are Caitlin and Mads, and we write the site together in the same voice
+    we use when friends ask what has worked at our house. The ideas are small on
+    purpose. They are routines and household systems that can make the stretch
+    between pickup and lights-out, or the morning that follows it, feel a little
+    easier to manage.</p>
 
-    <p>We keep the posts light and to the point, but honest. No fast-paced-world
-    intros, no forced pep talks &mdash; just what worked for us, written the way
-    we'd tell a friend. If it makes your Tuesday a little easier, that's the whole
-    point.</p>
+    <p>Before something becomes a post, we use it in our own kitchen, hallway, or
+    suitcase for at least a few weeks. We include the details that made it work,
+    such as where something lives, when a timer starts, or what the kids can do
+    without asking us. If a system stops working, we say so. If we do not know
+    something, we say that too.</p>
+
+    <p>Some ideas begin with us, and others come from family, friends, travel, or
+    people who shared their own methods before we did. We give credit when there
+    is a source to name, and we tell you when a photo is not ours. What matters is
+    that we have actually tried the method and can explain what happened in our
+    home.</p>
+
+    <p>We keep each post focused enough to use on a busy day and complete enough
+    that you do not have to guess at the important part. If one of these ideas
+    makes an ordinary Tuesday calmer, that is the whole point.</p>
   </div>
 </article>
