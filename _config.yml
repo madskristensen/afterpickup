@@ -7,6 +7,18 @@ baseurl: ""
 logo: /assets/images/logo.svg
 lang: en-US
 
+author:
+  name: Caitlin and Mads
+  url: https://www.afterpickup.com/about/
+  twitter: madskristensen
+twitter:
+  username: madskristensen
+  card: summary_large_image
+social:
+  name: Caitlin and Mads
+  links:
+    - https://twitter.com/madskristensen
+
 permalink: /:title/
 timezone: America/Chicago
 
