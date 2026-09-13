@@ -15,7 +15,12 @@
 <meta property="og:locale" content="{{ site.lang | replace: '-', '_' }}">
 <meta name="description" content="{{ seo_description | escape }}">
 <meta property="og:description" content="{{ seo_description | escape }}">
+{%- if page.robots %}
+<meta name="robots" content="{{ page.robots }}">
+{%- endif %}
+{%- unless page.url == '/404.html' %}
 <link rel="canonical" href="{{ canonical_url }}">
+{%- endunless %}
 <meta property="og:url" content="{{ canonical_url }}">
 <meta property="og:title" content="{{ seo_title | escape }}">
 <meta property="og:site_name" content="{{ site.title | escape }}">
@@ -41,6 +46,7 @@
 {%- endif %}
 <meta name="twitter:site" content="@{{ site.twitter.username | remove: '@' }}">
 <meta name="twitter:creator" content="@{{ site.author.twitter | remove: '@' }}">
+{%- unless page.url == '/404.html' %}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -101,3 +107,4 @@
   }
 }
 </script>
+{%- endunless %}
