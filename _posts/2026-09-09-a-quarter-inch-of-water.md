@@ -24,4 +24,4 @@ That is the whole list, and the method does not change with the number of eggs.
 
 The methods you usually hear about start with a pot of water. Cold-start fills it and asks you to wait for the whole thing to boil before the real cooking even begins. Dropping eggs into a rolling boil still makes you heat a full pot first, and then the water cools when the cold eggs go in, so the clock is a little different every time. A quarter inch is already steam, so whether you are making one egg or a pile of them, you are not waiting for water.
 
-We never waited, because we always did it this way. Lid on, timer on, eggs off, same every time, the way it has been since Mads was little.
+We never waited, because we always did it this way. Lid on, timer on, eggs off, same every time, the way it has been since Mads was little. It has the same appeal as [giving every kitchen knife a labeled place](/where-the-knives-go/): the setup carries the part we would otherwise have to remember.
