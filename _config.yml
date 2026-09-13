@@ -5,6 +5,7 @@ description: >-
 url: https://www.afterpickup.com
 baseurl: ""
 logo: /assets/images/logo.svg
+image_alt: After Pickup, what actually works between pickup and lights-out.
 lang: en-US
 
 author:
@@ -15,7 +16,7 @@ twitter:
   username: madskristensen
   card: summary_large_image
 social:
-  name: Caitlin and Mads
+  name: After Pickup
   links:
     - https://twitter.com/madskristensen
 
@@ -32,7 +33,6 @@ sass:
 plugins:
   - jekyll-feed
   - jekyll-sitemap
-  - jekyll-seo-tag
 
 defaults:
   - scope:

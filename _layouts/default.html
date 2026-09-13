@@ -10,11 +10,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="{{ '/assets/images/favicon-16x16.png' | relative_url }}">
     <link rel="shortcut icon" href="{{ '/assets/images/favicon.ico' | relative_url }}">
     <link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/images/apple-touch-icon.png' | relative_url }}">
-    {%- seo -%}
-    {%- if page.image_alt %}
-    <meta property="og:image:alt" content="{{ page.image_alt | escape }}">
-    <meta name="twitter:image:alt" content="{{ page.image_alt | escape }}">
-    {%- endif %}
+    {%- include seo.html -%}
     <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}?v={{ site.time | date: '%s' }}">
     {%- feed_meta -%}
     <script type="text/javascript">
