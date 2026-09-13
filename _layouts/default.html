@@ -30,12 +30,17 @@
     <header class="site-header">
       <div class="site-header-top">
         {%- if page.url == "/" %}
-        <h1 class="wordmark-h1"><a class="wordmark" href="{{ '/' | relative_url }}">{% include logo.html %}{{ site.title }}</a></h1>
+        <h1 class="home-heading">
+          <a class="wordmark" href="{{ '/' | relative_url }}">{% include logo.html %}{{ site.title }}</a>
+          {%- if site.tagline %}
+          <span class="tagline">{{ site.tagline }}</span>
+          {%- endif %}
+        </h1>
         {%- else %}
         <a class="wordmark" href="{{ '/' | relative_url }}">{% include logo.html %}{{ site.title }}</a>
         {%- endif %}
       </div>
-      {%- if site.tagline %}
+      {%- if site.tagline and page.url != "/" %}
       <p class="tagline">{{ site.tagline }}</p>
       {%- endif %}
     </header>

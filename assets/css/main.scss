@@ -186,8 +186,8 @@ main,
   gap: 0.5rem;
 }
 
-.wordmark-h1 {
-  display: contents;
+.home-heading {
+  margin: 0;
 }
 
 .wordmark {
@@ -237,6 +237,10 @@ main,
   font-weight: 600;
   letter-spacing: 0.04em;
   line-height: 1.45;
+}
+
+.home-heading .tagline {
+  display: block;
 }
 
 /* ---------------------------------------------------------------
