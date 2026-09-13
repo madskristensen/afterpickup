@@ -3,8 +3,8 @@ title: "A quarter inch of water is enough"
 description: "Mads's dad has steamed eggs over a quarter inch of water since Mads was little. Lid on, timer on, done."
 date: 2026-09-09
 image: /assets/images/posts/a-quarter-inch-of-water.webp
-image_alt: Halved hard-boiled eggs on a plate, yolks dusted with paprika.
-image_caption: Photo by Rosalind Chang / Unsplash
+image_alt: Soft-boiled egg halves on platters with chives, paprika, and shrimp.
+image_caption: Soft-boiled eggs from our kitchen, photo from our house.
 tags: [kitchen]
 draft: false
 ---
