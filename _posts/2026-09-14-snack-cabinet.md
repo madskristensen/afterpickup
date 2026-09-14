@@ -1,11 +1,12 @@
 ---
 title: "The snack cabinet they can reach"
 description: "A low cabinet of snacks and a small fridge of drinks mean the kids can feed themselves after pickup without asking us every time."
-date:
+date: 2026-09-14
 image: /assets/images/posts/snack-cabinet.webp
 image_alt: Pull-out kitchen drawers with clear bins of bars, seaweed snacks, jerky, and meat sticks the kids can reach.
 image_caption: The kids' snack cabinet, photo from our kitchen.
 tags: [kitchen]
+draft: false
 ---
 
 After pickup used to start with someone asking us to get a snack down. Then another someone. Then the five-year-old, who already knew what she wanted. We got tired of being the ones who had to open the cabinet.
