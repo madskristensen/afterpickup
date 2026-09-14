@@ -3,8 +3,8 @@ title: "One Sacagawea dollar per tooth"
 description: "We keep a bank roll of Sacagawea dollars so the tooth fairy can leave one shiny coin for every lost tooth, at home or on a trip."
 date:
 image: /assets/images/posts/one-sacagawea-dollar-per-tooth.webp
-image_alt: Reverse of a golden Sacagawea dollar coin with a soaring eagle on a light surface.
-image_caption: Photo by Mike W. / Wikimedia Commons
+image_alt: Close-up of a child's smile with a missing bottom front tooth.
+image_caption: A lost tooth smile, photo from our house.
 tags: [kids, travel]
 ---
 
