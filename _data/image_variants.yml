@@ -35,7 +35,7 @@ one-sacagawea-dollar-per-tooth:
     - 1280
     - 1600
   avif: true
-  source_hash: ab3a1dc1c87af7926582beab31fdb5ec6f811c11d9d43fc742a91afce5384025
+  source_hash: dbc048063f657b1203da29c90958bf214fc6311d45a122cbc8ec02b55522ba3b
 pack-a-foldable-hamper:
   widths:
     - 640
