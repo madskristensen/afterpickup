@@ -14,6 +14,6 @@ We're Caitlin and Mads. The kids are a 10-year-old boy, an 8-year-old boy, and a
 
 We have wanted a blog as a resource for parents, and for moms in particular, for a very long time. We kept meaning to start it. We kept not starting it. After Pickup is finally that outlet: the tricks we used to only share with friends and family, written the way we would tell you if you were here.
 
-Some of those tricks we came up with because the house and the kids required them. A lot we picked up traveling, from friends and family, and from bloggers and YouTubers who were already writing this stuff down. Everything we post has been run in our own kitchen and hallway for at least a few weeks. The systems that stuck are here. The ones that didn't, we will say so.
+Some of those tricks we came up with because the house and the kids required them. A lot we picked up traveling, from friends and family, and from bloggers and YouTubers who were already writing this stuff down. Everything we post has been run in our own kitchen and hallway for at least a few weeks, whether that means [giving every knife a labeled place](/where-the-knives-go/) or [steaming eggs over a quarter inch of water](/a-quarter-inch-of-water/). The systems that stuck are here. The ones that didn't, we will say so.
 
 If it makes your Tuesday a little easier, a little more fun, or a little better organized, that is the whole point. Welcome. The blog is live.

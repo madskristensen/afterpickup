@@ -1,7 +1,7 @@
 # After Pickup
 
 What actually works between pickup and lights-out. Jekyll on GitHub Pages, served at
-[afterpickup.com](https://afterpickup.com).
+[www.afterpickup.com](https://www.afterpickup.com).
 
 ## Workflow
 

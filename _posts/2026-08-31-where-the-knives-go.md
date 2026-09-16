@@ -1,6 +1,6 @@
 ---
-title: "Where the Knives Go"
-description: "A labeled knife organizer in a drawer is how we keep the sharp kitchen knives from wandering every time the dishwasher gets emptied."
+title: "Give every kitchen knife a labeled place"
+description: "A labeled drawer organizer gives every kitchen knife a place and makes the dishwasher easier to empty."
 date: 2026-08-31
 image: /assets/images/posts/where-the-knives-go.webp
 image_alt: A bamboo in-drawer knife organizer with labeled slots for paring, cheese, and serrated knives
@@ -17,4 +17,4 @@ What worked was putting a knife organizer in a drawer, one slot per knife lying 
 
 The other half is a label maker. We labeled the organizer so each slot says what belongs there, which means the words do the remembering instead of the kids. We used the label maker we already had, nothing fancy, just something that prints a strip you can stick down and actually read when the drawer is open.
 
-The dishwasher gets emptied, the sharp kitchen knives go in the labeled drawer, and we stop doing a second pass at the sink. The labels are still there, the organizer has not moved, and the kids no longer have to hold a map of the kitchen in their heads for the one thing that used to wander.
+The dishwasher gets emptied, the sharp kitchen knives go in the labeled drawer, and we stop doing a second pass at the sink. The labels are still there, the organizer has not moved, and the kids no longer have to hold a map of the kitchen in their heads for the one thing that used to wander. It is the same kind of kitchen habit as [steaming eggs over a quarter inch of water](/a-quarter-inch-of-water/), where a dependable setup leaves less to remember.

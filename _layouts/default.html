@@ -10,7 +10,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="{{ '/assets/images/favicon-16x16.png' | relative_url }}">
     <link rel="shortcut icon" href="{{ '/assets/images/favicon.ico' | relative_url }}">
     <link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/images/apple-touch-icon.png' | relative_url }}">
-    {%- seo -%}
+    {%- include seo.html -%}
     <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}?v={{ site.time | date: '%s' }}">
     {%- feed_meta -%}
     <script type="text/javascript">
@@ -26,12 +26,17 @@
     <header class="site-header">
       <div class="site-header-top">
         {%- if page.url == "/" %}
-        <h1 class="wordmark-h1"><a class="wordmark" href="{{ '/' | relative_url }}">{% include logo.html %}{{ site.title }}</a></h1>
+        <h1 class="home-heading">
+          <a class="wordmark" href="{{ '/' | relative_url }}">{% include logo.html %}{{ site.title }}</a>
+          {%- if site.tagline %}
+          <span class="tagline">{{ site.tagline }}</span>
+          {%- endif %}
+        </h1>
         {%- else %}
         <a class="wordmark" href="{{ '/' | relative_url }}">{% include logo.html %}{{ site.title }}</a>
         {%- endif %}
       </div>
-      {%- if site.tagline %}
+      {%- if site.tagline and page.url != "/" %}
       <p class="tagline">{{ site.tagline }}</p>
       {%- endif %}
     </header>
@@ -43,6 +48,7 @@
     <footer class="site-footer">
       <nav class="site-nav" aria-label="Footer">
         <a href="{{ '/about/' | relative_url }}">Who we are</a>
+        <a href="{{ '/tags/' | relative_url }}">Browse by topic</a>
       </nav>
       <p>&copy; {{ site.time | date: "%Y" }} {{ site.title }}</p>
     </footer>

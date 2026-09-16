@@ -27,7 +27,10 @@ re-encoding lossy alters most pixels for ~3% while lossless VP8L
 re-storage is over 5x LARGER. PNGs do still get a genuinely lossless
 optimize=True pass.
 
-Safe to re-run. Outputs are only rebuilt when the source is newer.
+Safe to re-run. Outputs are rebuilt when the source *content* changes
+(sha256 of the original), not when mtime says the source is newer.
+GitHub Actions checkout gives every file the same (or newer) mtime, so
+comparing timestamps would skip a swapped hero and leave stale AVIFs.
 """
 
 import os
@@ -35,6 +38,7 @@ import io
 import re
 import sys
 import glob
+import hashlib
 import struct
 
 try:
@@ -87,21 +91,61 @@ def is_variant(stem):
     return bool(VARIANT_RE.search(stem))
 
 
-def build(path):
-    """Return (widths, avif_available) for one original."""
+def file_sha256(path):
+    with open(path, "rb") as fh:
+        return hashlib.file_digest(fh, "sha256").hexdigest()
+
+
+def load_source_hashes(path):
+    """Read source_hash values from a previous manifest, if any.
+
+    The file is tiny and we write it ourselves, so a line scan is enough
+    and we do not need a YAML library in CI.
+    """
+    hashes = {}
+    if not os.path.exists(path):
+        return hashes
+    stem = None
+    with open(path, encoding="utf-8") as fh:
+        for line in fh:
+            if not line.strip() or line.startswith("#"):
+                continue
+            if re.match(r"^\S.*:$", line):
+                stem = line.split(":", 1)[0]
+            elif stem and line.strip().startswith("source_hash:"):
+                hashes[stem] = line.split(":", 1)[1].strip()
+    return hashes
+
+
+def variant_current(out, source_changed):
+    """Keep an existing AVIF only when the source bytes have not changed.
+
+    A missing stored hash is treated as unknown, not as a change, so the
+    first run after this logic lands can record hashes without rewriting
+    every variant. A swapped hero still rebuilds: either its hash no
+    longer matches, or the stale files were deleted so they are missing.
+    """
+    return os.path.exists(out) and not source_changed
+
+
+def build(path, prev_hash=None):
+    """Return (widths, avif_available, source_hash) for one original."""
     stem, ext = os.path.splitext(os.path.basename(path))
     if is_variant(stem):
-        return None, False
+        return None, False, None
 
     try:
         im = Image.open(path)
     except Exception as exc:
         print(f"  skip {path}: {exc}")
-        return None, False
+        return None, False, None
 
     im = im.convert("RGB")
     made = []
-    src_mtime = os.path.getmtime(path)
+    src_hash = file_sha256(path)
+    # None != hash would look like a change and rewrite every AVIF on
+    # the first run. Only a *known* previous hash that differs counts.
+    source_changed = prev_hash is not None and prev_hash != src_hash
     out_dir = os.path.dirname(path)
 
     # AVIF at each width, resized from the original so this is one
@@ -112,7 +156,7 @@ def build(path):
             continue
         out = os.path.join(out_dir, f"{stem}-{w}.avif")
         made.append(w)
-        if os.path.exists(out) and os.path.getmtime(out) >= src_mtime:
+        if variant_current(out, source_changed):
             continue
         h = round(im.height * w / im.width)
         try:
@@ -132,7 +176,7 @@ def build(path):
     # browser that supports AVIF never falls back to the heavier original.
     full_avif = os.path.join(out_dir, f"{stem}-{im.width}.avif")
     have_avif = os.path.exists(full_avif)
-    if not (have_avif and os.path.getmtime(full_avif) >= src_mtime):
+    if not variant_current(full_avif, source_changed):
         try:
             im.save(full_avif, "AVIF", quality=AVIF_QUALITY)
             have_avif = True
@@ -150,7 +194,7 @@ def build(path):
         os.path.exists(os.path.join(out_dir, f"{stem}-{w}.avif"))
         for w in widths
     )
-    return widths, avif
+    return widths, avif, src_hash
 
 
 def strip_webp_metadata(path):
@@ -257,8 +301,9 @@ def main():
     if not wanted:
         print("No hero images referenced in posts.")
 
-    # Strip first. Doing it after would bump the original's mtime and make
-    # every variant look stale, forcing a pointless rebuild.
+    # Strip first. Doing it after would change the source bytes, so the
+    # content hash would miss and every variant would rebuild for a
+    # metadata-only edit.
     print("Stripping WebP metadata...")
     for path in sorted(glob.glob(os.path.join(IMAGE_DIR, "*.webp"))):
         saved = strip_webp_metadata(path)
@@ -268,6 +313,8 @@ def main():
 
     manifest = {}
     has_avif = set()
+    source_hashes = {}
+    prev_hashes = load_source_hashes(DATA_FILE)
     print("Generating variants...")
     for path in sorted(glob.glob(os.path.join(IMAGE_DIR, "*"))):
         ext = os.path.splitext(path)[1].lower()
@@ -278,10 +325,11 @@ def main():
         # the social card have fixed sizes and must not be touched.
         if rel not in wanted:
             continue
-        widths, avif = build(path)
+        stem = os.path.splitext(os.path.basename(path))[0]
+        widths, avif, src_hash = build(path, prev_hashes.get(stem))
         if widths:
-            stem = os.path.splitext(os.path.basename(path))[0]
             manifest[stem] = widths
+            source_hashes[stem] = src_hash
             if avif:
                 has_avif.add(stem)
 
@@ -291,12 +339,15 @@ def main():
         fh.write("# widths: avif variants that exist on disk. avif: true when\n")
         fh.write("# one exists at every width, so the template can offer an\n")
         fh.write("# AVIF <source> and fall back to the plain original otherwise.\n")
+        fh.write("# source_hash: sha256 of the original; variants rebuild when\n")
+        fh.write("# it changes, because checkout mtimes are not trustworthy.\n")
         for stem in sorted(manifest):
             fh.write(f"{stem}:\n")
             fh.write("  widths:\n")
             for w in manifest[stem]:
                 fh.write(f"    - {w}\n")
             fh.write(f"  avif: {str(stem in has_avif).lower()}\n")
+            fh.write(f"  source_hash: {source_hashes[stem]}\n")
 
     print(f"\nWrote {DATA_FILE} with {len(manifest)} image(s).\n")
     optimise_pngs()

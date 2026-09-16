@@ -2,10 +2,23 @@ title: After Pickup
 tagline: What actually works between pickup and lights-out.
 description: >-
   Tested, calm systems for the hour after school pickup.
-url: https://afterpickup.com
+url: https://www.afterpickup.com
 baseurl: ""
 logo: /assets/images/logo.svg
+image_alt: After Pickup, what actually works between pickup and lights-out.
 lang: en-US
+
+author:
+  name: Caitlin and Mads
+  url: https://www.afterpickup.com/about/
+  twitter: madskristensen
+twitter:
+  username: madskristensen
+  card: summary_large_image
+social:
+  name: After Pickup
+  links:
+    - https://twitter.com/madskristensen
 
 permalink: /:title/
 timezone: America/Chicago
@@ -14,10 +27,12 @@ markdown: kramdown
 kramdown:
   input: GFM
 
+sass:
+  style: compressed
+
 plugins:
   - jekyll-feed
   - jekyll-sitemap
-  - jekyll-seo-tag
 
 defaults:
   - scope:

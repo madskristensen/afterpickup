@@ -18,4 +18,18 @@ layout: default
     {%- for tag in page.tags %}<a class="tag" href="{{ '/tags/' | relative_url }}#{{ tag | slugify }}">{{ tag }}</a>{% endfor -%}
   </p>
   {%- endif %}
+
+  {%- if page.previous or page.next %}
+  <nav class="post-nav" aria-label="More posts">
+    <p>Keep reading</p>
+    <ul>
+      {%- if page.next %}
+      <li><a href="{{ page.next.url | relative_url }}">{{ page.next.title }}</a></li>
+      {%- endif %}
+      {%- if page.previous %}
+      <li><a href="{{ page.previous.url | relative_url }}">{{ page.previous.title }}</a></li>
+      {%- endif %}
+    </ul>
+  </nav>
+  {%- endif %}
 </article>

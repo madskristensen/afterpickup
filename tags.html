@@ -3,6 +3,8 @@ layout: default
 title: Tags
 description: Browse After Pickup posts by tag.
 permalink: /tags/
+sitemap: false
+robots: noindex,follow
 ---
 <article class="post">
   <h1>Tags</h1>
@@ -16,12 +18,16 @@ permalink: /tags/
     {%- for tag in tag_names %}
     {%- assign tag_name = tag[0] %}
     {%- assign tag_posts = tag[1] | sort: "date" | reverse %}
+
     <h2 id="{{ tag_name | slugify }}">{{ tag_name }}</h2>
     <ul>
       {%- for post in tag_posts %}
+
       <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
       {%- endfor %}
+
     </ul>
     {%- endfor %}
+
   </div>
 </article>
