@@ -15,3 +15,5 @@ Then I go take a shower. About fifteen or twenty minutes later I come back to ch
 Pull it when it is just starting to look a little brown, which is usually earlier than you think, then move the strips onto paper towel to dry and cool. That is what gives you the crisp outside with a soft bite still in the middle, which is the whole point.
 
 We do this several times a week, and it beats every skillet method I have tried. Different ovens need a little dialing in, which we have learned the hard way at Airbnbs. In a cold oven I always set the first check for twenty minutes, because that is a safe look even if the bacon is not done yet. If the oven is already warm, check earlier, or it can burn, and it has more than once.
+
+When the bacon is off the sheet, I cover the pan with fresh foil and put it away for next time. Zero dishes, almost no cleanup, and the best bacon we have found. It is the same kind of low-effort morning setup as [steaming eggs in a quarter inch of water](/a-quarter-inch-of-water/).
