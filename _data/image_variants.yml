@@ -28,6 +28,14 @@ its-time-to-brush-teeth:
     - 1600
   avif: true
   source_hash: 97074db4ed51d96be4f3aafd1078f56ae330c3cb62fad07041476b2d95e1df77
+one-sacagawea-dollar-per-tooth:
+  widths:
+    - 640
+    - 960
+    - 1280
+    - 1600
+  avif: true
+  source_hash: dbc048063f657b1203da29c90958bf214fc6311d45a122cbc8ec02b55522ba3b
 pack-a-foldable-hamper:
   widths:
     - 640
