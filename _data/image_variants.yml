@@ -12,6 +12,14 @@ a-quarter-inch-of-water:
     - 1600
   avif: true
   source_hash: 91ed1d9d6a676f7ab716a1f41ecdbebfae286dd34b9db7f94b68ab1c374d5293
+cold-oven-bacon:
+  widths:
+    - 640
+    - 960
+    - 1280
+    - 1600
+  avif: true
+  source_hash: 90d9e56b79af99bc2616ab7a078e70c3da7d84ad474e2d4ec8b8cb5acb27dae6
 family-after-pickup:
   widths:
     - 640
