@@ -36,6 +36,14 @@ family-after-pickup:
     - 1600
   avif: true
   source_hash: 630c91a0019dc6d3f7d39b541502d19b81e8595fe9f21b56ec911ca34b2b6ba8
+greeting-card-box:
+  widths:
+    - 640
+    - 960
+    - 1280
+    - 1600
+  avif: true
+  source_hash: 5f15ac3f531a53d383d83d2e153f6ba728440c07d005bfd07e325cfdb3c2e8bb
 its-time-to-brush-teeth:
   widths:
     - 640
