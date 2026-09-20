@@ -36,6 +36,14 @@ its-time-to-brush-teeth:
     - 1600
   avif: true
   source_hash: 97074db4ed51d96be4f3aafd1078f56ae330c3cb62fad07041476b2d95e1df77
+laundry-bins:
+  widths:
+    - 640
+    - 960
+    - 1280
+    - 1600
+  avif: true
+  source_hash: 77268be5d40ada9d3add3a04853ef3e067c6f45b41b3eea1fd15401c727e61cf
 one-sacagawea-dollar-per-tooth:
   widths:
     - 640
