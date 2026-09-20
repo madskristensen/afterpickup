@@ -20,6 +20,14 @@ cold-oven-bacon:
     - 1600
   avif: true
   source_hash: 90d9e56b79af99bc2616ab7a078e70c3da7d84ad474e2d4ec8b8cb5acb27dae6
+craft-closet:
+  widths:
+    - 640
+    - 960
+    - 1280
+    - 1600
+  avif: true
+  source_hash: c2c36586400e9f4de356c1fdf85e6e7b801c6beaeb7e584a3240b98eb1017056
 family-after-pickup:
   widths:
     - 640
@@ -36,6 +44,14 @@ its-time-to-brush-teeth:
     - 1600
   avif: true
   source_hash: 97074db4ed51d96be4f3aafd1078f56ae330c3cb62fad07041476b2d95e1df77
+one-sacagawea-dollar-per-tooth:
+  widths:
+    - 640
+    - 960
+    - 1280
+    - 1600
+  avif: true
+  source_hash: dbc048063f657b1203da29c90958bf214fc6311d45a122cbc8ec02b55522ba3b
 pack-a-foldable-hamper:
   widths:
     - 640
