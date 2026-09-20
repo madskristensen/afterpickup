@@ -36,6 +36,14 @@ its-time-to-brush-teeth:
     - 1600
   avif: true
   source_hash: 97074db4ed51d96be4f3aafd1078f56ae330c3cb62fad07041476b2d95e1df77
+kids-entry-cubbies:
+  widths:
+    - 640
+    - 960
+    - 1280
+    - 1600
+  avif: true
+  source_hash: 6c1ed37b4610fd08b7892c3927ee5d4f137b441d6a89517f6943440a46ed4786
 one-sacagawea-dollar-per-tooth:
   widths:
     - 640
