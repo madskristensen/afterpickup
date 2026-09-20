@@ -12,6 +12,14 @@ a-quarter-inch-of-water:
     - 1600
   avif: true
   source_hash: 91ed1d9d6a676f7ab716a1f41ecdbebfae286dd34b9db7f94b68ab1c374d5293
+black-bar-towels:
+  widths:
+    - 640
+    - 960
+    - 1280
+    - 1600
+  avif: true
+  source_hash: 2281662aefbed079da917ff37b573835b3f5ee12d044ed0817904f01719c37a1
 craft-closet:
   widths:
     - 640
