@@ -14,4 +14,6 @@ Those first napkins were very colorful, and before long they started looking a b
 
 We looked for something slightly thicker, in black, so any leftover discoloring would hide, and we settled on black bar towels. They are a good size for the table, thick enough to wipe hands clean in one pass, and dark enough that they still look fine after a normal week of meals.
 
+They do not show wrinkles the way linen napkins do, so they come out of the laundry ready for the table instead of looking crumpled. When someone spills, the same towel doubles as a washcloth and picks it up without us reaching for paper.
+
 They last about two years before we replace them with a fresh set. The black fades only a little in that time, and we use them every day. Cloth won over paper for us the first time we tried it, and black bar towels are the version that survived the laundry pile.
