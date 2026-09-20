@@ -1,6 +1,6 @@
 ---
 title: "We keep a stockpile of pantry essentials"
-description: "Since Covid we have kept a deep stock of ketchup, tomato paste, and the other non-perishables we use all the time, so last-minute kid dinner changes do not send us to the store empty-handed."
+description: "Since Covid we have kept a second set of pantry essentials on hand. We are particular about the kind of ketchup, tomato paste, and the other non-perishables we use regularly."
 date:
 image: /assets/images/posts/pantry-stockpile.webp
 image_alt: Deep kitchen drawer packed with pantry staples including pasta, cans, jars, and condiments
@@ -8,7 +8,7 @@ image_caption: Our pantry stockpile drawer, photo from our kitchen.
 tags: [kitchen, home]
 ---
 
-During Covid we started stocking up on the essential non-perishable food items we reach for all the time, things like ketchup and tomato paste, and we have kept that habit ever since, which means we almost never run out of those staples anymore.
+During Covid we started stocking up on the essential non-perishable food items we reach for all the time and we have kept that habit ever since, which means we almost never run out of those staples anymore.
 
 Whenever we move something from the pantry into the fridge, we add it to the shopping list so the backup gets replaced before the bottle on the shelf is the last one. It is a small loop, but it is the whole system: use from the stock, restock the stock, and keep the fridge and the meals moving without a scramble.
 
