@@ -36,6 +36,14 @@ family-after-pickup:
     - 1600
   avif: true
   source_hash: 630c91a0019dc6d3f7d39b541502d19b81e8595fe9f21b56ec911ca34b2b6ba8
+fort-building-bin:
+  widths:
+    - 640
+    - 960
+    - 1280
+    - 1600
+  avif: true
+  source_hash: 808bed87100d7ee632e30feeca38b836bc47d151eec9f2284e5f2670435423c7
 its-time-to-brush-teeth:
   widths:
     - 640
