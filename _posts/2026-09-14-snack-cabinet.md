@@ -13,4 +13,4 @@ After pickup used to start with someone asking us to get a snack down. Then anot
 
 So we put the snacks they like where they can reach them. Next to that is a small fridge with water, milk, snack cheeses, salami, and bubbly water. If it is in that cabinet or that fridge, they can take it. We restock what disappears, and we [keep a stockpile of pantry essentials](/pantry-stockpile/) so the house stays ready when dinner plans change too.
 
-They come in and they are already eating while someone else is still hanging up a backpack. A cheese stick and a bubbly water do not need us in the middle of it. After pickup still has plenty of asks. Snack is just one less.
+They come in and they are already eating while someone else is still hanging up a backpack [in the cubbies by the front door](/kids-entry-cubbies/). A cheese stick and a bubbly water do not need us in the middle of it. After pickup still has plenty of asks. Snack is just one less.
