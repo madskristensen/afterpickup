@@ -68,6 +68,14 @@ fort-building-bin:
     - 1600
   avif: true
   source_hash: 808bed87100d7ee632e30feeca38b836bc47d151eec9f2284e5f2670435423c7
+greeting-card-box:
+  widths:
+    - 640
+    - 960
+    - 1280
+    - 1600
+  avif: true
+  source_hash: 5f15ac3f531a53d383d83d2e153f6ba728440c07d005bfd07e325cfdb3c2e8bb
 its-time-to-brush-teeth:
   widths:
     - 640
