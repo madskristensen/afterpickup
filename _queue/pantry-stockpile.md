@@ -1,6 +1,6 @@
 ---
 title: "We keep a stockpile of pantry essentials"
-description: "Since Covid we have kept a second set of pantry essentials on hand. We are particular about the kind of ketchup, tomato paste, and the other non-perishables we use regularly."
+description: "Since Covid we have kept a back up supply of pantry essentials on hand. We are particular about the kind of ketchup, tomato paste, and the other non-perishables we use regularly."
 date:
 image: /assets/images/posts/pantry-stockpile.webp
 image_alt: Deep kitchen drawer packed with pantry staples including pasta, cans, jars, and condiments
