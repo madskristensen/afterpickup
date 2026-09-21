@@ -16,6 +16,6 @@ Open that door now and it feels a little like a tiny supply shop. The hanging po
 
 The whole setup swings with the door, which matters in a house that already runs six people through one kitchen. It does not eat floor space. It just waits there, ready, and the kids can reach it without climbing or asking us to open a grown-up drawer.
 
-When someone wants to draw or build or tape a wild idea together, they open that door and the supplies are right there. We are not hunting through a junk drawer while the idea cools, and they are not stuck waiting on us to decide whether the glue is allowed today. They grab what they need and the table fills up the way it is supposed to after a long school day.
+When someone wants to draw or build or tape a wild idea together, they open that door and the supplies are right there. We are not hunting through a junk drawer while the idea cools, and they are not stuck waiting on us to decide whether the glue is allowed today. They grab what they need and [the table fills up](/craft-mats/) the way it is supposed to after a long school day.
 
 It is a small corner of the house with a surprisingly big job: keep the creative clutter gathered, keep it reachable, and leave a little room for whatever they want to make next. The craft closet is where the making starts, and after pickup that is often exactly what they want.
