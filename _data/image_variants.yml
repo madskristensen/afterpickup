@@ -28,6 +28,14 @@ craft-closet:
     - 1600
   avif: true
   source_hash: c2c36586400e9f4de356c1fdf85e6e7b801c6beaeb7e584a3240b98eb1017056
+craft-mats:
+  widths:
+    - 640
+    - 960
+    - 1280
+    - 1600
+  avif: true
+  source_hash: 68cd80618cc0883ccd0b1daf508f98ce54649715ac758af9603f9b012d7971ea
 family-after-pickup:
   widths:
     - 640
