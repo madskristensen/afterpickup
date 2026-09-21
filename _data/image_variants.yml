@@ -76,6 +76,14 @@ kids-entry-cubbies:
     - 1600
   avif: true
   source_hash: 6c1ed37b4610fd08b7892c3927ee5d4f137b441d6a89517f6943440a46ed4786
+laundry-bins:
+  widths:
+    - 640
+    - 960
+    - 1280
+    - 1600
+  avif: true
+  source_hash: 77268be5d40ada9d3add3a04853ef3e067c6f45b41b3eea1fd15401c727e61cf
 mother-west-wind:
   widths:
     - 640
