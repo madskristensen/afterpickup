@@ -12,6 +12,14 @@ a-quarter-inch-of-water:
     - 1600
   avif: true
   source_hash: 91ed1d9d6a676f7ab716a1f41ecdbebfae286dd34b9db7f94b68ab1c374d5293
+backyard-sandbox:
+  widths:
+    - 640
+    - 960
+    - 1280
+    - 1600
+  avif: true
+  source_hash: 4cc46f7ef86693b20dcb1373cf5725bb68cb36914940c190ce13fcbd4c8dd382
 cold-oven-bacon:
   widths:
     - 640
