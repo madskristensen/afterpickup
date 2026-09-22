@@ -10,6 +10,7 @@ description: Practical family routines and tested systems for calmer hours betwe
   {%- for post in site.posts %}
   <article class="post-item">
     {%- if post.image %}
+    {%- assign thumbnail_alt = post.image_alt | default: post.title -%}
     <a class="post-item-image" href="{{ post.url | relative_url }}" tabindex="-1" aria-hidden="true">
       {%- comment -%}
         Only the first thumbnail is a plausible LCP element. Marking every
@@ -17,9 +18,9 @@ description: Practical family routines and tested systems for calmer hours betwe
         rest load lazily as the reader scrolls.
       {%- endcomment -%}
       {%- if forloop.first -%}
-      {%- include responsive-img.html src=post.image alt="" priority="high" sizes="(min-width: 62.5rem) 60rem, 100vw" -%}
+      {%- include responsive-img.html src=post.image alt=thumbnail_alt priority="high" sizes="(min-width: 62.5rem) 60rem, 100vw" -%}
       {%- else -%}
-      {%- include responsive-img.html src=post.image alt="" loading="lazy" sizes="(min-width: 62.5rem) 29rem, (min-width: 40rem) calc((100vw - 4.5rem) / 2), 100vw" -%}
+      {%- include responsive-img.html src=post.image alt=thumbnail_alt loading="lazy" sizes="(min-width: 62.5rem) 29rem, (min-width: 40rem) calc((100vw - 4.5rem) / 2), 100vw" -%}
       {%- endif -%}
     </a>
     {%- endif %}
