@@ -16,6 +16,19 @@ What actually works between pickup and lights-out. Jekyll on GitHub Pages, serve
    demand). It takes the oldest queued file, stamps today's date, sets `draft: false`,
    moves it to `_posts/YYYY-MM-DD-slug.md`, and pushes. One file per run. An empty
    queue is a no-op.
+6. **Deploy and notify search engines.** The Pages workflow builds and deploys the
+   site, publishes the IndexNow verification file, and submits recently changed
+   sitemap URLs after the deployment succeeds.
+
+## IndexNow setup
+
+1. Generate an IndexNow key.
+2. Add it as the `INDEXNOW_KEY` repository Actions secret.
+3. In **Settings > Pages > Build and deployment**, set **Source** to **GitHub Actions**.
+
+The key is written only to the deployed site artifact as `/<key>.txt`; it is not
+stored in the repository. Until the secret is configured, deployment still succeeds
+and the workflow logs a notice instead of submitting URLs.
 
 ## Directories
 
