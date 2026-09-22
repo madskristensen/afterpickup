@@ -12,6 +12,46 @@ a-quarter-inch-of-water:
     - 1600
   avif: true
   source_hash: 91ed1d9d6a676f7ab716a1f41ecdbebfae286dd34b9db7f94b68ab1c374d5293
+backyard-sandbox:
+  widths:
+    - 640
+    - 960
+    - 1280
+    - 1600
+  avif: true
+  source_hash: 4cc46f7ef86693b20dcb1373cf5725bb68cb36914940c190ce13fcbd4c8dd382
+black-bar-towels:
+  widths:
+    - 640
+    - 960
+    - 1280
+    - 1600
+  avif: true
+  source_hash: 2281662aefbed079da917ff37b573835b3f5ee12d044ed0817904f01719c37a1
+cold-oven-bacon:
+  widths:
+    - 640
+    - 960
+    - 1280
+    - 1600
+  avif: true
+  source_hash: 90d9e56b79af99bc2616ab7a078e70c3da7d84ad474e2d4ec8b8cb5acb27dae6
+craft-closet:
+  widths:
+    - 640
+    - 960
+    - 1280
+    - 1600
+  avif: true
+  source_hash: c2c36586400e9f4de356c1fdf85e6e7b801c6beaeb7e584a3240b98eb1017056
+craft-mats:
+  widths:
+    - 640
+    - 960
+    - 1280
+    - 1600
+  avif: true
+  source_hash: 68cd80618cc0883ccd0b1daf508f98ce54649715ac758af9603f9b012d7971ea
 family-after-pickup:
   widths:
     - 640
@@ -20,6 +60,22 @@ family-after-pickup:
     - 1600
   avif: true
   source_hash: 630c91a0019dc6d3f7d39b541502d19b81e8595fe9f21b56ec911ca34b2b6ba8
+fort-building-bin:
+  widths:
+    - 640
+    - 960
+    - 1280
+    - 1600
+  avif: true
+  source_hash: 808bed87100d7ee632e30feeca38b836bc47d151eec9f2284e5f2670435423c7
+greeting-card-box:
+  widths:
+    - 640
+    - 960
+    - 1280
+    - 1600
+  avif: true
+  source_hash: 5f15ac3f531a53d383d83d2e153f6ba728440c07d005bfd07e325cfdb3c2e8bb
 its-time-to-brush-teeth:
   widths:
     - 640
@@ -28,6 +84,38 @@ its-time-to-brush-teeth:
     - 1600
   avif: true
   source_hash: 97074db4ed51d96be4f3aafd1078f56ae330c3cb62fad07041476b2d95e1df77
+kids-entry-cubbies:
+  widths:
+    - 640
+    - 960
+    - 1280
+    - 1600
+  avif: true
+  source_hash: 6c1ed37b4610fd08b7892c3927ee5d4f137b441d6a89517f6943440a46ed4786
+laundry-bins:
+  widths:
+    - 640
+    - 960
+    - 1280
+    - 1600
+  avif: true
+  source_hash: 77268be5d40ada9d3add3a04853ef3e067c6f45b41b3eea1fd15401c727e61cf
+mother-west-wind:
+  widths:
+    - 640
+    - 960
+    - 1280
+    - 1600
+  avif: true
+  source_hash: 63cde984d97beb97ae119483b8a79c42450e06a6c62c67e3f4e202424ce4fe70
+one-sacagawea-dollar-per-tooth:
+  widths:
+    - 640
+    - 960
+    - 1280
+    - 1600
+  avif: true
+  source_hash: dbc048063f657b1203da29c90958bf214fc6311d45a122cbc8ec02b55522ba3b
 pack-a-foldable-hamper:
   widths:
     - 640
@@ -36,6 +124,14 @@ pack-a-foldable-hamper:
     - 1600
   avif: true
   source_hash: a0bf07b61c43838c266a09514aea366a0b116b6217bfbee208d9723ce56ddf17
+pantry-stockpile:
+  widths:
+    - 640
+    - 960
+    - 1280
+    - 1600
+  avif: true
+  source_hash: ccfc50ef1b0068bd93b6375a71ee73fe6a5c4b11a41abf616684629c00bc1435
 pour-the-cream-in-the-middle:
   widths:
     - 640
@@ -60,6 +156,14 @@ thaw-ground-beef:
     - 1600
   avif: true
   source_hash: 44ddff4c0704c857f7ea5741e87026d561a1e439eb046e3667a23195f62c335e
+travel-toys:
+  widths:
+    - 640
+    - 960
+    - 1280
+    - 1600
+  avif: true
+  source_hash: 4ba9c6307713dfa5ed30394bdbc8662c0fa4e285333ab00cbb0e1b2109829cb3
 where-the-knives-go:
   widths:
     - 640

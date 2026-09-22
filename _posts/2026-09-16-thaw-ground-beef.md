@@ -1,11 +1,12 @@
 ---
 title: "Warm tap water thaws the pound"
 description: "When dinner plans fall through, a sealed pound of ground beef in a bowl of warm tap water is ready in about thirty minutes."
-date:
+date: 2026-09-16
 image: /assets/images/posts/thaw-ground-beef.webp
 image_alt: Vacuum-sealed ground beef thawing in a grey bowl of water in the kitchen sink.
 image_caption: Ground beef thawing in warm tap water, photo from our kitchen.
 tags: [kitchen]
+draft: false
 ---
 
 Some nights we get home and nothing is out for dinner. We forgot to pull anything that morning, or the day just ran long. We prioritize protein for ourselves and the kids, so there is usually a sealed pound of ground beef in the freezer for exactly those nights.

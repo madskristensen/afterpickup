@@ -1,11 +1,12 @@
 ---
 title: "It's time to brush teeth"
 description: "We handed the morning brush-and-shoes cues to the smart speaker so we are not the ones herding everyone to the door."
-date:
+date: 2026-09-21
 image: /assets/images/posts/its-time-to-brush-teeth.webp
 image_alt: Two pairs of shoes on a doormat by the front door on a rainy morning.
 image_caption: Photo by Dima Solomin / Pexels
 tags: [mornings]
+draft: false
 ---
 
 Morning with three kids all headed to school used to mean we were the soundtrack. Brush your teeth. Shoes on. Then again from the hallway. We were trying to keep everyone moving and watch the clock at the same time, and somehow the door still felt like a scramble every day.
