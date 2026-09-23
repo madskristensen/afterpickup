@@ -43,7 +43,7 @@ craft-closet:
     - 1280
     - 1600
   avif: true
-  source_hash: c2c36586400e9f4de356c1fdf85e6e7b801c6beaeb7e584a3240b98eb1017056
+  source_hash: 87c7f05da66f0a6f4332b00243beae7d21cc77451dd1ecea2c8cf8d0dd513ae2
 craft-mats:
   widths:
     - 640
