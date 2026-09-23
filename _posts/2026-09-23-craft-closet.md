@@ -1,11 +1,12 @@
 ---
 title: "We named it the craft closet"
 description: "A hanging organizer and stacked drawers on a closet door gather the glue, markers, and little bits so the kids can start making after pickup without waiting on us."
-date:
+date: 2026-09-23
 image: /assets/images/posts/craft-closet.webp
 image_alt: Labeled hanging pockets of craft supplies on a closet door next to stacked clear drawers.
 image_caption: The craft closet on the back of the door, photo from our house.
 tags: [kids, home]
+draft: false
 ---
 
 The craft supplies used to live wherever they landed. A drawer here, a bin there, usually somewhere only a grown-up remembered. After pickup, one of the kids would ask for glue or pipe cleaners and we would be the ones digging for it.
