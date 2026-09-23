@@ -8,10 +8,15 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 jobs:
   publish:
     runs-on: ubuntu-latest
+    outputs:
+      published: ${{ steps.publish.outputs.published }}
+      commit_sha: ${{ steps.commit.outputs.commit_sha }}
     steps:
       - uses: actions/checkout@v7
         with:
@@ -22,6 +27,7 @@ jobs:
         run: python3 .github/scripts/publish_from_queue.py
 
       - name: Commit and push
+        id: commit
         if: steps.publish.outputs.published == 'true'
         run: |
           git config user.name "github-actions[bot]"
@@ -29,3 +35,12 @@ jobs:
           git add -A _posts _queue
           git commit -m "Publish ${{ steps.publish.outputs.slug }}"
           git push
+          echo "commit_sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
+  deploy:
+    needs: publish
+    if: needs.publish.outputs.published == 'true'
+    uses: ./.github/workflows/jekyll.yml
+    with:
+      checkout_ref: ${{ needs.publish.outputs.commit_sha }}
+    secrets: inherit
