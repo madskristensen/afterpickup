@@ -1,0 +1,8 @@
+<figure class="redmond-event-photo">
+  {%- include responsive-img.html
+       src=include.src
+       alt=include.alt
+       loading="lazy"
+       sizes="(min-width: 40rem) 40rem, 100vw" -%}
+  <figcaption>{{ include.credit }}{% if include.source %} <a href="{{ include.source }}">Photo source</a>{% endif %}</figcaption>
+</figure>

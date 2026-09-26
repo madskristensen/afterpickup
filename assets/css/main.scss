@@ -621,6 +621,28 @@ figcaption {
   margin: -0.75rem 0 1.25rem;
 }
 
+.redmond-section .prose h3 {
+  margin-bottom: 0.2rem;
+}
+
+.redmond-section .redmond-event-meta {
+  margin: 0 0 0.75rem;
+  font-family: var(--ui);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--ink);
+}
+
+.prose figure.redmond-event-photo {
+  margin: 0.35rem 0 1.1rem;
+}
+
+.prose figure.redmond-event-photo figcaption {
+  padding-left: 0;
+  padding-right: 0;
+}
+
 .redmond-feature {
   margin-top: 0.35rem;
 }
