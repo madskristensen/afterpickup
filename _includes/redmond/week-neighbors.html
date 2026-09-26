@@ -1,0 +1,15 @@
+{%- assign ordered = site.redmond | sort: "date" -%}
+{%- assign prev_issue = nil -%}
+{%- assign next_issue = nil -%}
+{%- for issue in ordered -%}
+  {%- if issue.url == page.url -%}
+    {%- assign prev_i = forloop.index0 | minus: 1 -%}
+    {%- assign next_i = forloop.index0 | plus: 1 -%}
+    {%- if prev_i >= 0 -%}
+      {%- assign prev_issue = ordered[prev_i] -%}
+    {%- endif -%}
+    {%- if next_i < ordered.size -%}
+      {%- assign next_issue = ordered[next_i] -%}
+    {%- endif -%}
+  {%- endif -%}
+{%- endfor -%}

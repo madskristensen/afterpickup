@@ -4,12 +4,9 @@
   .github/scripts/resize_images.py, so we never point at a variant that
   is not on disk.
 
-  Only two things are ever served: AVIF at several widths, or the plain
-  original (whatever format it was uploaded as) for anything that does
-  not support AVIF or has no manifest entry yet. There is no WebP tier
-  in between; that population is small (AVIF has been Baseline "high"
-  since Jan 2024) and keeping a middle tier only they would use was not
-  worth the extra generated files.
+  Post heroes serve an AVIF srcset, then the original file.
+  Redmond photos serve a WebP srcset at 800, 1200, and the 1600 original.
+  Anything without a manifest entry is a single img.
 
   Params:
     src      required, e.g. /assets/images/posts/foo.webp
@@ -23,18 +20,35 @@
 {%- assign entry = site.data.image_variants[img_stem] -%}
 {%- assign variants = entry.widths -%}
 {%- assign img_sizes = include.sizes | default: "(min-width: 40rem) 40rem, 100vw" -%}
+{%- assign original_width = variants | last -%}
 {%- capture avifset -%}
 {%- for w in variants -%}
 {{ img_base | relative_url }}{{ img_stem }}-{{ w }}.avif {{ w }}w{% unless forloop.last %},{% endunless %}
 {%- endfor -%}
 {%- endcapture -%}
+{%- capture webpset -%}
+{%- for w in variants -%}
+{%- if w == original_width -%}
+{{ include.src | relative_url }} {{ w }}w{% unless forloop.last %},{% endunless %}
+{%- else -%}
+{{ img_base | relative_url }}{{ img_stem }}-{{ w }}.webp {{ w }}w{% unless forloop.last %},{% endunless %}
+{%- endif -%}
+{%- endfor -%}
+{%- endcapture -%}
+{%- if variants and entry.avif -%}
 <picture>
-  {%- if variants and entry.avif %}
   <source type="image/avif" srcset="{{ avifset | strip_newlines | strip }}" sizes="{{ img_sizes }}">
-  {%- endif %}
   <img src="{{ include.src | relative_url }}"
        alt="{{ include.alt }}" width="1600" height="900"
        {% if include.loading %}loading="{{ include.loading }}"{% endif %}
        {% if include.priority %}fetchpriority="{{ include.priority }}"{% endif %}
        decoding="async">
 </picture>
+{%- else -%}
+<img src="{{ include.src | relative_url }}"
+     alt="{{ include.alt }}" width="1600" height="900"
+     {% if variants and entry.webp %}srcset="{{ webpset | strip_newlines | strip }}" sizes="{{ img_sizes }}"{% endif %}
+     {% if include.loading %}loading="{{ include.loading }}"{% endif %}
+     {% if include.priority %}fetchpriority="{{ include.priority }}"{% endif %}
+     decoding="async">
+{%- endif -%}

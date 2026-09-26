@@ -267,6 +267,40 @@ h1.redmond-brand::after {
   }
 }
 
+.redmond-week-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.75rem 1.5rem;
+  margin-top: 2.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--rule);
+  font-family: var(--ui);
+}
+
+.redmond-week-nav a {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.redmond-week-nav a:hover,
+.redmond-week-nav a:focus {
+  text-decoration: underline;
+}
+
+.redmond-week-nav .meta {
+  display: block;
+  margin-top: 0.15rem;
+  color: var(--soft-ink);
+  font-weight: 500;
+}
+
+.redmond-week-nav .next {
+  margin-left: auto;
+  text-align: right;
+}
+
 .redmond-from {
   margin-top: 2.25rem;
   padding-top: 1rem;

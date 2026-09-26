@@ -17,18 +17,30 @@ layout: default
   {%- endif %}
   {%- endunless %}
 
-  {%- if page.show_latest %}
-  {% include redmond/latest.html %}
-  {%- endif %}
-
+  {%- if page.hide_title -%}
   {%- assign body = content | strip -%}
   {%- if body != "" %}
   <div class="prose">
     {{ content }}
   </div>
   {%- endif %}
+  {%- endif -%}
+
+  {%- if page.show_latest %}
+  {% include redmond/latest.html %}
+  {%- endif %}
+
+  {%- unless page.hide_title -%}
+  {%- assign body = content | strip -%}
+  {%- if body != "" %}
+  <div class="prose">
+    {{ content }}
+  </div>
+  {%- endif %}
+  {%- endunless -%}
 
   {%- if page.week %}
+  {% include redmond/week-nav.html %}
   {% include redmond/from-after-pickup.html %}
   {%- endif %}
 

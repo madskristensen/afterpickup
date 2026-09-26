@@ -8,4 +8,4 @@ list_issues: true
 list_year: 2026
 ---
 
-Weekly issues for 2026, newest first.
+Redmond family digests for 2026, newest first. Each issue is an ISO week, Monday through Sunday, and the page date is that Monday.
