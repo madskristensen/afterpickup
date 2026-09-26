@@ -48,10 +48,10 @@ Check these every week, not only the city calendar:
 - [KCLS Redmond](https://kcls.org/locations/redmond/)
 - [SecondStory Repertory](https://www.secondstoryrep.org/), live theater at Redmond Town Center (night out)
 - [Redmond Academy of Theatre Arts](https://www.redmondacademy.org/) (kids classes and shows)
-- [Studio East](https://studio-east.org/), youth theatre for ages 4 to 20 in Kirkland
+- [Studio East](https://studio-east.org/) in Kirkland (not "Eastside Studio"). Check [season](https://studio-east.org/season) and [StoryBook Theater](https://studio-east.org/storybook-theater). No public audience show Sep 14–Oct 4, 2026. Young Frankenstein is listed for Oct 30–Nov 8.
 - [Village Theatre](https://villagetheatre.org/) mainstage in Issaquah (night out) and [youth education](https://villagetheatre.org/youth-education/) (kids)
 - [Lake Washington Symphony Orchestra](https://lwso.org/), concerts included, not only family or education programs
-- Eastside Studio, when a public calendar confirms a date. Do not guess a website or a showtime.
+- [Kirkland Performance Center](https://www.kpcenter.org/get-tickets/), [Kirkland Arts Center fringe](https://kirklandartscenter.org/kirkland-fringe-festival/), and the [Meydenbauer theatre calendar](https://meydenbauer.com/theatre/attend-a-show/calendar-ticket-information/)
 - Touring one-offs (circus, family shows) when a venue page lists a Redmond or Eastside date in that week.
 
 ## Labels
