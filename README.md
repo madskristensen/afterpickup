@@ -1,6 +1,6 @@
 # After Pickup
 
-What actually works at home. Jekyll on GitHub Pages, served at
+Tips and tricks for home and family. Jekyll on GitHub Pages, served at
 [www.afterpickup.com](https://www.afterpickup.com).
 
 ## Workflow
