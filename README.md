@@ -39,7 +39,7 @@ and the workflow logs a notice instead of submitting URLs.
 
 Family first still means parks, events, food, library, and teens before council or budget. Coverage also includes a night out for parents: local venues, concerts, and theater, plus kids theater and concerts, plus big one-offs such as a circus or a touring family show. Do not invent a show. Add an item only when a public page lists a date inside that week's Monday to Sunday window.
 
-When a week has both, use two headings: `For kids` and `Night out`. A single show can sit under one heading. One-offs (circus, touring family shows) go under `For kids` when they are aimed at families. Under each event headline, use one meta line: date · time · place. Add a photo only when a city, venue, or organizer picture is available, with a credit and a source link.
+When a week has both, use two headings: `For kids` and `Night out`. A single show can sit under one heading. One-offs (circus, touring family shows) go under `For kids` when they are aimed at families. Under each event headline, put the date and time on the next line as a small callout, then the place on its own line, then a short blurb, then the source link. Do not put the date on the same line as the title. Add a photo only when a city, venue, or organizer picture is available, with a credit and a source link.
 
 Check these every week, not only the city calendar:
 
