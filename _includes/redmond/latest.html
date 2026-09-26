@@ -1,0 +1,22 @@
+{%- assign issues = site.redmond | sort: "date" | reverse -%}
+{%- assign latest = issues | first -%}
+{%- if latest -%}
+<section class="redmond-feature" aria-label="Latest issue">
+  <p class="redmond-kicker">Latest issue</p>
+  <h2><a href="{{ latest.url | relative_url }}">{{ latest.title }}</a></h2>
+  {%- if latest.range %}
+  <p class="meta">{{ latest.range }}</p>
+  {%- endif %}
+  {%- if latest.description %}
+  <p class="dek">{{ latest.description }}</p>
+  {%- endif %}
+  {%- if latest.highlights %}
+  <ul>
+    {%- for item in latest.highlights %}
+    <li>{{ item }}</li>
+    {%- endfor %}
+  </ul>
+  {%- endif %}
+  <p class="redmond-read"><a href="{{ latest.url | relative_url }}">Read this week</a></p>
+</section>
+{%- endif -%}

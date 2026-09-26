@@ -579,7 +579,8 @@ figcaption {
   color: var(--soft-ink);
 }
 
-.redmond-name {
+.redmond-name,
+.redmond-section h1.redmond-name {
   margin: 0.2rem 0 0;
   color: #2C353E;
   font-family: var(--ui);
@@ -620,9 +621,53 @@ figcaption {
   margin: -0.75rem 0 1.25rem;
 }
 
-.redmond-latest {
-  margin: 1.5rem 0 0;
-  font-size: 1.2rem;
+.redmond-feature {
+  margin-top: 0.35rem;
+}
+
+.redmond-feature h2 {
+  margin: 0.3rem 0 0.25rem;
+  font-size: 1.7rem;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.redmond-feature h2 a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.redmond-feature h2 a:hover,
+.redmond-feature h2 a:focus {
+  text-decoration: underline;
+}
+
+.redmond-feature .dek {
+  margin: 0.45rem 0 0;
+}
+
+.redmond-feature ul {
+  margin: 0.85rem 0 1rem;
+  padding-left: 1.15rem;
+}
+
+.redmond-feature li {
+  margin-bottom: 0.4rem;
+}
+
+.redmond-feature li:last-child {
+  margin-bottom: 0;
+}
+
+.redmond-read {
+  margin: 0;
+  font-family: var(--ui);
+  font-weight: 600;
+}
+
+.redmond-year-link {
+  margin: 0.85rem 0 0;
+  font-family: var(--ui);
 }
 
 .redmond-archive {

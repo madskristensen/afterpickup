@@ -4,19 +4,30 @@ layout: default
 <article class="post redmond-section">
   {% include redmond/identity.html %}
   {% include redmond/breadcrumbs.html %}
+  {%- if page.week and page.image %}
   {% include hero.html %}
+  {%- endif %}
   {%- if page.image_source_url %}
   <p class="meta redmond-photo-source"><a href="{{ page.image_source_url }}">Photo source</a></p>
   {%- endif %}
 
+  {%- unless page.hide_title %}
   <h1>{{ page.title }}</h1>
   {%- if page.range %}
   <p class="meta">{{ page.range }}</p>
   {%- endif %}
+  {%- endunless %}
 
+  {%- if page.show_latest %}
+  {% include redmond/latest.html %}
+  {%- endif %}
+
+  {%- assign body = content | strip -%}
+  {%- if body != "" %}
   <div class="prose">
     {{ content }}
   </div>
+  {%- endif %}
 
   {%- if page.list_issues %}
   {% include redmond/archive.html %}

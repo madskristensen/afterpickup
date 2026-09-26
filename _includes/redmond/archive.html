@@ -2,23 +2,29 @@
 {%- if page.list_year -%}
 {%- assign issues = issues | where: "year", page.list_year -%}
 {%- endif -%}
-{%- if page.show_latest and issues.size > 0 -%}
-{%- assign latest = issues | first -%}
-<p class="redmond-latest"><a href="{{ latest.url | relative_url }}">Newest issue: week of {{ latest.date | date: "%B %-d" }}</a></p>
+{%- assign show_archive = false -%}
+{%- if page.show_latest -%}
+{%- if issues.size > 1 -%}
+{%- assign show_archive = true -%}
 {%- endif -%}
-{%- if issues.size > 0 -%}
+{%- elsif issues.size > 0 -%}
+{%- assign show_archive = true -%}
+{%- endif -%}
+{%- if show_archive -%}
 <section class="redmond-archive" aria-label="Issue archive">
-  <h2>Archive</h2>
+  <h2>{% if page.show_latest %}Earlier weeks{% else %}Archive{% endif %}</h2>
   <ul>
     {%- for issue in issues %}
+    {%- unless page.show_latest and forloop.first %}
     <li>
-      <a href="{{ issue.url | relative_url }}">Week of {{ issue.date | date: "%B %-d, %Y" }}</a>
-      <span class="meta">Week {{ issue.week }}</span>
-      {%- if issue.description %}
-      <span class="dek">{{ issue.description }}</span>
-      {%- endif %}
+      <a href="{{ issue.url | relative_url }}">{{ issue.title }}</a>
+      <span class="meta">{% if issue.range %}{{ issue.range }}{% else %}Week {{ issue.week }}{% endif %}</span>
     </li>
+    {%- endunless %}
     {%- endfor %}
   </ul>
+  {%- unless page.list_year %}
+  <p class="redmond-year-link"><a href="{{ '/redmond/2026/' | relative_url }}">2026 archive</a></p>
+  {%- endunless %}
 </section>
 {%- endif -%}

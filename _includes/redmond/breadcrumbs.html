@@ -1,11 +1,8 @@
+{%- if page.year or page.week -%}
 <nav class="redmond-crumbs" aria-label="Breadcrumb">
   <ol>
     <li>
-      {%- if page.year -%}
       <a href="{{ '/redmond/' | relative_url }}">Redmond</a>
-      {%- else -%}
-      <span aria-current="page">Redmond</span>
-      {%- endif -%}
     </li>
     {%- if page.year %}
     <li>
@@ -21,3 +18,4 @@
     {%- endif %}
   </ol>
 </nav>
+{%- endif -%}
