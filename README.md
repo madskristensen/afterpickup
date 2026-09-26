@@ -35,6 +35,26 @@ and the workflow logs a notice instead of submitting URLs.
 - `_queue/` — approved, not live.
 - `_posts/` — public. Only the publish workflow writes here.
 
+## Redmond weekly sources
+
+Family first: parks, events, food, library, teens, and kids arts. Council and budget stay off the week pages unless the item is about schools, parks, or teens. Do not invent a show. Add an item only when a public page lists a date inside that week's Monday to Sunday window.
+
+On the week page, put kids theater, concerts, and community performing arts under the heading `Arts / kids stage`. Under each event headline, use one meta line in this shape: date · time · place. Add a photo only when a city, venue, or organizer picture is available, with a credit and a source link. The same pattern is already used for the other events.
+
+Check these every week, not only the city calendar:
+
+- [City calendar](https://www.redmond.gov/Calendar.aspx), [NewsFlash](https://www.redmond.gov/m/NewsFlash/), and [Parks & Recreation](https://www.redmond.gov/165/Parks-Recreation)
+- [Downtown Redmond Art Walk](https://www.redmond.gov/1967/Downtown-Redmond-Art-Walk) and [Arts in the Park](https://engage.oneredmond.org/events/arts-in-the-park)
+- [KCLS Redmond](https://kcls.org/locations/redmond/)
+- [SecondStory Repertory](https://www.secondstoryrep.org/), live theater at Redmond Town Center
+- [Redmond Academy of Theatre Arts](https://www.redmondacademy.org/)
+- [Studio East](https://studio-east.org/), youth theatre for ages 4 to 20 in Kirkland
+- [Village Theatre youth education](https://villagetheatre.org/youth-education/), Issaquah
+- [Lake Washington Symphony Orchestra](https://lwso.org/), family or education concerts only
+- Eastside Studio, when a public calendar confirms a date. Do not guess a website or a showtime.
+
+Skip adult-only late performances unless the listing is clearly for families or kids.
+
 ## Labels
 
 | Label | Meaning |
