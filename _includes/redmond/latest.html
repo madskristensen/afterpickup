@@ -2,6 +2,23 @@
 {%- assign latest = issues | first -%}
 {%- if latest -%}
 <section class="redmond-feature" aria-label="Latest issue">
+  {%- if latest.image %}
+  <figure class="hero">
+    <a href="{{ latest.url | relative_url }}">
+      {%- include responsive-img.html
+           src=latest.image
+           alt=latest.image_alt
+           priority="high"
+           sizes="(min-width: 62.5rem) 60rem, 100vw" -%}
+    </a>
+    {%- if latest.image_caption %}
+    <figcaption>{{ latest.image_caption }}</figcaption>
+    {%- endif %}
+  </figure>
+  {%- endif %}
+  {%- if latest.image_source_url %}
+  <p class="meta redmond-photo-source"><a href="{{ latest.image_source_url }}">Photo source</a></p>
+  {%- endif %}
   <p class="redmond-kicker">Latest issue</p>
   <h2><a href="{{ latest.url | relative_url }}">{{ latest.title }}</a></h2>
   {%- if latest.range %}
