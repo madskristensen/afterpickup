@@ -11,7 +11,28 @@
   {%- endunless -%}
 {%- endif -%}
 {%- assign canonical_url = page.url | absolute_url | replace: '/index.html', '/' -%}
-{%- assign seo_image = page.image | absolute_url -%}
+{%- assign seo_image_path = page.image -%}
+{%- assign seo_image_alt = page.image_alt -%}
+{%- comment -%}
+  The site default image is the After Pickup blog hero. Redmond pages
+  that do not set their own photo should share the digest teaser instead.
+{%- endcomment -%}
+{%- if page.layout == "redmond" -%}
+  {%- if seo_image_path == nil or seo_image_path == "" or seo_image_path == "/assets/images/og-image.png" -%}
+    {%- assign digest_issues = site.redmond | sort: "date" | reverse -%}
+    {%- unless page.week -%}
+      {%- if page.year -%}
+        {%- assign digest_issues = digest_issues | where: "year", page.year -%}
+      {%- endif -%}
+    {%- endunless -%}
+    {%- assign digest_hero = digest_issues | first -%}
+    {%- if digest_hero.image -%}
+      {%- assign seo_image_path = digest_hero.image -%}
+      {%- assign seo_image_alt = digest_hero.image_alt -%}
+    {%- endif -%}
+  {%- endif -%}
+{%- endif -%}
+{%- assign seo_image = seo_image_path | absolute_url -%}
 {%- assign author_url = site.author.url | absolute_url -%}
 {%- assign organization_id = site.url | append: '/#organization' -%}
 {%- assign website_id = site.url | append: '/#website' -%}
@@ -35,8 +56,8 @@
 <meta property="og:title" content="{{ seo_title | escape }}">
 <meta property="og:site_name" content="{{ site.title | escape }}">
 <meta property="og:image" content="{{ seo_image }}">
-{%- if page.image_alt %}
-<meta property="og:image:alt" content="{{ page.image_alt | escape }}">
+{%- if seo_image_alt %}
+<meta property="og:image:alt" content="{{ seo_image_alt | escape }}">
 {%- elsif site.image_alt %}
 <meta property="og:image:alt" content="{{ site.image_alt | escape }}">
 {%- endif %}
@@ -49,8 +70,8 @@
 <meta name="twitter:card" content="{{ site.twitter.card | default: 'summary_large_image' }}">
 <meta property="twitter:image" content="{{ seo_image }}">
 <meta property="twitter:title" content="{{ seo_title | escape }}">
-{%- if page.image_alt %}
-<meta name="twitter:image:alt" content="{{ page.image_alt | escape }}">
+{%- if seo_image_alt %}
+<meta name="twitter:image:alt" content="{{ seo_image_alt | escape }}">
 {%- elsif site.image_alt %}
 <meta name="twitter:image:alt" content="{{ site.image_alt | escape }}">
 {%- endif %}
