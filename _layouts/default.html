@@ -45,6 +45,9 @@
         <a class="wordmark" href="{{ '/' | relative_url }}">{% include logo.html %}{{ site.title }}</a>
         {%- endif %}
       </div>
+      {%- if page.layout == "redmond" %}
+      <p class="redmond-kicker">Weekly family digest</p>
+      {%- endif %}
       {%- if site.tagline and page.url != "/" and page.layout != "redmond" %}
       <p class="tagline">{{ site.tagline }}</p>
       {%- endif %}

@@ -6,7 +6,7 @@
    The wordmark is ours. The city logo is not reused.
    --------------------------------------------------------------- */
 .site-header-redmond {
-  padding-block: calc(1.15rem + env(safe-area-inset-top)) 0.35rem;
+  padding-block: calc(1.15rem + env(safe-area-inset-top)) 0.85rem;
 }
 
 .redmond-brand,
@@ -57,15 +57,8 @@ h1.redmond-brand::after {
   text-decoration: underline;
 }
 
-.redmond-lockup {
-  margin: 0 0 1.1rem;
-  padding-top: 0.85rem;
-  border-top: 0.35rem solid #2C353E;
-}
-
-.redmond-kicker,
-.redmond-note {
-  margin: 0.65rem 0 0;
+.redmond-kicker {
+  margin: 0.55rem 0 0;
   font-family: var(--ui);
   font-size: 0.75rem;
   font-weight: 600;
@@ -73,14 +66,6 @@ h1.redmond-brand::after {
   line-height: 1.4;
   text-transform: uppercase;
   color: var(--quiet-green);
-}
-
-.redmond-note {
-  margin-top: 0.45rem;
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  text-transform: none;
-  color: var(--soft-ink);
 }
 
 .redmond-name,
@@ -279,10 +264,6 @@ h1.redmond-brand::after {
 }
 
 @media (prefers-color-scheme: dark) {
-  .redmond-lockup {
-    border-top-color: #E7EEF5;
-  }
-
   .redmond-name,
   .redmond-brand,
   h1.redmond-brand {
