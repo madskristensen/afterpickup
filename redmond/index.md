@@ -1,7 +1,7 @@
 ---
 layout: redmond
 title: Redmond
-description: Weekly family-focused digests of Redmond city news, parks events, and council dates.
+description: Weekly family digests of Redmond parks, events, and things to do.
 permalink: /redmond/
 list_issues: true
 show_latest: true

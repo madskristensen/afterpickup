@@ -2,6 +2,11 @@
 {%- assign latest = issues | first -%}
 {%- if latest -%}
 <section class="redmond-feature" aria-label="Latest issue">
+  {%- assign when = latest.dates | default: latest.range -%}
+  {%- if when %}
+  <p class="meta redmond-when">{{ when }}</p>
+  {%- endif %}
+  <h2><a href="{{ latest.url | relative_url }}">{{ latest.title }}</a></h2>
   {%- if latest.image %}
   <figure class="hero">
     <a href="{{ latest.url | relative_url }}">
@@ -19,17 +24,9 @@
   {%- if latest.image_source_url %}
   <p class="meta redmond-photo-source"><a href="{{ latest.image_source_url }}">Photo source</a></p>
   {%- endif %}
-  <p class="redmond-kicker">Latest issue</p>
-  <h2><a href="{{ latest.url | relative_url }}">{{ latest.title }}</a></h2>
-  {%- if latest.range %}
-  <p class="meta">{{ latest.range }}</p>
-  {%- endif %}
-  {%- if latest.description %}
-  <p class="dek">{{ latest.description }}</p>
-  {%- endif %}
-  {%- if latest.highlights %}
+  {%- if latest.teasers %}
   <ul>
-    {%- for item in latest.highlights %}
+    {%- for item in latest.teasers %}
     <li>{{ item }}</li>
     {%- endfor %}
   </ul>

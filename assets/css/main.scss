@@ -625,6 +625,12 @@ figcaption {
   margin-top: 0.35rem;
 }
 
+.redmond-when {
+  margin: 0;
+  font-family: var(--ui);
+  letter-spacing: 0.01em;
+}
+
 .redmond-feature h2 {
   margin: 0.3rem 0 0.25rem;
   font-size: 1.7rem;
@@ -660,9 +666,22 @@ figcaption {
 }
 
 .redmond-read {
-  margin: 0;
+  margin: 1.1rem 0 0;
   font-family: var(--ui);
   font-weight: 600;
+}
+
+.redmond-read a {
+  display: inline-block;
+  padding: 0.55rem 0.95rem;
+  background: var(--accent);
+  color: var(--page);
+  text-decoration: none;
+}
+
+.redmond-read a:hover,
+.redmond-read a:focus {
+  text-decoration: underline;
 }
 
 .redmond-year-link {

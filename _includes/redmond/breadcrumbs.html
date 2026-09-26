@@ -14,7 +14,7 @@
     </li>
     {%- endif %}
     {%- if page.week %}
-    <li><span aria-current="page">Week {{ page.week }}</span></li>
+    <li><span aria-current="page">{{ page.dates | default: page.range }}</span></li>
     {%- endif %}
   </ol>
 </nav>

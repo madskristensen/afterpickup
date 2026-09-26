@@ -18,7 +18,7 @@
     {%- unless page.show_latest and forloop.first %}
     <li>
       <a href="{{ issue.url | relative_url }}">{{ issue.title }}</a>
-      <span class="meta">{% if issue.range %}{{ issue.range }}{% else %}Week {{ issue.week }}{% endif %}</span>
+      <span class="meta">{% if issue.dates %}{{ issue.dates }}{% elsif issue.range %}{{ issue.range }}{% endif %}</span>
     </li>
     {%- endunless %}
     {%- endfor %}
