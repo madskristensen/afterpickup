@@ -1,6 +1,6 @@
 # After Pickup
 
-What actually works between pickup and lights-out. Jekyll on GitHub Pages, served at
+What actually works at home. Jekyll on GitHub Pages, served at
 [www.afterpickup.com](https://www.afterpickup.com).
 
 ## Workflow
