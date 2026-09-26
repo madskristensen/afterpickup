@@ -548,3 +548,130 @@ figcaption {
     font-size: 2.6rem;
   }
 }
+
+/* ---------------------------------------------------------------
+   Redmond weekly digest. Slate and gold are taken from redmond.gov.
+   The wordmark is ours. The city logo is not reused.
+   --------------------------------------------------------------- */
+.redmond-lockup {
+  margin: 0 0 1.1rem;
+  padding-top: 0.85rem;
+  border-top: 0.35rem solid #2C353E;
+}
+
+.redmond-kicker,
+.redmond-note {
+  margin: 0.65rem 0 0;
+  font-family: var(--ui);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  line-height: 1.4;
+  text-transform: uppercase;
+  color: var(--quiet-green);
+}
+
+.redmond-note {
+  margin-top: 0.45rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: var(--soft-ink);
+}
+
+.redmond-name {
+  margin: 0.2rem 0 0;
+  color: #2C353E;
+  font-family: var(--ui);
+  font-size: 1.65rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.redmond-name::after {
+  content: "";
+  display: block;
+  width: 2.4rem;
+  height: 0.18rem;
+  margin-top: 0.45rem;
+  background: #FFCF4B;
+}
+
+.redmond-crumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0;
+  margin: 0 0 1.25rem;
+  padding: 0;
+  list-style: none;
+  font-family: var(--ui);
+  font-size: 0.85rem;
+}
+
+.redmond-crumbs li + li::before {
+  content: "/";
+  margin: 0 0.4rem;
+  color: var(--soft-ink);
+}
+
+.redmond-photo-source {
+  margin: -0.75rem 0 1.25rem;
+}
+
+.redmond-latest {
+  margin: 1.5rem 0 0;
+  font-size: 1.2rem;
+}
+
+.redmond-archive {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--rule);
+}
+
+.redmond-archive h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+.redmond-archive ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.redmond-archive li {
+  margin: 0;
+  padding: 0.85rem 0;
+  border-top: 1px solid var(--rule);
+}
+
+.redmond-archive li a {
+  font-size: 1.25rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.redmond-archive li a:hover,
+.redmond-archive li a:focus {
+  text-decoration: underline;
+}
+
+.redmond-archive .meta,
+.redmond-archive .dek {
+  display: block;
+  margin-top: 0.2rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  .redmond-lockup {
+    border-top-color: #E7EEF5;
+  }
+
+  .redmond-name {
+    color: #E7EEF5;
+  }
+}

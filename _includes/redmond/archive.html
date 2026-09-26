@@ -1,0 +1,24 @@
+{%- assign issues = site.redmond | sort: "date" | reverse -%}
+{%- if page.list_year -%}
+{%- assign issues = issues | where: "year", page.list_year -%}
+{%- endif -%}
+{%- if page.show_latest and issues.size > 0 -%}
+{%- assign latest = issues | first -%}
+<p class="redmond-latest"><a href="{{ latest.url | relative_url }}">Newest issue: week of {{ latest.date | date: "%B %-d" }}</a></p>
+{%- endif -%}
+{%- if issues.size > 0 -%}
+<section class="redmond-archive" aria-label="Issue archive">
+  <h2>Archive</h2>
+  <ul>
+    {%- for issue in issues %}
+    <li>
+      <a href="{{ issue.url | relative_url }}">Week of {{ issue.date | date: "%B %-d, %Y" }}</a>
+      <span class="meta">Week {{ issue.week }}</span>
+      {%- if issue.description %}
+      <span class="dek">{{ issue.description }}</span>
+      {%- endif %}
+    </li>
+    {%- endfor %}
+  </ul>
+</section>
+{%- endif -%}

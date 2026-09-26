@@ -1,0 +1,23 @@
+<nav class="redmond-crumbs" aria-label="Breadcrumb">
+  <ol>
+    <li>
+      {%- if page.year -%}
+      <a href="{{ '/redmond/' | relative_url }}">Redmond</a>
+      {%- else -%}
+      <span aria-current="page">Redmond</span>
+      {%- endif -%}
+    </li>
+    {%- if page.year %}
+    <li>
+      {%- if page.week -%}
+      <a href="{{ '/redmond/' | append: page.year | append: '/' | relative_url }}">{{ page.year }}</a>
+      {%- else -%}
+      <span aria-current="page">{{ page.year }}</span>
+      {%- endif -%}
+    </li>
+    {%- endif %}
+    {%- if page.week %}
+    <li><span aria-current="page">Week {{ page.week }}</span></li>
+    {%- endif %}
+  </ol>
+</nav>

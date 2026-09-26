@@ -1,0 +1,24 @@
+---
+layout: default
+---
+<article class="post redmond-section">
+  {% include redmond/identity.html %}
+  {% include redmond/breadcrumbs.html %}
+  {% include hero.html %}
+  {%- if page.image_source_url %}
+  <p class="meta redmond-photo-source"><a href="{{ page.image_source_url }}">Photo source</a></p>
+  {%- endif %}
+
+  <h1>{{ page.title }}</h1>
+  {%- if page.range %}
+  <p class="meta">{{ page.range }}</p>
+  {%- endif %}
+
+  <div class="prose">
+    {{ content }}
+  </div>
+
+  {%- if page.list_issues %}
+  {% include redmond/archive.html %}
+  {%- endif %}
+</article>
