@@ -5,33 +5,56 @@
    Redmond weekly digest. Slate and gold are taken from redmond.gov.
    The wordmark is ours. The city logo is not reused.
    --------------------------------------------------------------- */
-.site-header-quiet {
-  padding-block: calc(1rem + env(safe-area-inset-top)) 0.25rem;
+.site-header-redmond {
+  padding-block: calc(1.15rem + env(safe-area-inset-top)) 0.35rem;
 }
 
-.wordmark-quiet {
-  color: var(--soft-ink);
+.redmond-brand,
+h1.redmond-brand {
+  display: inline-block;
+  margin: 0;
+  color: #2C353E;
   font-family: var(--ui);
-  font-size: 0.95rem;
+  font-size: 1.35rem;
   font-weight: 600;
+  letter-spacing: 0.08em;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+h1.redmond-brand {
+  font-size: 1.65rem;
+}
+
+.redmond-brand a {
+  color: inherit;
   text-decoration: none;
 }
 
-.wordmark-quiet:hover,
-.wordmark-quiet:focus {
-  color: var(--ink);
+.redmond-brand::after,
+h1.redmond-brand::after {
+  content: "";
+  display: block;
+  width: 2.4rem;
+  height: 0.18rem;
+  margin-top: 0.4rem;
+  background: #FFCF4B;
+}
+
+.redmond-credit {
+  margin: 0.85rem 0 0;
+  font-family: var(--ui);
+  font-size: 0.75rem;
+}
+
+.redmond-credit a {
+  color: var(--soft-ink);
+  text-decoration: none;
+}
+
+.redmond-credit a:hover,
+.redmond-credit a:focus {
   text-decoration: underline;
-}
-
-.redmond-section p.redmond-name {
-  font-size: 0.8rem;
-  letter-spacing: 0.14em;
-}
-
-.redmond-section p.redmond-name::after {
-  width: 1.5rem;
-  height: 0.1rem;
-  margin-top: 0.28rem;
 }
 
 .redmond-lockup {
@@ -260,7 +283,9 @@
     border-top-color: #E7EEF5;
   }
 
-  .redmond-name {
+  .redmond-name,
+  .redmond-brand,
+  h1.redmond-brand {
     color: #E7EEF5;
   }
 }

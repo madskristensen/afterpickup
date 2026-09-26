@@ -26,10 +26,14 @@
 </head>
   <body>
     <a class="skip-link" href="#content">Skip to content</a>
-    <header class="site-header{% if page.layout == 'redmond' %} site-header-quiet{% endif %}">
+    <header class="site-header{% if page.layout == 'redmond' %} site-header-redmond{% endif %}">
       <div class="site-header-top">
         {%- if page.layout == "redmond" %}
-        <a class="wordmark wordmark-quiet" href="{{ '/' | relative_url }}">{% include logo.html %}{{ site.title }}</a>
+          {%- if page.hide_title -%}
+          <h1 class="redmond-brand"><a href="{{ '/redmond/' | relative_url }}">Redmond</a></h1>
+          {%- else -%}
+          <a class="redmond-brand" href="{{ '/redmond/' | relative_url }}">Redmond</a>
+          {%- endif -%}
         {%- elsif page.url == "/" %}
         <h1 class="home-heading">
           <a class="wordmark" href="{{ '/' | relative_url }}">{% include logo.html %}{{ site.title }}</a>
@@ -56,6 +60,9 @@
         <a href="{{ '/tags/' | relative_url }}">Browse by topic</a>
         <a href="{{ '/redmond/' | relative_url }}">Redmond</a>
       </nav>
+      {%- if page.layout == "redmond" %}
+      <p class="redmond-credit"><a href="{{ '/' | relative_url }}">After Pickup</a></p>
+      {%- endif %}
       <p>&copy; {{ site.time | date: "%Y" }} {{ site.title }}</p>
     </footer>
   </body>
