@@ -1,5 +1,15 @@
 {%- assign seo_title = page.title | default: site.title -%}
 {%- assign seo_description = page.description | default: site.description -%}
+{%- if page.layout == "redmond" -%}
+  {%- if page.url == "/redmond/" -%}
+    {%- assign seo_title = "Redmond family digest" -%}
+  {%- else -%}
+    {%- assign seo_title = page.title | append: " | Redmond family digest" -%}
+  {%- endif -%}
+  {%- unless seo_description contains "Redmond" -%}
+    {%- assign seo_description = "Redmond family digest. " | append: seo_description -%}
+  {%- endunless -%}
+{%- endif -%}
 {%- assign canonical_url = page.url | absolute_url | replace: '/index.html', '/' -%}
 {%- assign seo_image = page.image | absolute_url -%}
 {%- assign author_url = site.author.url | absolute_url -%}

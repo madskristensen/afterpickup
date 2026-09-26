@@ -26,9 +26,11 @@
 </head>
   <body>
     <a class="skip-link" href="#content">Skip to content</a>
-    <header class="site-header">
+    <header class="site-header{% if page.layout == 'redmond' %} site-header-quiet{% endif %}">
       <div class="site-header-top">
-        {%- if page.url == "/" %}
+        {%- if page.layout == "redmond" %}
+        <a class="wordmark wordmark-quiet" href="{{ '/' | relative_url }}">{% include logo.html %}{{ site.title }}</a>
+        {%- elsif page.url == "/" %}
         <h1 class="home-heading">
           <a class="wordmark" href="{{ '/' | relative_url }}">{% include logo.html %}{{ site.title }}</a>
           {%- if site.tagline %}
@@ -39,7 +41,7 @@
         <a class="wordmark" href="{{ '/' | relative_url }}">{% include logo.html %}{{ site.title }}</a>
         {%- endif %}
       </div>
-      {%- if site.tagline and page.url != "/" %}
+      {%- if site.tagline and page.url != "/" and page.layout != "redmond" %}
       <p class="tagline">{{ site.tagline }}</p>
       {%- endif %}
     </header>

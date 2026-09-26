@@ -5,6 +5,35 @@
    Redmond weekly digest. Slate and gold are taken from redmond.gov.
    The wordmark is ours. The city logo is not reused.
    --------------------------------------------------------------- */
+.site-header-quiet {
+  padding-block: calc(1rem + env(safe-area-inset-top)) 0.25rem;
+}
+
+.wordmark-quiet {
+  color: var(--soft-ink);
+  font-family: var(--ui);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.wordmark-quiet:hover,
+.wordmark-quiet:focus {
+  color: var(--ink);
+  text-decoration: underline;
+}
+
+.redmond-section p.redmond-name {
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+}
+
+.redmond-section p.redmond-name::after {
+  width: 1.5rem;
+  height: 0.1rem;
+  margin-top: 0.28rem;
+}
+
 .redmond-lockup {
   margin: 0 0 1.1rem;
   padding-top: 0.85rem;
