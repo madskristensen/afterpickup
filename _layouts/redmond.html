@@ -29,6 +29,10 @@ layout: default
   </div>
   {%- endif %}
 
+  {%- if page.week or page.show_latest %}
+  {% include redmond/from-after-pickup.html %}
+  {%- endif %}
+
   {%- if page.list_issues %}
   {% include redmond/archive.html %}
   {%- endif %}

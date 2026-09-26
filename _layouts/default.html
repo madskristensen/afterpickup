@@ -12,6 +12,9 @@
     <link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/images/apple-touch-icon.png' | relative_url }}">
     {%- include seo.html -%}
     <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}?v={{ site.time | date: '%s' }}">
+    {%- if page.layout == "redmond" %}
+    <link rel="stylesheet" href="{{ '/assets/css/redmond.css' | relative_url }}?v={{ site.time | date: '%s' }}">
+    {%- endif %}
     {%- feed_meta -%}
     <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
