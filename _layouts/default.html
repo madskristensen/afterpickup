@@ -12,9 +12,6 @@
     <link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/images/apple-touch-icon.png' | relative_url }}">
     {%- include seo.html -%}
     <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}?v={{ site.time | date: '%s' }}">
-    {%- if page.layout == "redmond" %}
-    <link rel="stylesheet" href="{{ '/assets/css/redmond.css' | relative_url }}?v={{ site.time | date: '%s' }}">
-    {%- endif %}
     {%- feed_meta -%}
     <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
@@ -26,15 +23,9 @@
 </head>
   <body>
     <a class="skip-link" href="#content">Skip to content</a>
-    <header class="site-header{% if page.layout == 'redmond' %} site-header-redmond{% endif %}">
+    <header class="site-header">
       <div class="site-header-top">
-        {%- if page.layout == "redmond" %}
-          {%- if page.hide_title -%}
-          <h1 class="redmond-brand"><a href="{{ '/redmond/' | relative_url }}">Redmond</a></h1>
-          {%- else -%}
-          <a class="redmond-brand" href="{{ '/redmond/' | relative_url }}">Redmond</a>
-          {%- endif -%}
-        {%- elsif page.url == "/" %}
+        {%- if page.url == "/" %}
         <h1 class="home-heading">
           <a class="wordmark" href="{{ '/' | relative_url }}">{% include logo.html %}{{ site.title }}</a>
           {%- if site.tagline %}
@@ -45,10 +36,7 @@
         <a class="wordmark" href="{{ '/' | relative_url }}">{% include logo.html %}{{ site.title }}</a>
         {%- endif %}
       </div>
-      {%- if page.layout == "redmond" %}
-      <p class="redmond-kicker">Weekly family digest</p>
-      {%- endif %}
-      {%- if site.tagline and page.url != "/" and page.layout != "redmond" %}
+      {%- if site.tagline and page.url != "/" %}
       <p class="tagline">{{ site.tagline }}</p>
       {%- endif %}
     </header>
@@ -61,11 +49,7 @@
       <nav class="site-nav" aria-label="Footer">
         <a href="{{ '/about/' | relative_url }}">Who we are</a>
         <a href="{{ '/tags/' | relative_url }}">Browse by topic</a>
-        <a href="{{ '/redmond/' | relative_url }}">Redmond</a>
       </nav>
-      {%- if page.layout == "redmond" %}
-      <p class="redmond-credit"><a href="{{ '/' | relative_url }}">After Pickup</a></p>
-      {%- endif %}
       <p>&copy; {{ site.time | date: "%Y" }} {{ site.title }}</p>
     </footer>
   </body>

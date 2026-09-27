@@ -22,13 +22,6 @@ social:
 
 permalink: /:title/
 timezone: America/Chicago
-# Coming Redmond weeks are dated on their Monday, which can be ahead of
-# today. Without this, Jekyll hides those collection pages.
-future: true
-
-collections:
-  redmond:
-    output: true
 
 markdown: kramdown
 kramdown:
@@ -51,11 +44,6 @@ defaults:
       type: posts
     values:
       layout: post
-  - scope:
-      path: ""
-      type: redmond
-    values:
-      layout: redmond
 
 exclude:
   - Gemfile
