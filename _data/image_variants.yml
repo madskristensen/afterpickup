@@ -156,6 +156,14 @@ thaw-ground-beef:
     - 1600
   avif: true
   source_hash: 44ddff4c0704c857f7ea5741e87026d561a1e439eb046e3667a23195f62c335e
+travel-emergency-kit:
+  widths:
+    - 640
+    - 960
+    - 1280
+    - 1600
+  avif: true
+  source_hash: 8bac92b030150a19a08846724c5eb4dd44d171441ba6020e14607f1446a0d80e
 travel-toys:
   widths:
     - 640
