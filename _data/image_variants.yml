@@ -163,7 +163,7 @@ travel-emergency-kit:
     - 1280
     - 1600
   avif: true
-  source_hash: 8bac92b030150a19a08846724c5eb4dd44d171441ba6020e14607f1446a0d80e
+  source_hash: b3cff81ec86de27039999fdc2012f742f6be2254d9e345dc93214616fc4a15f9
 travel-toys:
   widths:
     - 640
