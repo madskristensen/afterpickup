@@ -8,9 +8,9 @@ image_caption: The travel toys we pack, photo from our house.
 tags: [kids, travel]
 ---
 
-We keep a bunch of toys just for trips, the same small kit that has been riding along for years. We drive to weekend getaways in state several times a year, and when we fly we pack that set too, because they travel well and the kids like them in small doses.
+We keep a bunch of toys just for trips, the same small kit that has been riding along for years. We drive to weekend getaways in state several times a year, and when we fly we pack that set too, because they travel well and the kids like them in small doses. The [travel emergency kit](/travel-emergency-kit/) comes on those trips too.
 
-They only come out a handful of times a year, and that is enough to keep them feeling fresh. Minecraft magnetic cubes mix well with regular Magna-Tiles, and little Pokemon and animal figurines work with those builds too.
+The toys only come out a handful of times a year, and that is enough to keep them feeling fresh. Minecraft magnetic cubes mix well with regular Magna-Tiles, and little Pokemon and animal figurines work with those builds too.
 
 We also pack travel art supplies that do not roll around on a tray table, which is a small thing that matters on a plane. Everything is light enough for the car or a backpack.
 
