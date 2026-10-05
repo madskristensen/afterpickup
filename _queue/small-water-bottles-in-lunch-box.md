@@ -3,7 +3,7 @@ title: "Small water bottles that fit in the lunch box"
 description: "Small water bottles that fit inside the lunch box give the kids enough water for lunch and come home with the box."
 date:
 image: /assets/images/posts/small-water-bottles-in-lunch-box.webp
-image_alt: Three open lunch boxes on a white table, each with a small clear water bottle tucked beside a sandwich and snacks
+image_alt: One open pink lunch box holding a small flat clear water bottle with a pink cap and dinosaur stickers
 image_caption: Small water bottles in the lunch boxes, photo from our house.
 tags: [kids]
 ---
