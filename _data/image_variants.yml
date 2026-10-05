@@ -140,6 +140,14 @@ pour-the-cream-in-the-middle:
     - 1600
   avif: true
   source_hash: 85354bff7e9966b7e5f2b15f47a30a299b4f12a3bedb9d5380c22dbcd9a9f36e
+small-water-bottles-in-lunch-box:
+  widths:
+    - 640
+    - 960
+    - 1280
+    - 1600
+  avif: true
+  source_hash: 2116e3c45c314c788ed1e8749aa3b900ec9d6e24d0d43efee4a9c411b68c663d
 snack-cabinet:
   widths:
     - 640
