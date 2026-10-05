@@ -1,11 +1,12 @@
 ---
 title: "A cubby for each kid inside the front door"
 description: "Built-in cubbies by the entry give coats, shoes, and backpacks a clear home so the kids can put things away after school without us chasing every pile."
-date:
+date: 2026-10-05
 image: /assets/images/posts/kids-entry-cubbies.webp
 image_alt: Open built-in entry cubby with coats on hooks, a hanging door organizer for gloves, and a shoe drawer pulled out under the bench
 image_caption: One of the kids' cubbies just inside our front door, photo from our house.
 tags: [kids, home]
+draft: false
 ---
 
 When we remodeled the house, we built a cubby for each of the kids right inside the front door. It is the first stop after school, the place where coats, shoes, gloves, hats, umbrellas, and backpacks live so they are not scattered across the floor by dinner.
