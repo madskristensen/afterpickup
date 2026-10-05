@@ -12,7 +12,7 @@ We entertain a lot, with Thanksgiving and Christmas as holiday dinners indoors, 
 
 We keep two sets of large Rubbermaid bins for these events, and the size of the gathering decides how many we put out. A smaller party gets one set, and bigger events use both sets. Stickers on the front say trash, recycling, and compost, and each bin has a liner that matches the sticker, so the right bag is easy to spot.
 
-Recycling uses recyclable liner bags that we tie off and toss with the contents. Compost works the same way, with a liner that goes out along with the scraps, bag and all. The end of the night stays simple because those bags are already sorted and ready to leave.
+Recycling uses recyclable liner bags that we tie off and toss with the contents. Compost works the same way, with a liner that goes out along with the scraps, bag and all. We also try to use compostable plates or trays, so most of what guests are holding at the end of the meal can go right into the compost bin and very little ends up in the trash. The end of the night stays simple because those bags are already sorted and ready to leave.
 
 Guests already know how to sort, and the stickers are plain enough that they do it here too, at a holiday dinner or when the kids' school friends and their families come for the BBQ. We tie the bags and carry them off when people head out, then put the bins away until the next gathering.
 
