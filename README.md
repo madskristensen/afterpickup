@@ -12,8 +12,8 @@ Tips and tricks for home and family. Jekyll on GitHub Pages, served at
    empty `date`. Nothing is live yet.
 4. **Review and merge the draft PR.** Merging only means *approved*. The post sits in
    `_queue/`.
-5. **Publish.** `publish-schedule` runs at 14:00 UTC on Mondays and Wednesdays (or on
-   demand). It takes the oldest queued file, stamps today's date, sets `draft: false`,
+5. **Publish.** `publish-schedule` runs only when started by hand or by the API.
+   It takes the oldest queued file, stamps today's date, sets `draft: false`,
    moves it to `_posts/YYYY-MM-DD-slug.md`, and pushes. One file per run. An empty
    queue is a no-op.
 6. **Deploy and notify search engines.** The Pages workflow builds and deploys the
