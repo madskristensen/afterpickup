@@ -9,10 +9,15 @@ layout: default
   <p class="meta"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time></p>
   {%- endif %}
 
+  <p class="print-url">{{ page.url | absolute_url }}</p>
+
   <div class="post-share" data-url="{{ page.url | absolute_url }}" data-title="{{ page.title | escape }}" data-text="{{ page.description | escape }}">
     <button type="button" class="share-button" data-share>
       <span data-label>Share</span>
     </button>
+    {%- if page.printable %}
+    <button type="button" class="print-button" data-print>Print</button>
+    {%- endif %}
     <p class="share-status" data-status role="status"></p>
   </div>
 

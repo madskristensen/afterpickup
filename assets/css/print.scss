@@ -1,0 +1,85 @@
+---
+---
+/* Printed posts. Linked with media="print", so it is not part of the
+   screen render. Black on white, including when the screen is dark. */
+
+html {
+  color-scheme: light only;
+}
+
+html,
+body,
+main,
+article,
+.post,
+.topic,
+.prose {
+  background: #fff !important;
+  color: #000 !important;
+}
+
+body {
+  font-family: Charter, "Bitstream Charter", Georgia, serif;
+  font-size: 12pt;
+  line-height: 1.45;
+}
+
+h1,
+h2,
+h3,
+p,
+li,
+a,
+.meta,
+.topic-intro,
+.print-url,
+.wordmark {
+  color: #000 !important;
+}
+
+a,
+a:visited {
+  color: #000 !important;
+  text-decoration: underline;
+}
+
+@page {
+  size: letter;
+  margin: 0.6in;
+}
+
+.topic-nav,
+.site-footer,
+.post-share,
+.share-button,
+.print-button,
+.related,
+.skip-link,
+.tags,
+.hero,
+.post-item-image,
+img,
+picture,
+svg,
+figure,
+figcaption {
+  display: none !important;
+}
+
+.print-url {
+  display: block !important;
+  margin: 0.2rem 0 1rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 10pt;
+  line-height: 1.3;
+}
+
+.prose ul li::before {
+  background: #000;
+}
+
+.post,
+.topic {
+  margin: 0;
+  padding: 0;
+}

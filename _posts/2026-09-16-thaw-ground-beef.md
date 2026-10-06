@@ -6,6 +6,7 @@ image: /assets/images/posts/thaw-ground-beef.webp
 image_alt: Vacuum-sealed ground beef thawing in a grey bowl of water in the kitchen sink.
 image_caption: Ground beef thawing in warm tap water, photo from our kitchen.
 tags: [kitchen]
+printable: true
 draft: false
 ---
 

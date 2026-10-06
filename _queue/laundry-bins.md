@@ -6,6 +6,7 @@ image: /assets/images/posts/laundry-bins.webp
 image_alt: Three named plastic laundry bins lined up with unfolded clean clothes sorted inside
 image_caption: The named laundry bins at our house.
 tags: [kids, home]
+printable: true
 ---
 
 Laundry in this house runs every day, sometimes more than one load, because three kids and the two of us do a lot of sports and workouts. The wash and the dry never took much thinking. What used to stall us was the pile that came out of the dryer, sitting there waiting to be folded and put away.

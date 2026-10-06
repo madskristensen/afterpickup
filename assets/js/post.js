@@ -33,6 +33,13 @@
     return copyWithTextarea(text);
   }
 
+  var printButtons = document.querySelectorAll("[data-print]");
+  for (var i = 0; i < printButtons.length; i++) {
+    printButtons[i].addEventListener("click", function () {
+      window.print();
+    });
+  }
+
   var root = document.querySelector(".post-share");
   if (!root) return;
   var button = root.querySelector("[data-share]");

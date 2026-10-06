@@ -6,6 +6,7 @@ image: /assets/images/posts/travel-emergency-kit.webp
 image_alt: Red first-aid case open on beige carpet, with medicines in baggies, small tools, laundry sheets, and the rest of the kit laid out beside it
 image_caption: The travel emergency kit we pack, photo from our house.
 tags: [travel, kids]
+printable: true
 ---
 
 We have always traveled with the same red first-aid case. It comes on flights, it comes when we drive, and it comes on cruises, zipped at home and dropped in the bag so we already know what is inside.

@@ -348,6 +348,10 @@ main,
   color: var(--soft-ink);
 }
 
+.print-url {
+  display: none;
+}
+
 .post-share {
   display: flex;
   flex-wrap: wrap;

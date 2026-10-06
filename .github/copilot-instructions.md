@@ -40,5 +40,6 @@ description: ""   # one sentence dek
 date:             # leave empty in the queue
 image: ""         # path or empty
 tags: []
+printable: false  # true for a recipe or checklist, which adds a Print button
 ---
 ```
