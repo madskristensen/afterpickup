@@ -12,7 +12,6 @@
     <link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/images/apple-touch-icon.png' | relative_url }}">
     {%- include seo.html -%}
     <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}?v={{ site.time | date: '%s' }}">
-    <link rel="stylesheet" href="{{ '/assets/css/print.css' | relative_url }}" media="print">
     {%- feed_meta -%}
 </head>
   <body>
@@ -43,11 +42,23 @@
       <p>&copy; {{ site.time | date: "%Y" }} {{ site.title }}</p>
     </footer>
     {%- comment -%}
-      One Cloudflare Web Analytics beacon; do not add another.
-      Inject after window load (Eastside pattern) so Lighthouse mobile stays 100.
+      Print CSS only on beforeprint (Eastside pattern). Cloudflare beacon
+      after window load so Lighthouse mobile stays 100. One beacon only.
     {%- endcomment %}
-    <script>
+    <script data-print="{{ '/assets/css/print.css' | relative_url }}">
     (function () {
+      var node = document.currentScript;
+      var printHref = (node && node.getAttribute("data-print")) || "";
+      function addPrint() {
+        if (!printHref) return;
+        if (document.head.querySelector("link[data-print-css]")) return;
+        var link = document.createElement("link");
+        link.rel = "stylesheet";
+        link.href = printHref;
+        link.media = "print";
+        link.setAttribute("data-print-css", "");
+        document.head.appendChild(link);
+      }
       function addBeacon() {
         if (document.querySelector("script[data-cf-beacon]")) return;
         var script = document.createElement("script");
@@ -56,6 +67,7 @@
         script.setAttribute("data-cf-beacon", JSON.stringify({ token: "f1da831cc80a4f8f840c2f41a5c96d67" }));
         document.head.appendChild(script);
       }
+      window.addEventListener("beforeprint", addPrint);
       window.addEventListener("load", addBeacon);
     })();
     </script>
