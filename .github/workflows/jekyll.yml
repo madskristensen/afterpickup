@@ -30,6 +30,20 @@ jobs:
         with:
           ref: ${{ inputs.checkout_ref || github.sha }}
 
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Render share cards
+        run: |
+          if [ ! -f /usr/share/fonts/truetype/noto/NotoSerif-Bold.ttf ]; then
+            sudo apt-get update
+            sudo apt-get install -y fonts-noto-core
+          fi
+          npm install --no-save --silent sharp@0.34.4 satori@0.18.3 @resvg/resvg-js@2.6.2
+          node script/render-share-cards.mjs
+
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:

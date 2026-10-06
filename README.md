@@ -60,5 +60,10 @@ tags: []
 
 ```sh
 bundle install
+npm install --no-save sharp@0.34.4 satori@0.18.3 @resvg/resvg-js@2.6.2
+node script/render-share-cards.mjs
 bundle exec jekyll serve
 ```
+
+Share cards are generated into `assets/images/share/` and are not committed.
+The Pages workflow runs the same script before Jekyll.

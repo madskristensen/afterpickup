@@ -52,3 +52,7 @@ exclude:
   - vendor
   - _queue
   - .vs
+  - .bundle
+  - script
+  - node_modules
+  - .share-cache
