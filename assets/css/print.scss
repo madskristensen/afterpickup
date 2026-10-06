@@ -12,7 +12,6 @@ body,
 main,
 article,
 .post,
-.topic,
 .prose {
   background: #fff !important;
   color: #000 !important;
@@ -31,7 +30,6 @@ p,
 li,
 a,
 .meta,
-.topic-intro,
 .print-url,
 .wordmark {
   color: #000 !important;
@@ -48,8 +46,9 @@ a:visited {
   margin: 0.6in;
 }
 
-.topic-nav,
 .site-footer,
+.pager,
+.read-next,
 .post-share,
 .share-button,
 .print-button,
@@ -78,8 +77,7 @@ figcaption {
   background: #000;
 }
 
-.post,
-.topic {
+.post {
   margin: 0;
   padding: 0;
 }

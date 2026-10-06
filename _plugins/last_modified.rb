@@ -7,8 +7,7 @@ require "tzinfo"
 
 module AfterPickup
   # Sitemap lastmod and article dateModified come from git, not the
-  # build clock. A page with no source file, such as a topic page,
-  # uses the newest post it lists.
+  # build clock. The homepage also counts the newest post it lists.
   class LastModified < Jekyll::Generator
     safe true
     priority :low
@@ -30,12 +29,9 @@ module AfterPickup
       site.pages.each do |page|
         next if page.data["sitemap"] == false
 
-        extra = nil
-        if page.url == "/"
-          extra = newest(site.posts.docs)
-        elsif page.data["topic_id"]
-          extra = newest_in_topic(site, page.data["topic_tags"])
-        end
+        next unless page.url == "/"
+
+        extra = newest(site.posts.docs)
         next unless extra
 
         page.data["last_modified_at"] = [page.data["last_modified_at"], extra].compact.max
@@ -44,14 +40,6 @@ module AfterPickup
 
     def newest(posts)
       posts.filter_map { |post| post.data["last_modified_at"] }.max
-    end
-
-    def newest_in_topic(site, tags)
-      wanted = Array(tags).map(&:to_s)
-      newest(site.posts.docs.select do |post|
-        post_tags = Array(post.data["tags"]).map(&:to_s)
-        (post_tags & wanted).any?
-      end)
     end
 
     # dateModified should not sit before the publish date.
