@@ -15,7 +15,7 @@ sections:
     text: >-
       When we travel, dirty clothes find the floor, because a hotel room
       does not come with a hamper and the suitcase stays open for the clean
-      stuff.       We pack a foldable one that opens to full size once the bags
+      stuff. We pack a foldable one that opens to full size once the bags
       are down, and we open it before anyone starts living out of a suitcase,
       so we are not hunting under the bed for a sock at checkout.
   - slug: travel-toys
