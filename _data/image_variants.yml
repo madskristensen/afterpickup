@@ -140,6 +140,14 @@ pour-the-cream-in-the-middle:
     - 1600
   avif: true
   source_hash: 85354bff7e9966b7e5f2b15f47a30a299b4f12a3bedb9d5380c22dbcd9a9f36e
+propane-firepit-for-smores:
+  widths:
+    - 640
+    - 960
+    - 1280
+    - 1600
+  avif: true
+  source_hash: d6786655eaf96746788cff8eaaffb8342153d5df11cf036dd95efeb7f926ccc4
 small-water-bottles-in-lunch-box:
   widths:
     - 640
