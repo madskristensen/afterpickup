@@ -8,7 +8,7 @@ image_caption: Small water bottles in the lunch boxes, photo from our house.
 tags: [kids]
 ---
 
-We pack a small water bottle that fits inside each lunch box, with enough water just for lunch sitting easily alongside the food. The kids still have their full-size water bottles for the rest of the school day and for after recess, so the small one has a single job, which is making sure they have something to drink with lunch. We try to avoid juice and milk at lunchtime, so water is what goes in the box, and the bottle and the box leave the house together and come back together at the end of the day.
+We pack a small water bottle that fits inside each lunch box. It holds just enough water for lunch and sits easily alongside the food. The kids still have their full-size water bottles for the rest of the school day and for after recess, so the small one has a single job, which is making sure they have something to drink with lunch. We try to avoid juice and milk at lunchtime, so water is what goes in the box, and the bottle and the box leave the house together and come back together at the end of the day.
 
 At school, lunchboxes and water bottles are trolleyed to the lunch room, and after lunch the kids are responsible for putting the lunch box and the water bottle back on the trolley. When the lunch bottle lives inside the box, it goes back on the trolley with the lunch, so it comes home instead of getting left behind.
 
