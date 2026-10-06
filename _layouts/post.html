@@ -29,19 +29,21 @@ layout: default
   {%- if page.tags and page.tags != empty %}
   <p class="tags">
     {%- for tag in page.tags -%}
-    {%- assign tag_topic = "" -%}
-    {%- for topic in site.data.topics -%}
-    {%- if tag_topic == "" and topic.tags contains tag -%}
-    {%- assign tag_topic = topic.id -%}
-    {%- endif -%}
-    {%- endfor -%}
-    {%- if tag_topic != "" -%}
-    <a class="tag" href="{{ '/topics/' | append: tag_topic | append: '/' | relative_url }}">{{ tag }}</a>
-    {%- else -%}
     <span class="tag">{{ tag }}</span>
-    {%- endif -%}
     {%- endfor -%}
   </p>
+  {%- endif %}
+
+  {%- comment -%}
+    One big pick right where reading ends, then the smaller Keep reading
+    cards. related_posts never repeats the Read next post.
+  {%- endcomment -%}
+  {%- assign read_next = page | read_next_posts -%}
+  {%- if read_next.size > 0 %}
+  <aside class="read-next" aria-labelledby="read-next-title">
+    <h2 id="read-next-title">Read next</h2>
+    {%- include post-cards.html posts=read_next feature=true -%}
+  </aside>
   {%- endif %}
 
   {%- assign related = page | related_posts: 3 -%}

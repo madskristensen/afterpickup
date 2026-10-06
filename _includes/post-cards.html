@@ -1,37 +1,32 @@
 {%- comment -%}
-  Photo cards for a list of posts.
-  posts: required.
-  limit: optional max number of cards.
-  lead: when true, the first card uses the wide homepage image.
-  compact: smaller headings, for related posts.
+  A list of post cards. Every card comes from post-card.html, so the
+  only differences between lists are card size and the number of columns.
+  posts:    required.
+  limit:    optional max number of cards.
+  lead:     when true, the first card is wide and loads first (page 1).
+  compact:  small cards in three columns (Keep reading, 404).
+  feature:  one wide card per row (Read next).
+  priority: when true, the first card's photo loads first.
 {%- endcomment -%}
 {%- assign card_posts = include.posts -%}
 {%- if include.limit -%}
 {%- assign card_limit = include.limit | plus: 0 -%}
 {%- assign card_posts = include.posts | slice: 0, card_limit -%}
 {%- endif -%}
-<section class="post-list{% if include.compact %} is-compact{% endif %}">
+<section class="post-list{% if include.compact %} is-compact{% elsif include.feature %} is-feature{% endif %}">
   {%- for post in card_posts %}
-  <article class="post-item">
-    {%- if post.image %}
-    {%- assign thumbnail_alt = post.image_alt | default: post.title -%}
-    <a class="post-item-image" href="{{ post.url | relative_url }}" tabindex="-1" aria-hidden="true">
-      {%- if include.lead and forloop.first -%}
-      {%- include responsive-img.html src=post.image alt=thumbnail_alt priority="high" sizes="(min-width: 62.5rem) 60rem, 100vw" -%}
-      {%- elsif forloop.first -%}
-      {%- include responsive-img.html src=post.image alt=thumbnail_alt priority="high" sizes="(min-width: 62.5rem) 29rem, (min-width: 40rem) calc((100vw - 4.5rem) / 2), 100vw" -%}
-      {%- else -%}
-      {%- include responsive-img.html src=post.image alt=thumbnail_alt loading="lazy" sizes="(min-width: 62.5rem) 29rem, (min-width: 40rem) calc((100vw - 4.5rem) / 2), 100vw" -%}
-      {%- endif -%}
-    </a>
-    {%- endif %}
-    <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
-    <p class="meta"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %-d, %Y" }}</time></p>
-    {%- unless include.compact %}
-    {%- if post.description %}
-    <p class="dek">{{ post.description }}</p>
-    {%- endif %}
-    {%- endunless %}
-  </article>
+  {%- assign card_priority = false -%}
+  {%- if forloop.first and include.lead or forloop.first and include.priority -%}
+  {%- assign card_priority = true -%}
+  {%- endif -%}
+  {%- if include.compact -%}
+  {%- include post-card.html post=post style="small" priority=card_priority -%}
+  {%- elsif include.feature -%}
+  {%- include post-card.html post=post style="wide" priority=card_priority -%}
+  {%- elsif include.lead and forloop.first -%}
+  {%- include post-card.html post=post style="wide" lead=true priority=card_priority -%}
+  {%- else -%}
+  {%- include post-card.html post=post priority=card_priority -%}
+  {%- endif -%}
   {%- endfor %}
 </section>

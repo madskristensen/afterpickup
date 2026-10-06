@@ -24,26 +24,20 @@
 </head>
   <body>
     <a class="skip-link" href="#content">Skip to content</a>
+    {%- comment -%}
+      One header for every page. The site title is never the page h1, so
+      the title and tagline sit in exactly the same spot everywhere.
+    {%- endcomment %}
     <header class="site-header">
-      <div class="site-header-top">
-        {%- if page.url == "/" %}
-        <h1 class="home-heading">
-          <a class="wordmark" href="{{ '/' | relative_url }}">{% include logo.html %}{{ site.title }}</a>
-          {%- if site.tagline %}
-          <span class="tagline">{{ site.tagline }}</span>
-          {%- endif %}
-        </h1>
-        {%- else %}
+      <div class="site-title">
         <a class="wordmark" href="{{ '/' | relative_url }}">{% include logo.html %}{{ site.title }}</a>
-        {%- endif %}
       </div>
-      {%- if site.tagline and page.url != "/" %}
+      {%- if site.tagline %}
       <p class="tagline">{{ site.tagline }}</p>
       {%- endif %}
-      {%- include topic-nav.html -%}
     </header>
 
-    <main id="content" tabindex="-1"{% if page.url == "/" %} class="home-main"{% endif %}>
+    <main id="content" tabindex="-1">
       {{ content }}
     </main>
 

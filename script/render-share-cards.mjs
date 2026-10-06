@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Build 1200x630 share cards for posts, topic pages, and the homepage.
+// Build 1200x630 share cards for posts and the homepage.
 // The title sits on the hero photo. The Pages workflow runs this before
 // Jekyll. JPEGs and _data/share_manifest.yml are not committed. A card
 // is redrawn only when its photo, title, or this script changes.
@@ -83,45 +83,11 @@ function parseFrontMatter(text) {
   return data;
 }
 
-function parseTopics(text) {
-  const topics = [];
-  let current = null;
-  let listKey = null;
-  for (const line of text.split(/\r?\n/)) {
-    if (line.startsWith("#") || line.trim() === "") continue;
-    if (line.startsWith("- id:")) {
-      if (current) topics.push(current);
-      current = { id: unquote(line.slice(5)), tags: [] };
-      listKey = null;
-      continue;
-    }
-    if (!current) continue;
-    if (/^\s+-\s+/.test(line) && listKey) {
-      current[listKey].push(unquote(line.replace(/^\s+-\s+/, "")));
-      continue;
-    }
-    const found = line.match(/^  ([A-Za-z0-9_]+):\s*(.*)$/);
-    if (!found) continue;
-    const key = found[1];
-    const raw = found[2].trim();
-    if (raw === "" || raw === ">" || raw === ">-" || raw === "|" || raw === "|-") {
-      listKey = key;
-      current[key] = [];
-      continue;
-    }
-    listKey = null;
-    current[key] = unquote(raw);
-  }
-  if (current) topics.push(current);
-  return topics.filter((topic) => topic.id && topic.title);
-}
-
 function postSlug(name) {
   return name.replace(/^\d{4}-\d{2}-\d{2}-/, "").replace(/\.md$/, "");
 }
 
 function cards() {
-  const topics = parseTopics(read(join(ROOT, "_data", "topics.yml")).toString("utf8"));
   const posts = [];
   for (const name of readdirSync(join(ROOT, "_posts")).filter((file) => file.endsWith(".md")).sort()) {
     const data = parseFrontMatter(read(join(ROOT, "_posts", name)).toString("utf8"));
@@ -149,19 +115,6 @@ function cards() {
       alt: "Caitlin and the kids on the couch after pickup, reading and drawing.",
     },
   ];
-
-  for (const topic of topics) {
-    const match = posts.find((post) => post.tags.some((tag) => topic.tags.includes(tag)));
-    if (!match) continue;
-    list.push({
-      id: `topic-${topic.id}`,
-      path: `/topics/${topic.id}/`,
-      title: topic.title,
-      kicker: DOMAIN,
-      image: match.image,
-      alt: match.alt,
-    });
-  }
 
   for (const post of posts) {
     list.push({

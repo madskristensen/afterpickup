@@ -1,0 +1,19 @@
+{%- comment -%}
+  A tiny page that sends an old URL somewhere else, so links people and
+  search engines already have do not end in a 404. Set redirect_to in
+  front matter, and sitemap: false so it never gets listed.
+{%- endcomment -%}
+{%- assign redirect_url = page.redirect_to | default: "/" -%}
+<!doctype html>
+<html lang="{{ site.lang | default: 'en-US' }}">
+<head>
+  <meta charset="utf-8">
+  <title>{{ site.title }}</title>
+  <meta name="robots" content="noindex,follow">
+  <link rel="canonical" href="{{ redirect_url | absolute_url }}">
+  <meta http-equiv="refresh" content="0; url={{ redirect_url | relative_url }}">
+</head>
+<body>
+  <p>We moved this page. <a href="{{ redirect_url | relative_url }}">Head to {{ site.title }}</a> for all our posts.</p>
+</body>
+</html>
