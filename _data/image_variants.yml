@@ -148,6 +148,14 @@ propane-firepit-for-smores:
     - 1600
   avif: true
   source_hash: d6786655eaf96746788cff8eaaffb8342153d5df11cf036dd95efeb7f926ccc4
+small-water-bottles-in-lunch-box:
+  widths:
+    - 640
+    - 960
+    - 1280
+    - 1600
+  avif: true
+  source_hash: 70f859cdf99dc8be80b45daefb30c2798573bdecec177cb6ae13b00dfc8c804b
 snack-cabinet:
   widths:
     - 640
