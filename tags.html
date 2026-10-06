@@ -1,23 +1,15 @@
 ---
 layout: default
-title: Topics
-description: After Pickup posts are grouped into a few topics.
+title: Tags
+description: Every After Pickup post lives on the homepage, newest first.
 permalink: /tags/
 sitemap: false
 robots: noindex,follow
 ---
 <article class="post">
-  <h1>Topics</h1>
+  <h1>Tags</h1>
   <div class="prose">
-    <p>We group posts into a few topics now. Each one has its own page, and a new post shows up there on its own.</p>
-    <ul>
-      {%- for topic in site.data.topics %}
-      <li id="{{ topic.id }}"><a href="{{ '/topics/' | append: topic.id | append: '/' | relative_url }}">{{ topic.title }}</a></li>
-      {%- endfor %}
-    </ul>
-    <p id="coffee"><a href="{{ '/topics/kitchen/' | relative_url }}">Coffee</a> lives with Kitchen.</p>
-    <p id="kids"><a href="{{ '/topics/kids-home/' | relative_url }}">Kids</a> lives with Kids &amp; home.</p>
-    <p id="home"><a href="{{ '/topics/kids-home/' | relative_url }}">Home</a> lives with Kids &amp; home.</p>
-    <p id="welcome"><a href="{{ '/' | relative_url }}">All posts</a></p>
+    <p>We keep things simple for now. Every post lives on the homepage, newest first, and the tags under each post are just there to tell you what it is about.</p>
+    <p><a href="{{ '/' | relative_url }}">See all our posts</a></p>
   </div>
 </article>

@@ -8,11 +8,6 @@ sitemap: false
 
 We are {{ site.author.name }}. We write the routines we have actually used at home.
 
-## Topics
-
-{% for topic in site.data.topics -%}
-- [{{ topic.title }}]({{ site.url }}/topics/{{ topic.id }}/): {{ topic.description }}
-{% endfor %}
 ## Posts
 
 {% for post in site.posts -%}

@@ -33,6 +33,11 @@ sass:
 plugins:
   - jekyll-feed
   - jekyll-sitemap
+  - jekyll-paginate
+
+# Homepage paging. Page 1 stays at /, then /page/2/ and so on.
+paginate: 12
+paginate_path: /page/:num/
 
 defaults:
   - scope:

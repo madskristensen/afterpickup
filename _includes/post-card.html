@@ -1,0 +1,37 @@
+{%- comment -%}
+  The one post card. Every list of posts on the site renders this, so a
+  card looks the same everywhere. Only the size changes.
+  post:     required.
+  style:    optional. "wide" spans the whole column with a big title
+            (the newest post on page 1, and Read next). "small" drops
+            the description and shrinks the title (Keep reading, 404).
+  lead:     optional. The newest post on page 1. Its photo runs edge to
+            edge on phones.
+  priority: optional. true when the photo is likely above the fold.
+{%- endcomment -%}
+{%- assign card = include.post -%}
+{%- assign card_size = include.style | default: "regular" -%}
+{%- if card_size == "wide" -%}
+{%- assign card_sizes = "(min-width: 62.5rem) 60rem, 100vw" -%}
+{%- else -%}
+{%- assign card_sizes = "(min-width: 62.5rem) 29rem, (min-width: 40rem) calc((100vw - 4.5rem) / 2), 100vw" -%}
+{%- endif -%}
+<article class="post-item{% if card_size != 'regular' %} is-{{ card_size }}{% endif %}{% if include.lead %} is-lead{% endif %}">
+  {%- if card.image %}
+  {%- assign thumbnail_alt = card.image_alt | default: card.title -%}
+  <a class="post-item-image" href="{{ card.url | relative_url }}" tabindex="-1" aria-hidden="true">
+    {%- if include.priority -%}
+    {%- include responsive-img.html src=card.image alt=thumbnail_alt priority="high" sizes=card_sizes -%}
+    {%- else -%}
+    {%- include responsive-img.html src=card.image alt=thumbnail_alt loading="lazy" sizes=card_sizes -%}
+    {%- endif -%}
+  </a>
+  {%- endif %}
+  <h2><a href="{{ card.url | relative_url }}">{{ card.title }}</a></h2>
+  <p class="meta"><time datetime="{{ card.date | date_to_xmlschema }}">{{ card.date | date: "%B %-d, %Y" }}</time></p>
+  {%- unless card_size == "small" %}
+  {%- if card.description %}
+  <p class="dek">{{ card.description }}</p>
+  {%- endif %}
+  {%- endunless %}
+</article>

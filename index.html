@@ -3,12 +3,40 @@ layout: default
 title: Tested after-school systems for families
 description: Practical family routines and tested systems for calmer hours between school pickup and lights-out.
 ---
+{%- comment -%}
+  Homepage and its older pages (/page/2/ and up). Twelve posts per page,
+  set by paginate in _config.yml. Page 1 opens with one wide card.
+{%- endcomment -%}
+{%- assign home_page = paginator.page | default: 1 -%}
+{%- assign home_posts = paginator.posts | default: site.posts -%}
+{%- assign home_first = false -%}
+{%- if home_page == 1 -%}
+{%- assign home_first = true -%}
+{%- endif -%}
+<h1 class="visually-hidden">{{ site.title }}: {{ site.tagline }}{% unless home_first %} Page {{ home_page }}.{% endunless %}</h1>
+
 {%- if site.posts.size == 0 %}
 <p>The first posts are still in the queue.</p>
 {%- else %}
-{%- include post-cards.html posts=site.posts lead=true -%}
+<div class="home-posts">
+  {%- include post-cards.html posts=home_posts lead=home_first priority=true -%}
+</div>
 {%- endif %}
 
+{%- if paginator.total_pages > 1 %}
+<nav class="pager" aria-label="More posts">
+  {%- if paginator.previous_page %}
+  <a class="pager-link pager-newer" href="{{ paginator.previous_page_path | relative_url }}" rel="prev"><span aria-hidden="true">&larr;</span> Newer posts</a>
+  {%- endif %}
+  <p class="pager-status">Page {{ paginator.page }} of {{ paginator.total_pages }}</p>
+  {%- if paginator.next_page %}
+  <a class="pager-link pager-older" href="{{ paginator.next_page_path | relative_url }}" rel="next">Older posts <span aria-hidden="true">&rarr;</span></a>
+  {%- endif %}
+</nav>
+{%- endif %}
+
+{%- if home_first %}
 <section class="home-intro" aria-label="About After Pickup">
   <p>We write down the after-school systems we have tested in our own kitchen and hallway, including the ones that made an ordinary Tuesday easier and the ones that did not last. <a href="{{ '/about/' | relative_url }}">Read more about us.</a></p>
 </section>
+{%- endif %}
