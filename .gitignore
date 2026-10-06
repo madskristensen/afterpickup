@@ -3,7 +3,12 @@ _site/
 .jekyll-metadata
 Gemfile.lock
 vendor/
+.bundle/
 .vs
+node_modules/
+.share-cache/
+assets/images/share/
+_data/share_manifest.yml
 
 # Python bytecode from the image scripts
 __pycache__/

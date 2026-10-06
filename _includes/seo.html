@@ -1,7 +1,42 @@
 {%- assign seo_title = page.title | default: site.title -%}
 {%- assign seo_description = page.description | default: site.description -%}
 {%- assign canonical_url = page.url | absolute_url | replace: '/index.html', '/' -%}
-{%- assign seo_image = page.image | absolute_url -%}
+{%- assign share_card = nil -%}
+{%- for card in site.data.share_manifest -%}
+{%- if card.path == page.url -%}
+{%- assign share_card = card -%}
+{%- endif -%}
+{%- endfor -%}
+{%- if share_card -%}
+{%- assign seo_image_path = share_card.image -%}
+{%- assign seo_image_alt = share_card.alt -%}
+{%- assign seo_image_width = share_card.width | default: 1200 -%}
+{%- assign seo_image_height = share_card.height | default: 630 -%}
+{%- assign seo_image_type = "image/jpeg" -%}
+{%- elsif page.image -%}
+{%- assign seo_image_path = page.image -%}
+{%- assign seo_image_alt = page.image_alt | default: site.image_alt -%}
+{%- if page.image contains ".webp" -%}
+{%- assign seo_image_width = 1600 -%}
+{%- assign seo_image_height = 900 -%}
+{%- assign seo_image_type = "image/webp" -%}
+{%- elsif page.image contains ".png" -%}
+{%- assign seo_image_width = 1200 -%}
+{%- assign seo_image_height = 630 -%}
+{%- assign seo_image_type = "image/png" -%}
+{%- else -%}
+{%- assign seo_image_width = 1200 -%}
+{%- assign seo_image_height = 630 -%}
+{%- assign seo_image_type = "image/jpeg" -%}
+{%- endif -%}
+{%- else -%}
+{%- assign seo_image_path = "/assets/images/og-image.png" -%}
+{%- assign seo_image_alt = site.image_alt -%}
+{%- assign seo_image_width = 1200 -%}
+{%- assign seo_image_height = 630 -%}
+{%- assign seo_image_type = "image/png" -%}
+{%- endif -%}
+{%- assign seo_image = seo_image_path | absolute_url -%}
 {%- assign author_url = site.author.url | absolute_url -%}
 {%- assign organization_id = site.url | append: '/#organization' -%}
 {%- assign website_id = site.url | append: '/#website' -%}
@@ -25,10 +60,11 @@
 <meta property="og:title" content="{{ seo_title | escape }}">
 <meta property="og:site_name" content="{{ site.title | escape }}">
 <meta property="og:image" content="{{ seo_image }}">
-{%- if page.image_alt %}
-<meta property="og:image:alt" content="{{ page.image_alt | escape }}">
-{%- elsif site.image_alt %}
-<meta property="og:image:alt" content="{{ site.image_alt | escape }}">
+<meta property="og:image:width" content="{{ seo_image_width }}">
+<meta property="og:image:height" content="{{ seo_image_height }}">
+<meta property="og:image:type" content="{{ seo_image_type }}">
+{%- if seo_image_alt %}
+<meta property="og:image:alt" content="{{ seo_image_alt | escape }}">
 {%- endif %}
 {%- if page.date %}
 <meta property="og:type" content="article">
@@ -37,12 +73,11 @@
 <meta property="og:type" content="website">
 {%- endif %}
 <meta name="twitter:card" content="{{ site.twitter.card | default: 'summary_large_image' }}">
-<meta property="twitter:image" content="{{ seo_image }}">
-<meta property="twitter:title" content="{{ seo_title | escape }}">
-{%- if page.image_alt %}
-<meta name="twitter:image:alt" content="{{ page.image_alt | escape }}">
-{%- elsif site.image_alt %}
-<meta name="twitter:image:alt" content="{{ site.image_alt | escape }}">
+<meta name="twitter:image" content="{{ seo_image }}">
+<meta name="twitter:title" content="{{ seo_title | escape }}">
+<meta name="twitter:description" content="{{ seo_description | escape }}">
+{%- if seo_image_alt %}
+<meta name="twitter:image:alt" content="{{ seo_image_alt | escape }}">
 {%- endif %}
 <meta name="twitter:site" content="@{{ site.twitter.username | remove: '@' }}">
 <meta name="twitter:creator" content="@{{ site.author.twitter | remove: '@' }}">
@@ -74,6 +109,16 @@
   "@id": {{ website_id | jsonify }},
   "name": {{ site.title | jsonify }},
   "url": {{ canonical_url | jsonify }},
+  {%- elsif page.topic_id %}
+  "@type": "CollectionPage",
+  "name": {{ seo_title | jsonify }},
+  "url": {{ canonical_url | jsonify }},
+  {%- if page.last_modified_at %}
+  "dateModified": {{ page.last_modified_at | date_to_xmlschema | jsonify }},
+  {%- endif %}
+  "isPartOf": {
+    "@id": {{ website_id | jsonify }}
+  },
   {%- elsif page.url == '/about/' %}
   "@type": "AboutPage",
   "name": {{ seo_title | jsonify }},
@@ -107,4 +152,9 @@
   }
 }
 </script>
+{%- if page.breadcrumb_json %}
+<script type="application/ld+json">
+{{ page.breadcrumb_json | safe }}
+</script>
+{%- endif %}
 {%- endunless %}

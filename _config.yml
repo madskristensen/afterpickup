@@ -21,7 +21,7 @@ social:
     - https://twitter.com/madskristensen
 
 permalink: /:title/
-timezone: America/Chicago
+timezone: America/Los_Angeles
 
 markdown: kramdown
 kramdown:
@@ -52,3 +52,7 @@ exclude:
   - vendor
   - _queue
   - .vs
+  - .bundle
+  - script
+  - node_modules
+  - .share-cache

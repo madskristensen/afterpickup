@@ -1,0 +1,41 @@
+# Topic landing pages. A new post shows up on its own when its tags
+# match. The header links here, never to individual posts.
+- id: kitchen
+  title: Kitchen
+  description: Meals, drawers, and small kitchen habits we actually use on a weeknight.
+  intro: >-
+    The kitchen is where a lot of our after-school ideas start. These are
+    the meals, drawers, and small habits we actually use once the backpacks
+    hit the floor.
+  tags:
+    - kitchen
+    - coffee
+
+- id: kids-home
+  title: Kids & home
+  description: Systems for the kids and the house, from the front door to the closet.
+  intro: >-
+    These are the systems for the kids and the house, from the front door
+    to the closet. We write down the ones that still help after the first
+    week.
+  tags:
+    - kids
+    - home
+
+- id: travel
+  title: Travel
+  description: What we pack so a trip does not undo the routines that work at home.
+  intro: >-
+    A hotel room or a long weekend can undo the routines that work at home.
+    These are the things we pack so they travel with us.
+  tags:
+    - travel
+
+- id: mornings
+  title: Mornings
+  description: Cues and habits for the stretch before school, when everyone needs to get out the door.
+  intro: >-
+    Mornings are the stretch before school, when everyone needs to get out
+    the door. These are the cues and habits that took the herding off us.
+  tags:
+    - mornings

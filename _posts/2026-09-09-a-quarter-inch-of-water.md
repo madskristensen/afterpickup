@@ -6,6 +6,7 @@ image: /assets/images/posts/a-quarter-inch-of-water.webp
 image_alt: Soft-boiled egg halves on platters with chives, paprika, and shrimp.
 image_caption: Soft-boiled eggs from our kitchen, photo from our house.
 tags: [kitchen]
+printable: true
 draft: false
 ---
 

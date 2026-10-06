@@ -6,6 +6,7 @@ image: /assets/images/posts/cold-oven-bacon.webp
 image_alt: Thick bacon strips cooked on a foil-lined baking sheet.
 image_caption: Bacon from a cold oven start, photo from our kitchen.
 tags: [kitchen]
+printable: true
 draft: false
 ---
 

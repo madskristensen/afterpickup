@@ -6,6 +6,7 @@ image: /assets/images/posts/pour-the-cream-in-the-middle.webp
 image_alt: Cream pouring into a glass of iced coffee, swirling through the ice
 image_caption: Photo by Abdulrhman Alkady / Pexels
 tags: [kitchen, coffee]
+printable: true
 draft: false
 ---
 
