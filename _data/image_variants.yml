@@ -155,7 +155,7 @@ small-water-bottles-in-lunch-box:
     - 1280
     - 1600
   avif: true
-  source_hash: 5221059a4adb88c9ce36c5417b98f96341e7a32101c80eb761f9b18fb2afd983
+  source_hash: 70f859cdf99dc8be80b45daefb30c2798573bdecec177cb6ae13b00dfc8c804b
 snack-cabinet:
   widths:
     - 640
