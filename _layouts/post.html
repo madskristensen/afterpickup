@@ -15,7 +15,19 @@ layout: default
 
   {%- if page.tags and page.tags != empty %}
   <p class="tags">
-    {%- for tag in page.tags %}<a class="tag" href="{{ '/tags/' | relative_url }}#{{ tag | slugify }}">{{ tag }}</a>{% endfor -%}
+    {%- for tag in page.tags -%}
+    {%- assign tag_topic = "" -%}
+    {%- for topic in site.data.topics -%}
+    {%- if tag_topic == "" and topic.tags contains tag -%}
+    {%- assign tag_topic = topic.id -%}
+    {%- endif -%}
+    {%- endfor -%}
+    {%- if tag_topic != "" -%}
+    <a class="tag" href="{{ '/topics/' | append: tag_topic | append: '/' | relative_url }}">{{ tag }}</a>
+    {%- else -%}
+    <span class="tag">{{ tag }}</span>
+    {%- endif -%}
+    {%- endfor -%}
   </p>
   {%- endif %}
 

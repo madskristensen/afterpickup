@@ -3,35 +3,11 @@ layout: default
 title: Tested after-school systems for families
 description: Practical family routines and tested systems for calmer hours between school pickup and lights-out.
 ---
-<section class="post-list">
-  {%- if site.posts.size == 0 %}
-  <p>The first posts are still in the queue.</p>
-  {%- endif %}
-  {%- for post in site.posts %}
-  <article class="post-item">
-    {%- if post.image %}
-    {%- assign thumbnail_alt = post.image_alt | default: post.title -%}
-    <a class="post-item-image" href="{{ post.url | relative_url }}" tabindex="-1" aria-hidden="true">
-      {%- comment -%}
-        Only the first thumbnail is a plausible LCP element. Marking every
-        one high priority would make them compete for bandwidth, so the
-        rest load lazily as the reader scrolls.
-      {%- endcomment -%}
-      {%- if forloop.first -%}
-      {%- include responsive-img.html src=post.image alt=thumbnail_alt priority="high" sizes="(min-width: 62.5rem) 60rem, 100vw" -%}
-      {%- else -%}
-      {%- include responsive-img.html src=post.image alt=thumbnail_alt loading="lazy" sizes="(min-width: 62.5rem) 29rem, (min-width: 40rem) calc((100vw - 4.5rem) / 2), 100vw" -%}
-      {%- endif -%}
-    </a>
-    {%- endif %}
-    <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
-    <p class="meta"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %-d, %Y" }}</time></p>
-    {%- if post.description %}
-    <p class="dek">{{ post.description }}</p>
-    {%- endif %}
-  </article>
-  {%- endfor %}
-</section>
+{%- if site.posts.size == 0 %}
+<p>The first posts are still in the queue.</p>
+{%- else %}
+{%- include post-cards.html posts=site.posts lead=true -%}
+{%- endif %}
 
 <section class="home-intro" aria-label="About After Pickup">
   <p>We write down the after-school systems we have tested in our own kitchen and hallway, including the ones that made an ordinary Tuesday easier and the ones that did not last. <a href="{{ '/about/' | relative_url }}">Read more about us.</a></p>

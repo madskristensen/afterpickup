@@ -1,0 +1,24 @@
+{%- comment -%}
+  Topic links only, plus All. Never individual posts. On a post, the
+  matching topic is marked current so the menu still says where you are.
+{%- endcomment -%}
+{%- assign current_topic = page.topic_id | default: "" -%}
+{%- if current_topic == "" and page.tags -%}
+{%- for topic in site.data.topics -%}
+{%- if current_topic == "" -%}
+{%- for tag in page.tags -%}
+{%- if topic.tags contains tag -%}
+{%- assign current_topic = topic.id -%}
+{%- endif -%}
+{%- endfor -%}
+{%- endif -%}
+{%- endfor -%}
+{%- endif -%}
+<nav class="topic-nav" aria-label="Topics">
+  <ul>
+    {%- for topic in site.data.topics %}
+    <li><a href="{{ '/topics/' | append: topic.id | append: '/' | relative_url }}"{% if current_topic == topic.id %} aria-current="page"{% endif %}>{{ topic.title }}</a></li>
+    {%- endfor %}
+    <li><a href="{{ '/' | relative_url }}"{% if page.url == "/" %} aria-current="page"{% endif %}>All</a></li>
+  </ul>
+</nav>

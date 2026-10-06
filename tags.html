@@ -1,33 +1,23 @@
 ---
 layout: default
-title: Tags
-description: Browse After Pickup posts by tag.
+title: Topics
+description: After Pickup posts are grouped into a few topics.
 permalink: /tags/
 sitemap: false
 robots: noindex,follow
 ---
 <article class="post">
-  <h1>Tags</h1>
+  <h1>Topics</h1>
   <div class="prose">
-
-    {%- assign tag_names = site.tags | sort %}
-    {%- if tag_names.size == 0 %}
-    <p>No tags yet.</p>
-    {%- endif %}
-
-    {%- for tag in tag_names %}
-    {%- assign tag_name = tag[0] %}
-    {%- assign tag_posts = tag[1] | sort: "date" | reverse %}
-
-    <h2 id="{{ tag_name | slugify }}">{{ tag_name }}</h2>
+    <p>We group posts into a few topics now. Each one has its own page, and a new post shows up there on its own.</p>
     <ul>
-      {%- for post in tag_posts %}
-
-      <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
+      {%- for topic in site.data.topics %}
+      <li id="{{ topic.id }}"><a href="{{ '/topics/' | append: topic.id | append: '/' | relative_url }}">{{ topic.title }}</a></li>
       {%- endfor %}
-
     </ul>
-    {%- endfor %}
-
+    <p id="coffee"><a href="{{ '/topics/kitchen/' | relative_url }}">Coffee</a> lives with Kitchen.</p>
+    <p id="kids"><a href="{{ '/topics/kids-home/' | relative_url }}">Kids</a> lives with Kids &amp; home.</p>
+    <p id="home"><a href="{{ '/topics/kids-home/' | relative_url }}">Home</a> lives with Kids &amp; home.</p>
+    <p id="welcome"><a href="{{ '/' | relative_url }}">All posts</a></p>
   </div>
 </article>

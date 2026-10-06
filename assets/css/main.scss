@@ -233,6 +233,35 @@ main,
   font-size: 0.95rem;
 }
 
+.topic-nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.15rem 1.1rem;
+  margin: 0.9rem 0 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--ui);
+  font-size: 0.95rem;
+}
+
+.topic-nav a {
+  display: inline-block;
+  padding: 0.45rem 0;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.topic-nav a:hover,
+.topic-nav a:focus {
+  text-decoration: underline;
+}
+
+.topic-nav a[aria-current="page"] {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 0.22em;
+}
+
 .tagline {
   margin: 0.75rem 0 0;
   color: var(--quiet-green);
@@ -327,11 +356,17 @@ main,
   margin-block: 1rem 2.5rem;
 }
 
-.post h1 {
+.post h1,
+.topic h1 {
   margin: 0 0 0.4rem;
   font-size: 2.15rem;
   line-height: 1.15;
   font-weight: 600;
+}
+
+.topic-intro {
+  margin: 0.35rem 0 0.5rem;
+  max-width: 38rem;
 }
 
 .prose {
@@ -512,7 +547,8 @@ figcaption {
     font-size: 2.4rem;
   }
 
-  .post h1 {
+  .post h1,
+  .topic h1 {
     font-size: 2.6rem;
   }
 
@@ -526,12 +562,14 @@ figcaption {
     max-width: 60rem;
   }
 
-  .home-main .post-list {
+  .home-main .post-list,
+  .topic .post-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     column-gap: 2rem;
   }
 
-  .home-main .post-item {
+  .home-main .post-item,
+  .topic .post-item {
     margin-block: 0 1.5rem;
   }
 
