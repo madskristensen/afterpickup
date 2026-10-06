@@ -3,6 +3,7 @@ name: Deploy Jekyll site to Pages
 on:
   push:
     branches: ["main"]
+  pull_request:
   workflow_dispatch:
   workflow_call:
     inputs:
@@ -18,8 +19,8 @@ permissions:
   id-token: write
 
 concurrency:
-  group: "pages"
-  cancel-in-progress: false
+  group: ${{ github.event_name == 'pull_request' && format('pages-pr-{0}', github.ref) || 'pages' }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   build:
@@ -77,6 +78,7 @@ jobs:
           path: "_site/"
 
   deploy:
+    if: github.event_name != 'pull_request'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
