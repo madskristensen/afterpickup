@@ -348,6 +348,46 @@ main,
   color: var(--soft-ink);
 }
 
+.post-share {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+  margin-top: 0.85rem;
+}
+
+.share-button,
+.print-button {
+  appearance: none;
+  margin: 0;
+  padding: 0.4rem 0.85rem;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--accent);
+  font-family: var(--ui);
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.share-button:hover,
+.share-button:focus,
+.print-button:hover,
+.print-button:focus {
+  border-color: var(--accent);
+}
+
+.share-status {
+  margin: 0;
+  min-height: 1.2em;
+  font-family: var(--ui);
+  font-size: 0.85rem;
+  color: var(--quiet-green);
+}
+
 /* ---------------------------------------------------------------
    Article
    --------------------------------------------------------------- */
