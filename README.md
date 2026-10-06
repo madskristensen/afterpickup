@@ -34,6 +34,7 @@ and the workflow logs a notice instead of submitting URLs.
 
 - `_queue/` — approved, not live.
 - `_posts/` — public. Only the publish workflow writes here.
+- `guides/` holds evergreen roundups. Each guide lists post slugs in its front matter. The page links only to posts that already exist in `_posts/`, so a queued slug appears on its own once that post is published.
 
 ## Labels
 

@@ -411,7 +411,9 @@ main,
 }
 
 .post h1,
-.topic h1 {
+.topic h1,
+.guide h1,
+.guides h1 {
   margin: 0 0 0.4rem;
   font-size: 2.15rem;
   line-height: 1.15;
@@ -421,6 +423,47 @@ main,
 .topic-intro {
   margin: 0.35rem 0 0.5rem;
   max-width: 38rem;
+}
+
+.topic-guides {
+  margin: 0.35rem 0 1.25rem;
+  max-width: 38rem;
+}
+
+.guide-section {
+  margin-top: 2.25rem;
+}
+
+.guide-section h2 {
+  margin: 0 0 0.35rem;
+  font-size: 1.35rem;
+  line-height: 1.3;
+  font-weight: 600;
+}
+
+.guide-section > p {
+  margin: 0.2rem 0 0.85rem;
+}
+
+.guide-section .post-list {
+  padding-block: 0;
+}
+
+.guide-section .post-item {
+  margin-block: 0;
+  padding-top: 0;
+}
+
+@media (min-width: 40rem) {
+  .guide-section .post-item {
+    max-width: 29rem;
+  }
+}
+
+.guide-more {
+  margin-top: 2.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--rule);
 }
 
 .prose {
@@ -613,7 +656,9 @@ figcaption {
   }
 
   .post h1,
-  .topic h1 {
+  .topic h1,
+  .guide h1,
+  .guides h1 {
     font-size: 2.6rem;
   }
 
@@ -629,6 +674,7 @@ figcaption {
 
   .home-main .post-list,
   .topic .post-list,
+  .guides .post-list,
   .related .post-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     column-gap: 2rem;
@@ -641,7 +687,8 @@ figcaption {
   }
 
   .home-main .post-item,
-  .topic .post-item {
+  .topic .post-item,
+  .guides .post-item {
     margin-block: 0 1.5rem;
   }
 

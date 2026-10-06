@@ -35,11 +35,53 @@ module AfterPickup
           extra = newest(site.posts.docs)
         elsif page.data["topic_id"]
           extra = newest_in_topic(site, page.data["topic_tags"])
+        elsif page.data["layout"].to_s == "guide"
+          extra = newest_slugs(site, guide_slugs(page))
         end
+        if extra
+          page.data["last_modified_at"] = [page.data["last_modified_at"], extra].compact.max
+        end
+        clamp_to_publish(page, zone)
+      end
+
+      site.pages.each do |page|
+        next unless page.data["layout"].to_s == "guides" || page.url == "/guides/"
+
+        guides = site.pages.select { |candidate| candidate.data["layout"].to_s == "guide" }
+        extra = guides.filter_map { |guide| guide.data["last_modified_at"] }.max
         next unless extra
 
         page.data["last_modified_at"] = [page.data["last_modified_at"], extra].compact.max
       end
+    end
+
+    # A guide dated today should not claim it was modified yesterday
+    # just because the file's git stamp is earlier than that date.
+    def clamp_to_publish(page, zone)
+      published = page.data["date"]
+      modified = page.data["last_modified_at"]
+      return unless published && modified
+
+      published_time = if published.is_a?(Date) && !published.is_a?(Time)
+        zone.local_time(published.year, published.month, published.day)
+      else
+        in_zone(published.to_time, zone)
+      end
+      return unless published_time
+      return unless modified.to_time < published_time.to_time
+
+      page.data["last_modified_at"] = published_time
+    end
+
+    def guide_slugs(page)
+      Array(page.data["sections"]).filter_map do |section|
+        section["slug"].to_s if section.is_a?(Hash) && section["slug"]
+      end
+    end
+
+    def newest_slugs(site, slugs)
+      wanted = Array(slugs)
+      newest(site.posts.docs.select { |post| wanted.include?(post.data["slug"].to_s) })
     end
 
     def newest(posts)

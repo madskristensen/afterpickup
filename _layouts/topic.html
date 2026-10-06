@@ -6,6 +6,7 @@ layout: default
   {%- if page.intro %}
   <p class="topic-intro">{{ page.intro }}</p>
   {%- endif %}
+  {%- include topic-guides.html -%}
 
   {%- if page.topic_posts.size == 0 %}
   <p>Nothing in this topic yet.</p>

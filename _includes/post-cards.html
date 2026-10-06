@@ -18,7 +18,7 @@
     <a class="post-item-image" href="{{ post.url | relative_url }}" tabindex="-1" aria-hidden="true">
       {%- if include.lead and forloop.first -%}
       {%- include responsive-img.html src=post.image alt=thumbnail_alt priority="high" sizes="(min-width: 62.5rem) 60rem, 100vw" -%}
-      {%- elsif forloop.first -%}
+      {%- elsif forloop.first and include.lazy != true -%}
       {%- include responsive-img.html src=post.image alt=thumbnail_alt priority="high" sizes="(min-width: 62.5rem) 29rem, (min-width: 40rem) calc((100vw - 4.5rem) / 2), 100vw" -%}
       {%- else -%}
       {%- include responsive-img.html src=post.image alt=thumbnail_alt loading="lazy" sizes="(min-width: 62.5rem) 29rem, (min-width: 40rem) calc((100vw - 4.5rem) / 2), 100vw" -%}

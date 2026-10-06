@@ -3,8 +3,8 @@
 require "json"
 
 module AfterPickup
-  # BreadcrumbList for posts and topic pages. Stored as JSON so the
-  # template can print it without building the graph in Liquid.
+  # BreadcrumbList for posts, topic pages, and guides. Stored as JSON
+  # so the template can print it without building the graph in Liquid.
   class Breadcrumbs < Jekyll::Generator
     safe true
     priority :low
@@ -17,14 +17,35 @@ module AfterPickup
       end
 
       site.pages.each do |page|
-        next unless page.data["topic_id"]
+        items = crumb_items(page, root)
+        next unless items
 
-        items = [
-          { "name" => "Home", "item" => "#{root}/" },
-          { "name" => page.data["title"].to_s, "item" => "#{root}#{page.url}" }
-        ]
         page.data["breadcrumb_json"] = json_for(items, root, page.url)
       end
+    end
+
+    def crumb_items(page, root)
+      home = { "name" => "Home", "item" => "#{root}/" }
+      here = { "name" => page.data["title"].to_s, "item" => "#{root}#{page.url}" }
+
+      if page.data["topic_id"]
+        return [home, here]
+      end
+
+      layout = page.data["layout"].to_s
+      if layout == "guides" || page.url == "/guides/"
+        return [home, here]
+      end
+
+      if layout == "guide"
+        return [
+          home,
+          { "name" => "Guides", "item" => "#{root}/guides/" },
+          here
+        ]
+      end
+
+      nil
     end
 
     def post_items(post, site, root)

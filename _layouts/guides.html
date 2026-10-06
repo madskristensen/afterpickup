@@ -1,0 +1,16 @@
+---
+layout: default
+---
+<article class="guides">
+  <h1>{{ page.title }}</h1>
+  <div class="prose">
+    {{ content }}
+  </div>
+
+  {%- assign guide_pages = site.pages | where: "layout", "guide" | sort: "position" -%}
+  {%- if guide_pages.size == 0 %}
+  <p>The first guides are still being gathered.</p>
+  {%- else %}
+  {%- include post-cards.html posts=guide_pages -%}
+  {%- endif %}
+</article>

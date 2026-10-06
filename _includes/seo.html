@@ -85,7 +85,28 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
+  {%- if page.layout == "guide" %}
+  "@type": "Article",
+  "headline": {{ seo_title | jsonify }},
   {%- if page.date %}
+  "datePublished": {{ page.date | date_to_xmlschema | jsonify }},
+  {%- endif %}
+  "dateModified": {{ page.last_modified_at | default: page.date | date_to_xmlschema | jsonify }},
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": {{ canonical_url | jsonify }}
+  },
+  "author": [
+    {%- for author in site.data.authors %}
+    {
+      "@type": "Person",
+      "@id": {{ author_url | append: '#' | append: author.id | jsonify }},
+      "name": {{ author.name | jsonify }},
+      "url": {{ author_url | jsonify }}
+    }{% unless forloop.last %},{% endunless %}
+    {%- endfor %}
+  ],
+  {%- elsif page.date %}
   "@type": "BlogPosting",
   "headline": {{ seo_title | jsonify }},
   "datePublished": {{ page.date | date_to_xmlschema | jsonify }},
@@ -109,7 +130,7 @@
   "@id": {{ website_id | jsonify }},
   "name": {{ site.title | jsonify }},
   "url": {{ canonical_url | jsonify }},
-  {%- elsif page.topic_id %}
+  {%- elsif page.topic_id or page.layout == "guides" %}
   "@type": "CollectionPage",
   "name": {{ seo_title | jsonify }},
   "url": {{ canonical_url | jsonify }},

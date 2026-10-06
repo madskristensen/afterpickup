@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Build 1200x630 share cards for posts, topic pages, and the homepage.
+// Build 1200x630 share cards for posts, topic pages, guides, and the homepage.
 // The title sits on the hero photo. The Pages workflow runs this before
 // Jekyll. JPEGs and _data/share_manifest.yml are not committed. A card
 // is redrawn only when its photo, title, or this script changes.
@@ -120,6 +120,35 @@ function postSlug(name) {
   return name.replace(/^\d{4}-\d{2}-\d{2}-/, "").replace(/\.md$/, "");
 }
 
+function loadGuides() {
+  const dir = join(ROOT, "guides");
+  if (!existsSync(dir)) return [];
+  const list = [];
+  for (const name of readdirSync(dir).filter((file) => file.endsWith(".md")).sort()) {
+    const data = parseFrontMatter(read(join(dir, name)).toString("utf8"));
+    if (!data.title || !data.image) continue;
+    if (String(data.draft) === "true") continue;
+    const slug = name.replace(/\.md$/, "");
+    const isIndex = slug === "index";
+    let path = data.permalink;
+    if (typeof path !== "string" || !path.startsWith("/")) {
+      path = isIndex ? "/guides/" : `/guides/${slug}/`;
+    }
+    if (!path.endsWith("/")) path += "/";
+    list.push({
+      id: isIndex ? "guides" : `guide-${slug}`,
+      path,
+      title: data.title,
+      image: data.image,
+      alt: data.image_alt || data.title,
+      position: Number(data.position || (isIndex ? 0 : 99)),
+      index: isIndex,
+    });
+  }
+  list.sort((a, b) => Number(b.index) - Number(a.index) || a.position - b.position);
+  return list;
+}
+
 function cards() {
   const topics = parseTopics(read(join(ROOT, "_data", "topics.yml")).toString("utf8"));
   const posts = [];
@@ -160,6 +189,17 @@ function cards() {
       kicker: DOMAIN,
       image: match.image,
       alt: match.alt,
+    });
+  }
+
+  for (const guide of loadGuides()) {
+    list.push({
+      id: guide.id,
+      path: guide.path,
+      title: guide.title,
+      kicker: DOMAIN,
+      image: guide.image,
+      alt: guide.alt,
     });
   }
 

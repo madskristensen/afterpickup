@@ -1,0 +1,29 @@
+{%- comment -%}
+  Guides that name this topic. One sentence, never a menu of posts.
+{%- endcomment -%}
+{%- assign guide_list = site.pages | where: "layout", "guide" | sort: "position" -%}
+{%- assign guide_count = 0 -%}
+{%- for guide in guide_list -%}
+{%- if guide.topics and guide.topics contains page.topic_id -%}
+{%- assign guide_count = guide_count | plus: 1 -%}
+{%- endif -%}
+{%- endfor -%}
+{%- if guide_count > 0 %}
+<p class="topic-guides">
+  {%- if guide_count == 1 -%}
+  We also wrote a longer guide that pulls these ideas together:
+  {%- else -%}
+  We also wrote longer guides that pull these ideas together:
+  {%- endif -%}
+  {%- assign guide_seen = 0 -%}
+  {%- for guide in guide_list -%}
+  {%- if guide.topics and guide.topics contains page.topic_id -%}
+  {%- assign guide_seen = guide_seen | plus: 1 -%}
+  {%- if guide_seen > 1 -%}
+  {%- if guide_seen == guide_count %} and{% else %},{% endif -%}
+  {%- endif %}
+ <a href="{{ guide.url | relative_url }}">{{ guide.title }}</a>
+  {%- endif -%}
+  {%- endfor %}.
+</p>
+{%- endif %}

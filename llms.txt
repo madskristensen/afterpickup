@@ -13,6 +13,13 @@ We are {{ site.author.name }}. We write the routines we have actually used at ho
 {% for topic in site.data.topics -%}
 - [{{ topic.title }}]({{ site.url }}/topics/{{ topic.id }}/): {{ topic.description }}
 {% endfor %}
+## Guides
+
+- [Guides]({{ site.url }}/guides/): Longer pages that gather our short posts into one idea.
+{%- assign guides = site.pages | where: "layout", "guide" | sort: "position" %}
+{% for guide in guides -%}
+- [{{ guide.title }}]({{ guide.url | absolute_url }}): {{ guide.description }}
+{% endfor %}
 ## Posts
 
 {% for post in site.posts -%}
