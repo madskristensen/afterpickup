@@ -38,17 +38,11 @@ layout: default
   </p>
   {%- endif %}
 
-  {%- if page.previous or page.next %}
-  <nav class="post-nav" aria-label="More posts">
-    <p>Keep reading</p>
-    <ul>
-      {%- if page.next %}
-      <li><a href="{{ page.next.url | relative_url }}">{{ page.next.title }}</a></li>
-      {%- endif %}
-      {%- if page.previous %}
-      <li><a href="{{ page.previous.url | relative_url }}">{{ page.previous.title }}</a></li>
-      {%- endif %}
-    </ul>
+  {%- assign related = page | related_posts: 3 -%}
+  {%- if related.size > 0 %}
+  <nav class="related" aria-label="More posts">
+    <h2>Keep reading</h2>
+    {%- include post-cards.html posts=related compact=true -%}
   </nav>
   {%- endif %}
 </article>
