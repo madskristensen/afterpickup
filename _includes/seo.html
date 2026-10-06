@@ -109,6 +109,16 @@
   "@id": {{ website_id | jsonify }},
   "name": {{ site.title | jsonify }},
   "url": {{ canonical_url | jsonify }},
+  {%- elsif page.topic_id %}
+  "@type": "CollectionPage",
+  "name": {{ seo_title | jsonify }},
+  "url": {{ canonical_url | jsonify }},
+  {%- if page.last_modified_at %}
+  "dateModified": {{ page.last_modified_at | date_to_xmlschema | jsonify }},
+  {%- endif %}
+  "isPartOf": {
+    "@id": {{ website_id | jsonify }}
+  },
   {%- elsif page.url == '/about/' %}
   "@type": "AboutPage",
   "name": {{ seo_title | jsonify }},
@@ -142,4 +152,9 @@
   }
 }
 </script>
+{%- if page.breadcrumb_json %}
+<script type="application/ld+json">
+{{ page.breadcrumb_json | safe }}
+</script>
+{%- endif %}
 {%- endunless %}

@@ -1,0 +1,25 @@
+---
+permalink: /llms.txt
+sitemap: false
+---
+# {{ site.title }}
+
+> {{ site.description | strip }}
+
+We are {{ site.author.name }}. We write the routines we have actually used at home.
+
+## Topics
+
+{% for topic in site.data.topics -%}
+- [{{ topic.title }}]({{ site.url }}/topics/{{ topic.id }}/): {{ topic.description }}
+{% endfor %}
+## Posts
+
+{% for post in site.posts -%}
+- [{{ post.title }}]({{ post.url | absolute_url }}): {{ post.description }}
+{% endfor %}
+## Also
+
+- [About]({{ site.url }}/about/): How we test and write the routines on After Pickup.
+- [Feed]({{ site.url }}/feed.xml): New posts as they go live.
+- [Sitemap]({{ site.url }}/sitemap.xml): Every public page.
