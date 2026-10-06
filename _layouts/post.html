@@ -7,6 +7,7 @@ layout: default
   <h1>{{ page.title }}</h1>
   {%- if page.date %}
   <p class="meta"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time></p>
+  {%- include updated-line.html -%}
   {%- endif %}
 
   <p class="print-url">{{ page.url | absolute_url }}</p>

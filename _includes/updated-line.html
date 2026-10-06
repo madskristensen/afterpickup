@@ -1,0 +1,11 @@
+{%- comment -%}
+  Visible only when the last git change is a later calendar day than
+  the publish date. dateModified and the sitemap still use the real time.
+{%- endcomment -%}
+{%- if page.date and page.last_modified_at -%}
+{%- assign published_day = page.date | date: "%Y-%m-%d" -%}
+{%- assign modified_day = page.last_modified_at | date: "%Y-%m-%d" -%}
+{%- if modified_day > published_day -%}
+<p class="updated">Updated <time datetime="{{ page.last_modified_at | date_to_xmlschema }}">{{ page.last_modified_at | date: "%B %-d, %Y" }}</time></p>
+{%- endif -%}
+{%- endif -%}

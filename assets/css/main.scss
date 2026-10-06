@@ -352,6 +352,13 @@ main,
   display: none;
 }
 
+.updated {
+  margin: 0.2rem 0 0;
+  font-family: var(--ui);
+  font-size: 0.85rem;
+  color: var(--soft-ink);
+}
+
 .post-share {
   display: flex;
   flex-wrap: wrap;
