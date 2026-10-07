@@ -1,11 +1,12 @@
 ---
 title: "The backyard sandbox that was supposed to be temporary"
 description: "A leftover corner of the yard became a sandbox when we moved into our 1961 rambler, and years later the kids still dig canals there with the hose."
-date:
+date: 2026-10-07
 image: /assets/images/posts/backyard-sandbox.webp
 image_alt: Backyard sandbox filled with light sand and scattered toys, bordered by rocks with the lawn sloping up behind it
 image_caption: The backyard sandbox, photo from our house.
 tags: [kids, home]
+draft: false
 ---
 
 Years ago, when we moved into our 1961 rambler, we wanted to spruce up the backyard a bit. There was a section we did not really know what to do with, so we filled it with sand and called it a sandbox until we figured out what that spot was for.
