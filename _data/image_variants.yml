@@ -132,6 +132,14 @@ pantry-stockpile:
     - 1600
   avif: true
   source_hash: ccfc50ef1b0068bd93b6375a71ee73fe6a5c4b11a41abf616684629c00bc1435
+party-trash-recycle-compost-bins:
+  widths:
+    - 640
+    - 960
+    - 1280
+    - 1600
+  avif: true
+  source_hash: 9a0ce2b052b389083defccba475c521f7c3499b2294cae448f05d446e25a0e81
 pour-the-cream-in-the-middle:
   widths:
     - 640
