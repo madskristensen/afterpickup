@@ -1,11 +1,12 @@
 ---
 title: "Black bar towels as everyday cloth napkins"
 description: "After colorful cloth napkins started looking scuzzy, we switched to black bar towels that wipe better than paper and still look good after two years of daily use."
-date:
+date: 2026-10-14
 image: /assets/images/posts/black-bar-towels.webp
 image_alt: Stack of folded black terry bar towels on a light wood surface
 image_caption: The black bar towels we use as cloth napkins, photo from our house.
 tags: [kitchen, home]
+draft: false
 ---
 
 Years ago, after visiting friends who used cloth napkins, we decided paper towels and paper napkins were the lesser option and ordered the same kind of cloth ones on Amazon right away. They were more absorbent, more durable, and better at wiping grease off something like chicken wings, because the fabric is denser and actually suited to the job.
