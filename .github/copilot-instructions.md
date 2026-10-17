@@ -40,9 +40,10 @@ description: ""   # one strong sentence with the main keyword; shown under the H
 date:             # leave empty in the queue
 image: ""         # path or empty
 tags: []
-printable: false  # true for a recipe or checklist, which adds a Print button
 ---
 ```
+
+Every post shows the Share and Print icons. There is no `printable` flag to set.
 
 ### Main keyword in three places
 
