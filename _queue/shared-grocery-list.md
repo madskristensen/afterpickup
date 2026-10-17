@@ -12,7 +12,9 @@ When Mads heads out for a store run, he says the same thing on his way out the d
 
 We keep one list called Groceries for the regular store runs and for Instacart orders. Next to it we have separate lists for Trader Joe's and Costco, because there are things we can only get at those stores, and it helps to have them collecting in one place until the day we actually go there. The Costco list is the one in the photo, with paper towels and a couple of soups already waiting.
 
-Setting it up is simple. One of us creates the list in Reminders and shares it with the other, and from then on we both work off the same list. Every item either of us adds or deletes updates on the other phone almost instantly, so the list is always up to date and nobody is shopping from an old version of it.
+We also keep a vacation list for when we are staying at a Vrbo or a hotel. On those trips we often like to pick up ice and some to-go travel cups for by the pool, and those are easy things to forget, especially while we are finding our way around a new grocery store with three kids in tow, because they are never on our normal shopping list. Having them on a separate vacation list is what helps us remember them.
+
+Setting it up is simple. One of us creates the list in Reminders and shares it with the other, and from then on we both work off the same list. Every item either of us adds or deletes updates on the other phone almost instantly, so the list is always up to date and nobody is shopping from an old version of it. The only wrinkle is the odd store where our phones do not get reception, which is rare but does happen, so when Caitlin is headed to that store she takes a couple of screenshots of the list before she goes in, and that solves it.
 
 Since we both wear an Apple Watch, a lot of the time we do not even reach for the phone. When we notice something is running low in the kitchen, or it pops into our heads in the car, we ask Siri to add it to the list right then, and it is there before the thought has a chance to slip away. It is the same watch that already keeps the timer on [cold oven bacon](/cold-oven-bacon/), so it is always on hand.
 
