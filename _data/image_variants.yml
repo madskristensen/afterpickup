@@ -60,6 +60,14 @@ disposable-cups-for-iced-coffee:
     - 1600
   avif: true
   source_hash: e4facfb499a9a7d12e261904b64555faa68bb933468da89fe494d9b27c974c60
+duct-tape-marker-lids:
+  widths:
+    - 640
+    - 960
+    - 1280
+    - 1600
+  avif: true
+  source_hash: 0c1e9bc69cf228079b8b262839ce7a54a33417cfa572128d801ac635e77ca7b1
 elastic-shoelaces:
   widths:
     - 640
