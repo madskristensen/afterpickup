@@ -9,7 +9,7 @@ tags: [mornings]
 draft: false
 ---
 
-Morning with three kids all headed to school used to mean we were the soundtrack. Brush your teeth. Shoes on. Then again from the hallway. We were trying to keep everyone moving and watch the clock at the same time, and somehow the door still felt like a scramble every day.
+Morning with three kids all headed to school used to mean we were the soundtrack. Time to brush teeth. Shoes on. Then again from the hallway. We were trying to keep everyone moving and watch the clock at the same time, and somehow the door still felt like a scramble every day.
 
 So we handed those two cues to the smart speaker. At 8:52 it says, "It's time to brush teeth." At 8:58 it says, "It's time to put on shoes." Whatever speaker you already have in the house works. Same words, same times, every school day, and we do not have to be the ones saying them.
 

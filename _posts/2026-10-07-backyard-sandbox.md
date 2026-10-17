@@ -9,7 +9,7 @@ tags: [kids, home]
 draft: false
 ---
 
-Years ago, when we moved into our 1961 rambler, we wanted to spruce up the backyard a bit. There was a section we did not really know what to do with, so we filled it with sand and called it a sandbox until we figured out what that spot was for.
+Years ago, when we moved into our 1961 rambler, we wanted to spruce up the backyard a bit. There was a section we did not really know what to do with, so we filled it with sand and called it the backyard sandbox until we figured out what that spot was for.
 
 The two boys were very young then, and they loved it the way you would expect, a huge success from the start. Even now that they are older, they still play there, especially when other kids are visiting, though the type of play has changed as they have grown. We pull the hose out so they can dig canals and make little tsunamis, and that sensory play complements the soccer, seating, and scooter play in our yard well enough that the sandbox is still very much in use.
 

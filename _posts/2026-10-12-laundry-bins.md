@@ -10,7 +10,7 @@ printable: true
 draft: false
 ---
 
-Laundry in this house runs every day, sometimes more than one load, because three kids and the two of us do a lot of sports and workouts. The wash and the dry never took much thinking. What used to stall us was the pile that came out of the dryer, sitting there waiting to be folded and put away.
+Laundry in this house runs every day, sometimes more than one load, because three kids and the two of us do a lot of sports and workouts. The wash and the dry never took much thinking. What used to stall us, before the laundry bins, was the pile that came out of the dryer, sitting there waiting to be folded and put away.
 
 Every member of the household got a labeled bin with their name on it, and that changed the whole back half of the chore. Clean clothes go straight from the dryer into those bins, and we only sort them. We do not fold for the kids, and if their shirts or pants come out inside out we leave them that way instead of turning them right-side out. They learn, or they flip them when they put their clothes on, and either way we do not stress. Each kid grabs the bin with their name on it, takes it to their room, empties it into their dresser, and brings the empty bin back.
 

@@ -8,7 +8,7 @@ image_caption: Soccer turf shoes with elastic laces, photo from our house.
 tags: [kids]
 ---
 
-When our boys were little, getting shoes on at the front door was a quick rip and press of the Velcro straps, and off they went. Nobody had to learn to tie a bow back then, because nothing on their feet needed tying, and on a busy school morning that suited all of us just fine.
+When our boys were little, getting shoes on at the front door was a quick rip and press of the Velcro straps, and off they went. Nobody had to learn to tie a bow back then, because nothing on their feet needed tying, and on a busy school morning that suited all of us just fine. Elastic shoelaces came later, once Velcro stopped being an option.
 
 As they got older they learned to tie their shoes, which is a good thing to know, but somewhere along the way the shoes changed on us too. Around age eight to ten, most of the sizes they wear stop coming with Velcro, so the cool shoes they actually want to wear often only come with laces.
 

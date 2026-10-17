@@ -9,7 +9,7 @@ tags: [travel]
 draft: false
 ---
 
-When we travel, dirty clothes find the floor. The suitcase is still open for the clean stuff. The 10-year-old and the 8-year-old drop shirts wherever they take them off, and the 5-year-old treats the carpet like a drawer. A hotel room does not come with a hamper, so the pile grows in the only empty spot left.
+When we travel, dirty clothes find the floor. The suitcase is still open for the clean stuff. The 10-year-old and the 8-year-old drop shirts wherever they take them off, and the 5-year-old treats the carpet like a drawer. A hotel room does not come with a hamper, so unless we pack a foldable laundry hamper, the pile grows in the only empty spot left.
 
 At home the remodeled house has a place for worn clothes, and the clean ones land in [named laundry bins](/laundry-bins/), but on the road that dirty-clothes place disappears unless we pack it. The trick is a foldable hamper that packs flat and opens to a full-size hamper once we are in the room, and then dirty clothes go in it instead of on the floor. We pack it every trip, the same way we pack the [travel emergency kit](/travel-emergency-kit/).
 
