@@ -60,6 +60,14 @@ disposable-cups-for-iced-coffee:
     - 1600
   avif: true
   source_hash: e4facfb499a9a7d12e261904b64555faa68bb933468da89fe494d9b27c974c60
+elastic-shoelaces:
+  widths:
+    - 640
+    - 960
+    - 1280
+    - 1600
+  avif: true
+  source_hash: 442227720eb46297f6d38fa7f845dbd669cf5b8bb1143d553a5cbf84f5b0d7bc
 family-after-pickup:
   widths:
     - 640

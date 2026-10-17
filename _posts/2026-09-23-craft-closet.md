@@ -9,7 +9,7 @@ tags: [kids, home]
 draft: false
 ---
 
-The craft supplies used to live wherever they landed. A drawer here, a bin there, usually somewhere only a grown-up remembered. After pickup, one of the kids would ask for glue or pipe cleaners and we would be the ones digging for it.
+Before the craft closet, our craft supplies used to live wherever they landed. A drawer here, a bin there, usually somewhere only a grown-up remembered. After pickup, one of the kids would ask for glue or pipe cleaners and we would be the ones digging for it.
 
 So we hung a clear pocket organizer on the back of a closet door, put stacked plastic drawers underneath it, and filled both with the arts and crafts stuff we already had. Somewhere along the way we started calling it the craft closet.
 

@@ -9,7 +9,7 @@ tags: [kitchen, home]
 draft: false
 ---
 
-Years ago, after visiting friends who used cloth napkins, we decided paper towels and paper napkins were the lesser option and ordered the same kind of cloth ones on Amazon right away. They were more absorbent, more durable, and better at wiping grease off something like chicken wings, because the fabric is denser and actually suited to the job.
+Years ago, after visiting friends who used cloth napkins, we decided paper towels and paper napkins were the lesser option and ordered the same kind of cloth ones on Amazon right away. They were more absorbent, more durable, and better at wiping grease off something like chicken wings, because the fabric is denser and actually suited to the job. That first switch is what eventually led us to black bar towels.
 
 Those first napkins were very colorful, and before long they started looking a bit scuzzy, because they were not coming out of the laundry perfectly clean anymore. Some stains just hang on harder than others, and bright fabric shows every one of them.
 

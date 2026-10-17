@@ -14,6 +14,10 @@
   <meta http-equiv="refresh" content="0; url={{ redirect_url | relative_url }}">
 </head>
 <body>
+  {%- if redirect_url == "/" %}
   <p>We moved this page. <a href="{{ redirect_url | relative_url }}">Head to {{ site.title }}</a> for all our posts.</p>
+  {%- else %}
+  <p>We moved this page. <a href="{{ redirect_url | relative_url }}">Read it at its new address</a>.</p>
+  {%- endif %}
 </body>
 </html>
