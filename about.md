@@ -24,7 +24,8 @@ image_caption: Caitlin and the kids after pickup.
     we use when friends ask what has worked at our house. The ideas are small on
     purpose. They are routines and household systems that can make the stretch
     between pickup and lights-out, or the morning that follows it, feel a little
-    easier to manage.</p>
+    easier to manage. Mads also writes about smart home projects over at
+    <a href="https://homeautomationcookbook.com/">Home Automation Cookbook</a>.</p>
 
     <p>Before something becomes a post, we use it in our own kitchen, hallway, or
     suitcase for at least a few weeks. We include the details that made it work,
