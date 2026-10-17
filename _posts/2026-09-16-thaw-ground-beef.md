@@ -10,7 +10,7 @@ printable: true
 draft: false
 ---
 
-Some nights we get home and nothing is out for dinner. We forgot to pull anything that morning, or the day just ran long. We prioritize protein for ourselves and the kids, so there is usually a sealed pound of ground beef in the freezer for exactly those nights.
+Some nights we get home and nothing is out for dinner. We forgot to pull anything that morning, or the day just ran long. We prioritize protein for ourselves and the kids, so there is usually a sealed pound of ground beef in the freezer for exactly those nights, as long as we can thaw ground beef fast.
 
 The fix is a bowl of warm tap water. Not hot. Set the sealed package in and leave it. About thirty minutes later it has softened through, and you can cook it the way you would have if you had remembered it that morning. You are not boiling anything. You are not standing there stirring ice.
 

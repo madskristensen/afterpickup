@@ -8,7 +8,7 @@ image_caption: Our pantry stockpile drawer, photo from our kitchen.
 tags: [kitchen, home]
 ---
 
-During Covid we started stocking up on the essential non-perishable food items we reach for all the time and we have kept that habit ever since, which means we almost never run out of those staples anymore.
+During Covid we started keeping a stockpile of pantry essentials, the non-perishable food items we reach for all the time, and we have kept that habit ever since, which means we almost never run out of those staples anymore.
 
 Whenever we move something from the pantry into the fridge, we add it to the shopping list so the backup gets replaced before the bottle on the shelf is the last one. It is a small loop, but it is the whole system: use from the stock, restock the stock, and keep the fridge and the meals moving without a scramble.
 

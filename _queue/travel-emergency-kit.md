@@ -9,7 +9,7 @@ tags: [travel, kids]
 printable: true
 ---
 
-We have always traveled with the same red first-aid case. It comes on flights, it comes when we drive, and it comes on cruises, zipped at home and dropped in the bag so we already know what is inside.
+We have always traveled with the same red first-aid case, our travel emergency kit. It comes on flights, it comes when we drive, and it comes on cruises, zipped at home and dropped in the bag so we already know what is inside.
 
 Everything inside is TSA-approved, so we never have to think about security while we pack. Tweezers, nail clippers, scissors, and a sewing kit stay in the case, and the scissors include a kid-size pair that is fine to fly, so the whole kit rides in a carry-on and we are not second-guessing it at the airport. That same case is the one we take when we drive and when we cruise.
 

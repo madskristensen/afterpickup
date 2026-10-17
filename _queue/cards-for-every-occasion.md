@@ -8,7 +8,7 @@ image_caption: The greeting card box at our house, photo from Caitlin.
 tags: [home, kids]
 ---
 
-Years ago Caitlin bought a box of cards with a slot for every occasion, birthdays, thank-yous, teacher appreciation, the usual ones, and it has sat on the shelf in this house ever since. The box is how we keep a card ready, instead of hunting the night before.
+Years ago Caitlin bought a box of cards for every occasion, with a slot for birthdays, thank-yous, teacher appreciation, the usual ones, and it has sat on the shelf in this house ever since. The box is how we keep a card ready, instead of hunting the night before.
 
 Teacher gifts and quick thank-yous are the ones that used to catch us, the note that needs to go in with a gift or the card for someone who helped out that week. Having those dividers ready means we can write something at home and hand it over without a store run.
 
