@@ -116,6 +116,14 @@ mother-west-wind:
     - 1600
   avif: true
   source_hash: 63cde984d97beb97ae119483b8a79c42450e06a6c62c67e3f4e202424ce4fe70
+nosebleed-stoppers-for-kids:
+  widths:
+    - 640
+    - 960
+    - 1280
+    - 1600
+  avif: true
+  source_hash: 9979b9d1aa656e53dd603d77f4a049016109700bea8b84c82f943be6de26bf8e
 one-sacagawea-dollar-per-tooth:
   widths:
     - 640
