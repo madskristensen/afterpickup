@@ -52,6 +52,14 @@ craft-mats:
     - 1600
   avif: true
   source_hash: 68cd80618cc0883ccd0b1daf508f98ce54649715ac758af9603f9b012d7971ea
+disposable-cups-for-iced-coffee:
+  widths:
+    - 640
+    - 960
+    - 1280
+    - 1600
+  avif: true
+  source_hash: e4facfb499a9a7d12e261904b64555faa68bb933468da89fe494d9b27c974c60
 duct-tape-marker-lids:
   widths:
     - 640
@@ -148,6 +156,14 @@ pantry-stockpile:
     - 1600
   avif: true
   source_hash: ccfc50ef1b0068bd93b6375a71ee73fe6a5c4b11a41abf616684629c00bc1435
+party-trash-recycle-compost-bins:
+  widths:
+    - 640
+    - 960
+    - 1280
+    - 1600
+  avif: true
+  source_hash: 9a0ce2b052b389083defccba475c521f7c3499b2294cae448f05d446e25a0e81
 pour-the-cream-in-the-middle:
   widths:
     - 640
