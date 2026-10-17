@@ -52,6 +52,14 @@ craft-mats:
     - 1600
   avif: true
   source_hash: 68cd80618cc0883ccd0b1daf508f98ce54649715ac758af9603f9b012d7971ea
+duct-tape-marker-lids:
+  widths:
+    - 640
+    - 960
+    - 1280
+    - 1600
+  avif: true
+  source_hash: 0c1e9bc69cf228079b8b262839ce7a54a33417cfa572128d801ac635e77ca7b1
 elastic-shoelaces:
   widths:
     - 640
