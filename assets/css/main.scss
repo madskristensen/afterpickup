@@ -693,10 +693,13 @@ figcaption {
 }
 
 /* Footer sign-off: the header's row of houses, centred on the
-   footer's top divider. */
+   footer's top divider. The houses (2rem tall) stand in the footer's
+   top margin, so the margin is their height plus 3rem of clear space.
+   It collapses with the last block's bottom margin (the home intro's
+   3rem), so the gap does not double up. */
 .site-footer {
   position: relative;
-  margin-top: 3rem;
+  margin-top: 5rem;
   padding-block: 1.25rem calc(2.5rem + env(safe-area-inset-bottom));
   font-family: var(--ui);
   font-size: 0.85rem;
