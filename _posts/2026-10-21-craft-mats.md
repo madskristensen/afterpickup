@@ -1,11 +1,12 @@
 ---
 title: "Craft mats turn the dining table into a craft table"
 description: "Sturdy craft mats protect the dining table from paint and glue, then lift away so dinner can reclaim the table, and they are stiff enough to carry a Lego build without spilling pieces."
-date:
+date: 2026-10-21
 image: /assets/images/posts/craft-mats.webp
 image_alt: Child building Lego on a grey craft mat spread across a light wood dining table
 image_caption: Craft mats on our dining table, photo from our house.
 tags: [kids, home]
+draft: false
 ---
 
 We used to have a crafts table, and the kids painted and glued there after pickup. After the remodel that table would not fit, so the dining table became the only place left for arts and crafts, and craft mats are what make that work.
