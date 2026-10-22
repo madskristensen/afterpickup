@@ -1,0 +1,46 @@
+---
+layout: default
+title: Things we use
+description: The everyday things from our house, kitchen, craft closet, and travel bags that we keep buying again.
+permalink: /things-we-use/
+---
+{%- assign items = site.data.things_we_use -%}
+{%- assign categories = "Kitchen,Organization,Crafts,Travel,Parties and get-togethers" | split: "," -%}
+<article class="post things">
+  <h1>Things we use</h1>
+  <div class="prose">
+    <p>People ask us where the knife block, the craft mats, and the hamper that rides along on every trip came from, so we gathered the things we actually use around the house in one place. Caitlin keeps the list, and it grows when something earns a permanent spot.</p>
+    <p class="things-disclosure">As an Amazon Associate we earn from qualifying purchases.</p>
+  </div>
+  {%- for cat in categories %}
+  {%- assign group = items | where: "category", cat -%}
+  {%- if group.size > 0 %}
+  <section class="things-group" aria-labelledby="things-{{ cat | slugify }}">
+    <h2 id="things-{{ cat | slugify }}">{{ cat }}</h2>
+    <ul class="things-list">
+      {%- for item in group %}
+      {%- capture url %}https://www.amazon.com/dp/{{ item.asin }}/ref=nosim?tag=afterpickup-20{% endcapture -%}
+      <li class="things-item">
+        <a class="things-image" href="{{ url }}" rel="sponsored nofollow noopener" target="_blank" tabindex="-1" aria-hidden="true">
+          <img src="{{ item.image }}" alt="" width="96" height="96" loading="lazy" decoding="async" referrerpolicy="no-referrer">
+        </a>
+        <div class="things-text">
+          <a class="things-name" href="{{ url }}" rel="sponsored nofollow noopener" target="_blank">{{ item.name }}</a>
+          {%- if item.colors %}
+          <p class="things-note">We have these in {{ item.colors }}.</p>
+          {%- endif %}
+          {%- if item.post != "" and item.post %}
+          {%- assign slug = item.post | prepend: "/" | append: "/" -%}
+          {%- assign post = site.posts | where: "url", slug | first -%}
+          {%- if post %}
+          <p class="things-note">We wrote about it: <a href="{{ post.url | relative_url }}">{{ post.title }}</a></p>
+          {%- endif %}
+          {%- endif %}
+        </div>
+      </li>
+      {%- endfor %}
+    </ul>
+  </section>
+  {%- endif %}
+  {%- endfor %}
+</article>

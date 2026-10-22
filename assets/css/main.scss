@@ -811,3 +811,43 @@ figcaption {
     font-size: 2.6rem;
   }
 }
+
+/* Things we use (/things-we-use/) */
+.things-disclosure {
+  font-family: var(--ui);
+  font-size: 0.875rem;
+  color: var(--summary-ink);
+}
+.things-group h2 {
+  margin-top: 2.25rem;
+}
+.things-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.things-item {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  padding: 0.85rem 0;
+  border-top: 1px solid var(--rule);
+}
+.things-image img {
+  display: block;
+  width: 96px;
+  height: 96px;
+  object-fit: contain;
+  background: #fff;
+  border-radius: 6px;
+}
+.things-name {
+  font-weight: 600;
+  color: var(--accent);
+}
+.things-note {
+  margin: 0.25rem 0 0;
+  font-family: var(--ui);
+  font-size: 0.875rem;
+  color: var(--soft-ink);
+}
