@@ -11,7 +11,7 @@ draft: false
 
 Before the craft closet, our craft supplies used to live wherever they landed. A drawer here, a bin there, usually somewhere only a grown-up remembered. After pickup, one of the kids would ask for glue or pipe cleaners and we would be the ones digging for it.
 
-So we hung a clear pocket organizer on the back of a closet door, put stacked plastic drawers underneath it, and filled both with the arts and crafts stuff we already had. Somewhere along the way we started calling it the craft closet.
+So we hung a [clear pocket organizer](/things-we-use/#shoe-organizer) on the back of a closet door, put stacked plastic drawers underneath it, and filled both with the arts and crafts stuff we already had. Somewhere along the way we started calling it the craft closet.
 
 Open that door now and it feels a little like a tiny supply shop. The hanging pockets hold the flat things and the fiddly bits, each with a little label so nobody has to guess: pipe cleaners, popsicle sticks, pom poms, pencils, tape, yarn, the glue bottles standing upright so they do not tip. Underneath, the clear drawers take the bulkier piles, paper and the rest of the making mess, so the door can close without burying anything.
 

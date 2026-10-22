@@ -19,7 +19,7 @@ permalink: /things-we-use/
     <ul class="things-list">
       {%- for item in group %}
       {%- capture url %}https://www.amazon.com/dp/{{ item.asin }}/ref=nosim?tag=afterpickup-20{% endcapture -%}
-      <li class="things-item">
+      <li class="things-item"{% if item.id %} id="{{ item.id }}"{% endif %}>
         <a class="things-image" href="{{ url }}" rel="sponsored nofollow noopener" target="_blank" tabindex="-1" aria-hidden="true">
           <img src="{{ item.image }}" alt="" width="96" height="96" loading="lazy" decoding="async" referrerpolicy="no-referrer">
         </a>

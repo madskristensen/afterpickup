@@ -13,7 +13,7 @@ The last thing out of the dishwasher is usually the sharp kitchen knives, and fo
 
 The kids are all learning how the kitchen gets put back together, and they notice different things. None of them could keep a mental map of where the sharp kitchen knives belonged, which is fair because a drawer full of mixed tools looks obvious to the person who set it up but to someone still learning the room it is just silverware with no names on it.
 
-What worked was putting a knife organizer in a drawer, one slot per knife lying flat and separate from the rest of the utensils. The drawer itself became the home, so nobody had to remember a second spot on the counter. When the dishwasher is empty, the knives have one trip left into that drawer.
+What worked was putting a [knife organizer](/things-we-use/#knife-block) in a drawer, one slot per knife lying flat and separate from the rest of the utensils. The drawer itself became the home, so nobody had to remember a second spot on the counter. When the dishwasher is empty, the knives have one trip left into that drawer.
 
 The other half is a label maker. We labeled the organizer so each slot says what belongs there, which means the words do the remembering instead of the kids. We used the label maker we already had, nothing fancy, just something that prints a strip you can stick down and actually read when the drawer is open.
 
