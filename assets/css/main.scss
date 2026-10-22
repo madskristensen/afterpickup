@@ -817,6 +817,7 @@ figcaption {
   font-family: var(--ui);
   font-size: 0.875rem;
   color: var(--summary-ink);
+  margin-top: 2rem;
 }
 .things-group h2 {
   margin-top: 2.25rem;
@@ -837,13 +838,22 @@ figcaption {
   display: block;
   width: 96px;
   height: 96px;
-  object-fit: contain;
-  background: #fff;
+  object-fit: cover;
   border-radius: 6px;
+}
+@media (prefers-color-scheme: dark) {
+  .things-image img {
+    filter: brightness(0.85);
+  }
 }
 .things-name {
   font-weight: 600;
   color: var(--accent);
+}
+.things-desc {
+  margin: 0.25rem 0 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
 }
 .things-note {
   margin: 0.25rem 0 0;
