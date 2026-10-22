@@ -2,13 +2,18 @@
 layout: default
 title: Tested after-school systems for families
 description: Practical family routines and tested systems for calmer hours between school pickup and lights-out.
+pagination:
+  enabled: true
 ---
 {%- comment -%}
-  Homepage and its older pages (/page/2/ and up). Twelve posts per page,
-  set by paginate in _config.yml. Page 1 opens with one wide card.
+  Homepage and its older pages (/page/2/ and up), paged by
+  jekyll-paginate-v2 (pagination in _config.yml). Page 1 opens with the
+  newest post as a wide hero, taken from site.posts.first. Every page then
+  shows a grid of twelve cards from paginator.posts; offset: 1 keeps the
+  hero post out of the grid on all pages.
 {%- endcomment -%}
 {%- assign home_page = paginator.page | default: 1 -%}
-{%- assign home_posts = paginator.posts | default: site.posts -%}
+{%- assign home_posts = paginator.posts -%}
 {%- assign home_first = false -%}
 {%- if home_page == 1 -%}
 {%- assign home_first = true -%}
@@ -19,7 +24,13 @@ description: Practical family routines and tested systems for calmer hours betwe
 <p>The first posts are still in the queue.</p>
 {%- else %}
 <div class="home-posts">
-  {%- include post-cards.html posts=home_posts lead=home_first priority=true -%}
+  {%- if home_first %}
+  <section class="post-list home-hero">
+    {%- include post-card.html post=site.posts.first style="wide" lead=true priority=true -%}
+  </section>
+  {%- endif %}
+  {%- unless home_first %}{% assign grid_priority = true %}{% else %}{% assign grid_priority = false %}{% endunless -%}
+  {%- include post-cards.html posts=home_posts priority=grid_priority -%}
 </div>
 {%- endif %}
 
