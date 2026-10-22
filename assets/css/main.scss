@@ -833,6 +833,21 @@ figcaption {
   align-items: center;
   padding: 0.85rem 0;
   border-top: 1px solid var(--rule);
+  scroll-margin-top: 5rem;
+}
+.things-item:target {
+  padding: 0.85rem 0.85rem 0.85rem 0.75rem;
+  border-left: 4px solid var(--accent);
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+  animation: things-target 1.6s ease-out;
+}
+@keyframes things-target {
+  from { background: color-mix(in srgb, var(--accent) 28%, transparent); }
+  to { background: color-mix(in srgb, var(--accent) 10%, transparent); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .things-item:target { animation: none; }
 }
 .things-image img {
   display: block;

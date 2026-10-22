@@ -4,7 +4,9 @@
 Usage:
   python3 script/sync-amazon-list.py            # TSV: asin, image, title
   python3 script/sync-amazon-list.py --diff     # compare with _data/things_we_use.yml
-New entries in _data/things_we_use.yml need name, description, category, asin, image, post.
+New entries in _data/things_we_use.yml need id, name, description, category, asin, image, post.
+The id is a short unique kebab-case slug used as the /things-we-use/#<id> anchor
+that posts link to. Never change an existing id once it is set.
 The description is 1-2 sentences in our voice: from the linked post if there is one,
 otherwise from the listing title only (no invented experiences, no prices).
 Exit code 1 with --diff when ASINs were added or removed.

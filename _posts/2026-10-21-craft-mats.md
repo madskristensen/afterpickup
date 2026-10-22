@@ -9,7 +9,7 @@ tags: [kids, home]
 draft: false
 ---
 
-We used to have a crafts table, and the kids painted and glued there after pickup. After the remodel that table would not fit, so the dining table became the only place left for arts and crafts, and craft mats are what make that work.
+We used to have a crafts table, and the kids painted and glued there after pickup. After the remodel that table would not fit, so the dining table became the only place left for arts and crafts, and [craft mats](/things-we-use/#craft-mat) are what make that work.
 
 The dining table still has to hold dinner, so we needed a way to do arts and crafts there without staining the wood and without a setup that took over the whole room.
 
