@@ -10,7 +10,6 @@ permalink: /things-we-use/
   <h1>Things we use</h1>
   <div class="prose">
     <p>People ask us where the knife block, the craft mats, and the hamper that rides along on every trip came from, so we gathered the things we actually use around the house in one place. Caitlin keeps the list, and it grows when something earns a permanent spot.</p>
-    <p class="things-disclosure">As an Amazon Associate we earn from qualifying purchases.</p>
   </div>
   {%- for cat in categories %}
   {%- assign group = items | where: "category", cat -%}
@@ -26,6 +25,9 @@ permalink: /things-we-use/
         </a>
         <div class="things-text">
           <a class="things-name" href="{{ url }}" rel="sponsored nofollow noopener" target="_blank">{{ item.name }}</a>
+          {%- if item.description %}
+          <p class="things-desc">{{ item.description }}</p>
+          {%- endif %}
           {%- if item.colors %}
           <p class="things-note">We have these in {{ item.colors }}.</p>
           {%- endif %}
@@ -43,4 +45,5 @@ permalink: /things-we-use/
   </section>
   {%- endif %}
   {%- endfor %}
+  <p class="things-disclosure">As an Amazon Associate we earn from qualifying purchases.</p>
 </article>

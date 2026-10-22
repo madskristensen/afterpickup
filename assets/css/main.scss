@@ -817,6 +817,7 @@ figcaption {
   font-family: var(--ui);
   font-size: 0.875rem;
   color: var(--summary-ink);
+  margin-top: 2rem;
 }
 .things-group h2 {
   margin-top: 2.25rem;
@@ -844,6 +845,11 @@ figcaption {
 .things-name {
   font-weight: 600;
   color: var(--accent);
+}
+.things-desc {
+  margin: 0.25rem 0 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
 }
 .things-note {
   margin: 0.25rem 0 0;
