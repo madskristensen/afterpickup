@@ -108,6 +108,14 @@ its-time-to-brush-teeth:
     - 1600
   avif: true
   source_hash: 97074db4ed51d96be4f3aafd1078f56ae330c3cb62fad07041476b2d95e1df77
+kids-adventure-tasks:
+  widths:
+    - 640
+    - 960
+    - 1280
+    - 1600
+  avif: true
+  source_hash: 8342e64422c52ba2332f0f0438aed671c5a2dafeddecc951457932dfe6a9b716
 kids-entry-cubbies:
   widths:
     - 640
