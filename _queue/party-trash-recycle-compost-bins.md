@@ -10,7 +10,7 @@ tags: [home]
 
 We entertain a lot, with Thanksgiving and Christmas as holiday dinners indoors, an end-of-year BBQ for the kids' school friends and their families, the 4th of July with friends and family, and Oktoberfest once a year. Some of those gatherings stay inside, some stay outside, and some use both, so before people arrive we set out large labeled trash, recycle, and compost bins, and guests sort as they go. That is what makes cleanup fast and easy when the gathering is over.
 
-We keep two sets of large Rubbermaid bins for these events, and the size of the gathering decides how many we put out. A smaller party gets one set, and bigger events use both sets. Stickers on the front say trash, recycling, and compost, and each bin has a liner that matches the sticker, so the right bag is easy to spot.
+We keep two sets of large [Rubbermaid bins](/things-we-use/#rubbermaid-bins) for these events, and the size of the gathering decides how many we put out. A smaller party gets one set, and bigger events use both sets. [Stickers](/things-we-use/#bin-labels) on the front say trash, recycling, and compost, and each bin has a liner that matches the sticker, so the right bag is easy to spot.
 
 Recycling uses recyclable liner bags that we tie off and toss with the contents. Compost works the same way, with a liner that goes out along with the scraps, bag and all. For large events we use compostable plates and flatware, so most of what guests are holding at the end of the meal, fork and all, can go right into the compost bin and very little ends up in the trash. The end of the night stays simple because those bags are already sorted and ready to leave.
 

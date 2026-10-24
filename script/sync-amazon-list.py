@@ -30,7 +30,7 @@ def get(url):
 
 def _get(url):
     # curl with a desktop Chrome UA; Amazon stalls Python's default TLS client.
-    return subprocess.run(["curl", "-s", "--max-time", "30", "-A", UA,
+    return subprocess.run(["curl", "-s", "--compressed", "--max-time", "30", "-A", UA,
                            "-H", "Accept-Language: en-US,en;q=0.9", url],
                           capture_output=True, text=True, check=True).stdout
 
