@@ -13,7 +13,7 @@ Years ago, after visiting friends who used cloth napkins, we decided paper towel
 
 Those first napkins were very colorful, and before long they started looking a bit scuzzy, because they were not coming out of the laundry perfectly clean anymore. Some stains just hang on harder than others, and bright fabric shows every one of them.
 
-We looked for something slightly thicker, in black, so any leftover discoloring would hide, and we settled on black bar towels. They are a good size for the table, thick enough to wipe hands clean in one pass, and dark enough that they still look fine after a normal week of meals.
+We looked for something slightly thicker, in black, so any leftover discoloring would hide, and we settled on [black bar towels](/things-we-use/#bar-towels). They are a good size for the table, thick enough to wipe hands clean in one pass, and dark enough that they still look fine after a normal week of meals.
 
 They do not show wrinkles the way linen napkins do, so they come out of the laundry ready for the table instead of looking crumpled. When someone spills, the same towel doubles as a washcloth and picks it up without us reaching for paper.
 

@@ -11,7 +11,7 @@ draft: false
 
 When we remodeled the house, we built a cubby for each of the kids right inside the front door. It is the first stop after school, the place where coats, shoes, gloves, hats, umbrellas, and backpacks live so they are not scattered across the floor by dinner.
 
-Each cubby has hooks for coats, a spot for the backpack, and a drawer under the bench for shoes. The inside of the door holds a pocket organizer for the smaller stuff that used to wander, gloves and the rest of the cold-weather odds and ends. Everything that comes through the door with them has a shelf, a hook, or a drawer that belongs to that kid.
+Each cubby has hooks for coats, a spot for the backpack, and a drawer under the bench for shoes. The inside of the door holds a [pocket organizer](/things-we-use/#shoe-organizer) for the smaller stuff that used to wander, gloves and the rest of the cold-weather odds and ends. Everything that comes through the door with them has a shelf, a hook, or a drawer that belongs to that kid.
 
 The after-pickup habit is pretty simple once you say it out loud. They empty their lunch boxes and pull out any school work that needs to come inside, then the backpack goes into the cubby, the shoes go in the drawer, and the coat goes on a hook. We wanted them to own that sequence so the entry stayed clear without one of us standing there as a second coat rack.
 

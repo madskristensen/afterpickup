@@ -33,11 +33,18 @@ sass:
 plugins:
   - jekyll-feed
   - jekyll-sitemap
-  - jekyll-paginate
+  - jekyll-paginate-v2
 
-# Homepage paging. Page 1 stays at /, then /page/2/ and so on.
-paginate: 12
-paginate_path: /page/:num/
+# Homepage paging (jekyll-paginate-v2). Page 1 stays at /, then /page/2/
+# and so on. The newest post is the hero on page 1, so offset skips it.
+pagination:
+  enabled: true
+  per_page: 12
+  offset: 1
+  permalink: /page/:num/
+  title: ':title'
+  sort_field: date
+  sort_reverse: true
 
 defaults:
   - scope:

@@ -196,10 +196,43 @@ main,
 
 /* ---------------------------------------------------------------
    Header. The same markup on every page, so nothing here depends on
-   which page you are on.
+   which page you are on. The swash and the little row of houses are
+   CSS masks over inline SVG, so they cost no requests and pick up the
+   theme colors. The footer reuses the same row of houses.
    --------------------------------------------------------------- */
+$rooftops: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 40' fill='none' stroke='black' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 40V25L19 14l13 11v15M16 40v-6h6v6'/%3E%3Cpath d='M40 40V21L58 6l18 15v19M66 14V7h4v10M51 27h5v5h-5zM60 27h5v5h-5z'/%3E%3Cpath d='M84 40V28l12-9 12 9v12'/%3E%3Cpath d='M122 40v-8'/%3E%3Ccircle cx='122' cy='26' r='6.5'/%3E%3Cpath d='M136 40V23l16-12 16 12v17M148 40v-8h8v8'/%3E%3Cpath d='M176 40V29l11-9 11 9v11'/%3E%3C/svg%3E");
+$swash: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 14' preserveAspectRatio='none' fill='none' stroke='black' stroke-width='3.4' stroke-linecap='round'%3E%3Cpath d='M3 10.5C40 5 95 2.5 140 4.5c22 1 40 3.5 54 1.5'/%3E%3C/svg%3E");
+
 .site-header {
-  padding-block: calc(2.25rem + env(safe-area-inset-top)) 1.5rem;
+  position: relative;
+  padding-block: calc(1.75rem + env(safe-area-inset-top)) 2.1rem;
+  margin-bottom: 1rem;
+}
+
+/* Hairline divider, aligned with the content edges. */
+.site-header::before {
+  content: "";
+  position: absolute;
+  left: calc(var(--gutter) + env(safe-area-inset-left));
+  right: calc(var(--gutter) + env(safe-area-inset-right));
+  bottom: 0;
+  height: 1px;
+  background: var(--rule);
+}
+
+/* A tiny row of houses and a tree, standing on the divider. */
+.site-header::after {
+  content: "";
+  position: absolute;
+  right: calc(var(--gutter) + env(safe-area-inset-right));
+  bottom: 0;
+  width: 7rem;
+  height: 1.4rem;
+  background: var(--accent);
+  opacity: 0.7;
+  pointer-events: none;
+  -webkit-mask: $rooftops no-repeat right bottom / contain;
+  mask: $rooftops no-repeat right bottom / contain;
 }
 
 .site-title {
@@ -209,6 +242,7 @@ main,
 }
 
 .wordmark {
+  position: relative;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -218,6 +252,20 @@ main,
 
 .wordmark svg{
     margin-bottom: 6px;
+}
+
+/* Hand-drawn swash under the words, not under the house icon. */
+.wordmark::after {
+  content: "";
+  position: absolute;
+  left: 1.62em;
+  right: 0.1em;
+  bottom: -0.32em;
+  height: 0.32em;
+  background: var(--quiet-green);
+  pointer-events: none;
+  -webkit-mask: $swash no-repeat center / 100% 100%;
+  mask: $swash no-repeat center / 100% 100%;
 }
 
 /* The mark is an inline SVG so it can pick up theme colors. Without
@@ -248,13 +296,25 @@ main,
 }
 
 .tagline {
-  margin: 0.75rem 0 0;
+  margin: 0.9rem 0 0;
   color: var(--quiet-green);
   font-family: var(--ui);
   font-size: 0.85rem;
   font-weight: 600;
   letter-spacing: 0.04em;
   line-height: 1.45;
+}
+
+/* On wider screens the houses grow and sit beside the tagline. */
+@media (min-width: 40rem) {
+  .site-header {
+    padding-bottom: 1.25rem;
+  }
+
+  .site-header::after {
+    width: 13rem;
+    height: 2.6rem;
+  }
 }
 
 /* ---------------------------------------------------------------
@@ -632,12 +692,44 @@ figcaption {
   line-height: 1.3;
 }
 
+/* Footer sign-off: the header's row of houses, centred on the
+   footer's top divider. The houses (2rem tall) stand in the footer's
+   top margin, so the margin is their height plus 3rem of clear space.
+   It collapses with the last block's bottom margin (the home intro's
+   3rem), so the gap does not double up. */
 .site-footer {
-  padding-block: 1rem calc(2.5rem + env(safe-area-inset-bottom));
+  position: relative;
+  margin-top: 5rem;
+  padding-block: 1.25rem calc(2.5rem + env(safe-area-inset-bottom));
   font-family: var(--ui);
   font-size: 0.85rem;
   color: var(--soft-ink);
-  border-top: 1px solid var(--rule);
+  text-align: center;
+}
+
+.site-footer::before {
+  content: "";
+  position: absolute;
+  left: calc(var(--gutter) + env(safe-area-inset-left));
+  right: calc(var(--gutter) + env(safe-area-inset-right));
+  top: 0;
+  height: 1px;
+  background: var(--rule);
+}
+
+.site-footer::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 100%;
+  width: 10rem;
+  height: 2rem;
+  transform: translateX(-50%);
+  background: var(--accent);
+  opacity: 0.6;
+  pointer-events: none;
+  -webkit-mask: $rooftops no-repeat center bottom / contain;
+  mask: $rooftops no-repeat center bottom / contain;
 }
 
 .site-footer .site-nav {
@@ -718,4 +810,66 @@ figcaption {
   .post-item.is-wide h2 {
     font-size: 2.6rem;
   }
+}
+
+/* Things we use (/things-we-use/) */
+.things-disclosure {
+  font-family: var(--ui);
+  font-size: 0.875rem;
+  color: var(--summary-ink);
+  margin-top: 2rem;
+}
+.things-group h2 {
+  margin-top: 2.25rem;
+}
+.things-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.things-item {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  padding: 0.85rem;
+  border-radius: 6px;
+  border-top: 1px solid var(--rule);
+  scroll-margin-top: 5rem;
+}
+.things-item:target {
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+  animation: things-target 1.6s ease-out;
+}
+@keyframes things-target {
+  from { background: color-mix(in srgb, var(--accent) 28%, transparent); }
+  to { background: color-mix(in srgb, var(--accent) 10%, transparent); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .things-item:target { animation: none; }
+}
+.things-image img {
+  display: block;
+  width: 96px;
+  height: 96px;
+  object-fit: contain;
+  background: #fff;
+  border-radius: 6px;
+}
+.things-image {
+  flex: 0 0 96px;
+}
+.things-name {
+  font-weight: 600;
+  color: var(--accent);
+}
+.things-desc {
+  margin: 0.25rem 0 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+.things-note {
+  margin: 0.25rem 0 0;
+  font-family: var(--ui);
+  font-size: 0.875rem;
+  color: var(--soft-ink);
 }

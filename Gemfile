@@ -12,5 +12,5 @@ gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 group :jekyll_plugins do
   gem "jekyll-feed", "~> 0.17"
   gem "jekyll-sitemap", "~> 1.4"
-  gem "jekyll-paginate", "~> 1.1"
+  gem "jekyll-paginate-v2", "~> 3.0"
 end

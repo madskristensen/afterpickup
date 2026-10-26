@@ -11,7 +11,7 @@ draft: false
 
 Before the craft closet, our craft supplies used to live wherever they landed. A drawer here, a bin there, usually somewhere only a grown-up remembered. After pickup, one of the kids would ask for glue or pipe cleaners and we would be the ones digging for it.
 
-So we hung a clear pocket organizer on the back of a closet door, put stacked plastic drawers underneath it, and filled both with the arts and crafts stuff we already had. Somewhere along the way we started calling it the craft closet.
+So we hung a [clear pocket organizer](/things-we-use/#shoe-organizer) on the back of a closet door, put stacked plastic drawers underneath it, and filled both with the arts and crafts stuff we already had. Somewhere along the way we started calling it the craft closet.
 
 Open that door now and it feels a little like a tiny supply shop. The hanging pockets hold the flat things and the fiddly bits, each with a little label so nobody has to guess: pipe cleaners, popsicle sticks, pom poms, pencils, tape, yarn, the glue bottles standing upright so they do not tip. Underneath, the clear drawers take the bulkier piles, paper and the rest of the making mess, so the door can close without burying anything.
 
@@ -19,4 +19,4 @@ The whole setup swings with the door, which matters in a house that already runs
 
 When someone wants to draw or build or tape a wild idea together, they open that door and the supplies are right there. We are not hunting through a junk drawer while the idea cools, and they are not stuck waiting on us to decide whether the glue is allowed today. They grab what they need and [the table fills up](/craft-mats/) the way it is supposed to after a long school day.
 
-It is a small corner of the house with a surprisingly big job: keep the creative clutter gathered, keep it reachable, and leave a little room for whatever they want to make next. The craft closet is where the making starts, and after pickup that is often exactly what they want.
+It is a small corner of the house with a surprisingly big job: keep the creative clutter gathered, keep it reachable, and leave a little room for whatever they want to make next. The craft closet is where the making starts, and after pickup that is often exactly what they want. On the days they would rather build something they can crawl inside, our [fort-building bin](/fort-building-bin/) is waiting the same way.

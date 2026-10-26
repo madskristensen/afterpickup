@@ -1,6 +1,6 @@
 ---
 title: "Steam eggs in a quarter inch of water"
-description: "Steam soft- or hard-boiled eggs with a quarter inch of water, a lid, and a timer."
+description: "We steam soft-boiled eggs, and hard-boiled ones too, in just a quarter inch of water with a lid and a timer, and they come out the way we like them."
 date: 2026-09-09
 image: /assets/images/posts/a-quarter-inch-of-water.webp
 image_alt: Soft-boiled egg halves on platters with chives, paprika, and shrimp.
