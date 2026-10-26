@@ -54,7 +54,9 @@
 <meta name="description" content="{{ seo_description | escape }}">
 <meta property="og:description" content="{{ seo_description | escape }}">
 {%- if page.robots %}
-<meta name="robots" content="{{ page.robots }}">
+<meta name="robots" content="{{ page.robots }}, max-image-preview:large">
+{%- else %}
+<meta name="robots" content="max-image-preview:large">
 {%- endif %}
 {%- unless page.url == '/404.html' %}
 <link rel="canonical" href="{{ canonical_url }}">
@@ -142,7 +144,11 @@
     "url": {{ site.url | append: '/' | jsonify }},
     "logo": {
       "@type": "ImageObject",
-      "url": {{ site.logo | absolute_url | jsonify }}
+      "url": {{ '/assets/images/icon-512.png' | absolute_url | jsonify }},
+      "contentUrl": {{ '/assets/images/icon-512.png' | absolute_url | jsonify }},
+      "width": 512,
+      "height": 512,
+      "encodingFormat": "image/png"
     }{% if site.social.links %},
     "sameAs": {{ site.social.links | jsonify }}{% endif %}
   }
