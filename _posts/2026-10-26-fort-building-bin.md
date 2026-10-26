@@ -1,11 +1,12 @@
 ---
 title: "A fort-building bin with king sheets and clamps"
 description: "Two king-size sheets and a bunch of clamps in one bin let the kids pull forts tight between chairs and cushions with little help from us."
-date:
+date: 2026-10-26
 image: /assets/images/posts/fort-building-bin.webp
 image_alt: Clear bin holding folded white king sheets and several spring clamps in two sizes
 image_caption: The fort-building bin, photo from our house.
 tags: [kids, home]
+draft: false
 ---
 
 All the kids love building forts, and they do it often, so we keep a fort-building bin ready. Inside are two large king-size bed sheets and a bunch of clamps, and that combination is the whole kit.
