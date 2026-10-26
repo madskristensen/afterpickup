@@ -9,7 +9,7 @@ tags: [kids, travel]
 draft: false
 ---
 
-We keep a bunch of travel toys that only come out for trips, the same small kit that has been riding along for years. We drive to weekend getaways in state several times a year, and when we fly we pack that set too, because they travel well and the kids like them in small doses. The [travel emergency kit](/travel-emergency-kit/) comes on those trips too.
+We keep a bunch of travel toys that only come out for trips, the same small kit that has been riding along for years. We drive to weekend getaways in state several times a year, and when we fly we pack that set too, because they travel well and the kids like them in small doses. The travel emergency kit comes on those trips too.
 
 The toys only come out a handful of times a year, and that is enough to keep them feeling fresh. Minecraft magnetic cubes mix well with regular Magna-Tiles, and little Pokemon and animal figurines work with those builds too.
 

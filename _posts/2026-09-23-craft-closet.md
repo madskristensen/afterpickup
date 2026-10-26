@@ -19,4 +19,4 @@ The whole setup swings with the door, which matters in a house that already runs
 
 When someone wants to draw or build or tape a wild idea together, they open that door and the supplies are right there. We are not hunting through a junk drawer while the idea cools, and they are not stuck waiting on us to decide whether the glue is allowed today. They grab what they need and [the table fills up](/craft-mats/) the way it is supposed to after a long school day.
 
-It is a small corner of the house with a surprisingly big job: keep the creative clutter gathered, keep it reachable, and leave a little room for whatever they want to make next. The craft closet is where the making starts, and after pickup that is often exactly what they want.
+It is a small corner of the house with a surprisingly big job: keep the creative clutter gathered, keep it reachable, and leave a little room for whatever they want to make next. The craft closet is where the making starts, and after pickup that is often exactly what they want. On the days they would rather build something they can crawl inside, our [fort-building bin](/fort-building-bin/) is waiting the same way.
