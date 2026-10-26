@@ -16,4 +16,4 @@ That bundle is the whole drawing kit when we head out. We bring that one thing a
 
 Airplanes are where it really pays off. The tray table is tiny, and loose pens, crayons, and pencils always find their way to the floor, which means struggling to find them and sometimes unbuckling and getting out of your seat just to reach one, and that gets old fast. With the lids taped together the markers stay put on the tray, and any marker that is not in someone's hand is already back in the bundle.
 
-It has become one of those small things we do not think about anymore. The markers come from [the craft closet](/craft-closet/), a strip of duct tape turns them into a travel set, and the kids get to color wherever we are going while we stay in our seats.
+It has become one of those small things we do not think about anymore. The markers come from [the craft closet](/craft-closet/), a strip of duct tape turns them into a [travel set](/travel-toys/), and the kids get to color wherever we are going while we stay in our seats.
