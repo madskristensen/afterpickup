@@ -17,4 +17,4 @@ We looked for something slightly thicker, in black, so any leftover discoloring 
 
 They do not show wrinkles the way linen napkins do, so they come out of the laundry ready for the table instead of looking crumpled. When someone spills, the same towel doubles as a washcloth and picks it up without us reaching for paper.
 
-They last about two years before we replace them with a fresh set. The black fades only a little in that time, and we use them every day. Cloth won over paper for us the first time we tried it, and black bar towels are the version that survived the laundry pile.
+They last about two years before we replace them with a fresh set. The black fades only a little in that time, and we use them every day. Cloth won over paper for us the first time we tried it, and black bar towels are the version that survived [the laundry pile](/laundry-bins/).
