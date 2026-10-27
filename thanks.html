@@ -1,0 +1,21 @@
+---
+layout: default
+title: Thanks for signing up
+description: Thanks for signing up for the After Pickup newsletter. Check your inbox to confirm.
+permalink: /thanks/
+sitemap: false
+robots: noindex,follow
+---
+<article class="post">
+  <h1>Thank you for signing up</h1>
+  <div class="prose">
+    <p>We are so glad you are here. We just sent you a short email to confirm your address, so please check your inbox and tap the link inside. If it is not there in a few minutes, take a peek in your spam or promotions folder.</p>
+    <p>Once you confirm, our newsletter will arrive on Saturday mornings with the week's posts and a little something from the archive.</p>
+    <p><a href="{{ '/' | relative_url }}">Back to all posts</a></p>
+  </div>
+</article>
+
+<section class="missing" aria-label="Recent posts">
+  <h2>While you wait, a few recent posts</h2>
+  {%- include post-cards.html posts=site.posts limit=3 compact=true -%}
+</section>
