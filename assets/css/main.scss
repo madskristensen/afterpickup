@@ -692,6 +692,56 @@ figcaption {
   line-height: 1.3;
 }
 
+/* Newsletter signup above the footer: plain HTML form, no JS. */
+.newsletter {
+  max-width: 34rem;
+  margin: 4rem auto 0;
+  padding: 1.5rem var(--gutter);
+  font-family: var(--ui);
+  text-align: center;
+}
+
+.newsletter h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.3rem;
+  color: var(--accent);
+}
+
+.newsletter p {
+  margin: 0 0 1rem;
+  font-size: 0.95rem;
+}
+
+.newsletter-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.newsletter-form input[type="email"] {
+  flex: 1 1 14rem;
+  min-height: 44px;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  font: inherit;
+  background: transparent;
+  color: inherit;
+}
+
+.newsletter-form button {
+  min-height: 44px;
+  padding: 0.5rem 1.25rem;
+  border: 0;
+  border-radius: 6px;
+  font: inherit;
+  font-weight: 600;
+  background: var(--accent);
+  color: var(--page);
+  cursor: pointer;
+}
+
 /* Footer sign-off: the header's row of houses, centred on the
    footer's top divider. The houses (2rem tall) stand in the footer's
    top margin, so the margin is their height plus 3rem of clear space.
