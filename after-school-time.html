@@ -10,25 +10,48 @@ last_updated: 2026-10-27
 ---
 {%- assign D = site.data.guide_cities -%}
 <style>
-.g{--sky1:#F3E3C8;--sky2:#E9C9A4;--sky3:#9DB2C9;--free:#7C9A82;--busy:color-mix(in srgb,var(--summary-ink) 28%,transparent);--meal:#C98B5A}
-@media (prefers-color-scheme:dark){.g{--sky1:#3A3A4A;--sky2:#4E3F45;--sky3:#1E2433;--free:#8FB596;--meal:#E0A878}}
-.g-kicker{font-family:var(--ui);font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--summary-ink);margin:0 0 .25rem}
-.g-source{font-family:var(--ui);font-size:.9rem;color:var(--summary-ink);margin:.25rem 0 1.5rem}
+.g{--sky-day:#7FA7CF;--sky-noon:#B9C9D6;--sky-gold:#E9C27A;--sky-set:#E08A5B;--sky-dusk:#6A4E7A;--sky-night:#232B45;--river:#2B3A52;--glow:#E08A5B}
+@media (prefers-color-scheme:dark){.g{--sky-day:#5E86B0;--sky-noon:#8FA3B4;--sky-gold:#D2A55C;--sky-set:#C96E45;--sky-dusk:#4E3A63;--sky-night:#141A2C;--river:#92AAC7;--glow:#F0A070}}
+body{overflow-x:clip}
+.guide{padding-top:.5rem}
+.g-kicker{margin:0 0 .6rem;font-family:var(--ui);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--quiet-green)}
+.guide h1{font-size:clamp(2.3rem,6vw,3.2rem);letter-spacing:-.01em;margin-bottom:.5rem}
+.guide .post-summary{margin-inline:0}
+.g-source{font-family:var(--ui);font-size:.85rem;line-height:1.5;color:var(--summary-ink);margin:1.25rem 0 1.5rem;padding-left:.9rem;border-left:2px solid var(--rule)}
 .g-source a{color:inherit}
-.g-sky{margin:1.75rem 0 2rem;padding:1.75rem 1.5rem;border-radius:14px;background:linear-gradient(160deg,var(--sky1),var(--sky2) 55%,var(--sky3));color:#2B2620}
-@media (prefers-color-scheme:dark){.g-sky{color:var(--ink)}}
-.g-sentence{font-size:1.25rem;line-height:1.95;margin:0 0 .75rem}
-.g-sentence select,.g-sentence input{font:inherit;color:inherit;background:transparent;border:0;border-bottom:2px dotted currentColor;padding:0 .1rem;cursor:pointer;max-width:100%;border-radius:0;-webkit-appearance:none;appearance:none}
-.g-sentence input{width:2.6em;padding:0;text-align:center;-moz-appearance:textfield}
+.g-sky{margin:2.75rem 0 0}
+.g-sentence{font-size:clamp(1.3rem,3.6vw,1.6rem);line-height:1.7;color:var(--ink);margin:0 0 .75rem}
+.g-sentence select,.g-sentence input{font:inherit;color:var(--accent);background:transparent;border:0;border-bottom:1.5px solid color-mix(in srgb,var(--accent) 45%,transparent);border-radius:0;padding:0 .1rem;margin:0 .1rem;cursor:pointer;max-width:100%;line-height:1.3;-webkit-appearance:none;appearance:none}
+.g-sentence select:hover,.g-sentence input:hover{border-bottom-color:var(--accent)}
+.g-sentence input{width:2.4em;padding:0;text-align:center;-moz-appearance:textfield}
 .g-sentence input::-webkit-inner-spin-button,.g-sentence input::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
 .g-sentence select:focus-visible,.g-sentence input:focus-visible,.g-sky button:focus-visible{outline:2px solid var(--focus);outline-offset:3px}
 .g-sentence option{color:#222;background:#fff}
-.g-note{font-family:var(--ui);font-size:.9rem;margin:0;opacity:.9}
-.g-note button{font:inherit;color:inherit;background:rgba(255,255,255,.35);border:1px solid currentColor;border-radius:999px;padding:.2rem .8rem;min-height:2.25rem;cursor:pointer}
-.g-big{font-size:2.4rem;font-weight:600;line-height:1.1;margin:1.5rem 0 .25rem}
-.g-sub{font-family:var(--ui);font-size:.95rem;margin:0}
+.g-hero{text-align:center;margin:2.5rem 0 0}
+.g-big{display:block;font-size:clamp(3.4rem,11vw,6rem);line-height:1;font-weight:400;letter-spacing:-.02em;color:var(--ink);font-variant-numeric:tabular-nums;margin:0}
+.g-sub{display:block;margin:.6rem auto 0;max-width:40rem;font-size:1.15rem;font-style:italic;color:var(--summary-ink)}
+.g-band{height:clamp(3.5rem,9vw,5rem);margin-top:1.75rem;border-radius:14px;background:linear-gradient(90deg,var(--sky-day),var(--sky-noon) 30%,var(--sky-gold) 55%,var(--sky-set) 72%,var(--sky-dusk) 87%,var(--sky-night));box-shadow:inset 0 -30px 50px -30px rgba(0,0,0,.35);position:relative;overflow:hidden}
+.g-band::after{content:"";position:absolute;left:0;right:0;bottom:22%;height:1px;background:rgba(255,255,255,.35)}
+.g section:not(.g-sky):not(.g-hero){margin-top:4.5rem}
+.g section h2{font-size:1.55rem;font-weight:600;margin:0 0 .4rem}
 .g-chart{width:100%;height:auto;display:block;font-family:var(--ui);overflow:visible}
-.g-chart text{fill:var(--summary-ink);font-size:12px}
+.g-chart text{fill:var(--summary-ink);font-size:11px;letter-spacing:.04em}
+.g-legend{font-family:var(--ui);font-size:.85rem;color:var(--summary-ink);display:flex;gap:.5rem 1.25rem;flex-wrap:wrap;margin:.6rem 0 0}
+.g-legend i{display:inline-block;width:.8rem;height:.8rem;border-radius:2px;margin-right:.35rem;vertical-align:-1px}
+.g-summary{font-family:var(--ui);font-size:.9rem;color:var(--soft-ink)}
+.g-method{margin-top:4.5rem;padding-top:2rem;border-top:1px solid var(--rule)}
+.g-method h2{font-size:1.3rem;margin-top:0}
+.g-method p,.g-method li{font-size:1rem}
+.g-method ul{font-family:var(--ui);font-size:.9rem}
+.g-cite{margin-top:2rem;padding:1rem 1.1rem;border:1px solid var(--rule);border-radius:10px;font-family:var(--ui);font-size:.88rem;display:flex;gap:1rem;align-items:center;justify-content:space-between}
+.g-cite p{margin:0}
+.g-cite button{flex-shrink:0;font:inherit;color:var(--accent);background:none;border:1px solid var(--rule);border-radius:999px;padding:.35rem .9rem;cursor:pointer}
+.g-updated{font-family:var(--ui);font-size:.82rem;color:var(--summary-ink);margin-top:1rem}
+@media (max-width:34rem){.g-band{border-radius:10px}.g-cite{flex-direction:column;align-items:flex-start}}
+.g{--free:#7C9A82;--busy:color-mix(in srgb,var(--summary-ink) 28%,transparent);--meal:#C98B5A}
+@media (prefers-color-scheme:dark){.g{--free:#8FB596;--meal:#E0A878}}
+.g-note{font-family:var(--ui);font-size:.9rem;line-height:1.5;color:var(--summary-ink);margin:.25rem 0 0}
+.g-note button{font:inherit;color:var(--accent);background:none;border:0;padding:0 0 0 .25rem;text-decoration:underline;text-underline-offset:.2em;cursor:pointer}
 .g-chart .busy{fill:var(--busy)}
 .g-chart .meal{fill:var(--meal)}
 .g-chart .free{fill:var(--free)}
@@ -37,17 +60,10 @@ last_updated: 2026-10-27
 .g-chart .seg{transform-box:fill-box;transform-origin:left;animation:g-grow .8s cubic-bezier(.2,.7,.2,1) both}
 @keyframes g-grow{from{transform:scaleX(0)}}
 @media (prefers-reduced-motion:reduce){.g-chart .seg{animation:none!important}}
-.g-legend{font-family:var(--ui);font-size:.85rem;color:var(--summary-ink);display:flex;gap:1.25rem;flex-wrap:wrap;margin:.75rem 0 0}
-.g-legend i{display:inline-block;width:.8rem;height:.8rem;border-radius:2px;margin-right:.35rem;vertical-align:-1px}
 .g-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(9rem,1fr));gap:1rem;margin:1.5rem 0;font-family:var(--ui)}
 .g-stats div{border-top:1px solid var(--rule);padding-top:.6rem}
-.g-stats b{display:block;font-family:var(--body);font-size:1.6rem;color:var(--ink);font-weight:600}
+.g-stats b{display:block;font-family:var(--body);font-size:2rem;line-height:1.1;color:var(--ink);font-weight:400;font-variant-numeric:tabular-nums}
 .g-stats span{font-size:.85rem;color:var(--summary-ink)}
-.g-summary{font-family:var(--ui);font-size:.95rem}
-.g-cite{display:flex;gap:.75rem;align-items:flex-start;font-family:var(--ui);font-size:.9rem;border-left:3px solid var(--rule);padding-left:1rem}
-.g-cite p{margin:0;flex:1}
-.g-cite button{font:inherit;border:1px solid var(--rule);background:none;color:var(--accent);border-radius:6px;padding:.3rem .7rem;min-height:2.5rem;cursor:pointer}
-@media (max-width:30rem){.g-sentence{font-size:1.05rem}.g-big{font-size:1.9rem}.g-sky{padding:1.25rem 1rem}}
 </style>
 <article class="post guide g">
   <p class="g-kicker">A guide from After Pickup</p>
@@ -76,8 +92,11 @@ last_updated: 2026-10-27
       We live in <label class="visually-hidden" for="t-city">City for daylight</label><select id="t-city"><option value="">no city, skip daylight</option></select>
       and it is <label class="visually-hidden" for="t-month">Month</label><select id="t-month"></select>.</p>
     <p class="g-note" id="t-sleep" aria-live="polite"></p>
-    <p class="g-big" id="t-big" aria-live="polite">&nbsp;</p>
-    <p class="g-sub" id="t-sub"></p>
+  </section>
+  <section class="g-hero" aria-live="polite">
+    <span class="g-big" id="t-big">&nbsp;</span>
+    <span class="g-sub" id="t-sub"></span>
+    <div class="g-band" aria-hidden="true"></div>
   </section>
 
   <section aria-labelledby="t-r-title">
@@ -93,17 +112,17 @@ last_updated: 2026-10-27
     <p class="g-summary" id="t-sum"></p>
   </section>
 
-  <div class="prose">
-    <h2>Sources and method</h2>
+  <section class="prose g-method" aria-labelledby="t-s-title">
+    <h2 id="t-s-title">Sources and method</h2>
     <p>The ribbon runs from the end of school to bedtime. Pickup and travel come first, then snack and homework. Dinner sits at the time you choose, and if homework runs into dinner it picks up again right after. Everything else before bedtime is free time. A school week is five times one day.</p>
     <p>Sleep: the American Academy of Sleep Medicine consensus statement recommends 9 to 12 hours in 24 hours for children 6 to 12 years, and 8 to 10 hours for teenagers 13 to 18 years, on a regular basis, to promote optimal health (<a href="https://jcsm.aasm.org/doi/10.5664/jcsm.5866">Paruthi et al., Journal of Clinical Sleep Medicine, 2016</a>). The <a href="https://www.aap.org/en/news-room/news-releases/aap/2016/aap-endorses-new-recommendations-on-sleep-times/">American Academy of Pediatrics endorsed</a> those ranges. When you change age or wake time, the suggestion button sets the latest bedtime that still reaches the low end of the range. The ranges are about total sleep, so time spent falling asleep is not counted, and we do not suggest anything they do not say.</p>
     <p>Daylight: sunset comes from the <a href="https://gml.noaa.gov/grad/solcalc/calcdetails.html">NOAA solar calculation</a> for the same 51 cities as our <a href="{{ '/daylight-after-school/' | relative_url }}">Daylight after school</a> guide, averaged over every day of the chosen month in 2026 in that city's time zone. Free minutes in daylight are the free minutes before that average sunset.</p>
-    <p><strong>Last updated:</strong> <time datetime="{{ page.last_updated }}">{{ page.last_updated | date: "%B %-d, %Y" }}</time></p>
-  </div>
-  <div class="g-cite">
-    <p id="t-cite">After Pickup. "How much time do kids actually have after school?" {{ page.last_updated | date: "%B %-d, %Y" }}. {{ page.url | absolute_url }}. Sleep ranges: AASM consensus (Paruthi et al., 2016), endorsed by the AAP.</p>
+    <div class="g-cite">
+    <p><strong>Cite this:</strong> <span id="t-cite">After Pickup. "How much time do kids actually have after school?" {{ page.last_updated | date: "%B %-d, %Y" }}. {{ page.url | absolute_url }}. Sleep ranges: AASM consensus (Paruthi et al., 2016), endorsed by the AAP.</span></p>
     <button type="button" data-copy="t-cite">Copy</button>
-  </div>
+    </div>
+    <p class="g-updated">Last updated <time datetime="{{ page.last_updated }}">{{ page.last_updated | date: "%B %-d, %Y" }}</time>.</p>
+  </section>
 </article>
 <script>
 (function(){
@@ -112,6 +131,8 @@ var C={{ D.cities | jsonify }};
 var MON=["January","February","March","April","May","June","July","August","September","October","November","December"];
 var SLEEP={"6-12":[9,12],"13-18":[8,10]};
 var NS="http://www.w3.org/2000/svg";
+var gm=document.createElement("span");gm.setAttribute("aria-hidden","true");gm.style.cssText="position:absolute;visibility:hidden;white-space:pre;left:-9999px;top:0";document.body.appendChild(gm);
+function fitSel(){document.querySelectorAll(".g-sentence select").forEach(function(x){var cs=getComputedStyle(x);gm.style.font=cs.font;gm.style.letterSpacing=cs.letterSpacing;gm.textContent=x.options[x.selectedIndex]?x.options[x.selectedIndex].text:"";x.style.width=Math.ceil(gm.getBoundingClientRect().width+parseFloat(cs.paddingLeft)+parseFloat(cs.paddingRight)+2)+"px";});}
 function $(i){return document.getElementById(i);}
 function el(n,a,t){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);if(t!=null)e.textContent=t;return e;}
 function clock(m){m=((m%1440)+1440)%1440;var h=Math.floor(m/60),mm=m%60,ap=h>=12?"PM":"AM";h=h%12||12;return h+":"+(mm<10?"0":"")+mm+" "+ap;}
@@ -143,8 +164,8 @@ function render(){
   var r=SLEEP[s.age],sl=((s.wake-s.bed)%1440+1440)%1440/60,latest=s.wake+1440-r[0]*60;
   $("t-sleep").innerHTML="";var tx=document.createTextNode("For ages "+s.age.replace("-"," to ")+", the AASM recommends "+r[0]+" to "+r[1]+" hours of sleep. With a "+clock(s.wake)+" wake time, a bedtime of "+clock(latest)+" or earlier reaches at least "+r[0]+" hours. This bedtime gives "+(Math.round(sl*4)/4)+" hours"+(sl<r[0]?", below the range. ":sl>r[1]?", above the range. ":", inside the range. "));
   $("t-sleep").appendChild(tx);var bt=document.createElement("button");bt.type="button";bt.textContent="Use "+clock(latest);bt.onclick=function(){var v=Math.max(1170,Math.min(1380,Math.floor((latest-1440*Math.floor(latest/1440))/15)*15));s.bed=v;render();};$("t-sleep").appendChild(bt);
-  $("t-big").textContent=hm(free)+" of free time";
-  $("t-sub").textContent="between "+clock(s.end)+" and "+clock(s.bed)+" on a school day, out of "+hm(s.bed-s.end)+".";
+  $("t-big").textContent=hm(free);
+  $("t-sub").textContent="of free time between "+clock(s.end)+" and "+clock(s.bed)+" on a school day, out of "+hm(s.bed-s.end)+".";
   $("t-day").textContent=Math.round(free);$("t-week").textContent=(Math.round(free*5/6)/10).toString();
   $("t-sleephrs").textContent=(Math.round(sl*4)/4).toString();
   $("t-light").textContent=sun!=null?Math.round(lit):"-";$("t-light-l").textContent=sun!=null?"free minutes before sunset ("+clock(sun)+")":"free minutes in daylight (pick a city)";
@@ -164,6 +185,7 @@ function render(){
   var sum="Free time adds up to "+hm(free)+" a day and "+hm(free*5)+" across five school days."+(sun!=null?" In "+city.name+" in "+MON[s.month]+", "+hm(lit)+" of that comes before the average sunset at "+clock(sun)+".":"");
   desc.textContent="Timeline from school end to bedtime: "+parts+". "+sum;$("t-sum").textContent=sum;
   var p=new URLSearchParams();for(var k in s)p.set(k,s[k]);history.replaceState(null,"","?"+p);
+  fitSel();
 }
 ["end","dinner","bed","wake","month"].forEach(function(k){$("t-"+k).onchange=function(){s[k]=+this.value;render();};});
 ["travel","hw","dlen"].forEach(function(k){$("t-"+k).onchange=function(){var v=+this.value;if(!isNaN(v)&&v>=0){s[k]=v;render();}};});
