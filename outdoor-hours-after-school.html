@@ -46,10 +46,24 @@ body{overflow-x:clip}
 .g-method h2{font-size:1.3rem;margin-top:0}
 .g-method p,.g-method li{font-size:1rem}
 .g-method ul{font-family:var(--ui);font-size:.9rem}
-.g-cite{margin-top:2rem;padding:1rem 1.1rem;border:1px solid var(--rule);border-radius:10px;font-family:var(--ui);font-size:.88rem;display:flex;gap:1rem;align-items:center;justify-content:space-between}
-.g-cite p{margin:0}
-.g-cite button{flex-shrink:0;font:inherit;color:var(--accent);background:none;border:1px solid var(--rule);border-radius:999px;padding:.35rem .9rem;cursor:pointer}
+.cite-line{font-family:var(--ui);font-size:.82rem;line-height:1.5;color:var(--summary-ink);margin:2rem 0 0}
+.cite-line a{color:inherit}
+.cite-copy{font:inherit;color:var(--accent);background:none;border:0;padding:0;margin-left:.35rem;text-decoration:underline;text-underline-offset:.2em;cursor:pointer}
+.g-reset{font-family:var(--ui);font-size:.8rem;margin:.25rem 0 0}
 .g-updated{font-family:var(--ui);font-size:.82rem;color:var(--summary-ink);margin-top:1rem}
+.g-rk{list-style:none;margin:1rem 0 0;padding:0;font-family:var(--ui);font-size:.9rem;font-variant-numeric:tabular-nums}
+.g-rk li{margin:0}
+.g-rk button{width:100%;font:inherit;color:inherit;background:none;border:0;text-align:left;cursor:pointer;display:grid;grid-template-columns:1.8rem minmax(7.5rem,11rem) 1fr 4rem;align-items:center;gap:.6rem;padding:.32rem .4rem;border-radius:6px}
+.g-rk button:hover{background:color-mix(in srgb,var(--accent) 10%,transparent)}
+.g-rk button:focus-visible{outline:2px solid var(--focus,var(--accent));outline-offset:1px}
+.g-rk .n{color:var(--summary-ink);font-size:.78rem;text-align:right}
+.g-rk .nm{color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.g-rk-bar{height:.5rem;border-radius:999px;background:color-mix(in srgb,var(--rule) 60%,transparent)}
+.g-rk-bar i{display:block;height:100%;border-radius:999px;background:color-mix(in srgb,var(--dry) 65%,transparent);transform-origin:left;animation:g-grow .9s cubic-bezier(.2,.7,.2,1) both}
+.g-rk .v{text-align:right;color:var(--soft-ink)}
+.g-rk .is-cur{background:color-mix(in srgb,var(--glow) 14%,transparent)}
+.g-rk .is-cur .nm{font-weight:600}.g-rk .is-cur .g-rk-bar i{background:var(--dry)}
+@media (max-width:34rem){.g-rk button{grid-template-columns:1.4rem 1fr 3.6rem;row-gap:.25rem}.g-rk-bar{grid-column:2/4;grid-row:2}}
 .g-strip-wrap{position:relative;margin-top:1.75rem}
 .g-strip{display:flex;gap:3px;height:clamp(5rem,12vw,7rem);text-align:left}
 .g-mo{display:flex;flex-direction:column-reverse;border-radius:6px;overflow:hidden;cursor:pointer;position:relative;padding:0;border:0;background:none;font:inherit}
@@ -63,7 +77,7 @@ body{overflow-x:clip}
 .k-use{background:var(--glow)}.k-rain{background:color-mix(in srgb,var(--river) 55%,transparent)}.k-temp{background:color-mix(in srgb,var(--sky-dusk) 70%,transparent)}.k-dark{background:color-mix(in srgb,var(--sky-night) 80%,var(--rule))}
 .g-tip{position:absolute;bottom:calc(100% + 6px);font-family:var(--ui);font-size:.8rem;line-height:1.4;white-space:nowrap;background:var(--page);color:var(--soft-ink);border:1px solid var(--rule);border-radius:8px;padding:.4rem .6rem;box-shadow:0 6px 18px rgba(0,0,0,.25);pointer-events:none;text-align:left;z-index:5}
 .g-tip strong{color:var(--ink)}
-@media (max-width:34rem){.g-band{border-radius:10px}.g-formula{font-size:.72rem;padding:.75rem}.g-cite{flex-direction:column;align-items:flex-start}}
+@media (max-width:34rem){.g-band{border-radius:10px}.g-formula{font-size:.72rem;padding:.75rem}}
 .g{--dry:#7C9A82}
 @media (prefers-color-scheme:dark){.g{--dry:#8FB596}}
 .g-more{margin-top:1rem}
@@ -73,15 +87,9 @@ body{overflow-x:clip}
 .g-chart .off{fill:color-mix(in srgb,var(--summary-ink) 25%,transparent)}
 .g-chart .val{fill:var(--ink);font-weight:600}
 .g-chart rect.use,.g-chart rect.day{transform-box:fill-box;transform-origin:bottom;animation:g-rise .9s cubic-bezier(.2,.7,.2,1) both}
-.g-rank .bar{transform-box:fill-box;transform-origin:left;animation:g-grow .9s cubic-bezier(.2,.7,.2,1) both}
 @keyframes g-rise{from{transform:scaleY(0)}}
 @keyframes g-grow{from{transform:scaleX(0)}}
-@media (prefers-reduced-motion:reduce){.g-chart rect,.g-rank .bar{animation:none!important}}
-.g-rank text{fill:var(--ink);font-size:12px}
-.g-rank .n{fill:var(--summary-ink)}
-.g-rank .bar{fill:color-mix(in srgb,var(--dry) 60%,transparent)}
-.g-rank .is-cur .bar{fill:var(--dry)}
-.g-rank .is-cur text{font-weight:700}
+@media (prefers-reduced-motion:reduce){.g-chart rect,.g-rk-bar i{animation:none!important}}
 .g-more{font-family:var(--ui);font-size:.9rem;color:var(--accent);background:none;border:0;padding:.5rem 0;text-decoration:underline;text-underline-offset:.2em;cursor:pointer}
 .g-formula{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.9rem;background:color-mix(in srgb,var(--rule) 40%,transparent);padding:.9rem 1rem;border-radius:8px;overflow-x:auto;white-space:pre}
 .g-table{width:100%;border-collapse:collapse;font-family:var(--ui);font-size:.85rem}
@@ -106,6 +114,7 @@ body{overflow-x:clip}
       and our kids are happy outside between
       <label for="o-lo" class="visually-hidden">Lowest comfortable high, Fahrenheit</label><input id="o-lo" type="number" inputmode="numeric" min="0" max="110" step="1">&deg;F and
       <label for="o-hi" class="visually-hidden">Highest comfortable high, Fahrenheit</label><input id="o-hi" type="number" inputmode="numeric" min="0" max="120" step="1">&deg;F.</p>
+    <p class="g-reset"><button type="button" class="cite-copy" id="g-reset" style="margin-left:0">Reset to defaults</button></p>
   </section>
   <section class="g-hero" aria-live="polite">
     <span class="g-big" id="o-big">&nbsp;</span>
@@ -128,7 +137,8 @@ body{overflow-x:clip}
   <section aria-labelledby="o-r-title">
     <h2 id="o-r-title">How the cities compare, September to June</h2>
     <p class="g-summary">Total usable outdoor hours after school across the school year, counting every weekday from September through June.</p>
-    <svg id="o-rank" class="g-chart g-rank" viewBox="0 0 720 400" role="img" aria-labelledby="o-r-desc"><desc id="o-r-desc"></desc></svg>
+    <p class="visually-hidden" id="o-r-desc"></p>
+    <ol id="o-rank" class="g-rk" aria-describedby="o-r-desc"></ol>
     <p><button type="button" class="g-more" id="o-more" aria-expanded="false">Show all 51 cities</button></p>
   </section>
 
@@ -153,10 +163,7 @@ year      = sum over Sep to Jun of usable x weekdays in that month</div>
       {%- for c in D.cities %}<tr><th scope="row">{{ c.name }}</th><td><a href="https://www.ncei.noaa.gov/data/normals-monthly/1991-2020/access/{{ c.station }}.csv">{{ c.stationName }}</a> ({{ c.station }})</td><td>{{ c.km }} km</td></tr>{% endfor %}
       </tbody></table></div>
     </details>
-    <div class="g-cite">
-    <p><strong>Cite this:</strong> <span id="o-cite">After Pickup. "Can we go outside?" {{ page.last_updated | date: "%B %-d, %Y" }}. {{ page.url | absolute_url }}. Data: NOAA NCEI U.S. Climate Normals 1991-2020 and NOAA solar calculations.</span></p>
-    <button type="button" data-copy="o-cite">Copy</button>
-    </div>
+    <p class="cite-line">Cite: After Pickup, "<a href="{{ page.url | absolute_url }}">{{ page.title }}</a>" updated {{ page.last_updated | date: "%b %-d, %Y" }}.<button class="cite-copy" type="button" data-cite="After Pickup, &quot;{{ page.title }}&quot; updated {{ page.last_updated | date: '%b %-d, %Y' }}. {{ page.url | absolute_url }}. Data: NOAA NCEI U.S. Climate Normals 1991-2020 and NOAA solar calculations.">Copy</button></p>
     <p class="g-updated">Last updated <time datetime="{{ page.last_updated }}">{{ page.last_updated | date: "%B %-d, %Y" }}</time>.</p>
   </section>
 </article>
@@ -173,13 +180,16 @@ function $(i){return document.getElementById(i);}
 function el(n,a,t){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);if(t!=null)e.textContent=t;return e;}
 function clock(m){var h=Math.floor(m/60),mm=m%60,ap=h>=12?"PM":"AM";h=h%12||12;return h+":"+(mm<10?"0":"")+mm+" "+ap;}
 function hm(h){var m=Math.round(h*60);return m<60?m+" min":Math.floor(m/60)+" h "+(m%60?m%60+" min":"");}
-var q=new URLSearchParams(location.search), s={city:q.get("city")||"redmond-wa",end:+q.get("end")||900,lo:q.has("lo")?+q.get("lo"):50,hi:q.has("hi")?+q.get("hi"):85};
+var PK="ap-guide-prefs";function prefs(){try{return JSON.parse(localStorage.getItem(PK))||{};}catch(e){return {};}}
+function savePrefs(o){try{var p=prefs();for(var k in o)p[k]=o[k];localStorage.setItem(PK,JSON.stringify(p));}catch(e){}}
+var P=prefs();
+var q=new URLSearchParams(location.search), s={city:q.get("city")||(C.some(function(c){return c.id===P.city;})?P.city:"redmond-wa"),end:+q.get("end")||(P.end>=720&&P.end<=1020?P.end:900),lo:q.has("lo")?+q.get("lo"):(typeof P.lo==="number"?P.lo:50),hi:q.has("hi")?+q.get("hi"):(typeof P.hi==="number"?P.hi:85)};
 var cs=$("o-city");C.slice().sort(function(a,b){return a.name<b.name?-1:1;}).forEach(function(c){cs.add(new Option(c.name,c.id));});
 var es=$("o-end");for(var t=720;t<=1020;t+=15)es.add(new Option(clock(t),t));
 function comfort(t){if(t>=s.lo&&t<=s.hi)return 1;var d=t<s.lo?s.lo-t:t-s.hi;return Math.max(0,1-d/15);}
 function month(c,m){var day=Math.max(0,c.sunset[m]-s.end)/60,dry=1-c.pdays[m]/DIM[m],cf=comfort(c.tmax[m]);return{day:day,dry:dry,cf:cf,use:day*dry*cf};}
 function year(c){var t=0;SY.forEach(function(m){t+=month(c,m).use*WK[m];});return t;}
-var showAll=false;
+var showAll=P.outdoorShowAll===true;
 function render(){
   var c=C.filter(function(x){return x.id===s.city;})[0]||C[0];s.city=c.id;
   cs.value=c.id;es.value=s.end;$("o-lo").value=s.lo;$("o-hi").value=s.hi;
@@ -215,14 +225,15 @@ function render(){
   var rk=C.map(function(x){return{c:x,v:year(x)};}).sort(function(a,b){return b.v-a.v;});
   var idx=rk.findIndex(function(r){return r.c.id===c.id;}),list=showAll?rk:rk.slice(0,10);
   if(!showAll&&idx>=10)list=list.concat([rk[idx]]);
-  var rv=$("o-rank"),rd=$("o-r-desc");while(rv.lastChild!==rd)rv.removeChild(rv.lastChild);
-  var RW=Math.max(360,Math.min(720,Math.round(rv.getBoundingClientRect().width)||720)),rh=26,RH=list.length*rh+10,mx=rk[0].v,lx=RW<500?150:180;rv.setAttribute("viewBox","0 0 "+RW+" "+RH);
-  list.forEach(function(r,i){var n=rk.indexOf(r),gg=el("g",{"class":r.c.id===c.id?"is-cur":""}),y=i*rh+5,w=(RW-lx-50)*r.v/mx;
-    gg.appendChild(el("text",{x:0,y:y+16,"class":"n"},(n+1)+"."));gg.appendChild(el("text",{x:28,y:y+16},r.c.name));
-    var b=el("rect",{x:lx,y:y+4,width:Math.max(1,w),height:16,rx:3,"class":"bar"});b.style.animationDelay=(i*0.02)+"s";gg.appendChild(b);
-    gg.appendChild(el("text",{x:lx+w+8,y:y+16},Math.round(r.v)+" h"));rv.appendChild(gg);});
+  var rv=$("o-rank"),rd=$("o-r-desc"),mx=rk[0].v;rv.textContent="";
+  list.forEach(function(r,i){var n=rk.indexOf(r),li=document.createElement("li"),bt=document.createElement("button");bt.type="button";bt.dataset.city=r.c.id;
+    if(r.c.id===c.id){bt.className="is-cur";bt.setAttribute("aria-current","true");}
+    bt.setAttribute("aria-label",(n+1)+". "+r.c.name+", "+Math.round(r.v)+" hours. Show this city");
+    bt.innerHTML='<span class="n">'+(n+1)+'</span><span class="nm">'+r.c.name+'</span><span class="g-rk-bar"><i style="width:'+(r.v/mx*100).toFixed(1)+'%;animation-delay:'+(i*0.02)+'s"></i></span><span class="v">'+Math.round(r.v)+' h</span>';
+    li.appendChild(bt);rv.appendChild(li);});
   rd.textContent="Cities ranked by usable outdoor hours after school, September to June. First is "+rk[0].c.name+" with "+Math.round(rk[0].v)+" hours, last is "+rk[rk.length-1].c.name+" with "+Math.round(rk[rk.length-1].v)+". "+c.name+" ranks "+(idx+1)+" of "+rk.length+".";
   $("o-more").textContent=showAll?"Show top 10":"Show all "+rk.length+" cities";$("o-more").setAttribute("aria-expanded",showAll);
+  if(ready)savePrefs({city:s.city,end:s.end,lo:s.lo,hi:s.hi,outdoorShowAll:showAll});
   var p=new URLSearchParams({city:s.city,end:s.end,lo:s.lo,hi:s.hi});history.replaceState(null,"","?"+p);
   fitSel();
 }
@@ -238,10 +249,13 @@ $("o-strip").addEventListener("click",function(e){var b=e.target.closest(".g-mo"
 $("o-strip").addEventListener("focusin",function(e){var b=e.target.closest(".g-mo");if(b)showTip(b);});
 $("o-strip").addEventListener("pointerleave",function(e){if(e.pointerType==="mouse")hideTip();});
 $("o-strip").addEventListener("focusout",hideTip);
+$("o-rank").addEventListener("click",function(e){var b=e.target.closest("[data-city]");if(!b)return;s.city=b.dataset.city;render();
+  $("o-big").scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"center"});});
 $("o-more").onclick=function(){showAll=!showAll;render();};
-document.querySelectorAll("[data-copy]").forEach(function(b){b.onclick=function(){navigator.clipboard&&navigator.clipboard.writeText($(b.dataset.copy).textContent.trim()).then(function(){b.textContent="Copied";});};});
-render();
+document.querySelectorAll("[data-cite]").forEach(function(b){b.onclick=function(){navigator.clipboard&&navigator.clipboard.writeText(b.dataset.cite).then(function(){b.textContent="Copied";setTimeout(function(){b.textContent="Copy";},2000);});};});
+var ready=false;render();ready=true;
+document.getElementById("g-reset").onclick=function(){try{localStorage.removeItem("ap-guide-prefs");}catch(e){}location.href=location.pathname;};
 var rz;addEventListener("resize",function(){clearTimeout(rz);rz=setTimeout(render,150);});
 })();
 </script>
-<script src="{{ '/assets/js/guide-select.js' | relative_url }}" defer></script>
+{% include guide-select.html %}

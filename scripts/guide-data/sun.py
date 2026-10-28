@@ -4,7 +4,7 @@ HERE=os.path.dirname(os.path.abspath(__file__)); ROOT=os.path.dirname(os.path.di
 import json,math,re,datetime as dt
 from zoneinfo import ZoneInfo
 R=math.pi/180
-src=open(os.path.join(ROOT,'assets/js/daylight.js')).read()
+src=open(os.path.join(ROOT,'daylight-after-school.html')).read()
 C=[dict(id=m[0],name=m[1],lat=float(m[2]),lon=float(m[3]),tz=m[4]) for m in re.findall(r'\["([^"]+)","([^"]+)",([-\d.]+),([-\d.]+),"([^"]+)"\]',src)]
 clim={c['id']:c for c in json.load(open(os.path.join(HERE,'cache','climate.json')))}
 def solar(jd):

@@ -6,7 +6,7 @@ import os
 HERE=os.path.dirname(os.path.abspath(__file__)); ROOT=os.path.dirname(os.path.dirname(HERE))
 CACHE=os.path.join(HERE,'cache'); os.makedirs(CACHE,exist_ok=True)
 import re,math,csv,io,json,urllib.request,os,sys
-src=open(os.path.join(ROOT,'assets/js/daylight.js')).read()
+src=open(os.path.join(ROOT,'daylight-after-school.html')).read()
 C=[dict(id=m[0],name=m[1],lat=float(m[2]),lon=float(m[3]),tz=m[4]) for m in re.findall(r'\["([^"]+)","([^"]+)",([-\d.]+),([-\d.]+),"([^"]+)"\]',src)]
 INV=os.path.join(CACHE,'inventory_30yr.txt')
 if not os.path.exists(INV): urllib.request.urlretrieve('https://www.ncei.noaa.gov/data/normals-monthly/1991-2020/doc/inventory_30yr.txt',INV)

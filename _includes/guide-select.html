@@ -1,3 +1,5 @@
+{%- comment -%} Inline sentence select menus for guide pages. {%- endcomment -%}
+<script>
 /* Inline sentence selects for After Pickup guides: replaces native <select> in
    .dl-sentence / .g-sentence with an accessible combobox + listbox popover.
    The native select stays in the DOM (hidden) as the source of truth. */
@@ -137,3 +139,4 @@
   function init() { document.querySelectorAll(".dl-sentence select, .g-sentence select").forEach(enhance); }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init); else init();
 })();
+</script>
