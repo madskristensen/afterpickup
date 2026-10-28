@@ -25,6 +25,10 @@ body{overflow-x:clip}
 .dl-sentence select:hover{border-bottom-color:var(--accent)}
 .dl-measure{position:absolute;visibility:hidden;white-space:pre;font-family:var(--body);font-size:clamp(1.3rem,3.6vw,1.6rem)}
 .dl-geo-row{font-family:var(--ui);font-size:.9rem;color:var(--summary-ink);margin:0 0 2.5rem;display:flex;flex-wrap:wrap;gap:.25rem .75rem;align-items:baseline}
+.dl-geo{display:inline-flex;align-items:center;justify-content:center;vertical-align:-.08em;width:1.5em;height:1.2em;margin:0 0 0 .05rem;padding:0;font-size:.8em;line-height:1;color:var(--summary-ink);background:none;border:0;border-radius:6px;cursor:pointer;transition:color .15s,opacity .15s}
+.dl-geo:hover{color:var(--accent)}.dl-geo:focus-visible{outline:2px solid var(--focus,var(--accent));outline-offset:2px}
+.dl-geo[aria-busy=true]{opacity:.5;cursor:progress}.dl-geo[aria-busy=true] svg{animation:dl-geo-pulse 1s ease-in-out infinite alternate}.dl-geo.is-on{color:var(--accent)}
+@keyframes dl-geo-pulse{to{opacity:.35}}@media (prefers-reduced-motion:reduce){.dl-geo[aria-busy=true] svg{animation:none}}
 .dl-link{font:inherit;color:var(--accent);background:none;border:0;padding:0;text-decoration:underline;text-underline-offset:.2em;cursor:pointer}
 .dl-hero{margin-inline:calc(50% - 50vw);padding:0 max(var(--gutter),calc(50vw - 30rem))}
 .dl-big-wrap{text-align:center;margin-bottom:1.75rem}
@@ -123,10 +127,10 @@ body{overflow-x:clip}
   <p class="dl-sentence" id="dl-sentence">
     If school ends at
     <label class="visually-hidden" for="dl-time">School end time</label><select id="dl-time"></select>
-    in <label class="visually-hidden" for="dl-city">City</label><select id="dl-city"></select>,
+    in <label class="visually-hidden" for="dl-city">City</label><select id="dl-city"></select><button id="dl-geo" class="dl-geo" type="button" aria-label="Use my location" title="Use my location" hidden><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="6.5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="2" fill="currentColor"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>,
     this is how much daylight is left <span id="dl-when">today</span>.
   </p>
-  <p class="dl-geo-row"><button id="dl-today" class="dl-link" type="button" hidden>Back to today</button><button id="dl-geo" class="dl-link" type="button" hidden>or use my location</button><span id="dl-geo-status" aria-live="polite"></span></p>
+  <p class="dl-geo-row"><button id="dl-today" class="dl-link" type="button" hidden>Back to today</button><span id="dl-geo-status" aria-live="polite"></span></p>
 </article>
 
 <section class="dl-hero" aria-labelledby="dl-big">
@@ -670,7 +674,9 @@ document.addEventListener("DOMContentLoaded", function () {
   if (geoBtn && navigator.geolocation) {
     geoBtn.hidden = false;
     geoBtn.addEventListener("click", function () {
+      if (geoBtn.disabled) return;
       geoStatus.textContent = "Asking for your location...";
+      geoBtn.disabled = true; geoBtn.setAttribute("aria-busy", "true");
       navigator.geolocation.getCurrentPosition(function (pos) {
         myLoc = { id: "here", name: "your location", lat: pos.coords.latitude, lon: pos.coords.longitude,
           tz: Intl.DateTimeFormat().resolvedOptions().timeZone || "America/Los_Angeles" };
@@ -678,12 +684,13 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!o) { o = document.createElement("option"); o.value = "here"; o.textContent = "your location"; selCity.insertBefore(o, selCity.firstChild); }
         selCity.value = "here";
         geoStatus.textContent = "Using " + myLoc.lat.toFixed(2) + ", " + myLoc.lon.toFixed(2) + " in " + myLoc.tz + ". It stays in your browser.";
+        geoBtn.disabled = false; geoBtn.removeAttribute("aria-busy"); geoBtn.classList.add("is-on");
         render();
-      }, function () { geoStatus.textContent = "We could not get your location, so pick a city instead."; }, { timeout: 10000 });
+      }, function () { geoBtn.disabled = false; geoBtn.removeAttribute("aria-busy"); geoStatus.textContent = "We could not get your location, so pick a city instead."; }, { timeout: 10000 });
     });
   }
   function remember() { var p = { end: endMin(), metric: metric, daylightShowAll: showAll }; if (selCity.value !== "here") p.city = selCity.value; savePrefs(p); }
-  [selCity, selTime].forEach(function (el) { el.addEventListener("change", function () { remember(); render(); }); });
+  [selCity, selTime].forEach(function (el) { el.addEventListener("change", function () { remember(); if (geoBtn) geoBtn.classList.toggle("is-on", selCity.value === "here"); render(); }); });
   $("dl-today").addEventListener("click", function () { picked = null; render(); });
   var rz = 0, lastW = 0;
   addEventListener("resize", function () { clearTimeout(rz); rz = setTimeout(function () { var w = $("dl-chart").clientWidth; if (Math.abs(w - lastW) > 30) { lastW = w; chart(cityById(selCity.value), endMin(), ymd()); } }, 150); });
