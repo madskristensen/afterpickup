@@ -1,0 +1,103 @@
+---
+layout: default
+title: Daylight after school
+description: See how much daylight is left after school ends in your city, on any date, and how it rises and falls through the whole year.
+permalink: /daylight-after-school/
+image: /assets/images/guides/daylight-after-school.png
+image_alt: A chart of daylight after school through the year, After Pickup.
+guide: true
+---
+<style>
+.dl-form{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(11rem,1fr));margin:1.5rem 0;font-family:var(--ui);font-size:1rem}
+.dl-form label{display:block;font-weight:600;color:var(--ink);margin-bottom:.3rem}
+.dl-form select,.dl-form input,.dl-form button{width:100%;min-height:2.75rem;font:inherit;color:var(--ink);background:rgba(var(--sheet-rgb),1);border:1px solid var(--rule);border-radius:6px;padding:.45rem .6rem}
+.dl-form button{cursor:pointer;color:var(--accent);font-weight:600}
+.dl-geo-status{font-family:var(--ui);font-size:.875rem;color:var(--summary-ink);margin:-.5rem 0 1rem}
+.dl-result{border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:1.25rem 0;margin:1.5rem 0}
+.dl-headline{margin:0;font-size:1.9rem;line-height:1.2;font-weight:600;color:var(--ink)}
+.dl-detail{margin:.5rem 0 0;font-family:var(--ui);font-size:1rem}
+.dl-chart{width:100%;height:auto;display:block;font-family:var(--ui)}
+.dl-chart .grid{stroke:var(--rule);stroke-width:1}
+.dl-chart .tick{fill:var(--summary-ink);font-size:12px}
+.dl-chart .area{fill:color-mix(in srgb,var(--accent) 55%,transparent);stroke:var(--accent);stroke-width:1.5}
+.dl-chart .dst{stroke:var(--quiet-green);stroke-dasharray:4 4;stroke-width:1.5}
+.dl-chart .dst-label{fill:var(--quiet-green)}
+.dl-chart .today{fill:var(--page);stroke:var(--ink);stroke-width:2.5}
+.dl-findings{font-family:var(--ui);font-size:1rem}
+.dl-table-wrap{overflow-x:auto;margin:1rem 0}
+.dl-table{border-collapse:collapse;width:100%;font-family:var(--ui);font-size:.95rem}
+.dl-table caption{text-align:left;color:var(--summary-ink);font-size:.875rem;padding-bottom:.5rem}
+.dl-table th,.dl-table td{padding:.45rem .5rem;border-bottom:1px solid var(--rule);text-align:right;white-space:nowrap}
+.dl-table th[scope=row],.dl-table thead th:nth-child(2){text-align:left}
+.dl-table thead th{color:var(--ink)}
+.dl-table thead button{font:inherit;font-weight:600;color:var(--accent);background:none;border:0;padding:0;cursor:pointer}
+.dl-table th[aria-sort=ascending] button::after{content:" \2191"}
+.dl-table th[aria-sort=descending] button::after{content:" \2193"}
+.dl-table tr.is-current{background:color-mix(in srgb,var(--accent) 14%,transparent)}
+@media (max-width:30rem){.dl-headline{font-size:1.5rem}.dl-table{font-size:.85rem}}
+</style>
+<article class="post guide">
+  <h1>Daylight after school</h1>
+  <p class="post-summary">{{ page.description }}</p>
+  <div class="prose">
+    <p>Every fall there is a week when we walk out of pickup and notice the light already going soft, and every spring there is a day when it suddenly feels like the whole evening is still ahead of us. We kept wondering how big those swings really are, so we built a small calculator to find out. Pick a city and the time school ends, and it works out how many minutes of daylight are left after the bell on any date, then draws the whole year so you can see the dark stretch coming and the bright one coming back.</p>
+  </div>
+
+  <form id="dl-form" class="dl-form" aria-describedby="dl-geo-status">
+    <div>
+      <label for="dl-city">City</label>
+      <select id="dl-city" name="city"></select>
+    </div>
+    <div>
+      <label for="dl-time">School ends</label>
+      <select id="dl-time" name="time"></select>
+    </div>
+    <div>
+      <label for="dl-date">Date</label>
+      <input id="dl-date" name="date" type="date">
+    </div>
+    <div>
+      <span aria-hidden="true" style="display:block;height:1.95rem"></span>
+      <button id="dl-geo" type="button" hidden>Use my location</button>
+    </div>
+  </form>
+  <p id="dl-geo-status" class="dl-geo-status" aria-live="polite"></p>
+
+  <section class="dl-result" aria-live="polite">
+    <p id="dl-headline" class="dl-headline">Loading the calculator...</p>
+    <p id="dl-detail" class="dl-detail"></p>
+  </section>
+
+  <section aria-labelledby="dl-year-title">
+    <h2 id="dl-year-title">The whole year</h2>
+    <svg id="dl-chart" class="dl-chart" viewBox="0 0 720 280" role="img" aria-labelledby="dl-chart-title dl-chart-desc"></svg>
+    <ul id="dl-findings" class="dl-findings"></ul>
+  </section>
+
+  <section aria-labelledby="dl-rank-title">
+    <h2 id="dl-rank-title">How the cities compare</h2>
+    <div class="dl-table-wrap">
+      <table id="dl-table" class="dl-table">
+        <caption id="dl-table-caption"></caption>
+        <thead><tr>
+          <th scope="col">#</th>
+          <th scope="col" data-sort="name"><button type="button">City</button></th>
+          <th scope="col" data-sort="sunset"><button type="button">Sunset</button></th>
+          <th scope="col" data-sort="today"><button type="button">That day</button></th>
+          <th scope="col" data-sort="avg"><button type="button">Year average</button></th>
+          <th scope="col" data-sort="hours"><button type="button">Weekday hours</button></th>
+        </tr></thead>
+        <tbody id="dl-tbody"></tbody>
+      </table>
+    </div>
+    <p class="dl-detail">Year average is the daily average across every day of the year. Weekday hours adds up the daylight after school on every Monday through Friday of the year, without taking breaks or holidays out.</p>
+  </section>
+
+  <div class="prose">
+    <h2>How we worked it out</h2>
+    <p>Sunset comes from the NOAA solar calculation, the same equations behind the NOAA Solar Calculator. It finds the sun's position for each date and solves for the moment its center sits 0.833 degrees below the horizon, which accounts for the bending of light near the horizon and the size of the sun. Civil twilight, the usable light, ends when the sun is 6 degrees below the horizon. We checked a handful of dates against another published implementation of the same math and they agreed to within a minute.</p>
+    <p>Daylight after school is simply sunset minus the end time you picked, and it never goes below zero. We assume school ends at that same time every day of the year, so summer break and early release days are not taken out.</p>
+    <p>The city list is about fifty of the largest US cities plus Redmond, each with its latitude, longitude, and time zone. Clock times use each city's own time zone through your browser, so daylight saving time starts and ends on the right dates, and places like Phoenix that skip it stay put. If you use your location, the coordinates stay in your browser and the time zone is your device's.</p>
+  </div>
+</article>
+<script src="{{ '/assets/js/daylight.js' | relative_url }}" defer></script>
