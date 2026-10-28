@@ -7,6 +7,8 @@ image_alt: Clear bin holding folded white king sheets and several spring clamps 
 image_caption: The fort-building bin, photo from our house.
 tags: [kids, home]
 draft: false
+guide: /daylight-after-school/
+guide_text: "Fort season starts for us when [the daylight after school runs short]."
 ---
 
 All the kids love building forts, and they do it often, so we keep a fort-building bin ready. Inside are two large king-size bed sheets and a bunch of clamps, and that combination is the whole kit.
