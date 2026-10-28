@@ -6,7 +6,7 @@ permalink: /after-school-time/
 image: /assets/images/guides/after-school-time.png
 image_alt: A timeline ribbon of the afternoon from school end to bedtime, After Pickup.
 guide: true
-last_updated: 2026-10-27
+updated: 2026-10-27
 ---
 <script type="application/ld+json">
 {
@@ -109,11 +109,14 @@ body{overflow-x:clip}
 .g-data{font-family:var(--ui);font-size:.8rem;color:var(--summary-ink);margin:.75rem 0 0}
 .g-data a{color:inherit}
 .g-data .cite-copy{margin-left:.5rem}
+.g-upd{font-family:var(--ui);font-size:.78rem;color:var(--summary-ink);margin:-.6rem 0 1.5rem}
+.g-reset-row{font-family:var(--ui);font-size:.75rem;margin:.75rem 0 0;text-align:center}
 </style>
 <article class="post guide g">
   <p class="g-kicker">A guide from After Pickup</p>
   <h1>How much time do kids actually have after school?</h1>
   <p class="g-dek">Set your school day and see the free time left before bed.</p>
+  <p class="g-upd">Updated <time datetime="{{ page.updated | date: '%Y-%m-%d' }}">{{ page.updated | date: "%B %-d, %Y" }}</time></p>
 
   <section class="g-sky" aria-labelledby="t-q">
     <h2 id="t-q" class="visually-hidden">Your afternoon</h2>
@@ -134,7 +137,7 @@ body{overflow-x:clip}
     <span class="g-big" id="t-big">&nbsp;</span>
     <span class="g-sub" id="t-sub"></span>
   </section>
-  <p class="g-data">Sources: NOAA sunset times. <a href="#t-s-title">Sources and method</a><button type="button" class="cite-copy" id="g-reset">Reset to defaults</button></p>
+  <p class="g-reset-row"><button type="button" class="cite-copy" id="g-reset">Reset to defaults</button></p>
 
   <section aria-labelledby="t-r-title">
     <h2 id="t-r-title">The afternoon, end to end</h2>
@@ -150,7 +153,7 @@ body{overflow-x:clip}
 
   <section class="prose" aria-labelledby="t-a-title">
     <h2 id="t-a-title">How much free time do kids have after school?</h2>
-    <p>With school out at 3:00 PM, 30 minutes of pickup, 45 minutes of homework, dinner at 6:00 PM and bed at 8:30 PM, a kid has about 3 h 45 min of free time, roughly 19 hours across a school week. Pickup, homework and dinner take a third of the 5 h 30 min between the bell and bedtime.</p>
+    <p id="t-answer">With school out at 3:00 PM, 30 minutes of pickup, 45 minutes of homework, dinner at 6:00 PM and bed at 8:30 PM, a kid has about 3 h 45 min of free time, roughly 19 hours across a school week.</p>
     <p>Every number in the tool is an example, so set it to your own day. For the light side of the afternoon, see <a href="{{ '/daylight-after-school/' | relative_url }}">daylight after school</a> and <a href="{{ '/outdoor-hours-after-school/' | relative_url }}">how many outdoor hours you really get</a>. Ideas for the free part: our <a href="{{ '/fort-building-bin/' | relative_url }}">fort building bin</a> and the <a href="{{ '/craft-closet/' | relative_url }}">craft closet</a>.</p>
   </section>
 
@@ -174,8 +177,8 @@ body{overflow-x:clip}
   </section>
 
   <section class="prose g-method" aria-label="Cite">
-    <p class="cite-line">Cite: After Pickup, "<a href="{{ page.url | absolute_url }}">{{ page.title }}</a>" updated {{ page.last_updated | date: "%b %-d, %Y" }}.<button class="cite-copy" type="button" data-cite="After Pickup, &quot;{{ page.title }}&quot; updated {{ page.last_updated | date: '%b %-d, %Y' }}. {{ page.url | absolute_url }}. Sleep ranges: AASM consensus (Paruthi et al., 2016), endorsed by the AAP.">Copy</button></p>
-    <p class="g-updated">Last updated <time datetime="{{ page.last_updated }}">{{ page.last_updated | date: "%B %-d, %Y" }}</time>.</p>
+    <p class="cite-line">Cite: After Pickup, "<a href="{{ page.url | absolute_url }}">{{ page.title }}</a>" updated {{ page.updated | date: "%b %-d, %Y" }}.<button class="cite-copy" type="button" data-cite="After Pickup, &quot;{{ page.title }}&quot; updated {{ page.updated | date: '%b %-d, %Y' }}. {{ page.url | absolute_url }}. Sleep ranges: AASM consensus (Paruthi et al., 2016), endorsed by the AAP.">Copy</button></p>
+    <p class="g-updated">Last updated <time datetime="{{ page.updated }}">{{ page.updated | date: "%B %-d, %Y" }}</time>.</p>
   </section>
 </article>
 <script>
@@ -222,6 +225,7 @@ function render(){
   var city=C.filter(function(c){return c.id===s.city;})[0],sun=city?sunToday(city):null;
   var B=blocks(),free=0,lit=0;B.forEach(function(b){if(b.k==="free"){free+=b.b-b.a;if(sun!=null)lit+=Math.max(0,Math.min(b.b,sun)-b.a);}});
   $("t-big").textContent=hm(free);
+  $("t-answer").textContent="With school out at "+clock(s.end)+", "+s.travel+" minutes of pickup, "+s.hw+" minutes of homework, dinner at "+clock(s.dinner)+" and bed at "+clock(s.bed)+", a kid has about "+hm(free)+" of free time, roughly "+Math.round(free*5/60)+" hours across a school week.";
   $("t-sub").textContent="of free time between "+clock(s.end)+" and "+clock(s.bed)+" on a school day, out of "+hm(s.bed-s.end)+".";
   $("t-week").textContent=(Math.round(free*5/6)/10).toString();
   $("t-light").textContent=sun!=null?Math.round(lit):"-";$("t-light-l").textContent=sun!=null?"free minutes before sunset ("+clock(sun)+")":"free minutes in daylight (pick a city)";

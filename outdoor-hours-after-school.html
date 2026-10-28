@@ -6,7 +6,7 @@ permalink: /outdoor-hours-after-school/
 image: /assets/images/guides/outdoor-hours-after-school.png
 image_alt: A chart of usable outdoor hours after school by month, After Pickup.
 guide: true
-last_updated: 2026-10-27
+updated: 2026-10-27
 ---
 {%- assign D = site.data.guide_cities -%}
 <script type="application/ld+json">
@@ -50,7 +50,7 @@ last_updated: 2026-10-27
 }
 </script>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Dataset","name":"Usable outdoor hours after school, 51 US cities","description":"Monthly average sunset, NOAA 1991-2020 normal daily maximum temperature and average days with at least 0.01 inch of precipitation for 51 US cities, combined into a usable outdoor time score after school.","url":"{{ page.url | absolute_url }}","license":"https://creativecommons.org/publicdomain/zero/1.0/","creator":{"@type":"Organization","name":"After Pickup","url":"{{ site.url }}"},"dateModified":"{{ page.last_updated }}","temporalCoverage":"1991/2020","spatialCoverage":"United States","isBasedOn":["https://www.ncei.noaa.gov/products/land-based-station/us-climate-normals","https://gml.noaa.gov/grad/solcalc/calcdetails.html"],"variableMeasured":["Normal monthly maximum temperature (F)","Average days per month with precipitation of 0.01 inch or more","Average sunset time","Usable outdoor hours after school"]}
+{"@context":"https://schema.org","@type":"Dataset","dateModified":{{ page.updated | date_to_xmlschema | jsonify }},"name":"Usable outdoor hours after school, 51 US cities","description":"Monthly average sunset, NOAA 1991-2020 normal daily maximum temperature and average days with at least 0.01 inch of precipitation for 51 US cities, combined into a usable outdoor time score after school.","url":"{{ page.url | absolute_url }}","license":"https://creativecommons.org/publicdomain/zero/1.0/","creator":{"@type":"Organization","name":"After Pickup","url":"{{ site.url }}"},"dateModified":"{{ page.updated }}","temporalCoverage":"1991/2020","spatialCoverage":"United States","isBasedOn":["https://www.ncei.noaa.gov/products/land-based-station/us-climate-normals","https://gml.noaa.gov/grad/solcalc/calcdetails.html"],"variableMeasured":["Normal monthly maximum temperature (F)","Average days per month with precipitation of 0.01 inch or more","Average sunset time","Usable outdoor hours after school"]}
 </script>
 <style>
 .g{--sky-day:#7FA7CF;--sky-noon:#B9C9D6;--sky-gold:#E9C27A;--sky-set:#E08A5B;--sky-dusk:#6A4E7A;--sky-night:#232B45;--river:#2B3A52;--glow:#E08A5B}
@@ -140,11 +140,14 @@ body{overflow-x:clip}
 .g-data a{color:inherit}
 .g-data .cite-copy{margin-left:.5rem}
 .g-strip-sum{font-family:var(--ui);font-size:.85rem;color:var(--summary-ink);text-align:center;margin:.6rem 0 0}
+.g-upd{font-family:var(--ui);font-size:.78rem;color:var(--summary-ink);margin:-.6rem 0 1.5rem}
+.g-reset-row{font-family:var(--ui);font-size:.75rem;margin:.75rem 0 0;text-align:center}
 </style>
 <article class="post guide g">
   <p class="g-kicker">A guide from After Pickup</p>
   <h1>Can we go outside?</h1>
   <p class="g-dek">How many usable outdoor hours after school your city gets in a school year.</p>
+  <p class="g-upd">Updated <time datetime="{{ page.updated | date: '%Y-%m-%d' }}">{{ page.updated | date: "%B %-d, %Y" }}</time></p>
 
   <section class="g-sky" aria-labelledby="o-q">
     <h2 id="o-q" class="visually-hidden">Your settings</h2>
@@ -166,12 +169,12 @@ body{overflow-x:clip}
     <p class="g-strip-key"><span><i class="k-use"></i>Usable</span><span><i class="k-rain"></i>Lost to rain</span><span><i class="k-temp"></i>Too hot or cold</span><span><i class="k-dark"></i>Dark</span></p>
     <p class="visually-hidden" id="o-strip-desc"></p>
     <p class="g-strip-sum" id="o-strip-sum"></p>
-    <p class="g-data">Sources: NOAA 1991-2020 U.S. Climate Normals and NOAA solar equations, 51 cities. <a href="#o-s-title">Sources and method</a><button type="button" class="cite-copy" id="g-reset">Reset to defaults</button></p>
+    <p class="g-reset-row"><button type="button" class="cite-copy" id="g-reset">Reset to defaults</button></p>
   </section>
 
   <section class="prose" aria-labelledby="o-a-title">
     <h2 id="o-a-title">How many hours can kids play outside after school?</h2>
-    <p>In Redmond, WA, with school out at 3:00 PM and a comfort range of 50 to 85 F, kids get about 412 usable outdoor hours from September to June, around 1 h 54 min a school day. Sunny southern California cities top the list at about 660 hours.</p>
+    <p><span id="o-answer">In Redmond, WA, with school out at 3:00 PM and a comfort range of 50 to 85 F, kids get about 412 usable outdoor hours from September to June, around 1 h 54 min a school day.</span> Sunny southern California cities top the list at about 660 hours.</p>
     <p>We take the daylight left after school and keep only the share that falls on a typical dry, comfortable day. Change the thresholds above to match your kids. For daylight alone see <a href="{{ '/daylight-after-school/' | relative_url }}">daylight after school</a>; for the whole afternoon see <a href="{{ '/after-school-time/' | relative_url }}">how much free time kids have</a>. Our <a href="{{ '/backyard-sandbox/' | relative_url }}">backyard sandbox</a> gets most of those hours.</p>
   </section>
 
@@ -219,8 +222,8 @@ year      = sum over Sep to Jun of usable x weekdays in that month</div>
   </section>
 
   <section class="prose g-method" aria-label="Cite">
-    <p class="cite-line">Cite: After Pickup, "<a href="{{ page.url | absolute_url }}">{{ page.title }}</a>" updated {{ page.last_updated | date: "%b %-d, %Y" }}.<button class="cite-copy" type="button" data-cite="After Pickup, &quot;{{ page.title }}&quot; updated {{ page.last_updated | date: '%b %-d, %Y' }}. {{ page.url | absolute_url }}. Data: NOAA NCEI U.S. Climate Normals 1991-2020 and NOAA solar calculations.">Copy</button></p>
-    <p class="g-updated">Last updated <time datetime="{{ page.last_updated }}">{{ page.last_updated | date: "%B %-d, %Y" }}</time>.</p>
+    <p class="cite-line">Cite: After Pickup, "<a href="{{ page.url | absolute_url }}">{{ page.title }}</a>" updated {{ page.updated | date: "%b %-d, %Y" }}.<button class="cite-copy" type="button" data-cite="After Pickup, &quot;{{ page.title }}&quot; updated {{ page.updated | date: '%b %-d, %Y' }}. {{ page.url | absolute_url }}. Data: NOAA NCEI U.S. Climate Normals 1991-2020 and NOAA solar calculations.">Copy</button></p>
+    <p class="g-updated">Last updated <time datetime="{{ page.updated }}">{{ page.updated | date: "%B %-d, %Y" }}</time>.</p>
   </section>
 </article>
 <script>
@@ -251,6 +254,7 @@ function render(){
   cs.value=c.id;es.value=s.end;$("o-lo").value=s.lo;$("o-hi").value=s.hi;
   var ms=SY.map(function(m){return month(c,m);}),tot=year(c),days=SY.reduce(function(a,m){return a+WK[m];},0);
   $("o-big").textContent=Math.round(tot)+" hours";
+  $("o-answer").textContent="In "+c.name+", with school out at "+clock(s.end)+" and a comfort range of "+s.lo+" to "+s.hi+" F, kids get about "+Math.round(tot)+" usable outdoor hours from September to June, around "+hm(tot/days)+" a school day.";
   $("o-sub").textContent="of usable outdoor time across "+days+" school days from September to June in "+c.name+", about "+hm(tot/days)+" a day on average.";
   // school-year strip: after-school window (bell to latest sunset of the year) split by what eats it
   var win=Math.max.apply(null,SY.map(function(m){return Math.max(0,c.sunset[m]-s.end)/60;}))||1,strip=$("o-strip");strip.textContent="";var sd=[];
