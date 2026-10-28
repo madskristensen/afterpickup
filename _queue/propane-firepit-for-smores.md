@@ -6,6 +6,8 @@ image: /assets/images/posts/propane-firepit-for-smores.webp
 image_alt: Family in blue patio chairs around a small propane firepit, with graham crackers and chocolate on a plate and roasting sticks holding marshmallows
 image_caption: S'mores around the propane firepit, photo from our house.
 tags: [kids, home]
+guide: /daylight-after-school/
+guide_text: "In fall we light the fire right after dinner, since [the sun sets so soon after school]."
 ---
 
 After dinner we want s'mores, and these days that means the propane firepit. The kids love them, of course, and we do too, though honestly the s'mores are mostly an excuse for family time, all of us circled up around the fire before bed. There is something magical about sitting around a fire together, and it gets us outdoors even on the cooler evenings when we might otherwise stay in.

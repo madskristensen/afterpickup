@@ -7,6 +7,8 @@ image_alt: Pull-out kitchen drawers with clear bins of bars, seaweed snacks, jer
 image_caption: The kids' snack cabinet, photo from our kitchen.
 tags: [kitchen]
 draft: false
+guide: /after-school-time/
+guide_text: "Snack is one small piece of [the time between pickup and bedtime]."
 ---
 
 After pickup used to start with someone asking us to get a snack down. Then another someone. Then the five-year-old, who already knew what she wanted. We got tired of being the ones who had to open the snack cabinet.
