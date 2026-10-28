@@ -76,7 +76,7 @@ body{overflow-x:clip}
 .dl-metric-note{font-family:var(--ui);font-size:.85rem;color:var(--summary-ink);margin:.25rem 0 1.25rem}
 .dl-bars{list-style:none;margin:0;padding:0;font-family:var(--ui);font-size:.9rem;font-variant-numeric:tabular-nums}
 .dl-bars li{margin:0}
-.dl-bar{width:100%;font:inherit;color:inherit;background:none;border:0;text-align:left;cursor:pointer;display:grid;grid-template-columns:1.8rem minmax(7.5rem,11rem) 1fr 6.2rem;align-items:center;gap:.6rem;padding:.32rem .4rem;border-radius:6px}
+.dl-bar{width:100%;font:inherit;color:inherit;background:none;border:0;text-align:left;cursor:pointer;display:grid;grid-template-columns:1.8rem minmax(7.5rem,11rem) 1fr minmax(5.6rem,max-content);align-items:center;gap:.6rem;padding:.32rem .4rem;border-radius:6px}
 .dl-rank{color:var(--summary-ink);font-size:.78rem;text-align:right}
 .dl-name{color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .dl-track{height:.5rem;border-radius:999px;background:color-mix(in srgb,var(--rule) 60%,transparent)}
@@ -99,7 +99,7 @@ body{overflow-x:clip}
 .cite-copy{font:inherit;color:var(--accent);background:none;border:0;padding:0;margin-left:.35rem;text-decoration:underline;text-underline-offset:.2em;cursor:pointer}
 .dl-updated{font-family:var(--ui);font-size:.82rem;color:var(--summary-ink);margin-top:1rem}
 @media (max-width:34rem){
-  .dl-bar{grid-template-columns:1.4rem 1fr 4.9rem;row-gap:.25rem}
+  .dl-bar{grid-template-columns:1.4rem 1fr minmax(5.6rem,max-content);row-gap:.25rem}
   .dl-track{grid-column:2/4;grid-row:2}
   .dl-sky{border-radius:10px}
   .dl-sky-marks{font-size:.75rem}
@@ -111,6 +111,7 @@ body{overflow-x:clip}
 .g-data .cite-copy{margin-left:.5rem}
 .g-upd{font-family:var(--ui);font-size:.78rem;color:var(--summary-ink);margin:-.6rem 0 1.5rem}
 .g-reset-row{font-family:var(--ui);font-size:.75rem;margin:.75rem 0 0;text-align:center}
+.dl-bar>:last-child{white-space:nowrap;text-align:right;font-variant-numeric:tabular-nums}
 </style>
 <article class="post guide">
   <p class="guide-eyebrow">An After Pickup guide</p>
@@ -601,7 +602,7 @@ document.addEventListener("DOMContentLoaded", function () {
   var metric = /^(day|avg|school)$/.test(P.metric) ? P.metric : "day", showAll = P.daylightShowAll === true, rows = [];
   var METRICS = {
     day: { lab: "That day", fmt: function (r) { return dur(r.day); } },
-    avg: { lab: "Year average", fmt: function (r) { return dur(r.avg) + " a day"; } },
+    avg: { lab: "Year average", fmt: function (r) { return dur(r.avg); } },
     school: { lab: "School year", fmt: function (r) { return Math.round(r.school) + " h"; } }
   };
   function computeRows(end, p) {
