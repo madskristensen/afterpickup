@@ -109,11 +109,14 @@ body{overflow-x:clip}
 .g-data{font-family:var(--ui);font-size:.8rem;color:var(--summary-ink);margin:.75rem 0 0}
 .g-data a{color:inherit}
 .g-data .cite-copy{margin-left:.5rem}
+.g-upd{font-family:var(--ui);font-size:.78rem;color:var(--summary-ink);margin:-.6rem 0 1.5rem}
+.g-reset-row{font-family:var(--ui);font-size:.75rem;margin:.75rem 0 0;text-align:center}
 </style>
 <article class="post guide">
   <p class="guide-eyebrow">An After Pickup guide</p>
   <h1>Daylight after school</h1>
   <p class="g-dek">How much daylight is left after the school bell in your city, any day of the year.</p>
+  <p class="g-upd">Updated <time datetime="{{ page.updated | date: '%Y-%m-%d' }}">{{ page.updated | date: "%B %-d, %Y" }}</time></p>
 
 
   <p class="dl-sentence" id="dl-sentence">
@@ -134,12 +137,11 @@ body{overflow-x:clip}
   <p id="dl-sky-label" class="visually-hidden"></p>
   <ol id="dl-sky-marks" class="dl-sky-marks" aria-hidden="true"></ol>
   <p id="dl-usable" class="dl-usable"></p>
-  <p class="g-data">Sources: NOAA solar position equations, checked against the astral library. <a href="#dl-method-title">Sources and method</a><button id="g-reset" class="cite-copy" type="button">Reset to defaults</button></p>
+  <p class="g-reset-row"><button id="g-reset" class="cite-copy" type="button">Reset to defaults</button></p>
 </section>
 
 <article class="post guide" style="margin-top:0;padding-top:0">
   <div class="post-byline">
-    <p class="meta">Updated <time datetime="{{ page.updated | date_to_xmlschema }}">{{ updated_long }}</time></p>
     <div class="post-share" data-url="{{ page.url | absolute_url }}" data-title="{{ page.title | escape }}" data-text="{{ page.description | escape }}">
       <p class="share-status" data-status role="status"></p>
       <button type="button" class="share-button" data-share aria-label="Share" title="Share">
@@ -150,7 +152,7 @@ body{overflow-x:clip}
   </div>
   <section class="prose dl-section" aria-labelledby="dl-a-title">
     <h2 id="dl-a-title">How much daylight is left after school?</h2>
-    <p>In Redmond, WA on October 27, with school out at 3:00 PM, there are about 2 h 58 min of daylight left. That drops by about an hour when clocks fall back in November, and by late June it is over 6 hours.</p>
+    <p><span id="dl-answer">In Redmond, WA on October 27, with school out at 3:00 PM, there are about 2 h 58 min of daylight left.</span> In most cities that drops by about an hour when clocks fall back in November, and by late June it is several hours longer.</p>
     <p>We built this after noticing the week every fall when pickup suddenly feels like dusk. For the weather side, see <a href="{{ '/outdoor-hours-after-school/' | relative_url }}">how many outdoor hours you really get</a>, and for the whole afternoon, <a href="{{ '/after-school-time/' | relative_url }}">how much free time kids have after school</a>.</p>
   </section>
 
@@ -653,6 +655,7 @@ document.addEventListener("DOMContentLoaded", function () {
     keepTip = fromChart === true;
     [selCity, selTime].forEach(fit);
     hero(city, end, p); chart(city, end, p); computeRows(end, p); bars();
+    $("dl-answer").textContent = (city.id === "here" ? "Where you are" : "In " + city.name) + " on " + label(p[1], p[2]) + ", with school out at " + clock(end) + ", there " + ($("dl-big").textContent === "0 min" ? "is no daylight left." : "are about " + $("dl-big").textContent + " of daylight left.");
     var params = new URLSearchParams();
     params.set("city", selCity.value === "here" ? "redmond-wa" : selCity.value);
     params.set("time", selTime.value);
