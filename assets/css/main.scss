@@ -608,10 +608,24 @@ figcaption {
   content: "#";
 }
 
-.related,
 .guide-line {
-  margin: 1.5rem 0 0;
-  color: var(--ink);
+  margin: 1.25rem 0 0;
+  padding-left: 1.1em;
+  text-indent: -1.1em;
+  font-family: var(--body);
+  font-style: italic;
+  font-size: 0.94rem;
+  line-height: 1.6;
+  color: var(--summary-ink);
+}
+
+.guide-line::before {
+  content: "\2020";
+  display: inline-block;
+  width: 1.1em;
+  text-indent: 0;
+  font-style: normal;
+  color: var(--accent);
 }
 
 .guide-line a {
@@ -620,6 +634,7 @@ figcaption {
   text-underline-offset: 0.2em;
 }
 
+.related,
 .read-next {
   margin-top: 2.5rem;
   padding-top: 0.25rem;
