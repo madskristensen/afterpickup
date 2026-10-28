@@ -93,17 +93,17 @@ body{overflow-x:clip}
 .g-updated{font-family:var(--ui);font-size:.82rem;color:var(--summary-ink);margin-top:1rem}
 .g-rk{list-style:none;margin:1rem 0 0;padding:0;font-family:var(--ui);font-size:.9rem;font-variant-numeric:tabular-nums}
 .g-rk li{margin:0}
-.g-rk button{width:100%;font:inherit;color:inherit;background:none;border:0;text-align:left;cursor:pointer;display:grid;grid-template-columns:1.8rem minmax(7.5rem,11rem) 1fr 4rem;align-items:center;gap:.6rem;padding:.32rem .4rem;border-radius:6px}
+.g-rk button{width:100%;font:inherit;color:inherit;background:none;border:0;text-align:left;cursor:pointer;display:grid;grid-template-columns:1.8rem minmax(7.5rem,11rem) 1fr minmax(4rem,max-content);align-items:center;gap:.6rem;padding:.32rem .4rem;border-radius:6px}
 .g-rk button:hover{background:color-mix(in srgb,var(--accent) 10%,transparent)}
 .g-rk button:focus-visible{outline:2px solid var(--focus,var(--accent));outline-offset:1px}
 .g-rk .n{color:var(--summary-ink);font-size:.78rem;text-align:right}
 .g-rk .nm{color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .g-rk-bar{height:.5rem;border-radius:999px;background:color-mix(in srgb,var(--rule) 60%,transparent)}
 .g-rk-bar i{display:block;height:100%;border-radius:999px;background:color-mix(in srgb,var(--dry) 65%,transparent);transform-origin:left;animation:g-grow .9s cubic-bezier(.2,.7,.2,1) both}
-.g-rk .v{text-align:right;color:var(--soft-ink)}
+.g-rk .v{text-align:right;color:var(--soft-ink);white-space:nowrap}
 .g-rk .is-cur{background:color-mix(in srgb,var(--glow) 14%,transparent)}
 .g-rk .is-cur .nm{font-weight:600}.g-rk .is-cur .g-rk-bar i{background:var(--dry)}
-@media (max-width:34rem){.g-rk button{grid-template-columns:1.4rem 1fr 3.6rem;row-gap:.25rem}.g-rk-bar{grid-column:2/4;grid-row:2}}
+@media (max-width:34rem){.g-rk button{grid-template-columns:1.4rem 1fr minmax(3.6rem,max-content);row-gap:.25rem}.g-rk-bar{grid-column:2/4;grid-row:2}}
 .g-strip-wrap{position:relative;margin-top:1.75rem}
 .g-strip{display:flex;gap:3px;height:clamp(5rem,12vw,7rem);text-align:left}
 .g-mo{display:flex;flex-direction:column-reverse;border-radius:6px;overflow:hidden;cursor:pointer;position:relative;padding:0;border:0;background:none;font:inherit}
