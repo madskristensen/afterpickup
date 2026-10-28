@@ -1,18 +1,159 @@
 ---
 layout: default
 title: Guides
-description: Small interactive guides from our house, built to answer the questions we keep asking around pickup and dinner.
+description: Free interactive guides for parents built on real data. Daylight after school, outdoor play hours by city, and how much free time kids have after school.
 permalink: /guides/
 ---
+<style>
+.gh-dek{font-size:1.15rem;line-height:1.45;color:var(--summary-ink);margin:.4rem 0 2rem}
+.gh-list{list-style:none;margin:0;padding:0;display:grid;gap:1.5rem}
+.gh-card{position:relative;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:1.75rem;align-items:center;padding:1.75rem;border:1px solid var(--rule);border-radius:14px;transition:border-color .15s,transform .15s}
+.gh-card:hover{border-color:color-mix(in srgb,var(--accent) 55%,var(--rule))}
+.gh-card:focus-within{outline:2px solid var(--accent);outline-offset:3px}
+.gh-card h2{font-size:1.6rem;line-height:1.2;margin:.2rem 0 .5rem}
+.gh-card h2 a{color:var(--ink);text-decoration:none}
+.gh-card h2 a::after{content:"";position:absolute;inset:0;border-radius:14px}
+.gh-card h2 a:focus{outline:none}
+.gh-kick{font-family:var(--ui);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--quiet-green);margin:0}
+.gh-card p.d{margin:0;color:var(--summary-ink);line-height:1.5}
+.gh-go{font-family:var(--ui);font-size:.85rem;color:var(--accent);margin:.9rem 0 0}
+.gh-pv{min-height:8.5rem;display:flex;flex-direction:column;justify-content:center;font-family:var(--ui)}
+.gh-num{font-family:var(--body);font-size:2.6rem;line-height:1;color:var(--ink);font-variant-numeric:tabular-nums}
+.gh-cap{font-size:.8rem;color:var(--summary-ink);margin:.35rem 0 .8rem;min-height:1.2em}
+.gh-sky{height:28px;border-radius:6px;background:linear-gradient(90deg,#7FA7CF,#E9C27A 50%,#E08A5B 70%,#6A4E7A 85%,#232B45)}
+.gh-strip{display:grid;grid-template-columns:repeat(10,1fr);gap:3px;height:44px;align-items:end}
+.gh-strip i{display:block;border-radius:3px 3px 0 0;background:#8FB596;min-height:2px}
+.gh-strip-l{display:grid;grid-template-columns:repeat(10,1fr);font-size:.65rem;color:var(--summary-ink);text-align:center;margin-top:3px}
+.gh-rib{display:flex;height:28px;border-radius:6px;overflow:hidden}
+.gh-rib i{display:block;height:100%}
+.gh-rib .f{background:#7C9A82}.gh-rib .b{background:color-mix(in srgb,var(--summary-ink) 28%,transparent)}.gh-rib .m{background:#C98B5A}
+@media (prefers-color-scheme:dark){.gh-sky{background:linear-gradient(90deg,#5E86B0,#D2A55C 50%,#C96E45 70%,#4E3A63 85%,#141A2C)}.gh-rib .f,.gh-strip i{background:#8FB596}.gh-rib .m{background:#E0A878}}
+@media (max-width:40rem){.gh-card{grid-template-columns:1fr;gap:1.1rem;padding:1.25rem}.gh-card h2{font-size:1.35rem}.gh-pv{min-height:7.5rem}}
+@media (prefers-reduced-motion:reduce){.gh-card{transition:none}}
+</style>
 <article class="post">
+  <p class="g-kicker" style="font-family:var(--ui);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--quiet-green);margin:0 0 .6rem">After Pickup guides</p>
   <h1>Guides</h1>
-  <div class="prose">
-    <p>Some questions are easier to answer with a little calculator than with a post, so we keep those here.</p>
-    <ul>
-      {%- assign guides = site.pages | where: "guide", true | sort: "title" -%}
-      {%- for g in guides %}
-      <li><a href="{{ g.url | relative_url }}">{{ g.title }}</a>. {{ g.description }}</li>
-      {%- endfor %}
-    </ul>
-  </div>
+  <p class="gh-dek">Small calculators built on public data, for the questions we keep asking around pickup. <span id="gh-for"></span></p>
+  <ul class="gh-list">
+    <li class="gh-card">
+      <div>
+        <p class="gh-kick">Daylight</p>
+        <h2><a href="{{ '/daylight-after-school/' | relative_url }}" id="gh-a-dl">Daylight after school</a></h2>
+        <p class="d">How much light is left after the bell in your city, any day of the year, and how 51 cities compare.</p>
+        <p class="gh-go" aria-hidden="true">Open the guide &rarr;</p>
+      </div>
+      <div class="gh-pv" aria-live="polite"><span class="gh-num" id="gh-dl">&nbsp;</span><span class="gh-cap" id="gh-dl-c">&nbsp;</span><div class="gh-sky" id="gh-dl-sky" aria-hidden="true"></div></div>
+    </li>
+    <li class="gh-card">
+      <div>
+        <p class="gh-kick">Outdoor time</p>
+        <h2><a href="{{ '/outdoor-hours-after-school/' | relative_url }}" id="gh-a-o">Can we go outside?</a></h2>
+        <p class="d">Usable outdoor hours after school once you take out the dark, the rain and the cold, from NOAA climate normals.</p>
+        <p class="gh-go" aria-hidden="true">Open the guide &rarr;</p>
+      </div>
+      <div class="gh-pv" aria-live="polite"><span class="gh-num" id="gh-o">&nbsp;</span><span class="gh-cap" id="gh-o-c">&nbsp;</span><div class="gh-strip" id="gh-o-s" aria-hidden="true"></div><div class="gh-strip-l" aria-hidden="true"><span>S</span><span>O</span><span>N</span><span>D</span><span>J</span><span>F</span><span>M</span><span>A</span><span>M</span><span>J</span></div></div>
+    </li>
+    <li class="gh-card">
+      <div>
+        <p class="gh-kick">Free time</p>
+        <h2><a href="{{ '/after-school-time/' | relative_url }}" id="gh-a-t">How much time do kids actually have after school?</a></h2>
+        <p class="d">Lay out pickup, homework, dinner and bedtime, and see the free time that is really left.</p>
+        <p class="gh-go" aria-hidden="true">Open the guide &rarr;</p>
+      </div>
+      <div class="gh-pv" aria-live="polite"><span class="gh-num" id="gh-t">&nbsp;</span><span class="gh-cap" id="gh-t-c">&nbsp;</span><div class="gh-rib" id="gh-t-r" aria-hidden="true"></div></div>
+    </li>
+  </ul>
 </article>
+<script>
+(function(){
+var DATA={{ site.data.guide_cities | jsonify }};
+var P={};try{P=JSON.parse(localStorage.getItem("ap-guide-prefs"))||{};}catch(e){}
+var C=DATA.cities,city=C.filter(function(c){return c.id===P.city;})[0]||C.filter(function(c){return c.id==="redmond-wa";})[0];
+var end=typeof P.end==="number"&&P.end>=720&&P.end<=1020?P.end:900;
+function $(i){return document.getElementById(i);}
+function clock(m){var h=Math.floor(m/60),mm=m%60,ap=h>=12?"PM":"AM";h=h%12||12;return h+":"+(mm<10?"0":"")+mm+" "+ap;}
+function dur(m){m=Math.max(0,Math.round(m));var h=Math.floor(m/60),r=m%60;return h?h+" h"+(r?" "+r+" min":""):r+" min";}
+function hhmm(m){return ("0"+Math.floor(m/60)).slice(-2)+("0"+m%60).slice(-2);}
+if(P.city)$("gh-for").textContent="Previews are for "+city.name+".";
+// daylight today (NOAA solar equations, same as the guide)
+  var R = Math.PI / 180;
+  function sin(d) { return Math.sin(d * R); }
+  function cos(d) { return Math.cos(d * R); }
+
+  // NOAA: declination and equation of time (minutes) for a Julian day.
+  function solar(jd) {
+    var T = (jd - 2451545) / 36525;
+    var L0 = (280.46646 + T * (36000.76983 + T * 0.0003032)) % 360;
+    var M = 357.52911 + T * (35999.05029 - 0.0001537 * T);
+    var e = 0.016708634 - T * (0.000042037 + 0.0000001267 * T);
+    var C = sin(M) * (1.914602 - T * (0.004817 + 0.000014 * T)) + sin(2 * M) * (0.019993 - 0.000101 * T) + sin(3 * M) * 0.000289;
+    var om = 125.04 - 1934.136 * T;
+    var lam = L0 + C - 0.00569 - 0.00478 * sin(om);
+    var eps0 = 23 + (26 + (21.448 - T * (46.815 + T * (0.00059 - T * 0.001813))) / 60) / 60;
+    var eps = eps0 + 0.00256 * cos(om);
+    var decl = Math.asin(sin(eps) * sin(lam)) / R;
+    var y = Math.pow(Math.tan(eps / 2 * R), 2);
+    var eot = 4 / R * (y * sin(2 * L0) - 2 * e * sin(M) + 4 * e * y * sin(M) * cos(2 * L0) - 0.5 * y * y * sin(4 * L0) - 1.25 * e * e * sin(2 * M));
+    return { decl: decl, eot: eot };
+  }
+
+  // Minutes after 00:00 UTC on the given civil date when the sun sets to
+  // the given zenith (90.833 = sunset, 96 = end of civil twilight).
+  function setUTC(y, m, d, lat, lon, zenith) {
+    var jd0 = Date.UTC(y, m - 1, d) / 86400000 + 2440587.5;
+    var t = 720 - 4 * lon; // first guess near local solar noon + offset
+    for (var i = 0; i < 3; i++) {
+      var s = solar(jd0 + t / 1440);
+      var x = cos(zenith) / (cos(lat) * cos(s.decl)) - Math.tan(lat * R) * Math.tan(s.decl * R);
+      if (x > 1 || x < -1) return null;
+      var ha = Math.acos(x) / R;
+      t = 720 - 4 * (lon - ha) - s.eot;
+    }
+    return t;
+  }
+
+  var fmtCache = {};
+  function offsetMin(tz, ms) {
+    var f = fmtCache[tz] || (fmtCache[tz] = new Intl.DateTimeFormat("en-US", {
+      timeZone: tz, hourCycle: "h23", year: "numeric", month: "numeric", day: "numeric", hour: "numeric", minute: "numeric"
+    }));
+    var p = {};
+    f.formatToParts(new Date(ms)).forEach(function (x) { p[x.type] = +x.value; });
+    var asUTC = Date.UTC(p.year, p.month - 1, p.day, p.hour % 24, p.minute);
+    return Math.round((asUTC - Math.floor(ms / 60000) * 60000) / 60000);
+  }
+
+  // Local clock minutes after midnight for sunset and civil dusk.
+  function day(city, y, m, d) {
+    var noonUTC = Date.UTC(y, m - 1, d, 12) - city.lon / 15 * 3600000;
+    var off = offsetMin(city.tz, noonUTC);
+    var s = setUTC(y, m, d, city.lat, city.lon, 90.833);
+    var c = setUTC(y, m, d, city.lat, city.lon, 96);
+    return { off: off, sunset: s == null ? null : s + off, dusk: c == null ? null : c + off };
+  }
+var p={};new Intl.DateTimeFormat("en-US",{timeZone:city.tz,year:"numeric",month:"numeric",day:"numeric"}).formatToParts(new Date()).forEach(function(x){p[x.type]=+x.value;});
+var r=day(city,p.year,p.month,p.day),a=Math.max(0,(r.sunset||end)-end);
+$("gh-dl").textContent=dur(a);$("gh-dl-c").textContent=city.name+", today, after a "+clock(end)+" bell";
+var stop=Math.max(r.dusk||end,end+60)+40,sp=(r.sunset-end)/(stop-end)*100,dp=(r.dusk-end)/(stop-end)*100;
+$("gh-dl-sky").style.background="linear-gradient(90deg,var(--gh-d,#7FA7CF) 0%,#E9C27A "+Math.max(0,sp-12)+"%,#E08A5B "+sp+"%,#6A4E7A "+dp+"%,#232B45 "+Math.min(100,dp+14)+"%)";
+$("gh-a-dl").href+="?city="+city.id+"&time="+hhmm(end);
+// outdoor hours, Sep to Jun (same formula as the guide)
+var lo=typeof P.lo==="number"?P.lo:50,hi=typeof P.hi==="number"?P.hi:85,DIM=[31,28,31,30,31,30,31,31,30,31,30,31],SY=[8,9,10,11,0,1,2,3,4,5];
+function cf(t){if(t>=lo&&t<=hi)return 1;var d=t<lo?lo-t:t-hi;return Math.max(0,1-d/15);}
+var use=SY.map(function(m){return Math.max(0,city.sunset[m]-end)/60*(1-city.pdays[m]/DIM[m])*cf(city.tmax[m]);});
+var tot=SY.reduce(function(t,m,i){return t+use[i]*DATA.weekdays[m];},0),mx=Math.max.apply(null,use)||1;
+$("gh-o").textContent=Math.round(tot)+" hours";$("gh-o-c").textContent="of usable outdoor time, September to June, "+city.name;
+$("gh-o-s").innerHTML=use.map(function(u){return '<i style="height:'+Math.max(4,u/mx*100)+'%"></i>';}).join("");
+$("gh-a-o").href+="?city="+city.id+"&end="+end;
+// free time ribbon
+function nv(k,d){return typeof P[k]==="number"&&!isNaN(P[k])?P[k]:d;}
+var tr=nv("travel",30),hw=nv("hw",45),dn=nv("dinner",1080),dl=nv("dlen",30),bed=nv("bed",1230);
+var B=[],t=end;function push(x,y,k){x=Math.max(x,end);y=Math.min(y,bed);if(y>x)B.push([x,y,k]);}
+push(t,t+tr,"b");t+=tr;var h=hw;if(t<dn){var x=Math.min(h,dn-t);push(t,t+x,"b");t+=x;h-=x;}if(h>0){t=Math.max(t,dn+dl);push(t,t+h,"b");}push(dn,dn+dl,"m");
+B.sort(function(a,b){return a[0]-b[0];});var all=[],c=end;B.forEach(function(o){if(o[0]>c)all.push([c,o[0],"f"]);all.push(o);c=Math.max(c,o[1]);});if(bed>c)all.push([c,bed,"f"]);
+var free=all.reduce(function(s,o){return s+(o[2]==="f"?o[1]-o[0]:0);},0);
+$("gh-t").textContent=dur(free);$("gh-t-c").textContent="of free time between "+clock(end)+" and "+clock(bed);
+$("gh-t-r").innerHTML=all.map(function(o){return '<i class="'+o[2]+'" style="width:'+((o[1]-o[0])/(bed-end)*100)+'%"></i>';}).join("");
+})();
+</script>

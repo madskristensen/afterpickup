@@ -68,11 +68,11 @@ body{overflow-x:clip}
 .dl-tip strong{color:var(--ink)}
 .dl-tip.is-right{transform:translateX(-100%)}.dl-tip.is-left{transform:none}
 .dl-findings{list-style:none;padding:0;margin:1.5rem 0 0;font-size:1rem}
-.dl-findings li{padding:.55rem 0;border-top:1px solid var(--rule)}
+.dl-findings li{padding:.35rem 0;color:var(--summary-ink)}
 .dl-chart-hint{font-family:var(--ui);font-size:.8rem;color:var(--summary-ink);margin:.4rem 0 0}
-.dl-seg{display:inline-flex;gap:.25rem;padding:.2rem;border:1px solid var(--rule);border-radius:999px;font-family:var(--ui);font-size:.85rem;margin-bottom:.5rem;flex-wrap:wrap}
-.dl-seg button{font:inherit;border:0;background:none;color:var(--soft-ink);padding:.35rem .8rem;border-radius:999px;cursor:pointer}
-.dl-seg button[aria-pressed=true]{background:var(--accent);color:var(--page)}
+.dl-seg{display:inline-flex;gap:1.1rem;padding:0;font-family:var(--ui);font-size:.85rem;margin-bottom:.5rem;flex-wrap:wrap}
+.dl-seg button{font:inherit;border:0;background:none;color:var(--summary-ink);padding:.2rem 0;cursor:pointer;text-underline-offset:4px}.dl-seg button:hover{color:var(--ink)}
+.dl-seg button[aria-pressed=true]{color:var(--accent);text-decoration:underline}
 .dl-metric-note{font-family:var(--ui);font-size:.85rem;color:var(--summary-ink);margin:.25rem 0 1.25rem}
 .dl-bars{list-style:none;margin:0;padding:0;font-family:var(--ui);font-size:.9rem;font-variant-numeric:tabular-nums}
 .dl-bars li{margin:0}
@@ -105,26 +105,16 @@ body{overflow-x:clip}
   .dl-sky-marks{font-size:.75rem}
     .dl-chart-wrap{margin-inline:-.25rem}
 }
+.g-dek{font-size:1.15rem;line-height:1.45;color:var(--summary-ink);margin:.4rem 0 1.25rem}
+.g-data{font-family:var(--ui);font-size:.8rem;color:var(--summary-ink);margin:.75rem 0 0}
+.g-data a{color:inherit}
+.g-data .cite-copy{margin-left:.5rem}
 </style>
 <article class="post guide">
   <p class="guide-eyebrow">An After Pickup guide</p>
   <h1>Daylight after school</h1>
-  <p class="post-summary">{{ page.description }}</p>
-  <div class="post-byline">
-    <p class="meta">Updated <time datetime="{{ page.updated | date_to_xmlschema }}">{{ updated_long }}</time></p>
-    <div class="post-share" data-url="{{ page.url | absolute_url }}" data-title="{{ page.title | escape }}" data-text="{{ page.description | escape }}">
-      <p class="share-status" data-status role="status"></p>
-      <button type="button" class="share-button" data-share aria-label="Share" title="Share">
-        <svg class="icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path d="M12 3v12M7.5 7.5 12 3l4.5 4.5M8 11H6.5A1.5 1.5 0 0 0 5 12.5v7A1.5 1.5 0 0 0 6.5 21h11a1.5 1.5 0 0 0 1.5-1.5v-7a1.5 1.5 0 0 0-1.5-1.5H16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span class="visually-hidden" data-label>Share</span>
-      </button>
-    </div>
-  </div>
+  <p class="g-dek">How much daylight is left after the school bell in your city, any day of the year.</p>
 
-  <div class="prose">
-    <p>Every fall there is a week when we walk out of pickup and notice the light already going soft, and every spring there is a day when it suddenly feels like the whole evening is still ahead of us. We kept wondering how big those swings really are, so we built a small calculator to find out, and then we kept going until it could draw the whole year.</p>
-  </div>
-  <p class="dl-trust">Built from <a href="https://gml.noaa.gov/grad/solcalc/calcdetails.html">NOAA's solar position equations</a> for 50 large US cities plus Redmond, WA. Checked against the open-source <a href="https://github.com/sffjunkie/astral">astral</a> library.</p>
 
   <p class="dl-sentence" id="dl-sentence">
     If school ends at
@@ -132,7 +122,7 @@ body{overflow-x:clip}
     in <label class="visually-hidden" for="dl-city">City</label><select id="dl-city"></select>,
     this is how much daylight is left <span id="dl-when">today</span>.
   </p>
-  <p class="dl-geo-row"><button id="g-reset" class="dl-link" type="button">Reset to defaults</button><button id="dl-today" class="dl-link" type="button" hidden>Back to today</button><button id="dl-geo" class="dl-link" type="button" hidden>or use my location</button><span id="dl-geo-status" aria-live="polite"></span></p>
+  <p class="dl-geo-row"><button id="dl-today" class="dl-link" type="button" hidden>Back to today</button><button id="dl-geo" class="dl-link" type="button" hidden>or use my location</button><span id="dl-geo-status" aria-live="polite"></span></p>
 </article>
 
 <section class="dl-hero" aria-labelledby="dl-big">
@@ -144,9 +134,26 @@ body{overflow-x:clip}
   <p id="dl-sky-label" class="visually-hidden"></p>
   <ol id="dl-sky-marks" class="dl-sky-marks" aria-hidden="true"></ol>
   <p id="dl-usable" class="dl-usable"></p>
+  <p class="g-data">Sources: NOAA solar position equations, checked against the astral library. <a href="#dl-method-title">Sources and method</a><button id="g-reset" class="cite-copy" type="button">Reset to defaults</button></p>
 </section>
 
 <article class="post guide" style="margin-top:0;padding-top:0">
+  <div class="post-byline">
+    <p class="meta">Updated <time datetime="{{ page.updated | date_to_xmlschema }}">{{ updated_long }}</time></p>
+    <div class="post-share" data-url="{{ page.url | absolute_url }}" data-title="{{ page.title | escape }}" data-text="{{ page.description | escape }}">
+      <p class="share-status" data-status role="status"></p>
+      <button type="button" class="share-button" data-share aria-label="Share" title="Share">
+        <svg class="icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path d="M12 3v12M7.5 7.5 12 3l4.5 4.5M8 11H6.5A1.5 1.5 0 0 0 5 12.5v7A1.5 1.5 0 0 0 6.5 21h11a1.5 1.5 0 0 0 1.5-1.5v-7a1.5 1.5 0 0 0-1.5-1.5H16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="visually-hidden" data-label>Share</span>
+      </button>
+    </div>
+  </div>
+  <section class="prose dl-section" aria-labelledby="dl-a-title">
+    <h2 id="dl-a-title">How much daylight is left after school?</h2>
+    <p>In Redmond, WA on October 27, with school out at 3:00 PM, there are about 2 h 58 min of daylight left. That drops by about an hour when clocks fall back in November, and by late June it is over 6 hours.</p>
+    <p>We built this after noticing the week every fall when pickup suddenly feels like dusk. For the weather side, see <a href="{{ '/outdoor-hours-after-school/' | relative_url }}">how many outdoor hours you really get</a>, and for the whole afternoon, <a href="{{ '/after-school-time/' | relative_url }}">how much free time kids have after school</a>.</p>
+  </section>
+
   <section class="dl-section" aria-labelledby="dl-year-title">
     <h2 id="dl-year-title">The daylight river</h2>
     <p class="dl-intro">The same afternoon for every day of the year in <span id="dl-chart-city"></span>. The two cliffs are the clock changes, and the glowing dot is the day shown above. Drag along the river to pick a day.</p>
@@ -187,10 +194,65 @@ body{overflow-x:clip}
       <li><a href="https://github.com/sffjunkie/astral">astral, an open-source Python library for sun calculations</a></li>
       <li><a href="https://www.iana.org/time-zones">IANA Time Zone Database</a></li>
     </ul>
+  </section>
+
+  <section class="prose dl-method" aria-labelledby="faq-title">
+    <h2 id="faq-title">FAQ</h2>
+    <h3>When is the darkest pickup of the year?</h3>
+    <p>Usually the first school days after clocks fall back in early November, and again in mid December around the earliest sunset. The river chart above shows both drops.</p>
+    <h3>How much daylight do we lose when clocks fall back?</h3>
+    <p>Exactly one hour of clock time after school, overnight. Sunset moves from around 6 PM to around 5 PM in most US cities.</p>
+    <h3>Which US city has the most daylight after school?</h3>
+    <p>It depends on the date. In late October southern cities on the western edge of their time zone, such as San Antonio and Atlanta, lead with close to 4 hours after a 3:00 PM bell.</p>
+    <h3>How accurate are the sunset times?</h3>
+    <p>Within about a minute. They come from NOAA's solar position equations and were checked against the open-source astral library.</p>
+  </section>
+
+  <section class="prose dl-method" aria-label="Cite">
     <p class="cite-line">Cite: After Pickup, "<a href="{{ page.url | absolute_url }}">{{ page.title }}</a>," updated {{ page.updated | date: "%b %-d, %Y" }}.<button id="dl-cite-copy" class="cite-copy" type="button" data-cite="After Pickup, &quot;{{ page.title }},&quot; updated {{ page.updated | date: '%b %-d, %Y' }}. {{ page.url | absolute_url }}">Copy</button></p>
     <p class="dl-updated">Last updated {{ updated_long }}.</p>
   </section>
 </article>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "When is the darkest pickup of the year?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Usually the first school days after clocks fall back in early November, and again in mid December around the earliest sunset. The river chart above shows both drops."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "How much daylight do we lose when clocks fall back?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Exactly one hour of clock time after school, overnight. Sunset moves from around 6 PM to around 5 PM in most US cities."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Which US city has the most daylight after school?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "It depends on the date. In late October southern cities on the western edge of their time zone, such as San Antonio and Atlanta, lead with close to 4 hours after a 3:00 PM bell."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "How accurate are the sunset times?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Within about a minute. They come from NOAA's solar position equations and were checked against the open-source astral library."
+   }
+  }
+ ]
+}
+</script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
