@@ -36,7 +36,7 @@ Banned: "in today's fast-paced world," "you've got this mama," "game-changer," "
 ```yaml
 ---
 title: ""
-description: ""   # one strong sentence with the main keyword; shown under the H1
+description: ""   # 150-160 character summary of the tip, not the opening paragraph; shown under the H1
 date:             # leave empty in the queue
 image: ""         # path or empty
 tags: []
@@ -53,4 +53,4 @@ Pick one main keyword phrase per post, the words a reader would type to find it 
 2. **The slug.** The queue file name is the slug and becomes the URL: `_queue/steam-eggs-quarter-inch-of-water.md` turns into `/steam-eggs-quarter-inch-of-water/`. Keep it short, lowercase, hyphenated, and built around the keyword. Do not change the slug of a published post without adding a `layout: redirect` page at the old URL.
 3. **The first paragraph.** Work the phrase into the first sentence or two in a natural way. Still open on a scene or on how this house has always done it. The keyword lives inside the scene. Do not swap the scene for a definition or a problem statement.
 
-The `description` shows as a short italic summary right under the headline, so make it one strong sentence that tells the reader what the post gives them and uses the main keyword. Keep it under about 160 characters and do not repeat the title word for word.
+The `description` shows as a short italic summary right under the headline, so make it one strong sentence that tells the reader what the post gives them and uses the main keyword. It must be a 150-160 character summary of the tip in our warm "we" voice, not a copy or trim of the opening paragraph, with no em dashes and no facts that are not in the post. Do not repeat the title word for word.

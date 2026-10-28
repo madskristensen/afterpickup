@@ -1,6 +1,6 @@
 ---
 title: "Travel toys that stay fresh a few weekends a year"
-description: "A small set of Magna-Tiles, Minecraft magnetic cubes, figurines, and travel art supplies rides along on weekend drives and flights so the kids have something familiar in a new hotel room."
+description: "We keep a small set of travel toys, like Magna-Tiles, magnetic cubes, figurines, and art supplies, that only comes out on trips, so it stays fresh for the kids."
 date: 2026-10-19
 image: /assets/images/posts/travel-toys.webp
 image_alt: Clear travel bags packed with Magna-Tiles, Minecraft magnetic cubes, figurines, and travel art supplies on a wood surface

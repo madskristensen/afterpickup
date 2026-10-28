@@ -1,6 +1,6 @@
 ---
 title: "Duct tape the marker lids together for restaurants and planes"
-description: "When you duct tape the lids of washable markers into one bundle, kids pull out a color and the rest stay put at restaurants and on planes."
+description: "We duct tape the lids of washable markers into one bundle, so at restaurants and on planes the kids pull out a color, the lid stays put, and nothing rolls away."
 date:
 image: /assets/images/posts/duct-tape-marker-lids.webp
 image_alt: A child colors a cartoon cow with a pink marker at a restaurant table, next to a row of washable markers whose lids are duct-taped together in one bundle.
