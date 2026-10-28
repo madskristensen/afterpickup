@@ -1,0 +1,139 @@
+/* Inline sentence selects for After Pickup guides: replaces native <select> in
+   .dl-sentence / .g-sentence with an accessible combobox + listbox popover.
+   The native select stays in the DOM (hidden) as the source of truth. */
+(function () {
+  "use strict";
+  var css = ""
+    + ".gs-wrap{position:relative;display:inline-block}"
+    + ".gs-native{position:absolute!important;width:1px!important;height:1px!important;opacity:0;pointer-events:none;overflow:hidden;clip:rect(0 0 0 0)}"
+    + ".gs-btn{font:inherit;color:var(--accent);background:transparent;border:0;border-bottom:1.5px solid color-mix(in srgb,var(--accent) 45%,transparent);border-radius:0;padding:0 .1rem;margin:0 .1rem;cursor:pointer;line-height:1.3;white-space:nowrap}"
+    + ".gs-btn:hover,.gs-btn[aria-expanded=true]{border-bottom-color:var(--accent)}"
+    + ".gs-btn:focus-visible{outline:2px solid var(--focus,var(--accent));outline-offset:3px}"
+    + ".gs-btn::after{content:'';display:inline-block;width:.32em;height:.32em;margin:0 0 .18em .35em;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg);opacity:.55}"
+    + ".gs-pop{position:fixed;z-index:60;min-width:11rem;max-width:min(20rem,calc(100vw - 1.5rem));background:var(--page);color:var(--ink);border:1px solid var(--rule);border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,.22),0 2px 6px rgba(0,0,0,.12);font-family:var(--ui);font-size:.92rem;line-height:1.35;padding:.3rem;display:flex;flex-direction:column}"
+    + "@media (prefers-color-scheme:dark){.gs-pop{background:color-mix(in srgb,var(--page) 88%,#fff);box-shadow:0 12px 34px rgba(0,0,0,.55)}}"
+    + ".gs-pop[hidden]{display:none}"
+    + ".gs-filter{font:inherit;color:inherit;background:transparent;border:0;border-bottom:1px solid var(--rule);padding:.45rem .6rem .5rem;margin:0 0 .25rem;outline:none;width:100%;box-sizing:border-box}"
+    + ".gs-filter::placeholder{color:var(--summary-ink)}"
+    + ".gs-list{list-style:none;margin:0;padding:0;max-height:16rem;overflow-y:auto;overscroll-behavior:contain}"
+    + ".gs-list li{padding:.4rem .6rem;border-radius:6px;cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-variant-numeric:tabular-nums}"
+    + ".gs-list li[aria-selected=true]{color:var(--accent);font-weight:600}"
+    + ".gs-list li.is-active{background:color-mix(in srgb,var(--accent) 16%,transparent)}"
+    + ".gs-empty{padding:.4rem .6rem;color:var(--summary-ink)}"
+    + "@media (prefers-color-scheme:dark){.dl-sentence input[type=date],.g-sentence input[type=date]{color-scheme:dark}}"
+    + ".dl-sentence input[type=date]::-webkit-calendar-picker-indicator{opacity:.7;cursor:pointer}";
+  var st = document.createElement("style"); st.textContent = css; document.head.appendChild(st);
+
+  var desc = Object.getOwnPropertyDescriptor(HTMLSelectElement.prototype, "value");
+  var descIdx = Object.getOwnPropertyDescriptor(HTMLSelectElement.prototype, "selectedIndex");
+  var n = 0, openOne = null;
+
+  function enhance(sel) {
+    if (sel.dataset.gs) return; sel.dataset.gs = "1";
+    var id = "gs" + (++n), lbl = document.querySelector('label[for="' + sel.id + '"]');
+    var wrap = document.createElement("span"); wrap.className = "gs-wrap";
+    sel.parentNode.insertBefore(wrap, sel); wrap.appendChild(sel);
+    sel.classList.add("gs-native"); sel.tabIndex = -1; sel.setAttribute("aria-hidden", "true");
+    var btn = document.createElement("button"); btn.type = "button"; btn.className = "gs-btn";
+    btn.setAttribute("role", "combobox"); btn.setAttribute("aria-haspopup", "listbox"); btn.setAttribute("aria-expanded", "false"); btn.setAttribute("aria-controls", id + "-list");
+    if (lbl) { if (!lbl.id) lbl.id = id + "-lbl"; btn.setAttribute("aria-labelledby", lbl.id); }
+    if (sel.id && lbl) lbl.htmlFor = ""; // label now names the button
+    wrap.appendChild(btn);
+    var pop = document.createElement("div"); pop.className = "gs-pop"; pop.hidden = true;
+    var filterable = /city/i.test(sel.id);
+    var filter = null;
+    if (filterable) { filter = document.createElement("input"); filter.className = "gs-filter"; filter.type = "text"; filter.placeholder = "Type to filter"; filter.setAttribute("aria-label", "Filter " + (lbl ? lbl.textContent : "options")); filter.setAttribute("aria-controls", id + "-list"); filter.setAttribute("autocomplete", "off"); pop.appendChild(filter); }
+    var list = document.createElement("ul"); list.className = "gs-list"; list.id = id + "-list"; list.setAttribute("role", "listbox"); list.tabIndex = -1;
+    if (lbl) list.setAttribute("aria-labelledby", lbl.id);
+    pop.appendChild(list); document.body.appendChild(pop);
+    var items = [], active = -1, typed = "", typedT;
+
+    function label() { var o = sel.options[sel.selectedIndex]; btn.textContent = o ? o.text : ""; }
+    function build() {
+      var q = filter ? filter.value.trim().toLowerCase() : "";
+      list.textContent = ""; items = [];
+      Array.prototype.forEach.call(sel.options, function (o, i) {
+        if (q && o.text.toLowerCase().indexOf(q) === -1) return;
+        var li = document.createElement("li"); li.id = id + "-o" + i; li.setAttribute("role", "option"); li.textContent = o.text; li.dataset.i = i;
+        li.setAttribute("aria-selected", i === sel.selectedIndex ? "true" : "false");
+        li.addEventListener("mousedown", function (e) { e.preventDefault(); });
+        li.addEventListener("click", function () { choose(i); });
+        li.addEventListener("mousemove", function () { setActive(items.indexOf(li), false); });
+        list.appendChild(li); items.push(li);
+      });
+      if (!items.length) { var e = document.createElement("li"); e.className = "gs-empty"; e.textContent = "No matches"; e.setAttribute("aria-disabled", "true"); list.appendChild(e); }
+    }
+    function setActive(k, scroll) {
+      if (active >= 0 && items[active]) items[active].classList.remove("is-active");
+      active = Math.max(0, Math.min(items.length - 1, k));
+      var li = items[active]; if (!li) return;
+      li.classList.add("is-active"); (filter || btn).setAttribute("aria-activedescendant", li.id);
+      if (scroll !== false) li.scrollIntoView({ block: "nearest" });
+    }
+    function place() {
+      var r = btn.getBoundingClientRect(), vw = document.documentElement.clientWidth, vh = innerHeight;
+      pop.style.left = "0px"; pop.style.top = "0px";
+      var pw = pop.offsetWidth, ph = pop.offsetHeight;
+      var left = Math.min(Math.max(8, r.left), vw - pw - 8), below = vh - r.bottom;
+      pop.style.left = left + "px";
+      pop.style.top = (below < ph + 12 && r.top > ph + 12 ? r.top - ph - 6 : r.bottom + 6) + "px";
+    }
+    function open() {
+      if (openOne && openOne !== close) openOne();
+      if (filter) filter.value = "";
+      build(); pop.hidden = false; btn.setAttribute("aria-expanded", "true"); place();
+      var cur = items.findIndex(function (li) { return +li.dataset.i === sel.selectedIndex; });
+      setActive(cur < 0 ? 0 : cur);
+      (filter || btn).focus(); openOne = close;
+    }
+    function close(refocus) {
+      if (pop.hidden) return; pop.hidden = true; btn.setAttribute("aria-expanded", "false"); btn.removeAttribute("aria-activedescendant"); if (filter) filter.removeAttribute("aria-activedescendant");
+      if (openOne === close) openOne = null; if (refocus !== false) btn.focus();
+    }
+    function choose(i) {
+      var changed = i !== sel.selectedIndex; descIdx.set.call(sel, i); label(); close();
+      if (changed) { sel.dispatchEvent(new Event("input", { bubbles: true })); sel.dispatchEvent(new Event("change", { bubbles: true })); }
+    }
+    function keys(e) {
+      var k = e.key;
+      if (pop.hidden) {
+        if (k === "ArrowDown" || k === "ArrowUp" || k === "Enter" || k === " ") { e.preventDefault(); open(); }
+        return;
+      }
+      if (k === "ArrowDown") { e.preventDefault(); setActive(active + 1); }
+      else if (k === "ArrowUp") { e.preventDefault(); setActive(active - 1); }
+      else if (k === "Home" && !filter) { e.preventDefault(); setActive(0); }
+      else if (k === "End" && !filter) { e.preventDefault(); setActive(items.length - 1); }
+      else if (k === "PageDown") { e.preventDefault(); setActive(active + 8); }
+      else if (k === "PageUp") { e.preventDefault(); setActive(active - 8); }
+      else if (k === "Enter" || (k === " " && !filter)) { e.preventDefault(); if (items[active]) choose(+items[active].dataset.i); }
+      else if (k === "Escape") { e.preventDefault(); close(); }
+      else if (k === "Tab") { close(false); }
+      else if (!filter && k.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey) {
+        clearTimeout(typedT); typed += k.toLowerCase(); typedT = setTimeout(function () { typed = ""; }, 700);
+        var hit = items.findIndex(function (li) { return li.textContent.toLowerCase().indexOf(typed) === 0; });
+        if (hit < 0) hit = items.findIndex(function (li) { return li.textContent.toLowerCase().replace(/^\s+/, "").indexOf(typed) >= 0; });
+        if (hit >= 0) setActive(hit);
+      }
+    }
+    btn.addEventListener("click", function () { pop.hidden ? open() : close(); });
+    btn.addEventListener("keydown", keys);
+    if (filter) {
+      filter.addEventListener("keydown", keys);
+      filter.addEventListener("input", function () { build(); setActive(0); place(); });
+      filter.addEventListener("blur", function () { setTimeout(function () { if (document.activeElement !== btn && !pop.contains(document.activeElement)) close(false); }, 0); });
+    }
+    btn.addEventListener("blur", function () { if (!filter) setTimeout(function () { if (document.activeElement !== btn) close(false); }, 0); });
+    document.addEventListener("pointerdown", function (e) { if (!pop.hidden && !pop.contains(e.target) && e.target !== btn) close(false); });
+    addEventListener("resize", function () { if (!pop.hidden) place(); });
+    addEventListener("scroll", function () { if (!pop.hidden) place(); }, { passive: true });
+    // keep the button in sync when page code changes the native select
+    Object.defineProperty(sel, "value", { configurable: true, get: function () { return desc.get.call(sel); }, set: function (v) { desc.set.call(sel, v); label(); } });
+    Object.defineProperty(sel, "selectedIndex", { configurable: true, get: function () { return descIdx.get.call(sel); }, set: function (v) { descIdx.set.call(sel, v); label(); } });
+    new MutationObserver(label).observe(sel, { childList: true, subtree: true, characterData: true });
+    sel.addEventListener("change", label);
+    label();
+  }
+  function init() { document.querySelectorAll(".dl-sentence select, .g-sentence select").forEach(enhance); }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init); else init();
+})();
