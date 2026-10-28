@@ -174,7 +174,7 @@ body{overflow-x:clip}
 
   <section class="prose" aria-labelledby="o-a-title">
     <h2 id="o-a-title">How many hours can kids play outside after school?</h2>
-    <p><span id="o-answer">In Redmond, WA, with school out at 3:00 PM and a comfort range of 50 to 85 F, kids get about 412 usable outdoor hours from September to June, around 1 h 54 min a school day.</span> Sunny southern California cities top the list at about 660 hours.</p>
+    <p><span id="o-answer">In Redmond, WA, with school out at 3:00 PM and a comfort range of 50 to 85 F, kids get about 412 usable outdoor hours from September to June, around 1 h 54 min a school day.</span> <span id="o-answer-top">Los Angeles, CA tops the list at about 665 hours.</span></p>
     <p>We take the daylight left after school and keep only the share that falls on a typical dry, comfortable day. Change the thresholds above to match your kids. For daylight alone see <a href="{{ '/daylight-after-school/' | relative_url }}">daylight after school</a>; for the whole afternoon see <a href="{{ '/after-school-time/' | relative_url }}">how much free time kids have</a>. Our <a href="{{ '/backyard-sandbox/' | relative_url }}">backyard sandbox</a> gets most of those hours.</p>
   </section>
 
@@ -280,6 +280,7 @@ function render(){
     bt.setAttribute("aria-label",(n+1)+". "+r.c.name+", "+Math.round(r.v)+" hours. Show this city");
     bt.innerHTML='<span class="n">'+(n+1)+'</span><span class="nm">'+r.c.name+'</span><span class="g-rk-bar"><i style="width:'+(r.v/mx*100).toFixed(1)+'%;animation-delay:'+(i*0.02)+'s"></i></span><span class="v">'+Math.round(r.v)+' h</span>';
     li.appendChild(bt);rv.appendChild(li);});
+  $("o-answer-top").textContent=(rk[0].c.id===c.id?c.name+" tops the list.":rk[0].c.name+" tops the list at about "+Math.round(rk[0].v)+" hours; "+c.name+" ranks "+(idx+1)+" of "+rk.length+".");
   rd.textContent="Cities ranked by usable outdoor hours after school, September to June. First is "+rk[0].c.name+" with "+Math.round(rk[0].v)+" hours, last is "+rk[rk.length-1].c.name+" with "+Math.round(rk[rk.length-1].v)+". "+c.name+" ranks "+(idx+1)+" of "+rk.length+".";
   $("o-more").textContent=showAll?"Show top 10":"Show all "+rk.length+" cities";$("o-more").setAttribute("aria-expanded",showAll);
   if(ready)savePrefs({city:s.city,end:s.end,lo:s.lo,hi:s.hi,outdoorShowAll:showAll});
