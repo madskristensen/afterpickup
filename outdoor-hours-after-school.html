@@ -139,6 +139,7 @@ body{overflow-x:clip}
 .g-data{font-family:var(--ui);font-size:.8rem;color:var(--summary-ink);margin:.75rem 0 0}
 .g-data a{color:inherit}
 .g-data .cite-copy{margin-left:.5rem}
+.g-strip-sum{font-family:var(--ui);font-size:.85rem;color:var(--summary-ink);text-align:center;margin:.6rem 0 0}
 </style>
 <article class="post guide g">
   <p class="g-kicker">A guide from After Pickup</p>
@@ -164,6 +165,7 @@ body{overflow-x:clip}
     </div>
     <p class="g-strip-key"><span><i class="k-use"></i>Usable</span><span><i class="k-rain"></i>Lost to rain</span><span><i class="k-temp"></i>Too hot or cold</span><span><i class="k-dark"></i>Dark</span></p>
     <p class="visually-hidden" id="o-strip-desc"></p>
+    <p class="g-strip-sum" id="o-strip-sum"></p>
     <p class="g-data">Sources: NOAA 1991-2020 U.S. Climate Normals and NOAA solar equations, 51 cities. <a href="#o-s-title">Sources and method</a><button type="button" class="cite-copy" id="g-reset">Reset to defaults</button></p>
   </section>
 
@@ -171,13 +173,6 @@ body{overflow-x:clip}
     <h2 id="o-a-title">How many hours can kids play outside after school?</h2>
     <p>In Redmond, WA, with school out at 3:00 PM and a comfort range of 50 to 85 F, kids get about 412 usable outdoor hours from September to June, around 1 h 54 min a school day. Sunny southern California cities top the list at about 660 hours.</p>
     <p>We take the daylight left after school and keep only the share that falls on a typical dry, comfortable day. Change the thresholds above to match your kids. For daylight alone see <a href="{{ '/daylight-after-school/' | relative_url }}">daylight after school</a>; for the whole afternoon see <a href="{{ '/after-school-time/' | relative_url }}">how much free time kids have</a>. Our <a href="{{ '/backyard-sandbox/' | relative_url }}">backyard sandbox</a> gets most of those hours.</p>
-  </section>
-
-  <section aria-labelledby="o-m-title">
-    <h2 id="o-m-title">Month by month</h2>
-    <svg id="o-months" class="g-chart" viewBox="0 0 720 300" role="img" aria-labelledby="o-m-desc"><desc id="o-m-desc"></desc></svg>
-    <p class="g-legend"><span><i style="background:color-mix(in srgb,var(--accent) 18%,transparent)"></i>Daylight after school</span><span><i style="background:var(--dry)"></i>Usable outdoor time</span></p>
-    <p class="g-summary" id="o-m-sum"></p>
   </section>
 
   <section aria-labelledby="o-r-title">
@@ -263,25 +258,14 @@ function render(){
     var b=document.createElement("button");b.type="button";b.className="g-mo";b.style.flex=WK[m]+" 1 0";
     [["s-use",x.use],["s-rain",rain],["s-temp",temp],["s-dark",dark]].forEach(function(p){var e=document.createElement("span");e.className=p[0];e.style.height=(p[1]/win*100)+"%";b.appendChild(e);});
     var lb=document.createElement("b");lb.textContent=MON[m][0];lb.setAttribute("aria-hidden","true");b.appendChild(lb);
-    var t=MON[m]+": "+hm(x.use)+" usable, "+hm(rain)+" lost to rain, "+hm(temp)+" too hot or cold, "+hm(dark)+" dark, per school day ("+WK[m]+" school days).";
-    b.setAttribute("aria-label",t);b.dataset.m=m;b.dataset.tip="<strong>"+MON[m]+"</strong> \u00b7 "+WK[m]+" school days<br>"+hm(x.use)+" usable<br>"+hm(rain)+" rain \u00b7 "+hm(temp)+" temp \u00b7 "+hm(dark)+" dark";
+    var t=MON[m]+": "+hm(x.use)+" usable, "+hm(rain)+" lost to rain, "+hm(temp)+" too hot or cold, "+hm(dark)+" dark, per school day. Normal high "+Math.round(c.tmax[m])+" F, "+WK[m]+" school days.";
+    b.setAttribute("aria-label",t);b.dataset.m=m;b.dataset.tip="<strong>"+MON[m]+"</strong> \u00b7 "+WK[m]+" school days<br>"+hm(x.use)+" usable<br>"+hm(rain)+" rain \u00b7 "+hm(temp)+" temp \u00b7 "+hm(dark)+" dark<br>Normal high "+Math.round(c.tmax[m])+"\u00b0F";
     sd.push(t);strip.appendChild(b);});
-  $("o-strip-desc").textContent="Each school day, the window from the bell to the latest sunset of the year is "+hm(win)+". "+sd.join(" ");
-  // months chart
-  var sv=$("o-months"),desc=$("o-m-desc");while(sv.lastChild!==desc)sv.removeChild(sv.lastChild);
-  sv.setAttribute("viewBox","0 0 "+(Math.max(360,Math.min(720,Math.round(sv.getBoundingClientRect().width)||720)))+" 300");var W=Math.max(360,Math.min(720,Math.round(sv.getBoundingClientRect().width)||720)),H=300,L=36,B=260,T=20,max=Math.max(4,Math.ceil(Math.max.apply(null,ms.map(function(x){return x.day;}))));
-  for(var g=0;g<=max;g++){var y=B-(B-T)*g/max;sv.appendChild(el("line",{x1:L,x2:W,y1:y,y2:y,"class":"grid"}));sv.appendChild(el("text",{x:L-8,y:y+4,"text-anchor":"end"},g+"h"));}
-  var bw=(W-L)/10;
-  ms.forEach(function(x,i){var m=SY[i],x0=L+i*bw+bw*.18,w=bw*.64,hd=(B-T)*x.day/max,hu=(B-T)*x.use/max,d=(i*0.05)+"s";
-    var r1=el("rect",{x:x0,y:B-hd,width:w,height:hd,rx:4,"class":"day"});r1.style.animationDelay=d;sv.appendChild(r1);
-    var r2=el("rect",{x:x0,y:B-hu,width:w,height:hu,rx:4,"class":"use"});r2.style.animationDelay=d;
-    r2.appendChild(el("title",{},MON[m]+": "+hm(x.use)+" usable of "+hm(x.day)+" daylight. Dry "+Math.round(x.dry*100)+"%, normal high "+Math.round(c.tmax[m])+" F."));sv.appendChild(r2);
-    sv.appendChild(el("text",{x:x0+w/2,y:B-hu-6,"text-anchor":"middle","class":"val"},(Math.round(x.use*10)/10).toString()));
-    sv.appendChild(el("text",{x:x0+w/2,y:B+18,"text-anchor":"middle"},MON[m]));
-    sv.appendChild(el("text",{x:x0+w/2,y:B+32,"text-anchor":"middle"},Math.round(c.tmax[m])+"\u00b0"));});
+  var stripDesc=function(sum){$("o-strip-desc").textContent=sum+" Each school day, the window from the bell to the latest sunset of the year is "+hm(win)+". "+sd.join(" ");};
   var best=0,worst=0;ms.forEach(function(x,i){if(x.use>ms[best].use)best=i;if(x.use<ms[worst].use)worst=i;});
-  var sum="In "+c.name+", the best month is "+MON[SY[best]]+" with about "+hm(ms[best].use)+" of usable time a school day, and the hardest is "+MON[SY[worst]]+" with "+hm(ms[worst].use)+". Labels under each month show the normal daily high in Fahrenheit. Hover or tap a bar for the chance of a dry day.";
-  desc.textContent="Bar chart of daylight and usable outdoor hours per school day, September to June. "+sum;$("o-m-sum").textContent=sum;
+  var FULL=["January","February","March","April","May","June","July","August","September","October","November","December"];
+  var sum="The best month is "+FULL[SY[best]]+" with about "+hm(ms[best].use)+" of usable time a school day, and the hardest is "+FULL[SY[worst]]+" with "+hm(ms[worst].use)+".";
+  stripDesc("In "+c.name+", from September to June: "+sum);$("o-strip-sum").textContent=sum;
   // ranking
   var rk=C.map(function(x){return{c:x,v:year(x)};}).sort(function(a,b){return b.v-a.v;});
   var idx=rk.findIndex(function(r){return r.c.id===c.id;}),list=showAll?rk:rk.slice(0,10);
