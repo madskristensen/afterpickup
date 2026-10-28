@@ -134,14 +134,13 @@ body{overflow-x:clip}
     <span class="g-big" id="t-big">&nbsp;</span>
     <span class="g-sub" id="t-sub"></span>
   </section>
-  <p class="g-data">Data: NOAA sunsets. <a href="#t-s-title">How we calculate</a><button type="button" class="cite-copy" id="g-reset">Reset to defaults</button></p>
+  <p class="g-data">Sources: NOAA sunset times. <a href="#t-s-title">Sources and method</a><button type="button" class="cite-copy" id="g-reset">Reset to defaults</button></p>
 
   <section aria-labelledby="t-r-title">
     <h2 id="t-r-title">The afternoon, end to end</h2>
     <svg id="t-ribbon" class="g-chart" viewBox="0 0 720 150" role="img" aria-labelledby="t-r-desc"><desc id="t-r-desc"></desc></svg>
     <p class="g-legend"><span><i style="background:var(--free)"></i>Free time</span><span><i style="background:var(--busy)"></i>Pickup, snack and homework</span><span><i style="background:var(--meal)"></i>Dinner</span><span id="t-leg-sun"><i style="background:linear-gradient(90deg,#F2C46D,#5B6B8C)"></i>Daylight until sunset</span></p>
     <div class="g-stats">
-      <div><b id="t-day">0</b><span>free minutes a school day</span></div>
       <div><b id="t-week">0</b><span>free hours in a five-day week</span></div>
       <div><b id="t-light">-</b><span id="t-light-l">free minutes in daylight</span></div>
     </div>
@@ -156,7 +155,8 @@ body{overflow-x:clip}
   </section>
 
   <section class="prose g-method" aria-labelledby="t-s-title">
-    <h2 id="t-s-title">How we calculate</h2>
+    <h2 id="t-s-title">Sources and method</h2>
+    <p>Sources: sunset times from the <a href="https://gml.noaa.gov/grad/solcalc/calcdetails.html">NOAA solar calculation</a>; sleep ranges from the <a href="https://jcsm.aasm.org/doi/10.5664/jcsm.5866">American Academy of Sleep Medicine consensus statement</a>, endorsed by the American Academy of Pediatrics.</p>
     <p>The ribbon runs from the end of school to bedtime. Pickup and travel come first, then snack and homework. Dinner sits at the time you choose, and if homework runs into dinner it picks up again right after. Everything else before bedtime is free time. A school week is five times one day.</p>
     <p>Daylight: sunset comes from the <a href="https://gml.noaa.gov/grad/solcalc/calcdetails.html">NOAA solar calculation</a> for the same 51 cities as our <a href="{{ '/daylight-after-school/' | relative_url }}">Daylight after school</a> guide, in that city's time zone. For today we interpolate between the monthly average sunsets, which lands within a few minutes of the exact time. Free minutes in daylight are the free minutes before that sunset.</p>
   </section>
@@ -223,7 +223,7 @@ function render(){
   var B=blocks(),free=0,lit=0;B.forEach(function(b){if(b.k==="free"){free+=b.b-b.a;if(sun!=null)lit+=Math.max(0,Math.min(b.b,sun)-b.a);}});
   $("t-big").textContent=hm(free);
   $("t-sub").textContent="of free time between "+clock(s.end)+" and "+clock(s.bed)+" on a school day, out of "+hm(s.bed-s.end)+".";
-  $("t-day").textContent=Math.round(free);$("t-week").textContent=(Math.round(free*5/6)/10).toString();
+  $("t-week").textContent=(Math.round(free*5/6)/10).toString();
   $("t-light").textContent=sun!=null?Math.round(lit):"-";$("t-light-l").textContent=sun!=null?"free minutes before sunset ("+clock(sun)+")":"free minutes in daylight (pick a city)";
   $("t-leg-sun").hidden=sun==null;
   // ribbon

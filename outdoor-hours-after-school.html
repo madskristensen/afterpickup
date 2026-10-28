@@ -164,7 +164,7 @@ body{overflow-x:clip}
     </div>
     <p class="g-strip-key"><span><i class="k-use"></i>Usable</span><span><i class="k-rain"></i>Lost to rain</span><span><i class="k-temp"></i>Too hot or cold</span><span><i class="k-dark"></i>Dark</span></p>
     <p class="visually-hidden" id="o-strip-desc"></p>
-    <p class="g-data">Data: NOAA 1991-2020 normals, NOAA sunsets. <a href="#o-s-title">How we calculate</a><button type="button" class="cite-copy" id="g-reset">Reset to defaults</button></p>
+    <p class="g-data">Sources: NOAA 1991-2020 U.S. Climate Normals and NOAA solar equations, 51 cities. <a href="#o-s-title">Sources and method</a><button type="button" class="cite-copy" id="g-reset">Reset to defaults</button></p>
   </section>
 
   <section class="prose" aria-labelledby="o-a-title">
@@ -189,7 +189,7 @@ body{overflow-x:clip}
   </section>
 
   <section class="prose g-method" aria-labelledby="o-s-title">
-    <h2 id="o-s-title">How we calculate</h2>
+    <h2 id="o-s-title">Sources and method</h2>
     <p>For each city and month we work out three things, then multiply them.</p>
     <div class="g-formula" id="o-formula">daylight  = max(0, average sunset for the month - school end), in hours
 dry       = 1 - (days with 0.01 in or more of precipitation / days in month)
