@@ -60,6 +60,11 @@ body{overflow-x:clip}
 .g-source{font-family:var(--ui);font-size:.85rem;line-height:1.5;color:var(--summary-ink);margin:1.25rem 0 1.5rem;padding-left:.9rem;border-left:2px solid var(--rule)}
 .g-source a{color:inherit}
 .g-sky{margin:2.75rem 0 0}
+.g-geo{display:inline-flex;align-items:center;justify-content:center;vertical-align:-.08em;width:1.5em;height:1.2em;margin:0 0 0 .05rem;padding:0;font-size:.8em;line-height:1;color:var(--summary-ink);background:none;border:0;border-radius:6px;cursor:pointer;transition:color .15s,opacity .15s}
+.g-geo:hover,.g-geo.is-on{color:var(--accent)}.g-geo:focus-visible{outline:2px solid var(--focus,var(--accent));outline-offset:2px}
+.g-geo[aria-busy=true]{opacity:.5;cursor:progress}.g-geo[aria-busy=true] svg{animation:g-geo-pulse 1s ease-in-out infinite alternate}
+@keyframes g-geo-pulse{to{opacity:.35}}@media (prefers-reduced-motion:reduce){.g-geo[aria-busy=true] svg{animation:none}}
+.g-geo-status{font-family:var(--ui);font-size:.9rem;color:var(--summary-ink);margin:0 0 1rem;min-height:0}
 .g-sentence{font-size:clamp(1.3rem,3.6vw,1.6rem);line-height:1.7;color:var(--ink);margin:0 0 .75rem}
 .g-sentence select,.g-sentence input{font:inherit;color:var(--accent);background:transparent;border:0;border-bottom:1.5px solid color-mix(in srgb,var(--accent) 45%,transparent);border-radius:0;padding:0 .1rem;margin:0 .1rem;cursor:pointer;max-width:100%;line-height:1.3;-webkit-appearance:none;appearance:none}
 .g-sentence select:hover,.g-sentence input:hover{border-bottom-color:var(--accent)}
@@ -131,7 +136,8 @@ body{overflow-x:clip}
       for <label class="visually-hidden" for="t-dlen">Dinner length in minutes</label><input id="t-dlen" type="number" inputmode="numeric" min="0" max="180" step="5"> minutes, and bedtime is
       <label class="visually-hidden" for="t-bed">Bedtime</label><select id="t-bed"></select>.</p>
     <p class="g-sentence">
-      We live in <label class="visually-hidden" for="t-city">City for daylight</label><select id="t-city"><option value="">no city, skip daylight</option></select>.</p>
+      We live in <label class="visually-hidden" for="t-city">City for daylight</label><select id="t-city"><option value="">no city, skip daylight</option></select><button id="g-geo" class="g-geo" type="button" aria-label="Use my location" title="Use my location" hidden><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="6.5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="2" fill="currentColor"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>.</p>
+    <p class="g-geo-status" id="g-geo-status" aria-live="polite"></p>
   </section>
   <section class="g-hero" aria-live="polite">
     <span class="g-big" id="t-big">&nbsp;</span>
@@ -257,6 +263,17 @@ document.querySelectorAll("[data-cite]").forEach(function(b){b.onclick=function(
 var ready=false;render();ready=true;
 document.getElementById("g-reset").onclick=function(){try{localStorage.removeItem("ap-guide-prefs");}catch(e){}location.href=location.pathname;};
 var rz;addEventListener("resize",function(){clearTimeout(rz);rz=setTimeout(render,150);});
+(function(){var b=document.getElementById("g-geo"),sel=document.getElementById("t-city"),st=document.getElementById("g-geo-status");
+if(!b||!sel||!navigator.geolocation)return;b.hidden=false;var mine=false;
+sel.addEventListener("change",function(){if(!mine)b.classList.remove("is-on");});
+function done(){b.disabled=false;b.removeAttribute("aria-busy");}
+function km(a,o,c,d){var r=Math.PI/180,x=Math.sin((c-a)*r/2),y=Math.sin((d-o)*r/2),h=x*x+Math.cos(a*r)*Math.cos(c*r)*y*y;return 12742*Math.asin(Math.sqrt(h));}
+b.addEventListener("click",function(){if(b.disabled)return;b.disabled=true;b.setAttribute("aria-busy","true");st.textContent="Finding the nearest city...";
+navigator.geolocation.getCurrentPosition(function(p){done();var la=p.coords.latitude,lo=p.coords.longitude,best=null,bd=1/0;
+C.forEach(function(c){var d=km(la,lo,c.lat,c.lon);if(d<bd){bd=d;best=c;}});if(!best){st.textContent="";return;}
+mine=true;sel.value=best.id;sel.dispatchEvent(new Event("change",{bubbles:true}));mine=false;b.classList.add("is-on");
+st.textContent="Nearest city on our list: "+best.name+", about "+Math.round(bd*0.621371)+" miles away.";},
+function(){done();st.textContent="We could not get your location, so pick a city instead.";},{timeout:10000,maximumAge:600000});});})();
 })();
 </script>
 {% include guide-select.html %}
