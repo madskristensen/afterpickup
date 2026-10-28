@@ -1,6 +1,6 @@
 ---
 title: "Nosebleed stoppers for kids that stay put"
-description: "Small nosebleed stoppers for kids fit little nostrils, stay in, and keep blood off the bed and clothes, and they are handy when we travel."
+description: "Two of our kids get nosebleeds, so we keep a pack of small nosebleed stoppers at home. They fit little nostrils, stay in place, and are handy on trips too."
 date:
 image: /assets/images/posts/nosebleed-stoppers-for-kids.webp
 image_alt: A clear plastic bag of white cotton nosebleed stoppers on a wood table, with two loose stoppers lying beside it

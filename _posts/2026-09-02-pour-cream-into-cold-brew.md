@@ -1,6 +1,6 @@
 ---
 title: "Pour cream into cold brew without a spoon"
-description: "Pour half the cold brew, add cream, then finish the pour to mix it without a spoon."
+description: "We pour half the cold brew, add the cream, then pour the rest. That last pour mixes the cream through the glass, so we skip the spoon and the extra dish."
 date: 2026-09-02
 image: /assets/images/posts/pour-the-cream-in-the-middle.webp
 image_alt: Cream pouring into a glass of iced coffee, swirling through the ice

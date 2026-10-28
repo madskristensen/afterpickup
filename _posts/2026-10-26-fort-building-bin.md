@@ -1,6 +1,6 @@
 ---
 title: "A fort-building bin with king sheets and clamps"
-description: "Two king-size sheets and a bunch of clamps in one bin let the kids pull forts tight between chairs and cushions with little help from us."
+description: "Our fort-building bin holds two king-size sheets and a bunch of clamps, so the kids can pull light forts tight between chairs and cushions with little help."
 date: 2026-10-26
 image: /assets/images/posts/fort-building-bin.webp
 image_alt: Clear bin holding folded white king sheets and several spring clamps in two sizes

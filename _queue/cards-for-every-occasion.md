@@ -1,6 +1,6 @@
 ---
 title: "A box of cards for every occasion"
-description: "Caitlin keeps a box of greeting cards at home so teacher appreciation, thank-yous, and birthdays never send us scrambling to the store."
+description: "Caitlin keeps a box of cards for every occasion at home, so teacher appreciation, thank-yous, and birthdays get a card written at home instead of a store run."
 date:
 image: /assets/images/posts/greeting-card-box.webp
 image_alt: Open yellow celebrate-themed card box with tabbed dividers for Father's Day, birthday, thank you, and holidays

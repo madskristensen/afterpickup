@@ -1,6 +1,6 @@
 ---
 title: "Pack a foldable laundry hamper for family trips"
-description: ""
+description: "We pack a foldable hamper on every family trip. It folds flat, opens in the hotel room, and gives the kids a place for dirty clothes, so checkout is calmer."
 date: 2026-09-07
 image: /assets/images/posts/pack-a-foldable-hamper.webp
 image_alt: A gray mesh pop-up laundry hamper standing open on a wood floor
