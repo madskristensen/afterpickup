@@ -50,6 +50,19 @@ body{overflow-x:clip}
 .g-cite p{margin:0}
 .g-cite button{flex-shrink:0;font:inherit;color:var(--accent);background:none;border:1px solid var(--rule);border-radius:999px;padding:.35rem .9rem;cursor:pointer}
 .g-updated{font-family:var(--ui);font-size:.82rem;color:var(--summary-ink);margin-top:1rem}
+.g-strip-wrap{position:relative;margin-top:1.75rem}
+.g-strip{display:flex;gap:3px;height:clamp(5rem,12vw,7rem);text-align:left}
+.g-mo{display:flex;flex-direction:column-reverse;border-radius:6px;overflow:hidden;cursor:pointer;position:relative;padding:0;border:0;background:none;font:inherit}
+.g-mo:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.g-mo span{display:block;width:100%}
+.g-mo .s-use{background:var(--glow)}.g-mo .s-rain{background:color-mix(in srgb,var(--river) 55%,transparent)}.g-mo .s-temp{background:color-mix(in srgb,var(--sky-dusk) 70%,transparent)}.g-mo .s-dark{background:color-mix(in srgb,var(--sky-night) 80%,var(--rule))}
+.g-mo b{position:absolute;left:0;right:0;bottom:.3rem;text-align:center;font-family:var(--ui);font-size:.7rem;font-weight:600;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.6);letter-spacing:.03em}
+.g-mo.is-on{box-shadow:0 0 0 2px var(--ink)}
+.g-strip-key{font-family:var(--ui);font-size:.8rem;color:var(--summary-ink);display:flex;justify-content:center;gap:.4rem 1rem;flex-wrap:wrap;margin:.7rem 0 0}
+.g-strip-key i{display:inline-block;width:.7rem;height:.7rem;border-radius:2px;margin-right:.3rem;vertical-align:-1px}
+.k-use{background:var(--glow)}.k-rain{background:color-mix(in srgb,var(--river) 55%,transparent)}.k-temp{background:color-mix(in srgb,var(--sky-dusk) 70%,transparent)}.k-dark{background:color-mix(in srgb,var(--sky-night) 80%,var(--rule))}
+.g-tip{position:absolute;bottom:calc(100% + 6px);font-family:var(--ui);font-size:.8rem;line-height:1.4;white-space:nowrap;background:var(--page);color:var(--soft-ink);border:1px solid var(--rule);border-radius:8px;padding:.4rem .6rem;box-shadow:0 6px 18px rgba(0,0,0,.25);pointer-events:none;text-align:left;z-index:5}
+.g-tip strong{color:var(--ink)}
 @media (max-width:34rem){.g-band{border-radius:10px}.g-formula{font-size:.72rem;padding:.75rem}.g-cite{flex-direction:column;align-items:flex-start}}
 .g{--dry:#7C9A82}
 @media (prefers-color-scheme:dark){.g{--dry:#8FB596}}
@@ -97,7 +110,12 @@ body{overflow-x:clip}
   <section class="g-hero" aria-live="polite">
     <span class="g-big" id="o-big">&nbsp;</span>
     <span class="g-sub" id="o-sub"></span>
-    <div class="g-band" aria-hidden="true"></div>
+    <div class="g-strip-wrap">
+      <div class="g-strip" id="o-strip" role="group" aria-label="School year, September to June, one column per month"></div>
+      <div class="g-tip" id="o-tip" hidden></div>
+    </div>
+    <p class="g-strip-key"><span><i class="k-use"></i>Usable</span><span><i class="k-rain"></i>Lost to rain</span><span><i class="k-temp"></i>Too hot or cold</span><span><i class="k-dark"></i>Dark</span></p>
+    <p class="visually-hidden" id="o-strip-desc"></p>
   </section>
 
   <section aria-labelledby="o-m-title">
@@ -168,6 +186,16 @@ function render(){
   var ms=SY.map(function(m){return month(c,m);}),tot=year(c),days=SY.reduce(function(a,m){return a+WK[m];},0);
   $("o-big").textContent=Math.round(tot)+" hours";
   $("o-sub").textContent="of usable outdoor time across "+days+" school days from September to June in "+c.name+", about "+hm(tot/days)+" a day on average.";
+  // school-year strip: after-school window (bell to latest sunset of the year) split by what eats it
+  var win=Math.max.apply(null,SY.map(function(m){return Math.max(0,c.sunset[m]-s.end)/60;}))||1,strip=$("o-strip");strip.textContent="";var sd=[];
+  SY.forEach(function(m,i){var x=ms[i],dark=win-x.day,rain=x.day*(1-x.dry),temp=x.day*x.dry*(1-x.cf);
+    var b=document.createElement("button");b.type="button";b.className="g-mo";b.style.flex=WK[m]+" 1 0";
+    [["s-use",x.use],["s-rain",rain],["s-temp",temp],["s-dark",dark]].forEach(function(p){var e=document.createElement("span");e.className=p[0];e.style.height=(p[1]/win*100)+"%";b.appendChild(e);});
+    var lb=document.createElement("b");lb.textContent=MON[m][0];lb.setAttribute("aria-hidden","true");b.appendChild(lb);
+    var t=MON[m]+": "+hm(x.use)+" usable, "+hm(rain)+" lost to rain, "+hm(temp)+" too hot or cold, "+hm(dark)+" dark, per school day ("+WK[m]+" school days).";
+    b.setAttribute("aria-label",t);b.dataset.m=m;b.dataset.tip="<strong>"+MON[m]+"</strong> \u00b7 "+WK[m]+" school days<br>"+hm(x.use)+" usable<br>"+hm(rain)+" rain \u00b7 "+hm(temp)+" temp \u00b7 "+hm(dark)+" dark";
+    sd.push(t);strip.appendChild(b);});
+  $("o-strip-desc").textContent="Each school day, the window from the bell to the latest sunset of the year is "+hm(win)+". "+sd.join(" ");
   // months chart
   var sv=$("o-months"),desc=$("o-m-desc");while(sv.lastChild!==desc)sv.removeChild(sv.lastChild);
   sv.setAttribute("viewBox","0 0 "+(Math.max(360,Math.min(720,Math.round(sv.getBoundingClientRect().width)||720)))+" 300");var W=Math.max(360,Math.min(720,Math.round(sv.getBoundingClientRect().width)||720)),H=300,L=36,B=260,T=20,max=Math.max(4,Math.ceil(Math.max.apply(null,ms.map(function(x){return x.day;}))));
@@ -201,9 +229,19 @@ function render(){
 cs.onchange=function(){s.city=cs.value;render();};es.onchange=function(){s.end=+es.value;render();};
 function num(id,k){$(id).onchange=function(){var v=+this.value;if(!isNaN(v)){s[k]=v;if(s.lo>s.hi){var t=s.lo;s.lo=s.hi;s.hi=t;}render();}};}
 num("o-lo","lo");num("o-hi","hi");
+function showTip(b){var tip=$("o-tip"),w=$("o-strip").getBoundingClientRect(),r=b.getBoundingClientRect(),x=r.left+r.width/2-w.left;
+  document.querySelectorAll(".g-mo.is-on").forEach(function(e){e.classList.remove("is-on");});b.classList.add("is-on");
+  tip.innerHTML=b.dataset.tip;tip.hidden=false;var tw=tip.offsetWidth;tip.style.left=Math.max(0,Math.min(w.width-tw,x-tw/2))+"px";}
+function hideTip(){$("o-tip").hidden=true;document.querySelectorAll(".g-mo.is-on").forEach(function(e){e.classList.remove("is-on");});}
+$("o-strip").addEventListener("pointerover",function(e){var b=e.target.closest(".g-mo");if(b)showTip(b);});
+$("o-strip").addEventListener("click",function(e){var b=e.target.closest(".g-mo");if(b)showTip(b);});
+$("o-strip").addEventListener("focusin",function(e){var b=e.target.closest(".g-mo");if(b)showTip(b);});
+$("o-strip").addEventListener("pointerleave",function(e){if(e.pointerType==="mouse")hideTip();});
+$("o-strip").addEventListener("focusout",hideTip);
 $("o-more").onclick=function(){showAll=!showAll;render();};
 document.querySelectorAll("[data-copy]").forEach(function(b){b.onclick=function(){navigator.clipboard&&navigator.clipboard.writeText($(b.dataset.copy).textContent.trim()).then(function(){b.textContent="Copied";});};});
 render();
 var rz;addEventListener("resize",function(){clearTimeout(rz);rz=setTimeout(render,150);});
 })();
 </script>
+<script src="{{ '/assets/js/guide-select.js' | relative_url }}" defer></script>

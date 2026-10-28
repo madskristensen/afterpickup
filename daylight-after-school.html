@@ -21,12 +21,8 @@ body{overflow-x:clip}
 .dl-trust{font-family:var(--ui);font-size:.85rem;line-height:1.5;color:var(--summary-ink);margin:1.25rem 0 0;padding-left:.9rem;border-left:2px solid var(--rule)}
 .dl-trust a{color:inherit}
 .dl-sentence{margin:2.75rem 0 .5rem;font-size:clamp(1.3rem,3.6vw,1.6rem);line-height:1.7;color:var(--ink)}
-.dl-sentence select,.dl-sentence input{font:inherit;color:var(--accent);background:transparent;border:0;border-bottom:1.5px solid color-mix(in srgb,var(--accent) 45%,transparent);border-radius:0;padding:0 .1rem;margin:0 .1rem;appearance:none;-webkit-appearance:none;cursor:pointer;line-height:1.3}
-.dl-sentence select:hover,.dl-sentence input:hover{border-bottom-color:var(--accent)}
-.dl-sentence select option{color:#222;background:#fff}
-.dl-sentence input[type=date]{width:7.9em}
-.dl-sentence input[type=date]::-webkit-calendar-picker-indicator{opacity:.45;filter:var(--cal-filter,none);margin-left:.2rem}
-@media (prefers-color-scheme:dark){.dl-sentence input[type=date]::-webkit-calendar-picker-indicator{filter:invert(1)}}
+.dl-sentence select{font:inherit;color:var(--accent);background:transparent;border:0;border-bottom:1.5px solid color-mix(in srgb,var(--accent) 45%,transparent);border-radius:0;padding:0 .1rem;margin:0 .1rem;appearance:none;-webkit-appearance:none;cursor:pointer;line-height:1.3}
+.dl-sentence select:hover{border-bottom-color:var(--accent)}
 .dl-measure{position:absolute;visibility:hidden;white-space:pre;font-family:var(--body);font-size:clamp(1.3rem,3.6vw,1.6rem)}
 .dl-geo-row{font-family:var(--ui);font-size:.9rem;color:var(--summary-ink);margin:0 0 2.5rem;display:flex;flex-wrap:wrap;gap:.25rem .75rem;align-items:baseline}
 .dl-link{font:inherit;color:var(--accent);background:none;border:0;padding:0;text-decoration:underline;text-underline-offset:.2em;cursor:pointer}
@@ -50,7 +46,8 @@ body{overflow-x:clip}
 .dl-section h2{font-size:1.55rem;font-weight:600;margin:0 0 .4rem}
 .dl-intro{margin:0 0 1.5rem;color:var(--soft-ink)}
 .dl-chart-wrap{position:relative;margin-inline:-.5rem}
-.dl-chart{display:block;width:100%;height:auto;font-family:var(--ui);touch-action:pan-y;border-radius:8px}
+.dl-chart{display:block;width:100%;height:auto;font-family:var(--ui);touch-action:pan-y;border-radius:8px;cursor:ew-resize}
+#dl-when{color:var(--accent)}
 .dl-chart .hgrid{stroke:var(--rule);stroke-width:1;stroke-dasharray:2 4}
 .dl-chart .vgrid{stroke:var(--rule);stroke-width:1;opacity:.55}
 .dl-chart .tick{fill:var(--summary-ink);font-size:11px;letter-spacing:.04em}
@@ -130,11 +127,10 @@ body{overflow-x:clip}
   <p class="dl-sentence" id="dl-sentence">
     If school ends at
     <label class="visually-hidden" for="dl-time">School end time</label><select id="dl-time"></select>
-    in <label class="visually-hidden" for="dl-city">City</label><select id="dl-city"></select>
-    on <label class="visually-hidden" for="dl-date">Date</label><input id="dl-date" type="date">,
-    this is how much daylight is left.
+    in <label class="visually-hidden" for="dl-city">City</label><select id="dl-city"></select>,
+    this is how much daylight is left <span id="dl-when">today</span>.
   </p>
-  <p class="dl-geo-row"><button id="dl-geo" class="dl-link" type="button" hidden>or use my location</button><span id="dl-geo-status" aria-live="polite"></span></p>
+  <p class="dl-geo-row"><button id="dl-today" class="dl-link" type="button" hidden>Back to today</button><button id="dl-geo" class="dl-link" type="button" hidden>or use my location</button><span id="dl-geo-status" aria-live="polite"></span></p>
 </article>
 
 <section class="dl-hero" aria-labelledby="dl-big">
@@ -151,12 +147,12 @@ body{overflow-x:clip}
 <article class="post guide" style="margin-top:0;padding-top:0">
   <section class="dl-section" aria-labelledby="dl-year-title">
     <h2 id="dl-year-title">The daylight river</h2>
-    <p class="dl-intro">The same afternoon for every day of the year in <span id="dl-chart-city"></span>. The two cliffs are the clock changes, and the glowing dot is the date you picked.</p>
+    <p class="dl-intro">The same afternoon for every day of the year in <span id="dl-chart-city"></span>. The two cliffs are the clock changes, and the glowing dot is the day shown above. Drag along the river to pick a day.</p>
     <div class="dl-chart-wrap">
       <svg id="dl-chart" class="dl-chart" viewBox="0 0 760 310" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="dl-chart-title dl-chart-desc" tabindex="0"></svg>
       <div id="dl-tip" class="dl-tip" hidden></div>
     </div>
-    <p class="dl-chart-hint">Hover or tap the chart for any day. With a keyboard, focus it and use the arrow keys.</p>
+    <p class="dl-chart-hint">Drag along the river, or tap it, to pick a day. With a keyboard, focus the chart and use the arrow keys.</p>
     <ul id="dl-findings" class="dl-findings"></ul>
   </section>
 
@@ -234,3 +230,4 @@ body{overflow-x:clip}
 </script>
 <script src="{{ '/assets/js/post.js' | relative_url }}" defer></script>
 <script src="{{ '/assets/js/daylight.js' | relative_url }}" defer></script>
+<script src="{{ '/assets/js/guide-select.js' | relative_url }}" defer></script>

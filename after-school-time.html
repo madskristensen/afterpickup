@@ -96,7 +96,6 @@ body{overflow-x:clip}
   <section class="g-hero" aria-live="polite">
     <span class="g-big" id="t-big">&nbsp;</span>
     <span class="g-sub" id="t-sub"></span>
-    <div class="g-band" aria-hidden="true"></div>
   </section>
 
   <section aria-labelledby="t-r-title">
@@ -195,3 +194,4 @@ render();
 var rz;addEventListener("resize",function(){clearTimeout(rz);rz=setTimeout(render,150);});
 })();
 </script>
+<script src="{{ '/assets/js/guide-select.js' | relative_url }}" defer></script>

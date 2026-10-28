@@ -118,7 +118,7 @@
 
   /* ---------------- UI ---------------- */
   var $ = function (id) { return document.getElementById(id); };
-  var selCity = $("dl-city"), selTime = $("dl-time"), inDate = $("dl-date");
+  var selCity = $("dl-city"), selTime = $("dl-time"), picked = null; // picked: "YYYY-MM-DD" or null for today
   if (!selCity) return;
   var geoBtn = $("dl-geo"), geoStatus = $("dl-geo-status");
   var SVGNS = "http://www.w3.org/2000/svg";
@@ -152,7 +152,7 @@
   var q = new URLSearchParams(location.search);
   selCity.value = CITIES.some(function (c) { return c.id === q.get("city"); }) ? q.get("city") : "redmond-wa";
   selTime.value = selTime.querySelector('option[value="' + (q.get("time") || "").replace(/\D/g, "") + '"]') ? q.get("time") : "1500";
-  inDate.value = /^\d{4}-\d\d-\d\d$/.test(q.get("date") || "") ? q.get("date") : todayIn(cityById(selCity.value).tz);
+  picked = /^\d{4}-\d\d-\d\d$/.test(q.get("date") || "") ? q.get("date") : null;
 
   function cityById(id) {
     if (id === "here" && myLoc) return myLoc;
@@ -160,7 +160,9 @@
     return CITIES[0];
   }
   function endMin() { var v = selTime.value; return +v.slice(0, 2) * 60 + +v.slice(2); }
-  function ymd() { var p = inDate.value.split("-").map(Number); return p.length === 3 && p[0] ? p : todayIn("America/Los_Angeles").split("-").map(Number); }
+  function dateStr() { return picked || todayIn(cityById(selCity.value).tz); }
+  function ymd() { return dateStr().split("-").map(Number); }
+  function isToday() { return !picked || picked === todayIn(cityById(selCity.value).tz); }
   function fit(el) { // size an inline select to its chosen text
     var s = document.createElement("span"); s.className = "dl-measure"; s.textContent = el.options ? el.options[el.selectedIndex].text : el.value;
     document.body.appendChild(s); el.style.width = (s.offsetWidth + 22) + "px"; s.remove();
@@ -208,6 +210,7 @@
 
   /* The daylight river. */
   var W = 760, H = 310, L = 40, RT = 12, T = 44, B = 34;
+  var keepTip = false;
   function chart(city, end, p) {
     var svgEl = $("dl-chart"), cw = svgEl.clientWidth || 760;
     W = Math.round(Math.max(340, Math.min(760, cw))); H = W < 520 ? 260 : 310;
@@ -255,7 +258,15 @@
     svg.querySelector("desc").textContent = findings.join(" ");
     $("dl-findings").innerHTML = findings.map(function (f) { return "<li>" + f + "</li>"; }).join("");
     $("dl-chart-city").textContent = city.name;
-    hover(ti >= 0 ? ti : 0, false);
+    hover(ti >= 0 ? ti : 0, keepTip);
+  }
+  var raf = 0;
+  function pick(i) {
+    var x = series[Math.max(0, Math.min(series.length - 1, i))]; if (!x) return;
+    var v = x.y + "-" + pad(x.m) + "-" + pad(x.d);
+    if (v === dateStr()) return;
+    picked = v === todayIn(cityById(selCity.value).tz) ? null : v;
+    cancelAnimationFrame(raf); raf = requestAnimationFrame(function () { render(true); });
   }
   function hover(i, show) {
     var s = series; if (!s.length) return;
@@ -273,15 +284,17 @@
   (function () {
     var svg = $("dl-chart");
     function at(e) { var r = svg.getBoundingClientRect(), x = (e.clientX - r.left) / r.width * W; return Math.round((x - L) / (W - L - RT) * (series.length - 1)); }
-    svg.addEventListener("pointermove", function (e) { hover(at(e), true); });
-    svg.addEventListener("pointerdown", function (e) { hover(at(e), true); });
+    var dragging = false;
+    svg.addEventListener("pointermove", function (e) { var i = at(e); hover(i, true); if (dragging) pick(i); });
+    svg.addEventListener("pointerdown", function (e) { dragging = true; try { svg.setPointerCapture(e.pointerId); } catch (x) {} var i = at(e); hover(i, true); pick(i); });
+    ["pointerup", "pointercancel"].forEach(function (t) { svg.addEventListener(t, function () { dragging = false; }); });
     svg.addEventListener("pointerleave", function (e) { if (e.pointerType === "mouse") hover(hover.i, false); });
     svg.addEventListener("focus", function () { hover(hover.i, true); });
     svg.addEventListener("blur", function () { hover(hover.i, false); });
     svg.addEventListener("keydown", function (e) {
       var step = { ArrowRight: 1, ArrowLeft: -1, PageUp: 7, PageDown: -7, ArrowUp: 7, ArrowDown: -7 }[e.key];
       if (e.key === "Home") step = -999; if (e.key === "End") step = 999;
-      if (!step) return; e.preventDefault(); hover(hover.i + step, true);
+      if (!step) return; e.preventDefault(); var i = Math.max(0, Math.min(series.length - 1, hover.i + step)); hover(i, true); pick(i);
     });
   })();
 
@@ -328,14 +341,18 @@
   document.querySelectorAll("[data-metric]").forEach(function (b) { b.addEventListener("click", function () { metric = b.getAttribute("data-metric"); bars(); }); });
   $("dl-more").addEventListener("click", function () { showAll = !showAll; bars(); });
 
-  function render() {
+  function render(fromChart) {
     var city = cityById(selCity.value), end = endMin(), p = ymd();
+    var today = isToday();
+    $("dl-when").textContent = today ? "today" : "on " + label(p[1], p[2]);
+    $("dl-today").hidden = today;
+    keepTip = fromChart === true;
     [selCity, selTime].forEach(fit);
     hero(city, end, p); chart(city, end, p); computeRows(end, p); bars();
     var params = new URLSearchParams();
     params.set("city", selCity.value === "here" ? "redmond-wa" : selCity.value);
     params.set("time", selTime.value);
-    if (inDate.value !== todayIn(city.tz)) params.set("date", inDate.value);
+    if (!today) params.set("date", dateStr());
     if (selCity.value !== "here") {
       history.replaceState(null, "", "?" + params.toString());
       var sh = document.querySelector(".post-share"); if (sh) sh.setAttribute("data-url", location.href);
@@ -357,7 +374,8 @@
       }, function () { geoStatus.textContent = "We could not get your location, so pick a city instead."; }, { timeout: 10000 });
     });
   }
-  [selCity, selTime, inDate].forEach(function (el) { el.addEventListener("change", render); });
+  [selCity, selTime].forEach(function (el) { el.addEventListener("change", function () { render(); }); });
+  $("dl-today").addEventListener("click", function () { picked = null; render(); });
   var rz = 0, lastW = 0;
   addEventListener("resize", function () { clearTimeout(rz); rz = setTimeout(function () { var w = $("dl-chart").clientWidth; if (Math.abs(w - lastW) > 30) { lastW = w; chart(cityById(selCity.value), endMin(), ymd()); } }, 150); });
 
