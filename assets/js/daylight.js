@@ -118,19 +118,23 @@
 
   /* ---------------- UI ---------------- */
   var $ = function (id) { return document.getElementById(id); };
-  var form = $("dl-form"); if (!form) return;
-  var selCity = $("dl-city"), selTime = $("dl-time"), inDate = $("dl-date"), geoBtn = $("dl-geo"), geoStatus = $("dl-geo-status");
-  var myLoc = null;
+  var selCity = $("dl-city"), selTime = $("dl-time"), inDate = $("dl-date");
+  if (!selCity) return;
+  var geoBtn = $("dl-geo"), geoStatus = $("dl-geo-status");
+  var SVGNS = "http://www.w3.org/2000/svg";
+  var myLoc = null, series = [], drawn = false;
+  var MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  var LONG = ["January","February","March","April","May","June","July","August","September","October","November","December"];
 
   function pad(n) { return (n < 10 ? "0" : "") + n; }
   function clock(min) {
-    min = Math.round(min); var h = Math.floor(min / 60) % 24, mm = min % 60;
+    min = Math.round(min); var h = Math.floor(min / 60) % 24, mm = ((min % 60) + 60) % 60;
     return ((h + 11) % 12 + 1) + ":" + pad(mm) + (h < 12 ? " AM" : " PM");
   }
   function dur(min) {
     min = Math.max(0, Math.round(min));
     var h = Math.floor(min / 60), m = min % 60;
-    return h ? h + " h " + m + " min" : m + " min";
+    return h ? (m ? h + " h " + m + " min" : h + " h") : m + " min";
   }
   function after(v, end) { return v == null ? 0 : Math.max(0, v - end); }
   function todayIn(tz) {
@@ -139,17 +143,15 @@
       .formatToParts(new Date()).forEach(function (x) { p[x.type] = +x.value; });
     return p.year + "-" + pad(p.month) + "-" + pad(p.day);
   }
-  var MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
-  function label(y, m, d) { return MONTHS[m - 1] + " " + d; }
+  function label(m, d) { return MONTHS[m - 1] + " " + d; }
 
   CITIES.forEach(function (c) { var o = document.createElement("option"); o.value = c.id; o.textContent = c.name; selCity.appendChild(o); });
   for (var t = 13 * 60 + 30; t <= 16 * 60 + 30; t += 15) {
     var o = document.createElement("option"); o.value = pad(Math.floor(t / 60)) + pad(t % 60); o.textContent = clock(t); selTime.appendChild(o);
   }
-
   var q = new URLSearchParams(location.search);
   selCity.value = CITIES.some(function (c) { return c.id === q.get("city"); }) ? q.get("city") : "redmond-wa";
-  selTime.value = /^\d{4}$/.test(q.get("time") || "") && selTime.querySelector('option[value="' + q.get("time") + '"]') ? q.get("time") : "1500";
+  selTime.value = selTime.querySelector('option[value="' + (q.get("time") || "").replace(/\D/g, "") + '"]') ? q.get("time") : "1500";
   inDate.value = /^\d{4}-\d\d-\d\d$/.test(q.get("date") || "") ? q.get("date") : todayIn(cityById(selCity.value).tz);
 
   function cityById(id) {
@@ -159,124 +161,211 @@
   }
   function endMin() { var v = selTime.value; return +v.slice(0, 2) * 60 + +v.slice(2); }
   function ymd() { var p = inDate.value.split("-").map(Number); return p.length === 3 && p[0] ? p : todayIn("America/Los_Angeles").split("-").map(Number); }
-
-  function yearSeries(city, year, end) {
-    var out = [], n = (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0 ? 366 : 365;
-    for (var i = 0; i < n; i++) {
-      var dt = new Date(Date.UTC(year, 0, 1 + i));
-      var y = dt.getUTCFullYear(), m = dt.getUTCMonth() + 1, d = dt.getUTCDate();
-      var r = day(city, y, m, d);
-      out.push({ y: y, m: m, d: d, dow: dt.getUTCDay(), off: r.off, v: after(r.sunset, end), sunset: r.sunset });
-    }
-    return out;
+  function fit(el) { // size an inline select to its chosen text
+    var s = document.createElement("span"); s.className = "dl-measure"; s.textContent = el.options ? el.options[el.selectedIndex].text : el.value;
+    document.body.appendChild(s); el.style.width = (s.offsetWidth + 22) + "px"; s.remove();
   }
 
-  function render() {
-    var city = cityById(selCity.value), end = endMin(), p = ymd();
+  // Sunset by day, cached per place and range. Days run from a UTC start.
+  var cache = {};
+  function days(city, y0, m0, d0, n) {
+    var key = city.id + city.lat + "|" + y0 + "-" + m0 + "-" + d0 + "|" + n;
+    if (cache[key]) return cache[key];
+    var out = [];
+    for (var i = 0; i < n; i++) {
+      var dt = new Date(Date.UTC(y0, m0 - 1, d0 + i));
+      var y = dt.getUTCFullYear(), m = dt.getUTCMonth() + 1, d = dt.getUTCDate(), r = day(city, y, m, d);
+      out.push({ y: y, m: m, d: d, dow: dt.getUTCDay(), off: r.off, sunset: r.sunset });
+    }
+    return (cache[key] = out);
+  }
+  function yearDays(city, y) { return days(city, y, 1, 1, ((y % 4 === 0 && y % 100 !== 0) || y % 400 === 0) ? 366 : 365); }
+  function schoolYear(p) { var s = p[1] >= 7 ? p[0] : p[0] - 1; return [s, (Date.UTC(s + 1, 5, 15) - Date.UTC(s, 8, 1)) / 864e5 + 1]; }
+
+  /* Hero: a sky from the bell to well past dusk. */
+  function hero(city, end, p) {
     var r = day(city, p[0], p[1], p[2]);
     var a = after(r.sunset, end), u = after(r.dusk, end);
-    $("dl-headline").textContent = dur(a) + " of daylight after a " + clock(end) + " end time";
-    $("dl-detail").textContent = r.sunset == null ? "No sunset on this date at this latitude." :
-      city.name + ", " + label(p[0], p[1], p[2]) + ". Sunset at " + clock(r.sunset) +
-      (r.dusk != null ? ", civil twilight ends at " + clock(r.dusk) + ", so about " + dur(u) + " of usable light." : ".") +
-      (a === 0 ? " The sun is down before school lets out." : "");
-
-    var s = yearSeries(city, p[0], end);
-    chart(s, city, end, p);
-    table(end, p);
-    var params = new URLSearchParams();
-    params.set("city", selCity.value === "here" ? "redmond-wa" : selCity.value);
-    params.set("time", selTime.value);
-    if (inDate.value !== todayIn(city.tz)) params.set("date", inDate.value);
-    if (selCity.value !== "here") history.replaceState(null, "", "?" + params.toString());
+    $("dl-big").textContent = dur(a);
+    $("dl-big-sub").textContent = a > 0 ? "of daylight after a " + clock(end) + " bell" : "of daylight. The sun sets before the " + clock(end) + " bell";
+    $("dl-usable").textContent = r.dusk != null && u > a ? "Plus " + dur(u - a) + " of soft twilight, " + dur(u) + " of usable light in all." : "";
+    var start = end, stop = Math.max(r.dusk || end, end + 60) + 40, span = stop - start;
+    var pct = function (v) { return Math.max(0, Math.min(100, (v - start) / span * 100)); };
+    var sp = pct(r.sunset), dp = pct(r.dusk);
+    var sky = $("dl-sky");
+    sky.style.setProperty("--sun", sp + "%");
+    sky.style.background = "linear-gradient(90deg," +
+      (sp > 0 ? "var(--sky-day) 0%,var(--sky-noon) " + Math.max(0, sp * 0.45) + "%,var(--sky-gold) " + Math.max(0, sp - 14) + "%," : "") +
+      "var(--sky-set) " + sp + "%,var(--sky-dusk) " + dp + "%,var(--sky-night) " + Math.min(100, dp + 14) + "%,var(--sky-night) 100%)";
+    var marks = [[0, clock(end), "School ends"], [sp, clock(r.sunset), "Sunset"], [dp, clock(r.dusk), "Civil dusk"]];
+    $("dl-sky-marks").innerHTML = marks.map(function (m, i) {
+      return '<li style="--at:' + m[0] + '%" class="m' + i + (i === 1 && sp < 12 ? " near-start" : "") + (i > 0 && dp - sp < 26 ? " pair" : "") + '"><span>' + m[2] + "</span>" + m[1] + "</li>";
+    }).join("");
+    $("dl-sun").hidden = r.sunset == null;
+    $("dl-sky-label").textContent = city.name + " on " + LONG[p[1] - 1] + " " + p[2] + ", " + p[0] + ": school ends at " + clock(end) +
+      ", sunset at " + clock(r.sunset) + ", civil twilight ends at " + clock(r.dusk) + ".";
   }
 
-  function chart(s, city, end, p) {
-    var W = 720, H = 280, L = 44, Rt = 10, T = 14, B = 30;
-    var max = 60 * Math.max(1, Math.ceil(Math.max.apply(null, s.map(function (x) { return x.v; })) / 60));
-    var X = function (i) { return L + i * (W - L - Rt) / (s.length - 1); };
+  /* The daylight river. */
+  var W = 760, H = 310, L = 40, RT = 12, T = 44, B = 34;
+  function chart(city, end, p) {
+    var svgEl = $("dl-chart"), cw = svgEl.clientWidth || 760;
+    W = Math.round(Math.max(340, Math.min(760, cw))); H = W < 520 ? 260 : 310;
+    svgEl.setAttribute("viewBox", "0 0 " + W + " " + H);
+    var s = yearDays(city, p[0]).map(function (x) { return { y: x.y, m: x.m, d: x.d, off: x.off, sunset: x.sunset, v: after(x.sunset, end) }; });
+    series = s;
+    var max = 60 * Math.max(2, Math.ceil(Math.max.apply(null, s.map(function (x) { return x.v; })) / 60));
+    var X = function (i) { return L + i * (W - L - RT) / (s.length - 1); };
     var Y = function (v) { return T + (H - T - B) * (1 - v / max); };
-    var svg = '<title id="dl-chart-title">Daylight after school through ' + p[0] + '</title><desc id="dl-chart-desc"></desc>';
-    for (var g = 0; g <= max; g += 60) {
-      svg += '<line class="grid" x1="' + L + '" x2="' + (W - Rt) + '" y1="' + Y(g) + '" y2="' + Y(g) + '"/>' +
-        '<text class="tick" x="' + (L - 6) + '" y="' + (Y(g) + 4) + '" text-anchor="end">' + (g / 60) + ' h</text>';
-    }
-    s.forEach(function (x, i) { if (x.d === 1) svg += '<text class="tick" x="' + (X(i) + 2) + '" y="' + (H - 10) + '">' + MONTHS[x.m - 1] + '</text>'; });
-    var d = "M" + X(0) + " " + Y(0);
-    s.forEach(function (x, i) { d += "L" + X(i).toFixed(1) + " " + Y(x.v).toFixed(1); });
-    d += "L" + X(s.length - 1) + " " + Y(0) + "Z";
-    svg += '<path class="area" d="' + d + '"/>';
-    var findings = [];
+    chart.X = X; chart.Y = Y;
+    var g = "";
+    for (var h = 60; h <= max; h += 60) g += '<line class="hgrid" x1="' + L + '" x2="' + (W - RT) + '" y1="' + Y(h) + '" y2="' + Y(h) + '"/><text class="tick" x="' + (L - 8) + '" y="' + (Y(h) + 4) + '" text-anchor="end">' + h / 60 + " h</text>";
+    s.forEach(function (x, i) { if (x.d === 1) g += '<line class="vgrid" x1="' + X(i) + '" x2="' + X(i) + '" y1="' + T + '" y2="' + (H - B) + '"/><text class="tick" x="' + (X(i) + (W < 520 ? 9 : 13)) + '" y="' + (H - 12) + '" text-anchor="middle">' + (W < 520 ? MONTHS[x.m - 1][0] : MONTHS[x.m - 1]) + "</text>"; });
+    var line = "";
+    s.forEach(function (x, i) { line += (i ? "L" : "M") + X(i).toFixed(1) + " " + Y(x.v).toFixed(1); });
+    var area = line + "L" + X(s.length - 1) + " " + Y(0) + "L" + X(0) + " " + Y(0) + "Z";
+    var notes = [], ann = "";
     for (var i = 1; i < s.length; i++) if (s[i].off !== s[i - 1].off) {
-      var diff = Math.round(s[i].v - s[i - 1].v);
-      svg += '<line class="dst" x1="' + X(i) + '" x2="' + X(i) + '" y1="' + T + '" y2="' + (H - B) + '"/>' +
-        '<text class="tick dst-label" x="' + (X(i) + 4) + '" y="' + (T + 10) + '">DST</text>';
-      findings.push("On " + label(s[i].y, s[i].m, s[i].d) + " the clocks change and daylight after school " +
-        (diff >= 0 ? "jumps by " + dur(diff) : "drops by " + dur(-diff)) + " overnight.");
+      var jump = s[i].off - s[i - 1].off, diff = Math.round(s[i].v - s[i - 1].v), fwd = jump > 0;
+      var x = X(i), yTop = Y(Math.max(s[i].v, s[i - 1].v));
+      var txt = W < 520 ? (fwd ? "spring forward +1 h" : "fall back \u22121 h") : (fwd ? "clocks spring forward: +1 h" : "clocks fall back: \u22121 h");
+      var anchor = fwd ? "start" : "end", dx = anchor === "end" ? -8 : 8;
+      ann += '<line class="dst" x1="' + x + '" x2="' + x + '" y1="' + (T - 12) + '" y2="' + Y(0) + '"/><text class="note" x="' + (x + dx) + '" y="' + (T - 14) + '" text-anchor="' + anchor + '">' + txt + "</text>";
+      notes.push("On " + label(s[i].m, s[i].d) + " the " + (fwd ? "clocks spring forward and daylight after school jumps " : "clocks fall back and daylight after school drops ") + dur(Math.abs(diff)) + " from the day before.");
     }
     var ti = s.findIndex(function (x) { return x.m === p[1] && x.d === p[2]; });
-    if (ti >= 0) svg += '<circle class="today" cx="' + X(ti) + '" cy="' + Y(s[ti].v) + '" r="5"/>';
-    // Darkest and brightest 7-day stretch.
     var lo = Infinity, hi = -1, li = 0, hiI = 0;
     for (var k = 0; k + 7 <= s.length; k++) {
       var sum = 0; for (var j = k; j < k + 7; j++) sum += s[j].v;
       if (sum < lo) { lo = sum; li = k; } if (sum > hi) { hi = sum; hiI = k; }
     }
-    var wk = function (k) { return label(s[k].y, s[k].m, s[k].d) + " to " + label(s[k + 6].y, s[k + 6].m, s[k + 6].d); };
-    findings.unshift("Darkest week: " + wk(li) + ", about " + dur(lo / 7) + " a day. Brightest week: " + wk(hiI) + ", about " + dur(hi / 7) + " a day.");
-    var el = $("dl-chart");
-    el.innerHTML = svg;
-    var summary = "Chart of minutes of daylight after a " + clock(end) + " end time in " + city.name + " for every day of " + p[0] + ". " + findings.join(" ");
-    el.querySelector("desc").textContent = summary;
+    var wk = function (k) { return label(s[k].m, s[k].d) + " to " + label(s[k + 6].m, s[k + 6].d); };
+    var svg = $("dl-chart");
+    svg.innerHTML = '<title id="dl-chart-title"></title><desc id="dl-chart-desc"></desc>' +
+      '<defs><linearGradient id="dl-fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="f0"/><stop offset="1" class="f1"/></linearGradient>' +
+      '<filter id="dl-glow" x="-1" y="-1" width="3" height="3"><feGaussianBlur stdDeviation="4"/></filter>' +
+      '<clipPath id="dl-clip"><rect id="dl-clip-rect" x="0" y="0" height="' + H + '" width="' + (drawn ? W : 0) + '"/></clipPath></defs>' +
+      g + '<g clip-path="url(#dl-clip)"><path class="area" d="' + area + '"/><path class="line" d="' + line + '"/></g>' + ann +
+      (ti >= 0 ? '<circle class="glow" cx="' + X(ti) + '" cy="' + Y(s[ti].v) + '" r="9" filter="url(#dl-glow)"/><circle class="today" cx="' + X(ti) + '" cy="' + Y(s[ti].v) + '" r="4.5"/>' +
+        '<text class="note today-note" x="' + X(ti) + '" y="' + (Y(s[ti].v) + 24) + '" text-anchor="middle">' + label(p[1], p[2]) + "</text>" : "") +
+      '<g id="dl-hover" class="hover" visibility="hidden"><line id="dl-hl" y1="' + T + '" y2="' + Y(0) + '"/><circle id="dl-hc" r="4"/></g>';
+    if (!drawn) requestAnimationFrame(function () { requestAnimationFrame(function () { var r = $("dl-clip-rect"); r.style.transition = "width 1.4s cubic-bezier(.3,.7,.2,1)"; r.setAttribute("width", W); drawn = true; }); });
+    var findings = ["The darkest week is " + wk(li) + ", with about " + dur(lo / 7) + " a day. The brightest is " + wk(hiI) + ", with about " + dur(hi / 7) + " a day."].concat(notes);
+    svg.querySelector("title").textContent = "Daylight after a " + clock(end) + " end time in " + city.name + ", every day of " + p[0];
+    svg.querySelector("desc").textContent = findings.join(" ");
     $("dl-findings").innerHTML = findings.map(function (f) { return "<li>" + f + "</li>"; }).join("");
+    $("dl-chart-city").textContent = city.name;
+    hover(ti >= 0 ? ti : 0, false);
   }
+  function hover(i, show) {
+    var s = series; if (!s.length) return;
+    i = Math.max(0, Math.min(s.length - 1, i)); hover.i = i;
+    var x = chart.X(i), y = chart.Y(s[i].v), g = $("dl-hover");
+    $("dl-hl").setAttribute("x1", x); $("dl-hl").setAttribute("x2", x);
+    $("dl-hc").setAttribute("cx", x); $("dl-hc").setAttribute("cy", y);
+    g.setAttribute("visibility", show ? "visible" : "hidden");
+    var tip = $("dl-tip");
+    tip.innerHTML = "<strong>" + dur(s[i].v) + "</strong> " + LONG[s[i].m - 1] + " " + s[i].d + ", sunset " + clock(s[i].sunset);
+    tip.style.left = (x / W * 100) + "%";
+    tip.classList.toggle("is-right", x > W * 0.7); tip.classList.toggle("is-left", x < W * 0.3);
+    tip.hidden = !show;
+  }
+  (function () {
+    var svg = $("dl-chart");
+    function at(e) { var r = svg.getBoundingClientRect(), x = (e.clientX - r.left) / r.width * W; return Math.round((x - L) / (W - L - RT) * (series.length - 1)); }
+    svg.addEventListener("pointermove", function (e) { hover(at(e), true); });
+    svg.addEventListener("pointerdown", function (e) { hover(at(e), true); });
+    svg.addEventListener("pointerleave", function (e) { if (e.pointerType === "mouse") hover(hover.i, false); });
+    svg.addEventListener("focus", function () { hover(hover.i, true); });
+    svg.addEventListener("blur", function () { hover(hover.i, false); });
+    svg.addEventListener("keydown", function (e) {
+      var step = { ArrowRight: 1, ArrowLeft: -1, PageUp: 7, PageDown: -7, ArrowUp: 7, ArrowDown: -7 }[e.key];
+      if (e.key === "Home") step = -999; if (e.key === "End") step = 999;
+      if (!step) return; e.preventDefault(); hover(hover.i + step, true);
+    });
+  })();
 
-  var sortKey = "today", sortDir = -1;
-  function table(end, p) {
-    var rows = CITIES.map(function (c) {
-      var r = day(c, p[0], p[1], p[2]);
-      var s = yearSeries(c, p[0], end), tot = 0, wd = 0;
-      s.forEach(function (x) { tot += x.v; if (x.dow > 0 && x.dow < 6) wd += x.v; });
-      return { c: c, today: after(r.sunset, end), sunset: r.sunset, avg: tot / s.length, hours: wd / 60 };
+  /* Cities: small multiples of horizontal bars, plus a real table. */
+  var metric = "day", showAll = false, rows = [];
+  var METRICS = {
+    day: { lab: "That day", fmt: function (r) { return dur(r.day); } },
+    avg: { lab: "Year average", fmt: function (r) { return dur(r.avg) + " a day"; } },
+    school: { lab: "School year", fmt: function (r) { return Math.round(r.school) + " h"; } }
+  };
+  function computeRows(end, p) {
+    var sy = schoolYear(p);
+    rows = CITIES.map(function (c) {
+      var r = day(c, p[0], p[1], p[2]), yr = yearDays(c, p[0]), tot = 0, sch = 0;
+      yr.forEach(function (x) { tot += after(x.sunset, end); });
+      days(c, sy[0], 9, 1, sy[1]).forEach(function (x) { if (x.dow > 0 && x.dow < 6) sch += after(x.sunset, end); });
+      return { c: c, sunset: r.sunset, day: after(r.sunset, end), avg: tot / yr.length, school: sch / 60 };
     });
-    rows.sort(function (a, b) {
-      if (sortKey === "name") return sortDir * (a.c.name < b.c.name ? -1 : 1);
-      return sortDir * (a[sortKey] - b[sortKey]) || (a.c.name < b.c.name ? -1 : 1);
-    });
-    $("dl-table-caption").textContent = "Daylight after a " + clock(end) + " end time on " + label(p[0], p[1], p[2]) + ", and across all of " + p[0] + ".";
-    $("dl-tbody").innerHTML = rows.map(function (r, i) {
-      var me = r.c.id === selCity.value ? ' class="is-current"' : "";
-      return "<tr" + me + "><td>" + (i + 1) + "</td><th scope=\"row\">" + r.c.name + "</th><td>" + (r.sunset == null ? "" : clock(r.sunset)) +
-        "</td><td>" + dur(r.today) + "</td><td>" + dur(r.avg) + "</td><td>" + Math.round(r.hours) + " h</td></tr>";
-    }).join("");
-    document.querySelectorAll("#dl-table th[data-sort]").forEach(function (th) {
-      th.setAttribute("aria-sort", th.getAttribute("data-sort") === sortKey ? (sortDir > 0 ? "ascending" : "descending") : "none");
-    });
+    rows.sy = sy[0];
   }
-  document.querySelectorAll("#dl-table th[data-sort] button").forEach(function (b) {
-    b.addEventListener("click", function () {
-      var k = b.parentNode.getAttribute("data-sort");
-      if (k === sortKey) sortDir = -sortDir; else { sortKey = k; sortDir = k === "name" ? 1 : -1; }
-      render();
+  function bars() {
+    var key = metric, list = rows.slice().sort(function (a, b) { return b[key] - a[key] || (a.c.name < b.c.name ? -1 : 1); });
+    var max = Math.max.apply(null, list.map(function (r) { return r[key]; })) || 1, cur = selCity.value;
+    var html = "", prev = -1;
+    list.forEach(function (r, i) {
+      if (!(showAll || i < 10 || i >= list.length - 10 || r.c.id === cur)) return;
+      if (prev >= 0 && i !== prev + 1) html += '<li class="dl-gap" aria-hidden="true"></li>';
+      prev = i;
+      html += '<li class="dl-bar' + (r.c.id === cur ? " is-current" : "") + '"><span class="dl-rank">' + (i + 1) + '</span><span class="dl-name">' + r.c.name +
+        '</span><span class="dl-track"><span class="dl-fill" style="width:' + (r[key] / max * 100).toFixed(1) + '%"></span></span><span class="dl-val">' + METRICS[key].fmt(r) + "</span></li>";
     });
-  });
+    $("dl-bars").innerHTML = html;
+    $("dl-more").textContent = showAll ? "Show the top and bottom ten" : "Show all " + list.length + " cities";
+    $("dl-more").setAttribute("aria-expanded", showAll);
+    document.querySelectorAll("[data-metric]").forEach(function (b) { b.setAttribute("aria-pressed", b.getAttribute("data-metric") === metric); });
+    var p = ymd();
+    $("dl-metric-note").textContent = key === "day" ? "Daylight after the bell on " + LONG[p[1] - 1] + " " + p[2] + "." :
+      key === "avg" ? "The average day across all of " + p[0] + "." : "Hours of daylight after the bell on school weekdays, September 1, " + rows.sy + " to June 15, " + (rows.sy + 1) + ".";
+    $("dl-tbody").innerHTML = list.map(function (r, i) {
+      return "<tr><td>" + (i + 1) + '</td><th scope="row">' + r.c.name + "</th><td>" + clock(r.sunset) + "</td><td>" + dur(r.day) + "</td><td>" + dur(r.avg) + "</td><td>" + Math.round(r.school) + " h</td></tr>";
+    }).join("");
+    $("dl-table-caption").textContent = "Cities ranked by " + METRICS[key].lab.toLowerCase() + ", school ending at " + clock(endMin()) + ".";
+  }
+  document.querySelectorAll("[data-metric]").forEach(function (b) { b.addEventListener("click", function () { metric = b.getAttribute("data-metric"); bars(); }); });
+  $("dl-more").addEventListener("click", function () { showAll = !showAll; bars(); });
+
+  function render() {
+    var city = cityById(selCity.value), end = endMin(), p = ymd();
+    [selCity, selTime].forEach(fit);
+    hero(city, end, p); chart(city, end, p); computeRows(end, p); bars();
+    var params = new URLSearchParams();
+    params.set("city", selCity.value === "here" ? "redmond-wa" : selCity.value);
+    params.set("time", selTime.value);
+    if (inDate.value !== todayIn(city.tz)) params.set("date", inDate.value);
+    if (selCity.value !== "here") {
+      history.replaceState(null, "", "?" + params.toString());
+      var sh = document.querySelector(".post-share"); if (sh) sh.setAttribute("data-url", location.href);
+    }
+  }
 
   if (geoBtn && navigator.geolocation) {
     geoBtn.hidden = false;
     geoBtn.addEventListener("click", function () {
       geoStatus.textContent = "Asking for your location...";
       navigator.geolocation.getCurrentPosition(function (pos) {
-        myLoc = { id: "here", name: "Your location", lat: pos.coords.latitude, lon: pos.coords.longitude,
+        myLoc = { id: "here", name: "your location", lat: pos.coords.latitude, lon: pos.coords.longitude,
           tz: Intl.DateTimeFormat().resolvedOptions().timeZone || "America/Los_Angeles" };
         var o = selCity.querySelector('option[value="here"]');
-        if (!o) { o = document.createElement("option"); o.value = "here"; o.textContent = "Your location"; selCity.insertBefore(o, selCity.firstChild); }
+        if (!o) { o = document.createElement("option"); o.value = "here"; o.textContent = "your location"; selCity.insertBefore(o, selCity.firstChild); }
         selCity.value = "here";
-        geoStatus.textContent = "Using your location (" + myLoc.lat.toFixed(2) + ", " + myLoc.lon.toFixed(2) + ", " + myLoc.tz + "). It stays in your browser.";
+        geoStatus.textContent = "Using " + myLoc.lat.toFixed(2) + ", " + myLoc.lon.toFixed(2) + " in " + myLoc.tz + ". It stays in your browser.";
         render();
       }, function () { geoStatus.textContent = "We could not get your location, so pick a city instead."; }, { timeout: 10000 });
     });
   }
-  form.addEventListener("change", render);
-  form.addEventListener("submit", function (e) { e.preventDefault(); render(); });
+  [selCity, selTime, inDate].forEach(function (el) { el.addEventListener("change", render); });
+  var rz = 0, lastW = 0;
+  addEventListener("resize", function () { clearTimeout(rz); rz = setTimeout(function () { var w = $("dl-chart").clientWidth; if (Math.abs(w - lastW) > 30) { lastW = w; chart(cityById(selCity.value), endMin(), ymd()); } }, 150); });
+
+  var cite = $("dl-cite-copy");
+  if (cite) cite.addEventListener("click", function () {
+    var text = $("dl-cite-text").textContent.trim();
+    var done = function () { cite.textContent = "Copied"; setTimeout(function () { cite.textContent = "Copy"; }, 2000); };
+    if (navigator.clipboard) navigator.clipboard.writeText(text).then(done, function () {}); 
+  });
   render();
 })(this);
