@@ -610,13 +610,8 @@ figcaption {
 
 .related,
 .guide-line {
-  margin: 3rem 0 0;
-  padding-top: 1.25rem;
-  border-top: 1px solid var(--rule);
-  font-family: var(--ui);
-  font-size: 0.9rem;
-  line-height: 1.55;
-  color: var(--summary-ink);
+  margin: 1.5rem 0 0;
+  color: var(--ink);
 }
 
 .guide-line a {
