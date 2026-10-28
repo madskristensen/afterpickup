@@ -1,0 +1,18 @@
+---
+layout: default
+title: Guides
+description: Small interactive guides from our house, built to answer the questions we keep asking around pickup and dinner.
+permalink: /guides/
+---
+<article class="post">
+  <h1>Guides</h1>
+  <div class="prose">
+    <p>Some questions are easier to answer with a little calculator than with a post, so we keep those here.</p>
+    <ul>
+      {%- assign guides = site.pages | where: "guide", true | sort: "title" -%}
+      {%- for g in guides %}
+      <li><a href="{{ g.url | relative_url }}">{{ g.title }}</a>. {{ g.description }}</li>
+      {%- endfor %}
+    </ul>
+  </div>
+</article>

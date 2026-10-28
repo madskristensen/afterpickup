@@ -1,0 +1,236 @@
+---
+layout: default
+title: Daylight after school
+description: See how much daylight is left after school ends in your city, on any date, and how it rises and falls through the whole year.
+permalink: /daylight-after-school/
+image: /assets/images/guides/daylight-after-school.png
+image_alt: A chart of daylight after school through the year, After Pickup.
+guide: true
+updated: 2026-10-27
+---
+{%- assign updated_long = page.updated | date: "%B %-d, %Y" -%}
+<style>
+body{overflow-x:clip}
+:root{--sky-day:#7FA7CF;--sky-noon:#B9C9D6;--sky-gold:#E9C27A;--sky-set:#E08A5B;--sky-dusk:#6A4E7A;--sky-night:#232B45;--river:#2B3A52;--glow:#E08A5B}
+.guide{padding-top:.5rem}
+@media (prefers-color-scheme:dark){:root{--sky-day:#5E86B0;--sky-noon:#8FA3B4;--sky-gold:#D2A55C;--sky-set:#C96E45;--sky-dusk:#4E3A63;--sky-night:#141A2C;--river:#92AAC7;--glow:#F0A070}}
+.guide-eyebrow{margin:0 0 .6rem;font-family:var(--ui);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--quiet-green)}
+.guide h1{font-size:clamp(2.3rem,6vw,3.2rem);letter-spacing:-.01em;margin-bottom:.5rem}
+.guide .post-summary{margin-inline:0}
+.guide .post-byline{margin-top:1.1rem}
+.dl-trust{font-family:var(--ui);font-size:.85rem;line-height:1.5;color:var(--summary-ink);margin:1.25rem 0 0;padding-left:.9rem;border-left:2px solid var(--rule)}
+.dl-trust a{color:inherit}
+.dl-sentence{margin:2.75rem 0 .5rem;font-size:clamp(1.3rem,3.6vw,1.6rem);line-height:1.7;color:var(--ink)}
+.dl-sentence select,.dl-sentence input{font:inherit;color:var(--accent);background:transparent;border:0;border-bottom:1.5px solid color-mix(in srgb,var(--accent) 45%,transparent);border-radius:0;padding:0 .1rem;margin:0 .1rem;appearance:none;-webkit-appearance:none;cursor:pointer;line-height:1.3}
+.dl-sentence select:hover,.dl-sentence input:hover{border-bottom-color:var(--accent)}
+.dl-sentence select option{color:#222;background:#fff}
+.dl-sentence input[type=date]{width:7.9em}
+.dl-sentence input[type=date]::-webkit-calendar-picker-indicator{opacity:.45;filter:var(--cal-filter,none);margin-left:.2rem}
+@media (prefers-color-scheme:dark){.dl-sentence input[type=date]::-webkit-calendar-picker-indicator{filter:invert(1)}}
+.dl-measure{position:absolute;visibility:hidden;white-space:pre;font-family:var(--body);font-size:clamp(1.3rem,3.6vw,1.6rem)}
+.dl-geo-row{font-family:var(--ui);font-size:.9rem;color:var(--summary-ink);margin:0 0 2.5rem;display:flex;flex-wrap:wrap;gap:.25rem .75rem;align-items:baseline}
+.dl-link{font:inherit;color:var(--accent);background:none;border:0;padding:0;text-decoration:underline;text-underline-offset:.2em;cursor:pointer}
+.dl-hero{margin-inline:calc(50% - 50vw);padding:0 max(var(--gutter),calc(50vw - 30rem))}
+.dl-big-wrap{text-align:center;margin-bottom:1.75rem}
+.dl-big{display:block;font-size:clamp(3.4rem,11vw,6rem);line-height:1;font-weight:400;letter-spacing:-.02em;color:var(--ink);font-variant-numeric:tabular-nums}
+.dl-big-sub{display:block;margin-top:.6rem;font-size:1.15rem;font-style:italic;color:var(--summary-ink)}
+.dl-sky{position:relative;height:clamp(7.5rem,20vw,11rem);border-radius:14px;box-shadow:inset 0 -30px 50px -30px rgba(0,0,0,.35);overflow:hidden}
+.dl-sky::after{content:"";position:absolute;left:0;right:0;bottom:22%;height:1px;background:rgba(255,255,255,.35)}
+.dl-sun{position:absolute;left:var(--sun);bottom:22%;width:2.1rem;height:2.1rem;margin:0 0 -1.05rem -1.05rem;border-radius:50%;background:radial-gradient(circle,#FFE9B8 0 38%,rgba(255,200,120,.55) 40%,rgba(255,170,90,0) 70%);transition:left .8s ease}
+.dl-sky-marks{position:relative;list-style:none;margin:.6rem 0 0;padding:0;height:2.6rem;font-family:var(--ui);font-size:.82rem;color:var(--ink);font-variant-numeric:tabular-nums}
+.dl-sky-marks li{position:absolute;left:var(--at);transform:translateX(-50%);white-space:nowrap;text-align:center;line-height:1.25}
+.dl-sky-marks li span{display:block;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--summary-ink)}
+.dl-sky-marks .m0{transform:none;text-align:left}
+.dl-sky-marks .m2{transform:translateX(-50%)}
+.dl-sky-marks .m1.pair{transform:translateX(-100%);text-align:right;padding-right:.5rem}
+.dl-sky-marks .m2.pair{transform:none;text-align:left;padding-left:.5rem}
+.dl-sky-marks .m1.near-start{transform:none;margin-left:4.5rem}
+.dl-usable{text-align:center;font-family:var(--ui);font-size:.92rem;color:var(--summary-ink);margin:1.25rem 0 0}
+.dl-section{margin-top:4.5rem}
+.dl-section h2{font-size:1.55rem;font-weight:600;margin:0 0 .4rem}
+.dl-intro{margin:0 0 1.5rem;color:var(--soft-ink)}
+.dl-chart-wrap{position:relative;margin-inline:-.5rem}
+.dl-chart{display:block;width:100%;height:auto;font-family:var(--ui);touch-action:pan-y;border-radius:8px}
+.dl-chart .hgrid{stroke:var(--rule);stroke-width:1;stroke-dasharray:2 4}
+.dl-chart .vgrid{stroke:var(--rule);stroke-width:1;opacity:.55}
+.dl-chart .tick{fill:var(--summary-ink);font-size:11px;letter-spacing:.04em}
+.dl-chart .f0{stop-color:var(--river);stop-opacity:.55}
+.dl-chart .f1{stop-color:var(--river);stop-opacity:.03}
+.dl-chart .area{fill:url(#dl-fill)}
+.dl-chart .line{fill:none;stroke:var(--river);stroke-width:2;stroke-linejoin:round}
+.dl-chart .dst{stroke:var(--summary-ink);stroke-width:1;stroke-dasharray:1 3}
+.dl-chart .note{fill:var(--soft-ink);font-size:12px;font-style:italic;font-family:var(--body)}
+.dl-chart .glow{fill:var(--glow);opacity:.75}
+.dl-chart .today-note{font-style:normal;font-family:var(--ui);font-size:11px;fill:var(--glow);font-weight:600}
+.dl-chart .today{fill:var(--glow);stroke:var(--page);stroke-width:2}
+.dl-chart .hover line{stroke:var(--ink);stroke-width:1;opacity:.4}
+.dl-chart .hover circle{fill:var(--page);stroke:var(--ink);stroke-width:2}
+@media (prefers-reduced-motion:no-preference){.dl-chart .glow{animation:dl-pulse 2.6s ease-in-out infinite}}
+@keyframes dl-pulse{50%{opacity:.25}}
+.dl-tip{position:absolute;top:0;transform:translateX(-50%);pointer-events:none;font-family:var(--ui);font-size:.82rem;white-space:nowrap;background:rgba(var(--sheet-rgb),.94);color:var(--soft-ink);border:1px solid var(--rule);border-radius:6px;padding:.3rem .55rem;box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.dl-tip strong{color:var(--ink)}
+.dl-tip.is-right{transform:translateX(-100%)}.dl-tip.is-left{transform:none}
+.dl-findings{list-style:none;padding:0;margin:1.5rem 0 0;font-size:1rem}
+.dl-findings li{padding:.55rem 0;border-top:1px solid var(--rule)}
+.dl-chart-hint{font-family:var(--ui);font-size:.8rem;color:var(--summary-ink);margin:.4rem 0 0}
+.dl-seg{display:inline-flex;gap:.25rem;padding:.2rem;border:1px solid var(--rule);border-radius:999px;font-family:var(--ui);font-size:.85rem;margin-bottom:.5rem;flex-wrap:wrap}
+.dl-seg button{font:inherit;border:0;background:none;color:var(--soft-ink);padding:.35rem .8rem;border-radius:999px;cursor:pointer}
+.dl-seg button[aria-pressed=true]{background:var(--accent);color:var(--page)}
+.dl-metric-note{font-family:var(--ui);font-size:.85rem;color:var(--summary-ink);margin:.25rem 0 1.25rem}
+.dl-bars{list-style:none;margin:0;padding:0;font-family:var(--ui);font-size:.9rem;font-variant-numeric:tabular-nums}
+.dl-bar{display:grid;grid-template-columns:1.8rem minmax(7.5rem,11rem) 1fr 6.2rem;align-items:center;gap:.6rem;padding:.32rem .4rem;border-radius:6px}
+.dl-rank{color:var(--summary-ink);font-size:.78rem;text-align:right}
+.dl-name{color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dl-track{height:.5rem;border-radius:999px;background:color-mix(in srgb,var(--rule) 60%,transparent)}
+.dl-fill{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,color-mix(in srgb,var(--river) 55%,transparent),var(--river));transition:width .6s ease}
+.dl-val{text-align:right;color:var(--soft-ink)}
+.dl-bar.is-current{background:color-mix(in srgb,var(--glow) 14%,transparent)}
+.dl-bar.is-current .dl-name{font-weight:600}
+.dl-bar.is-current .dl-fill{background:linear-gradient(90deg,color-mix(in srgb,var(--glow) 55%,transparent),var(--glow))}
+.dl-gap{height:1.2rem;margin:.2rem 0 .2rem 2.4rem;border-left:2px dotted var(--rule)}
+.dl-more{margin-top:1rem;font-family:var(--ui);font-size:.9rem}
+.dl-method{margin-top:4.5rem;padding-top:2rem;border-top:1px solid var(--rule)}
+.dl-method h2{font-size:1.3rem;margin-top:0}
+.dl-method p,.dl-method li{font-size:1rem}
+.dl-sources{font-family:var(--ui);font-size:.9rem;padding-left:1.1rem}
+.dl-sources li{margin:.35rem 0}
+.dl-cite{margin-top:2rem;padding:1rem 1.1rem;border:1px solid var(--rule);border-radius:10px;font-family:var(--ui);font-size:.88rem;display:flex;gap:1rem;align-items:center;justify-content:space-between}
+.dl-cite p{margin:0}
+.dl-cite button{flex-shrink:0;font:inherit;color:var(--accent);background:none;border:1px solid var(--rule);border-radius:999px;padding:.35rem .9rem;cursor:pointer}
+.dl-updated{font-family:var(--ui);font-size:.82rem;color:var(--summary-ink);margin-top:1rem}
+@media (max-width:34rem){
+  .dl-bar{grid-template-columns:1.4rem 1fr 4.9rem;row-gap:.25rem}
+  .dl-track{grid-column:2/4;grid-row:2}
+  .dl-sky{border-radius:10px}
+  .dl-sky-marks{font-size:.75rem}
+  .dl-cite{flex-direction:column;align-items:flex-start}
+  .dl-chart-wrap{margin-inline:-.25rem}
+}
+</style>
+<article class="post guide">
+  <p class="guide-eyebrow">An After Pickup guide</p>
+  <h1>Daylight after school</h1>
+  <p class="post-summary">{{ page.description }}</p>
+  <div class="post-byline">
+    <p class="meta">Updated <time datetime="{{ page.updated | date_to_xmlschema }}">{{ updated_long }}</time></p>
+    <div class="post-share" data-url="{{ page.url | absolute_url }}" data-title="{{ page.title | escape }}" data-text="{{ page.description | escape }}">
+      <p class="share-status" data-status role="status"></p>
+      <button type="button" class="share-button" data-share aria-label="Share" title="Share">
+        <svg class="icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path d="M12 3v12M7.5 7.5 12 3l4.5 4.5M8 11H6.5A1.5 1.5 0 0 0 5 12.5v7A1.5 1.5 0 0 0 6.5 21h11a1.5 1.5 0 0 0 1.5-1.5v-7a1.5 1.5 0 0 0-1.5-1.5H16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="visually-hidden" data-label>Share</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="prose">
+    <p>Every fall there is a week when we walk out of pickup and notice the light already going soft, and every spring there is a day when it suddenly feels like the whole evening is still ahead of us. We kept wondering how big those swings really are, so we built a small calculator to find out, and then we kept going until it could draw the whole year.</p>
+  </div>
+  <p class="dl-trust">Built from <a href="https://gml.noaa.gov/grad/solcalc/calcdetails.html">NOAA's solar position equations</a> for 50 large US cities plus Redmond, WA. Checked against the open-source <a href="https://github.com/sffjunkie/astral">astral</a> library.</p>
+
+  <p class="dl-sentence" id="dl-sentence">
+    If school ends at
+    <label class="visually-hidden" for="dl-time">School end time</label><select id="dl-time"></select>
+    in <label class="visually-hidden" for="dl-city">City</label><select id="dl-city"></select>
+    on <label class="visually-hidden" for="dl-date">Date</label><input id="dl-date" type="date">,
+    this is how much daylight is left.
+  </p>
+  <p class="dl-geo-row"><button id="dl-geo" class="dl-link" type="button" hidden>or use my location</button><span id="dl-geo-status" aria-live="polite"></span></p>
+</article>
+
+<section class="dl-hero" aria-labelledby="dl-big">
+  <div class="dl-big-wrap" aria-live="polite">
+    <span id="dl-big" class="dl-big">&nbsp;</span>
+    <span id="dl-big-sub" class="dl-big-sub">&nbsp;</span>
+  </div>
+  <div id="dl-sky" class="dl-sky" role="img" aria-labelledby="dl-sky-label"><span id="dl-sun" class="dl-sun"></span></div>
+  <p id="dl-sky-label" class="visually-hidden"></p>
+  <ol id="dl-sky-marks" class="dl-sky-marks" aria-hidden="true"></ol>
+  <p id="dl-usable" class="dl-usable"></p>
+</section>
+
+<article class="post guide" style="margin-top:0;padding-top:0">
+  <section class="dl-section" aria-labelledby="dl-year-title">
+    <h2 id="dl-year-title">The daylight river</h2>
+    <p class="dl-intro">The same afternoon for every day of the year in <span id="dl-chart-city"></span>. The two cliffs are the clock changes, and the glowing dot is the date you picked.</p>
+    <div class="dl-chart-wrap">
+      <svg id="dl-chart" class="dl-chart" viewBox="0 0 760 310" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="dl-chart-title dl-chart-desc" tabindex="0"></svg>
+      <div id="dl-tip" class="dl-tip" hidden></div>
+    </div>
+    <p class="dl-chart-hint">Hover or tap the chart for any day. With a keyboard, focus it and use the arrow keys.</p>
+    <ul id="dl-findings" class="dl-findings"></ul>
+  </section>
+
+  <section class="dl-section" aria-labelledby="dl-rank-title">
+    <h2 id="dl-rank-title">How the cities compare</h2>
+    <p class="dl-intro">Same bell, same date, fifty one cities. Latitude matters, and so does where a city sits inside its time zone.</p>
+    <div class="dl-seg" role="group" aria-label="Rank cities by">
+      <button type="button" data-metric="day" aria-pressed="true">That day</button>
+      <button type="button" data-metric="avg" aria-pressed="false">Year average</button>
+      <button type="button" data-metric="school" aria-pressed="false">School year hours</button>
+    </div>
+    <p id="dl-metric-note" class="dl-metric-note"></p>
+    <ol id="dl-bars" class="dl-bars" aria-hidden="true"></ol>
+    <button id="dl-more" class="dl-link dl-more" type="button" aria-controls="dl-bars" aria-expanded="false">Show all cities</button>
+    <div class="visually-hidden"><table>
+      <caption id="dl-table-caption"></caption>
+      <thead><tr><th scope="col">Rank</th><th scope="col">City</th><th scope="col">Sunset</th><th scope="col">That day</th><th scope="col">Year average</th><th scope="col">School year hours</th></tr></thead>
+      <tbody id="dl-tbody"></tbody>
+    </table></div>
+  </section>
+
+  <section class="prose dl-method" aria-labelledby="dl-method-title">
+    <h2 id="dl-method-title">Sources and method</h2>
+    <p>Sunset comes from the NOAA solar position equations, the same ones behind the NOAA Solar Calculator. For each date we find the sun's declination and the equation of time, then solve for the moment the center of the sun sits 0.833 degrees below the horizon, which allows for the bending of light near the horizon and the size of the sun's disk. Usable light ends at civil dusk, when the sun is 6 degrees below the horizon. We checked our results against the open-source astral library, which implements the same NOAA equations, and they agreed to within a minute on every date we tried.</p>
+    <p>Daylight after school is sunset minus the end time you picked, and it never goes below zero. We assume school ends at that same time every day. The year average counts every day of the calendar year. School year hours add up the daylight after the bell on every Monday through Friday from September 1 to June 15, without taking out holidays or breaks.</p>
+    <p>The city list is 50 of the largest US cities plus Redmond, each with approximate city-center coordinates and its IANA time zone. Clock times are worked out in each city's own time zone by your browser, so daylight saving time starts and ends on the right dates, and places that skip it, like Phoenix, stay put. If you use your location, the coordinates never leave your browser and the time zone is your device's. Everything is calculated on this page, with no outside services.</p>
+    <ul class="dl-sources">
+      <li><a href="https://gml.noaa.gov/grad/solcalc/calcdetails.html">NOAA Global Monitoring Laboratory, Solar Calculation Details</a></li>
+      <li><a href="https://gml.noaa.gov/grad/solcalc/">NOAA Solar Calculator</a></li>
+      <li><a href="https://github.com/sffjunkie/astral">astral, an open-source Python library for sun calculations</a></li>
+      <li><a href="https://www.iana.org/time-zones">IANA Time Zone Database</a></li>
+    </ul>
+    <div class="dl-cite">
+      <p><strong>Cite this:</strong> <span id="dl-cite-text">After Pickup, "Daylight after school", {{ updated_long }}, {{ page.url | absolute_url }}</span></p>
+      <button id="dl-cite-copy" type="button">Copy</button>
+    </div>
+    <p class="dl-updated">Last updated {{ updated_long }}.</p>
+  </section>
+</article>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Daylight after school",
+      "url": {{ page.url | absolute_url | jsonify }},
+      "description": {{ page.description | jsonify }},
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires JavaScript",
+      "isAccessibleForFree": true,
+      "dateModified": {{ page.updated | date_to_xmlschema | jsonify }},
+      "publisher": { "@id": {{ site.url | append: '/#organization' | jsonify }} }
+    },
+    {
+      "@type": "Dataset",
+      "name": "Daylight after school in large US cities",
+      "description": "Computed sunset and civil dusk times, and minutes of daylight after school end times from 1:30 PM to 4:30 PM, for 50 large US cities plus Redmond, WA, calculated in the browser with the NOAA solar position equations.",
+      "url": {{ page.url | absolute_url | jsonify }},
+      "isAccessibleForFree": true,
+      "creator": { "@id": {{ site.url | append: '/#organization' | jsonify }} },
+      "dateModified": {{ page.updated | date_to_xmlschema | jsonify }},
+      "temporalCoverage": "{{ page.updated | date: '%Y' }}-01-01/{{ page.updated | date: '%Y' | plus: 1 }}-06-15",
+      "spatialCoverage": { "@type": "Place", "name": "United States" },
+      "measurementTechnique": "NOAA solar position equations (sunset at 0.833 degrees below the horizon, civil dusk at 6 degrees), local time through the IANA Time Zone Database",
+      "variableMeasured": ["Sunset time", "Civil dusk time", "Minutes of daylight after school"],
+      "isBasedOn": [
+        "https://gml.noaa.gov/grad/solcalc/calcdetails.html",
+        "https://www.iana.org/time-zones"
+      ]
+    }
+  ]
+}
+</script>
+<script src="{{ '/assets/js/post.js' | relative_url }}" defer></script>
+<script src="{{ '/assets/js/daylight.js' | relative_url }}" defer></script>
