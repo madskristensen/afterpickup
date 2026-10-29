@@ -35,7 +35,7 @@ card-shop-birthday-party:
     - 1280
     - 1600
   avif: true
-  source_hash: c76ba31dc229a7fb58662eaac673c828f62f05780d3cff5aa9fb750572664794
+  source_hash: 51c867402ae7ba35e629f42c74c2d0498e4f87e2b5fd21b3f74fe66f5222becc
 cold-oven-bacon:
   widths:
     - 640
