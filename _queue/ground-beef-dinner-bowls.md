@@ -3,8 +3,8 @@ title: "Ground beef dinner bowls everyone builds their own way"
 description: "We brown taco-seasoned ground beef, cook a few quick sides too, and set it all on the table so everyone fills a bowl with just the parts they like best."
 date:
 image: /assets/images/posts/ground-beef-dinner-bowls.webp
-image_alt: Overhead view of a white bowl with taco-seasoned ground beef, sauteed spinach, sauteed mushrooms, and halved red and yellow cherry tomatoes, with black chopsticks resting on the rim.
-image_caption: A ground beef dinner bowl with spinach, mushrooms, and tomatoes, photo from our kitchen.
+image_alt: Two white bowls of taco-seasoned ground beef, sauteed spinach, sauteed mushrooms, and halved cherry tomatoes on a grey counter, each with chopsticks resting in it.
+image_caption: Two ground beef dinner bowls with spinach, mushrooms, and tomatoes, photo from our kitchen.
 tags: [kitchen]
 guide: /after-school-time/
 guide_text: "Dinner like this fits easily into [the time between pickup and bedtime]."
