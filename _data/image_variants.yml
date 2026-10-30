@@ -100,6 +100,14 @@ greeting-card-box:
     - 1600
   avif: true
   source_hash: 5f15ac3f531a53d383d83d2e153f6ba728440c07d005bfd07e325cfdb3c2e8bb
+indoor-soccer-ball:
+  widths:
+    - 640
+    - 960
+    - 1280
+    - 1600
+  avif: true
+  source_hash: 24f41de6e997f1db014a3fba0879b337f10a02e5e50c163d0a6b41ea0c98c1fa
 its-time-to-brush-teeth:
   widths:
     - 640
