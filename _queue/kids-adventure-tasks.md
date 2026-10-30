@@ -1,5 +1,5 @@
 ---
-title: "Adventure tasks that teach our kids 'adulting'"
+title: "Adventure tasks that teach our kids how to talk to adults"
 description: "Our adventure tasks start with ordering at restaurants and grow into store runs, so kids learn to talk to adults and navigate around 'adult' tasks themselves."
 date:
 image: /assets/images/posts/kids-adventure-tasks.webp
