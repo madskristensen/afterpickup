@@ -8,9 +8,9 @@ image_caption: A little after-dinner soccer in the kitchen, photo from our house
 tags: [kids]
 ---
 
-After dinner, while we clean up the kitchen, the boys often have the [indoor soccer ball](/things-we-use/#indoor-soccer-ball) out and are dribbling around the kitchen floor, and it is one of our favorite parts of the evening. They love playing inside, and for a long time we said no to soccer in the house for the obvious reasons, but they kept asking, so we started experimenting to find something that would work.
+After dinner, while we clean up the kitchen, the boys often have the [indoor soccer ball](https://www.amazon.com/dp/B0GCY2DHYM/ref=nosim?tag=afterpickup-20){:rel="sponsored nofollow noopener" target="_blank"} out and are dribbling around the kitchen floor, and it is one of our favorite parts of the evening. They love playing inside, and for a long time we said no to soccer in the house for the obvious reasons, but they kept asking, so we started experimenting to find something that would work.
 
-Foam balls came first, and they seemed like the safe choice, but when you kick one it is very hard to control, and it often ends up flying through the air, which is exactly what you do not want in a kitchen. The heavier indoor soccer ball turned out to be much easier to control, and it pairs with our one very strict rule: when you play soccer inside, the ball has to run along the floor. Nobody lifts it as they kick, ever.
+Foam balls came first, and they seemed like the safe choice, but when you kick one it is very hard to control, and it often ends up flying through the air, which is exactly what you do not want in a kitchen. The heavier indoor soccer ball, a soft size 4 ball that is also on our [Things we use](/things-we-use/#indoor-soccer-ball) list, turned out to be much easier to control, and it pairs with our one very strict rule: when you play soccer inside, the ball has to run along the floor. Nobody lifts it as they kick, ever.
 
 We started around the time the boys could control the ball a bit, at about six or seven, and we have been doing this for two or three years now. Knock on wood, we have never had an issue, with no broken glass and nothing knocked off a table. Goals are as easy as a door opening or the space between two chairs, and that is all the setup it takes.
 
