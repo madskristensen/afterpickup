@@ -107,7 +107,7 @@ ground-beef-dinner-bowls:
     - 1280
     - 1600
   avif: true
-  source_hash: 1fa4529cf133213b68b3f6cd15085a343c6a73474dcdff01de9afb758c2c672b
+  source_hash: 38f7981974017fec2448a581453ff46514d9687674e2edbf0fc5fe43d4c9e5d2
 indoor-soccer-ball:
   widths:
     - 640
