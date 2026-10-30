@@ -10,9 +10,9 @@ guide: /after-school-time/
 guide_text: "Dinner like this fits easily into [the time between pickup and bedtime]."
 ---
 
-On the nights we want dinner fast and still want everyone to actually eat it, we make ground beef dinner bowls, and it starts the same way every time, with a pound of ground beef browning in a skillet and a good shake of taco seasoning stirred in so it has plenty of flavor. If the beef is still frozen when we get home, we [thaw it in warm tap water](/thaw-ground-beef/) first and carry on from there.
+On the nights we want dinner fast and still want everyone to actually eat it, we make ground beef dinner bowls, and it starts the same way every time, with ground beef browning in a skillet and a good shake of taco seasoning stirred in so it has plenty of flavor. If the beef is still frozen when we get home, we [thaw it in warm tap water](/thaw-ground-beef/) first and carry on from there.
 
-While the beef cooks, we get the other things we like going at the same time, either on a second skillet or by reusing the same one once the beef is done. Scrambled eggs come together in a couple of minutes, mushrooms and spinach sauté down quickly, and some nights we slice hot dogs into coins and fry them up, since those are an occasional favorite with the kids. Then we cut up whatever fresh things we have on hand, and nothing on the stove takes very long, so it all finishes at about the same time.
+While the beef cooks, we get the other things we like going at the same time, either on a second skillet or by reusing the same one once the beef is done. Scrambled eggs come together fast, mushrooms and spinach sauté down quickly, and some nights we slice hot dogs into coins and fry them up, since those are an occasional favorite with the kids. Then we cut up whatever fresh things we have on hand, and nothing on the stove takes very long, so it all finishes at about the same time.
 
 Here is what usually ends up on the table:
 
