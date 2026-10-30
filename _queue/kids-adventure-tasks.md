@@ -1,6 +1,6 @@
 ---
-title: "Adventure tasks that teach our kids to talk to adults"
-description: "Our adventure tasks start with kids ordering for themselves at restaurants and grow into solo store runs, so they learn to talk to adults and get around."
+title: "Adventure tasks that teach our kids 'adulting'"
+description: "Our adventure tasks start with ordering at restaurants and grow into store runs, so kids learn to talk to adults and navigate around 'adult' tasks themselves."
 date:
 image: /assets/images/posts/kids-adventure-tasks.webp
 image_alt: White bowl of fruit on a marble counter with apples, oranges, and a bunch of bananas showing brown spots, sweet potatoes underneath
@@ -8,7 +8,7 @@ image_caption: Apples, oranges, and a few well-traveled bananas, photo from our 
 tags: [kids]
 ---
 
-When the server comes over to our table, the kids know the first part is theirs, and they start the same way every time with "May I please have," followed by whatever they picked off the kids menu. That little moment is where our adventure tasks begin, somewhere around age five, because we want the kids to be able to talk to adults and find their way in the world without us doing all the talking for them. At five they are usually too shy, but slowly they come around, and one day they just order.
+When the server comes over to our table, the kids know the first part is theirs, and they start the same way every time, smile, make eye contact and say "May I please have," followed by whatever they picked off the kids menu. That little moment is where our adventure tasks begin, somewhere around age five, because we want the kids to be able to talk to adults and find their way in the world without us doing all the talking for them. At five they are usually too shy, but slowly they come around, and one day they just order.
 
 We have been out with other families where the parents order for the kids, which is completely understandable when everyone is hungry and the table is busy, and we noticed that the kids often did not look up at the server at all. Seeing that is part of why we keep nudging ours to do it themselves, even on the nights it would be faster to just say it for them.
 
