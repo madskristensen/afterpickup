@@ -10,7 +10,7 @@ guide: /after-school-time/
 guide_text: "Dinner like this fits easily into [the time between pickup and bedtime]."
 ---
 
-Ground beef dinner bowls are what we make when we want dinner on the table fast and still want everyone to actually eat it. We brown ground beef in a skillet with a good shake of taco seasoning for flavor, and if the beef is still frozen when we get home, we [thaw it in warm tap water](/thaw-ground-beef/) first and carry on from there.
+Ground beef dinner bowls are what we make when we want dinner on the table fast and still want everyone to actually eat it. We brown ground beef in a skillet with a good shake of taco seasoning for flavor, and if the beef is still frozen when we get home, we [thaw it in tap water](/thaw-ground-beef/) first and carry on from there.
 
 While the beef cooks, we get the other things we like going at the same time, either on a second skillet or by reusing the same one once the beef is done. Scrambled eggs come together fast, mushrooms and spinach sauté down quickly, and some nights we slice hot dogs into coins and fry them up, since those are an occasional favorite with the kids. Then we cut up whatever fresh things we have on hand, and the kids can pitch in here too, chopping the vegetables with the [kids kitchen knife set](/things-we-use/#kids-knife-set) we got them or scrambling the eggs, which gives everyone a job while the beef browns. Nothing on the stove takes very long, so it all finishes at about the same time.
 
