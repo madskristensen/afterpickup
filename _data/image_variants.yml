@@ -100,6 +100,14 @@ greeting-card-box:
     - 1600
   avif: true
   source_hash: 5f15ac3f531a53d383d83d2e153f6ba728440c07d005bfd07e325cfdb3c2e8bb
+ground-beef-dinner-bowls:
+  widths:
+    - 640
+    - 960
+    - 1280
+    - 1600
+  avif: true
+  source_hash: bf160bad39fccb689dd4c582ff01e0f9e7e46247aec500bb80cfe1fb8444776b
 indoor-soccer-ball:
   widths:
     - 640
