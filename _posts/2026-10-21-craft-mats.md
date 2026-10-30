@@ -1,6 +1,6 @@
 ---
 title: "Craft mats turn the dining table into a craft table"
-description: "Sturdy craft mats protect the dining table from paint and glue, then lift away so dinner can reclaim the table, and they are stiff enough to carry a Lego build without spilling pieces."
+description: "Craft mats let the kids paint, glue, and build Lego on our dining table, then lift away in one piece so the wood stays clean and the table is ready for dinner."
 date: 2026-10-21
 image: /assets/images/posts/craft-mats.webp
 image_alt: Child building Lego on a grey craft mat spread across a light wood dining table
@@ -13,7 +13,7 @@ We used to have a crafts table, and the kids painted and glued there after picku
 
 The dining table still has to hold dinner, so we needed a way to do arts and crafts there without staining the wood and without a setup that took over the whole room.
 
-Craft mats sit between the paints and glues and the table. When we need a break, or when it is time to set for dinner, we can carry the whole mat away to dry or park it somewhere else, and the table is a table again in one lift.
+Craft mats sit between [the paints and glues](/craft-closet/) and the table. When we need a break, or when it is time to set for dinner, we can carry the whole mat away to dry or park it somewhere else, and the table is a table again in one lift.
 
 They are especially good for Lego, because they are sturdy enough to pick up with all the loose pieces on top without the mat bending and dumping bricks everywhere. We move the whole build to a counter, and the dining table is ready for plates again.
 

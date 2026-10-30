@@ -1,0 +1,279 @@
+---
+layout: default
+title: How much time do kids actually have after school?
+description: Lay out the afternoon from the school bell to bedtime and see how many free minutes are left each day and each week, with daylight for your city.
+permalink: /after-school-time/
+image: /assets/images/guides/after-school-time.png
+image_alt: A timeline ribbon of the afternoon from school end to bedtime, After Pickup.
+guide: true
+updated: 2026-10-27
+---
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "How much sleep do school-age kids need?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "The American Academy of Sleep Medicine recommends 9 to 12 hours in 24 hours for children 6 to 12, and 8 to 10 hours for teenagers 13 to 18, in a consensus statement endorsed by the American Academy of Pediatrics. With a 7:00 AM wake time that means a bedtime around 7:00 PM to 10:00 PM for a 6 to 12 year old."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "What time should a 10 year old go to bed?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Count back 9 to 12 hours from wake time. A kid who wakes at 7:00 AM needs to be asleep by 10:00 PM at the latest, and many families aim for 8:00 to 8:30 PM."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "How long should homework take?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "A common rule of thumb is about 10 minutes per grade level a night, so about 30 minutes in third grade and an hour in sixth. Put your own number in the tool to see what it costs in free time."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Does the tool count daylight?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes. Pick a city and it marks today's sunset on the ribbon and counts how many free minutes fall before dark."
+   }
+  }
+ ]
+}
+</script>
+{%- assign D = site.data.guide_cities -%}
+<style>
+.g{--sky-day:#7FA7CF;--sky-noon:#B9C9D6;--sky-gold:#E9C27A;--sky-set:#E08A5B;--sky-dusk:#6A4E7A;--sky-night:#232B45;--river:#2B3A52;--glow:#E08A5B}
+@media (prefers-color-scheme:dark){.g{--sky-day:#5E86B0;--sky-noon:#8FA3B4;--sky-gold:#D2A55C;--sky-set:#C96E45;--sky-dusk:#4E3A63;--sky-night:#141A2C;--river:#92AAC7;--glow:#F0A070}}
+body{overflow-x:clip}
+.guide{padding-top:.5rem}
+.g-kicker{margin:0 0 .6rem;font-family:var(--ui);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--quiet-green)}
+.guide h1{font-size:clamp(2.3rem,6vw,3.2rem);letter-spacing:-.01em;margin-bottom:.5rem}
+.guide .post-summary{margin-inline:0}
+.g-source{font-family:var(--ui);font-size:.85rem;line-height:1.5;color:var(--summary-ink);margin:1.25rem 0 1.5rem;padding-left:.9rem;border-left:2px solid var(--rule)}
+.g-source a{color:inherit}
+.g-sky{margin:2.75rem 0 0}
+.g-geo{display:inline-flex;align-items:center;justify-content:center;vertical-align:-.08em;width:1.5em;height:1.2em;margin:0 0 0 .05rem;padding:0;font-size:.8em;line-height:1;color:var(--summary-ink);background:none;border:0;border-radius:6px;cursor:pointer;transition:color .15s,opacity .15s}
+.g-geo:hover,.g-geo.is-on{color:var(--accent)}.g-geo:focus-visible{outline:2px solid var(--focus,var(--accent));outline-offset:2px}
+.g-geo[aria-busy=true]{opacity:.5;cursor:progress}.g-geo[aria-busy=true] svg{animation:g-geo-pulse 1s ease-in-out infinite alternate}
+@keyframes g-geo-pulse{to{opacity:.35}}@media (prefers-reduced-motion:reduce){.g-geo[aria-busy=true] svg{animation:none}}
+.g-geo-status{font-family:var(--ui);font-size:.9rem;color:var(--summary-ink);margin:0 0 1rem;min-height:0}
+.g-sentence{font-size:clamp(1.3rem,3.6vw,1.6rem);line-height:1.7;color:var(--ink);margin:0 0 .75rem}
+.g-sentence select,.g-sentence input{font:inherit;color:var(--accent);background:transparent;border:0;border-bottom:1.5px solid color-mix(in srgb,var(--accent) 45%,transparent);border-radius:0;padding:0 .1rem;margin:0 .1rem;cursor:pointer;max-width:100%;line-height:1.3;-webkit-appearance:none;appearance:none}
+.g-sentence select:hover,.g-sentence input:hover{border-bottom-color:var(--accent)}
+.g-sentence input{width:2.4em;padding:0;text-align:center;-moz-appearance:textfield}
+.g-sentence input::-webkit-inner-spin-button,.g-sentence input::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
+.g-sentence select:focus-visible,.g-sentence input:focus-visible,.g-sky button:focus-visible{outline:2px solid var(--focus);outline-offset:3px}
+.g-sentence option{color:#222;background:#fff}
+.g-hero{text-align:center;margin:2.5rem 0 0}
+.g-big{display:block;font-size:clamp(3.4rem,11vw,6rem);line-height:1;font-weight:400;letter-spacing:-.02em;color:var(--ink);font-variant-numeric:tabular-nums;margin:0}
+.g-sub{display:block;margin:.6rem auto 0;max-width:40rem;font-size:1.15rem;font-style:italic;color:var(--summary-ink)}
+.g-band{height:clamp(3.5rem,9vw,5rem);margin-top:1.75rem;border-radius:14px;background:linear-gradient(90deg,var(--sky-day),var(--sky-noon) 30%,var(--sky-gold) 55%,var(--sky-set) 72%,var(--sky-dusk) 87%,var(--sky-night));box-shadow:inset 0 -30px 50px -30px rgba(0,0,0,.35);position:relative;overflow:hidden}
+.g-band::after{content:"";position:absolute;left:0;right:0;bottom:22%;height:1px;background:rgba(255,255,255,.35)}
+.g section:not(.g-sky):not(.g-hero){margin-top:4.5rem}
+.g section h2{font-size:1.55rem;font-weight:600;margin:0 0 .4rem}
+.g-chart{width:100%;height:auto;display:block;font-family:var(--ui);overflow:visible}
+.g-chart text{fill:var(--summary-ink);font-size:11px;letter-spacing:.04em}
+.g-legend{font-family:var(--ui);font-size:.85rem;color:var(--summary-ink);display:flex;gap:.5rem 1.25rem;flex-wrap:wrap;margin:.6rem 0 0}
+.g-legend i{display:inline-block;width:.8rem;height:.8rem;border-radius:2px;margin-right:.35rem;vertical-align:-1px}
+.g-summary{font-family:var(--ui);font-size:.9rem;color:var(--soft-ink)}
+.g-method{margin-top:4.5rem;padding-top:2rem;border-top:1px solid var(--rule)}
+.g-method h2{font-size:1.3rem;margin-top:0}
+.g-method p,.g-method li{font-size:1rem}
+.g-method ul{font-family:var(--ui);font-size:.9rem}
+.cite-line{font-family:var(--ui);font-size:.82rem;line-height:1.5;color:var(--summary-ink);margin:2rem 0 0}
+.cite-line a{color:inherit}
+.cite-copy{font:inherit;color:var(--accent);background:none;border:0;padding:0;margin-left:.35rem;text-decoration:underline;text-underline-offset:.2em;cursor:pointer}
+.g-reset{font-family:var(--ui);font-size:.8rem;margin:.25rem 0 0}
+.g-updated{font-family:var(--ui);font-size:.82rem;color:var(--summary-ink);margin-top:1rem}
+@media (max-width:34rem){.g-band{border-radius:10px}}
+.g{--free:#7C9A82;--busy:color-mix(in srgb,var(--summary-ink) 28%,transparent);--meal:#C98B5A}
+@media (prefers-color-scheme:dark){.g{--free:#8FB596;--meal:#E0A878}}
+.g-note{font-family:var(--ui);font-size:.9rem;line-height:1.5;color:var(--summary-ink);margin:.25rem 0 0}
+.g-note .g-note .g-note button{font:inherit;color:var(--accent);background:none;border:0;padding:0 0 0 .25rem;text-decoration:underline;text-underline-offset:.2em;cursor:pointer}
+.g-chart .busy{fill:var(--busy)}
+.g-chart .meal{fill:var(--meal)}
+.g-chart .free{fill:var(--free)}
+.g-chart .lbl{fill:var(--ink);font-size:12px;font-weight:600}
+.g-chart .sun{stroke:var(--ink);stroke-width:1.5;stroke-dasharray:3 3}
+.g-chart .seg{transform-box:fill-box;transform-origin:left;animation:g-grow .8s cubic-bezier(.2,.7,.2,1) both}
+@keyframes g-grow{from{transform:scaleX(0)}}
+@media (prefers-reduced-motion:reduce){.g-chart .seg{animation:none!important}}
+.g-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(9rem,1fr));gap:1rem;margin:1.5rem 0;font-family:var(--ui)}
+.g-stats div{border-top:1px solid var(--rule);padding-top:.6rem}
+.g-stats b{display:block;font-family:var(--body);font-size:2rem;line-height:1.1;color:var(--ink);font-weight:400;font-variant-numeric:tabular-nums}
+.g-stats span{font-size:.85rem;color:var(--summary-ink)}
+.g-dek{font-size:1.15rem;line-height:1.45;color:var(--summary-ink);margin:.4rem 0 1.25rem}
+.g-data{font-family:var(--ui);font-size:.8rem;color:var(--summary-ink);margin:.75rem 0 0}
+.g-data a{color:inherit}
+.g-data .cite-copy{margin-left:.5rem}
+.g-upd{font-family:var(--ui);font-size:.78rem;color:var(--summary-ink);margin:-.6rem 0 1.5rem}
+.g-reset-row{font-family:var(--ui);font-size:.75rem;margin:.75rem 0 0;text-align:center}
+</style>
+<article class="post guide g">
+  <p class="g-kicker">A guide from After Pickup</p>
+  <h1>How much time do kids actually have after school?</h1>
+  <p class="g-dek">Set your school day and see the free time left before bed.</p>
+  <p class="g-upd">Updated <time datetime="{{ page.updated | date: '%Y-%m-%d' }}">{{ page.updated | date: "%B %-d, %Y" }}</time></p>
+
+  <section class="g-sky" aria-labelledby="t-q">
+    <h2 id="t-q" class="visually-hidden">Your afternoon</h2>
+    <p class="g-sentence">School ends at
+      <label class="visually-hidden" for="t-end">School end time</label><select id="t-end"></select>.
+      Pickup and the trip home take
+      <label class="visually-hidden" for="t-travel">Pickup and travel minutes</label><input id="t-travel" type="number" inputmode="numeric" min="0" max="180" step="5"> minutes,
+      then snack and homework take
+      <label class="visually-hidden" for="t-hw">Snack and homework minutes</label><input id="t-hw" type="number" inputmode="numeric" min="0" max="300" step="5"> minutes.
+      Dinner is at
+      <label class="visually-hidden" for="t-dinner">Dinner time</label><select id="t-dinner"></select>
+      for <label class="visually-hidden" for="t-dlen">Dinner length in minutes</label><input id="t-dlen" type="number" inputmode="numeric" min="0" max="180" step="5"> minutes, and bedtime is
+      <label class="visually-hidden" for="t-bed">Bedtime</label><select id="t-bed"></select>.</p>
+    <p class="g-sentence">
+      We live in <label class="visually-hidden" for="t-city">City for daylight</label><select id="t-city"><option value="">no city, skip daylight</option></select><button id="g-geo" class="g-geo" type="button" aria-label="Use my location" title="Use my location" hidden><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="6.5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="2" fill="currentColor"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>.</p>
+    <p class="g-geo-status" id="g-geo-status" aria-live="polite"></p>
+  </section>
+  <section class="g-hero" aria-live="polite">
+    <span class="g-big" id="t-big">&nbsp;</span>
+    <span class="g-sub" id="t-sub"></span>
+  </section>
+  <p class="g-reset-row"><button type="button" class="cite-copy" id="g-reset">Reset to defaults</button></p>
+
+  <section aria-labelledby="t-r-title">
+    <h2 id="t-r-title">The afternoon, end to end</h2>
+    <svg id="t-ribbon" class="g-chart" viewBox="0 0 720 150" role="img" aria-labelledby="t-r-desc"><desc id="t-r-desc"></desc></svg>
+    <p class="g-legend"><span><i style="background:var(--free)"></i>Free time</span><span><i style="background:var(--busy)"></i>Pickup, snack and homework</span><span><i style="background:var(--meal)"></i>Dinner</span><span id="t-leg-sun"><i style="background:linear-gradient(90deg,#F2C46D,#5B6B8C)"></i>Daylight until sunset</span></p>
+    <div class="g-stats">
+      <div><b id="t-week">0</b><span>free hours in a five-day week</span></div>
+      <div><b id="t-light">-</b><span id="t-light-l">free minutes in daylight</span></div>
+    </div>
+    <p class="g-summary" id="t-sum"></p>
+    <p class="g-summary"><a id="t-year" data-base="{{ '/daylight-after-school/' | relative_url }}" href="{{ '/daylight-after-school/' | relative_url }}">See how this changes through the year in our daylight guide.</a></p>
+  </section>
+
+  <section class="prose" aria-labelledby="t-a-title">
+    <h2 id="t-a-title">How much free time do kids have after school?</h2>
+    <p id="t-answer">With school out at 3:00 PM, 30 minutes of pickup, 45 minutes of homework, dinner at 6:00 PM and bed at 8:30 PM, a kid has about 3 h 45 min of free time, roughly 19 hours across a school week. Pickup, homework and dinner take about a third of the 5 h 30 min between the bell and bedtime.</p>
+    <p>Every number in the tool is an example, so set it to your own day. For the light side of the afternoon, see <a href="{{ '/daylight-after-school/' | relative_url }}">daylight after school</a> and <a href="{{ '/outdoor-hours-after-school/' | relative_url }}">how many outdoor hours you really get</a>. Ideas for the free part: our <a href="{{ '/fort-building-bin/' | relative_url }}">fort building bin</a> and the <a href="{{ '/craft-closet/' | relative_url }}">craft closet</a>.</p>
+  </section>
+
+  <section class="prose g-method" aria-labelledby="t-s-title">
+    <h2 id="t-s-title">Sources and method</h2>
+    <p>Sources: sunset times from the <a href="https://gml.noaa.gov/grad/solcalc/calcdetails.html">NOAA solar calculation</a>; sleep ranges from the <a href="https://jcsm.aasm.org/doi/10.5664/jcsm.5866">American Academy of Sleep Medicine consensus statement</a>, endorsed by the American Academy of Pediatrics.</p>
+    <p>The ribbon runs from the end of school to bedtime. Pickup and travel come first, then snack and homework. Dinner sits at the time you choose, and if homework runs into dinner it picks up again right after. Everything else before bedtime is free time. A school week is five times one day.</p>
+    <p>Daylight: sunset comes from the <a href="https://gml.noaa.gov/grad/solcalc/calcdetails.html">NOAA solar calculation</a> for the same 51 cities as our <a href="{{ '/daylight-after-school/' | relative_url }}">Daylight after school</a> guide, in that city's time zone. For today we interpolate between the monthly average sunsets, which lands within a few minutes of the exact time. Free minutes in daylight are the free minutes before that sunset.</p>
+  </section>
+
+  <section class="prose g-method" aria-labelledby="faq-title">
+    <h2 id="faq-title">FAQ</h2>
+    <h3>How much sleep do school-age kids need?</h3>
+    <p>The American Academy of Sleep Medicine recommends 9 to 12 hours in 24 hours for children 6 to 12, and 8 to 10 hours for teenagers 13 to 18, in a <a href="https://jcsm.aasm.org/doi/10.5664/jcsm.5866">consensus statement</a> <a href="https://www.aap.org/en/news-room/news-releases/aap/2016/aap-endorses-new-recommendations-on-sleep-times/">endorsed by the American Academy of Pediatrics</a>. With a 7:00 AM wake time that means a bedtime around 7:00 PM to 10:00 PM for a 6 to 12 year old.</p>
+    <h3>What time should a 10 year old go to bed?</h3>
+    <p>Count back 9 to 12 hours from wake time. A kid who wakes at 7:00 AM needs to be asleep by 10:00 PM at the latest, and many families aim for 8:00 to 8:30 PM.</p>
+    <h3>How long should homework take?</h3>
+    <p>A common rule of thumb is about 10 minutes per grade level a night, so about 30 minutes in third grade and an hour in sixth. Put your own number in the tool to see what it costs in free time.</p>
+    <h3>Does the tool count daylight?</h3>
+    <p>Yes. Pick a city and it marks today's sunset on the ribbon and counts how many free minutes fall before dark.</p>
+  </section>
+
+  <section class="prose g-method" aria-label="Cite">
+    <p class="cite-line">Cite: After Pickup, "<a href="{{ page.url | absolute_url }}">{{ page.title }}</a>" updated {{ page.updated | date: "%b %-d, %Y" }}.<button class="cite-copy" type="button" data-cite="After Pickup, &quot;{{ page.title }}&quot; updated {{ page.updated | date: '%b %-d, %Y' }}. {{ page.url | absolute_url }}. Sleep ranges: AASM consensus (Paruthi et al., 2016), endorsed by the AAP.">Copy</button></p>
+    <p class="g-updated">Last updated <time datetime="{{ page.updated }}">{{ page.updated | date: "%B %-d, %Y" }}</time>.</p>
+  </section>
+</article>
+<script>
+(function(){
+"use strict";
+var C={{ D.cities | jsonify }};
+var MON=["January","February","March","April","May","June","July","August","September","October","November","December"];
+var NS="http://www.w3.org/2000/svg";
+var gm=document.createElement("span");gm.setAttribute("aria-hidden","true");gm.style.cssText="position:absolute;visibility:hidden;white-space:pre;left:-9999px;top:0";document.body.appendChild(gm);
+function fitSel(){document.querySelectorAll(".g-sentence select").forEach(function(x){var cs=getComputedStyle(x);gm.style.font=cs.font;gm.style.letterSpacing=cs.letterSpacing;gm.textContent=x.options[x.selectedIndex]?x.options[x.selectedIndex].text:"";x.style.width=Math.ceil(gm.getBoundingClientRect().width+parseFloat(cs.paddingLeft)+parseFloat(cs.paddingRight)+2)+"px";});}
+function $(i){return document.getElementById(i);}
+function el(n,a,t){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);if(t!=null)e.textContent=t;return e;}
+function clock(m){m=((m%1440)+1440)%1440;var h=Math.floor(m/60),mm=m%60,ap=h>=12?"PM":"AM";h=h%12||12;return h+":"+(mm<10?"0":"")+mm+" "+ap;}
+function hm(m){m=Math.round(m);return m<60?m+" min":Math.floor(m/60)+" h"+(m%60?" "+m%60+" min":"");}
+function opts(id,a,b,st){var s=$(id);for(var t=a;t<=b;t+=st)s.add(new Option(clock(t),t));}
+opts("t-end",720,1020,15);opts("t-dinner",960,1230,15);opts("t-bed",1170,1380,15);
+C.slice().sort(function(a,b){return a.name<b.name?-1:1;}).forEach(function(c){$("t-city").add(new Option(c.name,c.id));});
+var q=new URLSearchParams(location.search);
+var PK="ap-guide-prefs";function prefs(){try{return JSON.parse(localStorage.getItem(PK))||{};}catch(e){return {};}}
+function savePrefs(o){try{var p=prefs();for(var k in o)p[k]=o[k];localStorage.setItem(PK,JSON.stringify(p));}catch(e){}}
+var P=prefs();
+function n(k,d){return q.has(k)&&!isNaN(+q.get(k))?+q.get(k):(typeof P[k]==="number"&&!isNaN(P[k])?P[k]:d);}
+
+
+var s={end:n("end",900),travel:n("travel",30),hw:n("hw",45),dinner:n("dinner",1080),dlen:n("dlen",30),bed:n("bed",1230),city:q.has("city")?q.get("city"):(typeof P.city==="string"&&(P.city===""||C.some(function(c){return c.id===P.city;}))?P.city:"redmond-wa")};
+// sunset for today: interpolate between monthly average sunsets (each centered mid-month)
+var TD=new Date(),TM=TD.getMonth(),TF=(TD.getDate()-1)/new Date(TD.getFullYear(),TM+1,0).getDate()-0.5;
+function sunToday(c){var a=c.sunset[TM],b=c.sunset[(TM+(TF<0?11:1))%12];return Math.round(a+(b-a)*Math.abs(TF));}
+function blocks(){
+  var out=[],t=s.end,bed=s.bed,dn=s.dinner,de=s.dinner+s.dlen;
+  function push(a,b,k){a=Math.max(a,s.end);b=Math.min(b,bed);if(b>a)out.push({a:a,b:b,k:k});}
+  push(t,t+s.travel,"busy");t+=s.travel;
+  var hw=s.hw;
+  if(t<dn){var x=Math.min(hw,dn-t);push(t,t+x,"busy");t+=x;hw-=x;}
+  if(hw>0){t=Math.max(t,de);push(t,t+hw,"busy");t+=hw;}
+  push(dn,de,"meal");
+  // fill free gaps
+  out.sort(function(a,b){return a.a-b.a;});var all=[],c=s.end;
+  out.forEach(function(o){if(o.a>c)all.push({a:c,b:o.a,k:"free"});all.push(o);c=Math.max(c,o.b);});
+  if(bed>c)all.push({a:c,b:bed,k:"free"});return all;
+}
+function frac(x){var F=[[0,"almost none"],[.125,"about a tenth"],[.2,"about a fifth"],[.25,"about a quarter"],[.33,"about a third"],[.4,"about two fifths"],[.5,"about half"],[.6,"about three fifths"],[.67,"about two thirds"],[.75,"about three quarters"],[.9,"almost all"],[1,"all"]],b=F[0];F.forEach(function(f){if(Math.abs(f[0]-x)<Math.abs(b[0]-x))b=f;});return b[1];}
+function render(){
+  ["end","travel","hw","dinner","dlen","bed","city"].forEach(function(k){$("t-"+k).value=s[k];});
+  var city=C.filter(function(c){return c.id===s.city;})[0],sun=city?sunToday(city):null;
+  var B=blocks(),free=0,lit=0;B.forEach(function(b){if(b.k==="free"){free+=b.b-b.a;if(sun!=null)lit+=Math.max(0,Math.min(b.b,sun)-b.a);}});
+  $("t-big").textContent=hm(free);
+  $("t-answer").textContent="With school out at "+clock(s.end)+", "+s.travel+" minutes of pickup, "+s.hw+" minutes of homework, dinner at "+clock(s.dinner)+" ("+s.dlen+" minutes)"+" and bed at "+clock(s.bed)+", a kid has about "+hm(free)+" of free time, roughly "+Math.round(free*5/60)+" hours across a school week. Pickup, homework and dinner take "+frac((s.bed-s.end-free)/(s.bed-s.end))+" of the "+hm(s.bed-s.end)+" between the bell and bedtime.";
+  $("t-sub").textContent="of free time between "+clock(s.end)+" and "+clock(s.bed)+" on a school day, out of "+hm(s.bed-s.end)+".";
+  $("t-week").textContent=(Math.round(free*5/6)/10).toString();
+  $("t-light").textContent=sun!=null?Math.round(lit):"-";$("t-light-l").textContent=sun!=null?"free minutes before sunset ("+clock(sun)+")":"free minutes in daylight (pick a city)";
+  $("t-leg-sun").hidden=sun==null;
+  // ribbon
+  var sv=$("t-ribbon"),desc=$("t-r-desc");while(sv.lastChild!==desc)sv.removeChild(sv.lastChild);
+  var VW=Math.max(360,Math.min(720,Math.round(sv.getBoundingClientRect().width)||720));sv.setAttribute("viewBox","0 0 "+VW+" 150");var L=10,W=VW-10,span=s.bed-s.end,X=function(m){return L+(W-L)*(m-s.end)/span;},y=58,h=44;
+  var defs=el("defs");var gr=el("linearGradient",{id:"t-skyg",x1:0,x2:1});gr.appendChild(el("stop",{offset:"0","stop-color":"#F2C46D","stop-opacity":".9"}));gr.appendChild(el("stop",{offset:"1","stop-color":"#5B6B8C","stop-opacity":".9"}));defs.appendChild(gr);sv.appendChild(defs);
+  if(sun!=null&&sun>s.end){var sx=X(Math.min(sun,s.bed));sv.appendChild(el("rect",{x:L,y:y-16,width:sx-L,height:8,rx:4,fill:"url(#t-skyg)","class":"seg"}));
+    if(sun<s.bed){sv.appendChild(el("line",{x1:sx,x2:sx,y1:y-22,y2:y+h+4,"class":"sun"}));sv.appendChild(el("text",{x:sx,y:y-26,"text-anchor":sx>W-100?"end":"middle"},"sunset "+clock(sun)));}}
+  B.forEach(function(b,i){var x=X(b.a),w=X(b.b)-x,rc=el("rect",{x:x+1,y:y,width:Math.max(0,w-2),height:h,rx:6,"class":b.k+" seg"});rc.style.animationDelay=(i*0.08)+"s";
+    rc.appendChild(el("title",{},clock(b.a)+" to "+clock(b.b)+", "+(b.k==="free"?"free":b.k==="meal"?"dinner":"pickup, snack or homework")+", "+hm(b.b-b.a)));sv.appendChild(rc);
+    if(b.k==="free"&&w>46)sv.appendChild(el("text",{x:x+w/2,y:y+h/2+4,"text-anchor":"middle","class":"lbl"},hm(b.b-b.a)));});
+  for(var t=Math.ceil(s.end/60)*60;t<=s.bed;t+=60){var tx2=X(t);sv.appendChild(el("line",{x1:tx2,x2:tx2,y1:y+h+4,y2:y+h+10,stroke:"currentColor","class":"grid"}));if(tx2>30&&tx2<W-30&&(VW>500||Math.round(t/60)%2===0))sv.appendChild(el("text",{x:tx2,y:y+h+26,"text-anchor":"middle"},clock(t).replace(":00","")));}
+  sv.appendChild(el("text",{x:L,y:y+h+44},clock(s.end)));sv.appendChild(el("text",{x:W,y:y+h+44,"text-anchor":"end"},"bed "+clock(s.bed)));
+  var parts=B.map(function(b){return clock(b.a)+" to "+clock(b.b)+" "+(b.k==="free"?"free":b.k==="meal"?"dinner":"busy");}).join("; ");
+  var sum="Free time adds up to "+hm(free)+" a day and "+hm(free*5)+" across five school days."+(sun!=null?" In "+city.name+" today, "+hm(lit)+" of that comes before today's sunset at about "+clock(sun)+".":"");
+  desc.textContent="Timeline from school end to bedtime: "+parts+". "+sum;$("t-sum").textContent=sum;
+  var p=new URLSearchParams();for(var k in s)p.set(k,s[k]);history.replaceState(null,"","?"+p);
+  if(ready)savePrefs({end:s.end,travel:s.travel,hw:s.hw,dinner:s.dinner,dlen:s.dlen,bed:s.bed,city:s.city});
+  var dl=$("t-year");dl.hidden=!city;if(city)dl.href=dl.dataset.base+"?city="+city.id+"&time="+("0"+Math.floor(s.end/60)).slice(-2)+("0"+s.end%60).slice(-2);
+  fitSel();
+}
+["end","dinner","bed"].forEach(function(k){$("t-"+k).onchange=function(){s[k]=+this.value;render();};});
+["travel","hw","dlen"].forEach(function(k){$("t-"+k).onchange=function(){var v=+this.value;if(!isNaN(v)&&v>=0){s[k]=v;render();}};});
+$("t-city").onchange=function(){s.city=this.value;render();};
+document.querySelectorAll("[data-cite]").forEach(function(b){b.onclick=function(){navigator.clipboard&&navigator.clipboard.writeText(b.dataset.cite).then(function(){b.textContent="Copied";setTimeout(function(){b.textContent="Copy";},2000);});};});
+var ready=false;render();ready=true;
+document.getElementById("g-reset").onclick=function(){try{localStorage.removeItem("ap-guide-prefs");}catch(e){}location.href=location.pathname;};
+var rz;addEventListener("resize",function(){clearTimeout(rz);rz=setTimeout(render,150);});
+(function(){var b=document.getElementById("g-geo"),sel=document.getElementById("t-city"),st=document.getElementById("g-geo-status");
+if(!b||!sel||!navigator.geolocation)return;b.hidden=false;var mine=false;
+sel.addEventListener("change",function(){if(!mine)b.classList.remove("is-on");});
+function done(){b.disabled=false;b.removeAttribute("aria-busy");}
+function km(a,o,c,d){var r=Math.PI/180,x=Math.sin((c-a)*r/2),y=Math.sin((d-o)*r/2),h=x*x+Math.cos(a*r)*Math.cos(c*r)*y*y;return 12742*Math.asin(Math.sqrt(h));}
+b.addEventListener("click",function(){if(b.disabled)return;b.disabled=true;b.setAttribute("aria-busy","true");st.textContent="Finding the nearest city...";
+navigator.geolocation.getCurrentPosition(function(p){done();var la=p.coords.latitude,lo=p.coords.longitude,best=null,bd=1/0;
+C.forEach(function(c){var d=km(la,lo,c.lat,c.lon);if(d<bd){bd=d;best=c;}});if(!best){st.textContent="";return;}
+mine=true;sel.value=best.id;sel.dispatchEvent(new Event("change",{bubbles:true}));mine=false;b.classList.add("is-on");
+st.textContent="Nearest city on our list: "+best.name+", about "+Math.round(bd*0.621371)+" miles away.";},
+function(){done();st.textContent="We could not get your location, so pick a city instead.";},{timeout:10000,maximumAge:600000});});})();
+})();
+</script>
+{% include guide-select.html %}

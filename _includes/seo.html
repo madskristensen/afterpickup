@@ -129,6 +129,9 @@
   "@type": "WebPage",
   "name": {{ seo_title | jsonify }},
   "url": {{ canonical_url | jsonify }},
+  {%- if page.updated %}
+  "dateModified": {{ page.updated | date_to_xmlschema | jsonify }},
+  {%- endif %}
   "isPartOf": {
     "@id": {{ website_id | jsonify }}
   },

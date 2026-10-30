@@ -1,6 +1,6 @@
 ---
 title: "It's time to brush teeth"
-description: "We handed the morning brush-and-shoes cues to the smart speaker so we are not the ones herding everyone to the door."
+description: "Our smart speaker announces time to brush teeth at 8:52 and shoes at 8:58 every school day, so we stop nagging from the hallway and mornings feel calmer."
 date: 2026-09-21
 image: /assets/images/posts/its-time-to-brush-teeth.webp
 image_alt: Two pairs of shoes on a doormat by the front door on a rainy morning.

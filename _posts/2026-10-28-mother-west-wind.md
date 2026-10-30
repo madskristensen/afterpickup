@@ -1,11 +1,14 @@
 ---
 title: "Mother West Wind stories that actually end bedtime"
 description: "We found Old Mother West Wind at the cul-de-sac lending library, and the kids still ask for more while falling asleep like clockwork at home and in hotel rooms."
-date:
+date: 2026-10-28
 image: /assets/images/posts/mother-west-wind.webp
 image_alt: Stack of Thornton Burgess Mother West Wind and Green Forest books on a white cloth
 image_caption: Our Mother West Wind and Burgess animal story books, photo from our house.
 tags: [kids, home]
+draft: false
+guide: /after-school-time/
+guide_text: "Bedtime comes quickly once you count [the free time between pickup and lights out]."
 ---
 
 A few years ago we picked up a Mother West Wind book from the lending library on our cul-de-sac, and it turned out to be the best bedtime stories we have ever read. The tales follow fun characters in the forest, and they also touch nature, humanity, and a lot more without feeling like a lecture.

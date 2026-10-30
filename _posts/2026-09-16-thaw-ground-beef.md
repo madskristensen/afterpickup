@@ -1,6 +1,6 @@
 ---
 title: "Thaw ground beef fast in warm tap water"
-description: "How to thaw a pound of ground beef in warm tap water: keep it sealed, and it is ready to cook in about thirty minutes."
+description: "When nothing is out for dinner, we set a sealed pound of ground beef in a bowl of warm tap water. In about thirty minutes it is soft enough to cook as planned."
 date: 2026-09-16
 image: /assets/images/posts/thaw-ground-beef.webp
 image_alt: Vacuum-sealed ground beef thawing in a grey bowl of water in the kitchen sink.

@@ -1,6 +1,6 @@
 ---
 title: "After 10 years, the blog is live"
-description: "After ten years of telling friends at the table, After Pickup is live."
+description: "After ten years of sharing our tricks with friends at the table, we started After Pickup to write down what works for our three kids and three generations."
 date: 2026-08-29
 image: /assets/images/posts/family-after-pickup.webp
 image_alt: Caitlin and the kids on the couch after pickup, reading and drawing.

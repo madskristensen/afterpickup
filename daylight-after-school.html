@@ -1,0 +1,709 @@
+---
+layout: default
+title: Daylight after school
+description: "Our guide shows how much daylight is left after school ends in your city on any date, and how that after-school daylight rises and falls through the year."
+permalink: /daylight-after-school/
+image: /assets/images/guides/daylight-after-school.png
+image_alt: A chart of daylight after school through the year, After Pickup.
+guide: true
+updated: 2026-10-27
+---
+{%- assign updated_long = page.updated | date: "%B %-d, %Y" -%}
+<style>
+body{overflow-x:clip}
+:root{--sky-day:#7FA7CF;--sky-noon:#B9C9D6;--sky-gold:#E9C27A;--sky-set:#E08A5B;--sky-dusk:#6A4E7A;--sky-night:#232B45;--river:#2B3A52;--glow:#E08A5B}
+.guide{padding-top:.5rem}
+@media (prefers-color-scheme:dark){:root{--sky-day:#5E86B0;--sky-noon:#8FA3B4;--sky-gold:#D2A55C;--sky-set:#C96E45;--sky-dusk:#4E3A63;--sky-night:#141A2C;--river:#92AAC7;--glow:#F0A070}}
+.guide-eyebrow{margin:0 0 .6rem;font-family:var(--ui);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--quiet-green)}
+.guide h1{font-size:clamp(2.3rem,6vw,3.2rem);letter-spacing:-.01em;margin-bottom:.5rem}
+.guide .post-summary{margin-inline:0}
+.guide .post-byline{margin-top:1.1rem}
+.dl-trust{font-family:var(--ui);font-size:.85rem;line-height:1.5;color:var(--summary-ink);margin:1.25rem 0 0;padding-left:.9rem;border-left:2px solid var(--rule)}
+.dl-trust a{color:inherit}
+.dl-sentence{margin:2.75rem 0 .5rem;font-size:clamp(1.3rem,3.6vw,1.6rem);line-height:1.7;color:var(--ink)}
+.dl-sentence select{font:inherit;color:var(--accent);background:transparent;border:0;border-bottom:1.5px solid color-mix(in srgb,var(--accent) 45%,transparent);border-radius:0;padding:0 .1rem;margin:0 .1rem;appearance:none;-webkit-appearance:none;cursor:pointer;line-height:1.3}
+.dl-sentence select:hover{border-bottom-color:var(--accent)}
+.dl-measure{position:absolute;visibility:hidden;white-space:pre;font-family:var(--body);font-size:clamp(1.3rem,3.6vw,1.6rem)}
+.dl-geo-row{font-family:var(--ui);font-size:.9rem;color:var(--summary-ink);margin:0 0 2.5rem;display:flex;flex-wrap:wrap;gap:.25rem .75rem;align-items:baseline}
+.dl-geo{display:inline-flex;align-items:center;justify-content:center;vertical-align:-.08em;width:1.5em;height:1.2em;margin:0 0 0 .05rem;padding:0;font-size:.8em;line-height:1;color:var(--summary-ink);background:none;border:0;border-radius:6px;cursor:pointer;transition:color .15s,opacity .15s}
+.dl-geo:hover{color:var(--accent)}.dl-geo:focus-visible{outline:2px solid var(--focus,var(--accent));outline-offset:2px}
+.dl-geo[aria-busy=true]{opacity:.5;cursor:progress}.dl-geo[aria-busy=true] svg{animation:dl-geo-pulse 1s ease-in-out infinite alternate}.dl-geo.is-on{color:var(--accent)}
+@keyframes dl-geo-pulse{to{opacity:.35}}@media (prefers-reduced-motion:reduce){.dl-geo[aria-busy=true] svg{animation:none}}
+.dl-link{font:inherit;color:var(--accent);background:none;border:0;padding:0;text-decoration:underline;text-underline-offset:.2em;cursor:pointer}
+.dl-hero{margin-inline:calc(50% - 50vw);padding:0 max(var(--gutter),calc(50vw - 30rem))}
+.dl-big-wrap{text-align:center;margin-bottom:1.75rem}
+.dl-big{display:block;font-size:clamp(3.4rem,11vw,6rem);line-height:1;font-weight:400;letter-spacing:-.02em;color:var(--ink);font-variant-numeric:tabular-nums}
+.dl-big-sub{display:block;margin-top:.6rem;font-size:1.15rem;font-style:italic;color:var(--summary-ink)}
+.dl-sky{position:relative;height:clamp(7.5rem,20vw,11rem);border-radius:14px;box-shadow:inset 0 -30px 50px -30px rgba(0,0,0,.35);overflow:hidden}
+.dl-sky::after{content:"";position:absolute;left:0;right:0;bottom:22%;height:1px;background:rgba(255,255,255,.35)}
+.dl-sun{position:absolute;left:var(--sun);bottom:22%;width:2.1rem;height:2.1rem;margin:0 0 -1.05rem -1.05rem;border-radius:50%;background:radial-gradient(circle,#FFE9B8 0 38%,rgba(255,200,120,.55) 40%,rgba(255,170,90,0) 70%);transition:left .8s ease}
+.dl-sky-marks{position:relative;list-style:none;margin:.6rem 0 0;padding:0;height:2.6rem;font-family:var(--ui);font-size:.82rem;color:var(--ink);font-variant-numeric:tabular-nums}
+.dl-sky-marks li{position:absolute;left:var(--at);transform:translateX(-50%);white-space:nowrap;text-align:center;line-height:1.25}
+.dl-sky-marks li span{display:block;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--summary-ink)}
+.dl-sky-marks .m0{transform:none;text-align:left}
+.dl-sky-marks .m2{transform:translateX(-50%)}
+.dl-sky-marks .m1.pair{transform:translateX(-100%);text-align:right;padding-right:.5rem}
+.dl-sky-marks .m2.pair{transform:none;text-align:left;padding-left:.5rem}
+.dl-sky-marks .m1.near-start{transform:none;margin-left:4.5rem}
+.dl-usable{text-align:center;font-family:var(--ui);font-size:.92rem;color:var(--summary-ink);margin:1.25rem 0 0}
+.dl-section{margin-top:4.5rem}
+.dl-section h2{font-size:1.55rem;font-weight:600;margin:0 0 .4rem}
+.dl-intro{margin:0 0 1.5rem;color:var(--soft-ink)}
+.dl-chart-wrap{position:relative;margin-inline:-.5rem}
+.dl-chart{display:block;width:100%;height:auto;font-family:var(--ui);touch-action:pan-y;border-radius:8px;cursor:ew-resize}
+#dl-when{color:var(--accent)}
+.dl-chart .hgrid{stroke:var(--rule);stroke-width:1;stroke-dasharray:2 4}
+.dl-chart .vgrid{stroke:var(--rule);stroke-width:1;opacity:.55}
+.dl-chart .tick{fill:var(--summary-ink);font-size:11px;letter-spacing:.04em}
+.dl-chart .f0{stop-color:var(--river);stop-opacity:.55}
+.dl-chart .f1{stop-color:var(--river);stop-opacity:.03}
+.dl-chart .area{fill:url(#dl-fill)}
+.dl-chart .line{fill:none;stroke:var(--river);stroke-width:2;stroke-linejoin:round}
+.dl-chart .dst{stroke:var(--summary-ink);stroke-width:1;stroke-dasharray:1 3}
+.dl-chart .note{fill:var(--soft-ink);font-size:12px;font-style:italic;font-family:var(--body)}
+.dl-chart .glow{fill:var(--glow);opacity:.75}
+.dl-chart .today-note{font-style:normal;font-family:var(--ui);font-size:11px;fill:var(--glow);font-weight:600}
+.dl-chart .today{fill:var(--glow);stroke:var(--page);stroke-width:2}
+.dl-chart .hover line{stroke:var(--ink);stroke-width:1;opacity:.4}
+.dl-chart .hover circle{fill:var(--page);stroke:var(--ink);stroke-width:2}
+@media (prefers-reduced-motion:no-preference){.dl-chart .glow{animation:dl-pulse 2.6s ease-in-out infinite}}
+@keyframes dl-pulse{50%{opacity:.25}}
+.dl-tip{position:absolute;top:0;transform:translateX(-50%);pointer-events:none;font-family:var(--ui);font-size:.82rem;white-space:nowrap;background:rgba(var(--sheet-rgb),.94);color:var(--soft-ink);border:1px solid var(--rule);border-radius:6px;padding:.3rem .55rem;box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.dl-tip strong{color:var(--ink)}
+.dl-tip.is-right{transform:translateX(-100%)}.dl-tip.is-left{transform:none}
+.dl-findings{list-style:none;padding:0;margin:1.5rem 0 0;font-size:1rem}
+.dl-findings li{padding:.35rem 0;color:var(--summary-ink)}
+.dl-chart-hint{font-family:var(--ui);font-size:.8rem;color:var(--summary-ink);margin:.4rem 0 0}
+.dl-seg{display:inline-flex;gap:1.1rem;padding:0;font-family:var(--ui);font-size:.85rem;margin-bottom:.5rem;flex-wrap:wrap}
+.dl-seg button{font:inherit;border:0;background:none;color:var(--summary-ink);padding:.2rem 0;cursor:pointer;text-underline-offset:4px}.dl-seg button:hover{color:var(--ink)}
+.dl-seg button[aria-pressed=true]{color:var(--accent);text-decoration:underline}
+.dl-metric-note{font-family:var(--ui);font-size:.85rem;color:var(--summary-ink);margin:.25rem 0 1.25rem}
+.dl-bars{list-style:none;margin:0;padding:0;font-family:var(--ui);font-size:.9rem;font-variant-numeric:tabular-nums}
+.dl-bars li{margin:0}
+.dl-bar{width:100%;font:inherit;color:inherit;background:none;border:0;text-align:left;cursor:pointer;display:grid;grid-template-columns:1.8rem minmax(7.5rem,11rem) 1fr minmax(5.6rem,max-content);align-items:center;gap:.6rem;padding:.32rem .4rem;border-radius:6px}
+.dl-rank{color:var(--summary-ink);font-size:.78rem;text-align:right}
+.dl-name{color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dl-track{height:.5rem;border-radius:999px;background:color-mix(in srgb,var(--rule) 60%,transparent)}
+.dl-fill{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,color-mix(in srgb,var(--river) 55%,transparent),var(--river));transition:width .6s ease}
+.dl-val{text-align:right;color:var(--soft-ink)}
+.dl-bar:hover{background:color-mix(in srgb,var(--accent) 10%,transparent)}
+.dl-bar:focus-visible{outline:2px solid var(--focus,var(--accent));outline-offset:1px}
+.dl-bar.is-current{background:color-mix(in srgb,var(--glow) 14%,transparent)}
+.dl-bar.is-current .dl-name{font-weight:600}
+.dl-bar.is-current .dl-fill{background:linear-gradient(90deg,color-mix(in srgb,var(--glow) 55%,transparent),var(--glow))}
+.dl-gap{height:1.2rem;margin:.2rem 0 .2rem 2.4rem;border-left:2px dotted var(--rule)}
+.dl-more{margin-top:1rem;font-family:var(--ui);font-size:.9rem}
+.dl-method{margin-top:4.5rem;padding-top:2rem;border-top:1px solid var(--rule)}
+.dl-method h2{font-size:1.3rem;margin-top:0}
+.dl-method p,.dl-method li{font-size:1rem}
+.dl-sources{font-family:var(--ui);font-size:.9rem;padding-left:1.1rem}
+.dl-sources li{margin:.35rem 0}
+.cite-line{font-family:var(--ui);font-size:.82rem;line-height:1.5;color:var(--summary-ink);margin:2rem 0 0}
+.cite-line a{color:inherit}
+.cite-copy{font:inherit;color:var(--accent);background:none;border:0;padding:0;margin-left:.35rem;text-decoration:underline;text-underline-offset:.2em;cursor:pointer}
+.dl-updated{font-family:var(--ui);font-size:.82rem;color:var(--summary-ink);margin-top:1rem}
+@media (max-width:34rem){
+  .dl-bar{grid-template-columns:1.4rem 1fr minmax(5.6rem,max-content);row-gap:.25rem}
+  .dl-track{grid-column:2/4;grid-row:2}
+  .dl-sky{border-radius:10px}
+  .dl-sky-marks{font-size:.75rem}
+    .dl-chart-wrap{margin-inline:-.25rem}
+}
+.g-dek{font-size:1.15rem;line-height:1.45;color:var(--summary-ink);margin:.4rem 0 1.25rem}
+.g-data{font-family:var(--ui);font-size:.8rem;color:var(--summary-ink);margin:.75rem 0 0}
+.g-data a{color:inherit}
+.g-data .cite-copy{margin-left:.5rem}
+.g-upd{font-family:var(--ui);font-size:.78rem;color:var(--summary-ink);margin:-.6rem 0 1.5rem}
+.g-reset-row{font-family:var(--ui);font-size:.75rem;margin:.75rem 0 0;text-align:center}
+.dl-bar>:last-child{white-space:nowrap;text-align:right;font-variant-numeric:tabular-nums}
+</style>
+<article class="post guide">
+  <p class="guide-eyebrow">An After Pickup guide</p>
+  <h1>Daylight after school</h1>
+  <p class="g-dek">How much daylight is left after the school bell in your city, any day of the year.</p>
+  <p class="g-upd">Updated <time datetime="{{ page.updated | date: '%Y-%m-%d' }}">{{ page.updated | date: "%B %-d, %Y" }}</time></p>
+
+
+  <p class="dl-sentence" id="dl-sentence">
+    If school ends at
+    <label class="visually-hidden" for="dl-time">School end time</label><select id="dl-time"></select>
+    in <label class="visually-hidden" for="dl-city">City</label><select id="dl-city"></select><button id="dl-geo" class="dl-geo" type="button" aria-label="Use my location" title="Use my location" hidden><svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="6.5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="2" fill="currentColor"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>,
+    this is how much daylight is left <span id="dl-when">today</span>.
+  </p>
+  <p class="dl-geo-row"><button id="dl-today" class="dl-link" type="button" hidden>Back to today</button><span id="dl-geo-status" aria-live="polite"></span></p>
+</article>
+
+<section class="dl-hero" aria-labelledby="dl-big">
+  <div class="dl-big-wrap" aria-live="polite">
+    <span id="dl-big" class="dl-big">&nbsp;</span>
+    <span id="dl-big-sub" class="dl-big-sub">&nbsp;</span>
+  </div>
+  <div id="dl-sky" class="dl-sky" role="img" aria-labelledby="dl-sky-label"><span id="dl-sun" class="dl-sun"></span></div>
+  <p id="dl-sky-label" class="visually-hidden"></p>
+  <ol id="dl-sky-marks" class="dl-sky-marks" aria-hidden="true"></ol>
+  <p id="dl-usable" class="dl-usable"></p>
+  <p class="g-reset-row"><button id="g-reset" class="cite-copy" type="button">Reset to defaults</button></p>
+</section>
+
+<article class="post guide" style="margin-top:0;padding-top:0">
+  <div class="post-byline">
+    <div class="post-share" data-url="{{ page.url | absolute_url }}" data-title="{{ page.title | escape }}" data-text="{{ page.description | escape }}">
+      <p class="share-status" data-status role="status"></p>
+      <button type="button" class="share-button" data-share aria-label="Share" title="Share">
+        <svg class="icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path d="M12 3v12M7.5 7.5 12 3l4.5 4.5M8 11H6.5A1.5 1.5 0 0 0 5 12.5v7A1.5 1.5 0 0 0 6.5 21h11a1.5 1.5 0 0 0 1.5-1.5v-7a1.5 1.5 0 0 0-1.5-1.5H16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="visually-hidden" data-label>Share</span>
+      </button>
+    </div>
+  </div>
+  <section class="prose dl-section" aria-labelledby="dl-a-title">
+    <h2 id="dl-a-title">How much daylight is left after school?</h2>
+    <p><span id="dl-answer">In Redmond, WA on October 27, with school out at 3:00 PM, there are about 2 h 58 min of daylight left.</span> In most cities that drops by about an hour when clocks fall back in November, and by late June it is several hours longer.</p>
+    <p>We built this after noticing the week every fall when pickup suddenly feels like dusk. For the weather side, see <a href="{{ '/outdoor-hours-after-school/' | relative_url }}">how many outdoor hours you really get</a>, and for the whole afternoon, <a href="{{ '/after-school-time/' | relative_url }}">how much free time kids have after school</a>.</p>
+  </section>
+
+  <section class="dl-section" aria-labelledby="dl-year-title">
+    <h2 id="dl-year-title">The daylight river</h2>
+    <p class="dl-intro">The same afternoon for every day of the year in <span id="dl-chart-city"></span>. The two cliffs are the clock changes, and the glowing dot is the day shown above. Drag along the river to pick a day.</p>
+    <div class="dl-chart-wrap">
+      <svg id="dl-chart" class="dl-chart" viewBox="0 0 760 310" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="dl-chart-title dl-chart-desc" tabindex="0"></svg>
+      <div id="dl-tip" class="dl-tip" hidden></div>
+    </div>
+    <p class="dl-chart-hint">Drag along the river, or tap it, to pick a day. With a keyboard, focus the chart and use the arrow keys.</p>
+    <ul id="dl-findings" class="dl-findings"></ul>
+  </section>
+
+  <section class="dl-section" aria-labelledby="dl-rank-title">
+    <h2 id="dl-rank-title">How the cities compare</h2>
+    <p class="dl-intro">Same bell, same date, fifty one cities. Latitude matters, and so does where a city sits inside its time zone.</p>
+    <div class="dl-seg" role="group" aria-label="Rank cities by">
+      <button type="button" data-metric="day" aria-pressed="true">That day</button>
+      <button type="button" data-metric="avg" aria-pressed="false">Year average</button>
+      <button type="button" data-metric="school" aria-pressed="false">School year hours</button>
+    </div>
+    <p id="dl-metric-note" class="dl-metric-note"></p>
+    <ol id="dl-bars" class="dl-bars" aria-label="Cities ranked. Pick one to show it above."></ol>
+    <button id="dl-more" class="dl-link dl-more" type="button" aria-controls="dl-bars" aria-expanded="false">Show all cities</button>
+    <div class="visually-hidden"><table>
+      <caption id="dl-table-caption"></caption>
+      <thead><tr><th scope="col">Rank</th><th scope="col">City</th><th scope="col">Sunset</th><th scope="col">That day</th><th scope="col">Year average</th><th scope="col">School year hours</th></tr></thead>
+      <tbody id="dl-tbody"></tbody>
+    </table></div>
+  </section>
+
+  <section class="prose dl-method" aria-labelledby="dl-method-title">
+    <h2 id="dl-method-title">Sources and method</h2>
+    <p>Sunset comes from the NOAA solar position equations, the same ones behind the NOAA Solar Calculator. For each date we find the sun's declination and the equation of time, then solve for the moment the center of the sun sits 0.833 degrees below the horizon, which allows for the bending of light near the horizon and the size of the sun's disk. Usable light ends at civil dusk, when the sun is 6 degrees below the horizon. We checked our results against the open-source astral library, which implements the same NOAA equations, and they agreed to within a minute on every date we tried.</p>
+    <p>Daylight after school is sunset minus the end time you picked, and it never goes below zero. We assume school ends at that same time every day. The year average counts every day of the calendar year. School year hours add up the daylight after the bell on every Monday through Friday from September 1 to June 15, without taking out holidays or breaks.</p>
+    <p>The city list is 50 of the largest US cities plus Redmond, each with approximate city-center coordinates and its IANA time zone. Clock times are worked out in each city's own time zone by your browser, so daylight saving time starts and ends on the right dates, and places that skip it, like Phoenix, stay put. If you use your location, the coordinates never leave your browser and the time zone is your device's. Everything is calculated on this page, with no outside services.</p>
+    <ul class="dl-sources">
+      <li><a href="https://gml.noaa.gov/grad/solcalc/calcdetails.html">NOAA Global Monitoring Laboratory, Solar Calculation Details</a></li>
+      <li><a href="https://gml.noaa.gov/grad/solcalc/">NOAA Solar Calculator</a></li>
+      <li><a href="https://github.com/sffjunkie/astral">astral, an open-source Python library for sun calculations</a></li>
+      <li><a href="https://www.iana.org/time-zones">IANA Time Zone Database</a></li>
+    </ul>
+  </section>
+
+  <section class="prose dl-method" aria-labelledby="faq-title">
+    <h2 id="faq-title">FAQ</h2>
+    <h3>When is the darkest pickup of the year?</h3>
+    <p>Usually the first school days after clocks fall back in early November, and again in mid December around the earliest sunset. The river chart above shows both drops.</p>
+    <h3>How much daylight do we lose when clocks fall back?</h3>
+    <p>Exactly one hour of clock time after school, overnight. Sunset moves from around 6 PM to around 5 PM in most US cities.</p>
+    <h3>Which US city has the most daylight after school?</h3>
+    <p>It depends on the date. In late October southern cities on the western edge of their time zone, such as San Antonio and Atlanta, lead with close to 4 hours after a 3:00 PM bell.</p>
+    <h3>How accurate are the sunset times?</h3>
+    <p>Within about a minute. They come from NOAA's solar position equations and were checked against the open-source astral library.</p>
+  </section>
+
+  <section class="prose dl-method" aria-label="Cite">
+    <p class="cite-line">Cite: After Pickup, "<a href="{{ page.url | absolute_url }}">{{ page.title }}</a>," updated {{ page.updated | date: "%b %-d, %Y" }}.<button id="dl-cite-copy" class="cite-copy" type="button" data-cite="After Pickup, &quot;{{ page.title }},&quot; updated {{ page.updated | date: '%b %-d, %Y' }}. {{ page.url | absolute_url }}">Copy</button></p>
+    <p class="dl-updated">Last updated {{ updated_long }}.</p>
+  </section>
+</article>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "When is the darkest pickup of the year?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Usually the first school days after clocks fall back in early November, and again in mid December around the earliest sunset. The river chart above shows both drops."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "How much daylight do we lose when clocks fall back?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Exactly one hour of clock time after school, overnight. Sunset moves from around 6 PM to around 5 PM in most US cities."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Which US city has the most daylight after school?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "It depends on the date. In late October southern cities on the western edge of their time zone, such as San Antonio and Atlanta, lead with close to 4 hours after a 3:00 PM bell."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "How accurate are the sunset times?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Within about a minute. They come from NOAA's solar position equations and were checked against the open-source astral library."
+   }
+  }
+ ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Daylight after school",
+      "url": {{ page.url | absolute_url | jsonify }},
+      "description": {{ page.description | jsonify }},
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires JavaScript",
+      "isAccessibleForFree": true,
+      "dateModified": {{ page.updated | date_to_xmlschema | jsonify }},
+      "publisher": { "@id": {{ site.url | append: '/#organization' | jsonify }} }
+    },
+    {
+      "@type": "Dataset",
+      "name": "Daylight after school in large US cities",
+      "description": "Computed sunset and civil dusk times, and minutes of daylight after school end times from 1:30 PM to 4:30 PM, for 50 large US cities plus Redmond, WA, calculated in the browser with the NOAA solar position equations.",
+      "url": {{ page.url | absolute_url | jsonify }},
+      "isAccessibleForFree": true,
+      "creator": { "@id": {{ site.url | append: '/#organization' | jsonify }} },
+      "dateModified": {{ page.updated | date_to_xmlschema | jsonify }},
+      "temporalCoverage": "{{ page.updated | date: '%Y' }}-01-01/{{ page.updated | date: '%Y' | plus: 1 }}-06-15",
+      "spatialCoverage": { "@type": "Place", "name": "United States" },
+      "measurementTechnique": "NOAA solar position equations (sunset at 0.833 degrees below the horizon, civil dusk at 6 degrees), local time through the IANA Time Zone Database",
+      "variableMeasured": ["Sunset time", "Civil dusk time", "Minutes of daylight after school"],
+      "isBasedOn": [
+        "https://gml.noaa.gov/grad/solcalc/calcdetails.html",
+        "https://www.iana.org/time-zones"
+      ]
+    }
+  ]
+}
+</script>
+<script src="{{ '/assets/js/post.js' | relative_url }}" defer></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+/* Daylight after school. Page-only script for /daylight-after-school/.
+   NOAA solar position math, time zones through Intl, no network calls. */
+(function (root) {
+  "use strict";
+  var CITIES = [
+    ["redmond-wa","Redmond, WA",47.674,-122.1215,"America/Los_Angeles"],
+    ["new-york-ny","New York, NY",40.7128,-74.006,"America/New_York"],
+    ["los-angeles-ca","Los Angeles, CA",34.0522,-118.2437,"America/Los_Angeles"],
+    ["chicago-il","Chicago, IL",41.8781,-87.6298,"America/Chicago"],
+    ["houston-tx","Houston, TX",29.7604,-95.3698,"America/Chicago"],
+    ["phoenix-az","Phoenix, AZ",33.4484,-112.074,"America/Phoenix"],
+    ["philadelphia-pa","Philadelphia, PA",39.9526,-75.1652,"America/New_York"],
+    ["san-antonio-tx","San Antonio, TX",29.4241,-98.4936,"America/Chicago"],
+    ["san-diego-ca","San Diego, CA",32.7157,-117.1611,"America/Los_Angeles"],
+    ["dallas-tx","Dallas, TX",32.7767,-96.797,"America/Chicago"],
+    ["jacksonville-fl","Jacksonville, FL",30.3322,-81.6557,"America/New_York"],
+    ["austin-tx","Austin, TX",30.2672,-97.7431,"America/Chicago"],
+    ["fort-worth-tx","Fort Worth, TX",32.7555,-97.3308,"America/Chicago"],
+    ["san-jose-ca","San Jose, CA",37.3382,-121.8863,"America/Los_Angeles"],
+    ["columbus-oh","Columbus, OH",39.9612,-82.9988,"America/New_York"],
+    ["charlotte-nc","Charlotte, NC",35.2271,-80.8431,"America/New_York"],
+    ["indianapolis-in","Indianapolis, IN",39.7684,-86.1581,"America/Indiana/Indianapolis"],
+    ["san-francisco-ca","San Francisco, CA",37.7749,-122.4194,"America/Los_Angeles"],
+    ["seattle-wa","Seattle, WA",47.6062,-122.3321,"America/Los_Angeles"],
+    ["denver-co","Denver, CO",39.7392,-104.9903,"America/Denver"],
+    ["oklahoma-city-ok","Oklahoma City, OK",35.4676,-97.5164,"America/Chicago"],
+    ["nashville-tn","Nashville, TN",36.1627,-86.7816,"America/Chicago"],
+    ["washington-dc","Washington, DC",38.9072,-77.0369,"America/New_York"],
+    ["el-paso-tx","El Paso, TX",31.7619,-106.485,"America/Denver"],
+    ["las-vegas-nv","Las Vegas, NV",36.1699,-115.1398,"America/Los_Angeles"],
+    ["boston-ma","Boston, MA",42.3601,-71.0589,"America/New_York"],
+    ["detroit-mi","Detroit, MI",42.3314,-83.0458,"America/Detroit"],
+    ["portland-or","Portland, OR",45.5152,-122.6784,"America/Los_Angeles"],
+    ["louisville-ky","Louisville, KY",38.2527,-85.7585,"America/Kentucky/Louisville"],
+    ["memphis-tn","Memphis, TN",35.1495,-90.049,"America/Chicago"],
+    ["baltimore-md","Baltimore, MD",39.2904,-76.6122,"America/New_York"],
+    ["milwaukee-wi","Milwaukee, WI",43.0389,-87.9065,"America/Chicago"],
+    ["albuquerque-nm","Albuquerque, NM",35.0844,-106.6504,"America/Denver"],
+    ["tucson-az","Tucson, AZ",32.2226,-110.9747,"America/Phoenix"],
+    ["fresno-ca","Fresno, CA",36.7378,-119.7871,"America/Los_Angeles"],
+    ["sacramento-ca","Sacramento, CA",38.5816,-121.4944,"America/Los_Angeles"],
+    ["mesa-az","Mesa, AZ",33.4152,-111.8315,"America/Phoenix"],
+    ["atlanta-ga","Atlanta, GA",33.749,-84.388,"America/New_York"],
+    ["kansas-city-mo","Kansas City, MO",39.0997,-94.5786,"America/Chicago"],
+    ["colorado-springs-co","Colorado Springs, CO",38.8339,-104.8214,"America/Denver"],
+    ["omaha-ne","Omaha, NE",41.2565,-95.9345,"America/Chicago"],
+    ["raleigh-nc","Raleigh, NC",35.7796,-78.6382,"America/New_York"],
+    ["miami-fl","Miami, FL",25.7617,-80.1918,"America/New_York"],
+    ["virginia-beach-va","Virginia Beach, VA",36.8529,-75.978,"America/New_York"],
+    ["long-beach-ca","Long Beach, CA",33.7701,-118.1937,"America/Los_Angeles"],
+    ["oakland-ca","Oakland, CA",37.8044,-122.2712,"America/Los_Angeles"],
+    ["minneapolis-mn","Minneapolis, MN",44.9778,-93.265,"America/Chicago"],
+    ["bakersfield-ca","Bakersfield, CA",35.3733,-119.0187,"America/Los_Angeles"],
+    ["tulsa-ok","Tulsa, OK",36.154,-95.9928,"America/Chicago"],
+    ["tampa-fl","Tampa, FL",27.9506,-82.4572,"America/New_York"],
+    ["arlington-tx","Arlington, TX",32.7357,-97.1081,"America/Chicago"]
+  ].map(function (c) { return { id: c[0], name: c[1], lat: c[2], lon: c[3], tz: c[4] }; });
+
+  var R = Math.PI / 180;
+  function sin(d) { return Math.sin(d * R); }
+  function cos(d) { return Math.cos(d * R); }
+
+  // NOAA: declination and equation of time (minutes) for a Julian day.
+  function solar(jd) {
+    var T = (jd - 2451545) / 36525;
+    var L0 = (280.46646 + T * (36000.76983 + T * 0.0003032)) % 360;
+    var M = 357.52911 + T * (35999.05029 - 0.0001537 * T);
+    var e = 0.016708634 - T * (0.000042037 + 0.0000001267 * T);
+    var C = sin(M) * (1.914602 - T * (0.004817 + 0.000014 * T)) + sin(2 * M) * (0.019993 - 0.000101 * T) + sin(3 * M) * 0.000289;
+    var om = 125.04 - 1934.136 * T;
+    var lam = L0 + C - 0.00569 - 0.00478 * sin(om);
+    var eps0 = 23 + (26 + (21.448 - T * (46.815 + T * (0.00059 - T * 0.001813))) / 60) / 60;
+    var eps = eps0 + 0.00256 * cos(om);
+    var decl = Math.asin(sin(eps) * sin(lam)) / R;
+    var y = Math.pow(Math.tan(eps / 2 * R), 2);
+    var eot = 4 / R * (y * sin(2 * L0) - 2 * e * sin(M) + 4 * e * y * sin(M) * cos(2 * L0) - 0.5 * y * y * sin(4 * L0) - 1.25 * e * e * sin(2 * M));
+    return { decl: decl, eot: eot };
+  }
+
+  // Minutes after 00:00 UTC on the given civil date when the sun sets to
+  // the given zenith (90.833 = sunset, 96 = end of civil twilight).
+  function setUTC(y, m, d, lat, lon, zenith) {
+    var jd0 = Date.UTC(y, m - 1, d) / 86400000 + 2440587.5;
+    var t = 720 - 4 * lon; // first guess near local solar noon + offset
+    for (var i = 0; i < 3; i++) {
+      var s = solar(jd0 + t / 1440);
+      var x = cos(zenith) / (cos(lat) * cos(s.decl)) - Math.tan(lat * R) * Math.tan(s.decl * R);
+      if (x > 1 || x < -1) return null;
+      var ha = Math.acos(x) / R;
+      t = 720 - 4 * (lon - ha) - s.eot;
+    }
+    return t;
+  }
+
+  var fmtCache = {};
+  function offsetMin(tz, ms) {
+    var f = fmtCache[tz] || (fmtCache[tz] = new Intl.DateTimeFormat("en-US", {
+      timeZone: tz, hourCycle: "h23", year: "numeric", month: "numeric", day: "numeric", hour: "numeric", minute: "numeric"
+    }));
+    var p = {};
+    f.formatToParts(new Date(ms)).forEach(function (x) { p[x.type] = +x.value; });
+    var asUTC = Date.UTC(p.year, p.month - 1, p.day, p.hour % 24, p.minute);
+    return Math.round((asUTC - Math.floor(ms / 60000) * 60000) / 60000);
+  }
+
+  // Local clock minutes after midnight for sunset and civil dusk.
+  function day(city, y, m, d) {
+    var noonUTC = Date.UTC(y, m - 1, d, 12) - city.lon / 15 * 3600000;
+    var off = offsetMin(city.tz, noonUTC);
+    var s = setUTC(y, m, d, city.lat, city.lon, 90.833);
+    var c = setUTC(y, m, d, city.lat, city.lon, 96);
+    return { off: off, sunset: s == null ? null : s + off, dusk: c == null ? null : c + off };
+  }
+
+  var api = { CITIES: CITIES, day: day, setUTC: setUTC, offsetMin: offsetMin };
+  if (typeof module !== "undefined" && module.exports) { module.exports = api; return; }
+  if (typeof document === "undefined") return;
+
+  /* ---------------- UI ---------------- */
+  var $ = function (id) { return document.getElementById(id); };
+  var selCity = $("dl-city"), selTime = $("dl-time"), picked = null; // picked: "YYYY-MM-DD" or null for today
+  if (!selCity) return;
+  var geoBtn = $("dl-geo"), geoStatus = $("dl-geo-status");
+  var SVGNS = "http://www.w3.org/2000/svg";
+  var myLoc = null, series = [], drawn = false;
+  var MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  var LONG = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+
+  function pad(n) { return (n < 10 ? "0" : "") + n; }
+  function clock(min) {
+    min = Math.round(min); var h = Math.floor(min / 60) % 24, mm = ((min % 60) + 60) % 60;
+    return ((h + 11) % 12 + 1) + ":" + pad(mm) + (h < 12 ? " AM" : " PM");
+  }
+  function dur(min) {
+    min = Math.max(0, Math.round(min));
+    var h = Math.floor(min / 60), m = min % 60;
+    return h ? (m ? h + " h " + m + " min" : h + " h") : m + " min";
+  }
+  function after(v, end) { return v == null ? 0 : Math.max(0, v - end); }
+  function todayIn(tz) {
+    var p = {};
+    new Intl.DateTimeFormat("en-US", { timeZone: tz, year: "numeric", month: "numeric", day: "numeric" })
+      .formatToParts(new Date()).forEach(function (x) { p[x.type] = +x.value; });
+    return p.year + "-" + pad(p.month) + "-" + pad(p.day);
+  }
+  function label(m, d) { return MONTHS[m - 1] + " " + d; }
+
+  CITIES.forEach(function (c) { var o = document.createElement("option"); o.value = c.id; o.textContent = c.name; selCity.appendChild(o); });
+  for (var t = 13 * 60 + 30; t <= 16 * 60 + 30; t += 15) {
+    var o = document.createElement("option"); o.value = pad(Math.floor(t / 60)) + pad(t % 60); o.textContent = clock(t); selTime.appendChild(o);
+  }
+  var q = new URLSearchParams(location.search), PK = "ap-guide-prefs", P = {};
+  try { P = JSON.parse(localStorage.getItem(PK)) || {}; } catch (e) {}
+  function savePrefs(o) { try { var p = JSON.parse(localStorage.getItem(PK)) || {}; for (var k in o) p[k] = o[k]; localStorage.setItem(PK, JSON.stringify(p)); } catch (e) {} }
+  var pCity = q.get("city") || P.city, pTime = (q.get("time") || "").replace(/\D/g, "") || (P.end ? pad(Math.floor(P.end / 60)) + pad(P.end % 60) : "");
+  selCity.value = CITIES.some(function (c) { return c.id === pCity; }) ? pCity : "redmond-wa";
+  selTime.value = selTime.querySelector('option[value="' + pTime + '"]') ? pTime : "1500";
+  picked = /^\d{4}-\d\d-\d\d$/.test(q.get("date") || "") ? q.get("date") : null;
+
+  function cityById(id) {
+    if (id === "here" && myLoc) return myLoc;
+    for (var i = 0; i < CITIES.length; i++) if (CITIES[i].id === id) return CITIES[i];
+    return CITIES[0];
+  }
+  function endMin() { var v = selTime.value; return +v.slice(0, 2) * 60 + +v.slice(2); }
+  function dateStr() { return picked || todayIn(cityById(selCity.value).tz); }
+  function ymd() { return dateStr().split("-").map(Number); }
+  function isToday() { return !picked || picked === todayIn(cityById(selCity.value).tz); }
+  function fit(el) { // size an inline select to its chosen text
+    var s = document.createElement("span"); s.className = "dl-measure"; s.textContent = el.options ? el.options[el.selectedIndex].text : el.value;
+    document.body.appendChild(s); el.style.width = (s.offsetWidth + 22) + "px"; s.remove();
+  }
+
+  // Sunset by day, cached per place and range. Days run from a UTC start.
+  var cache = {};
+  function days(city, y0, m0, d0, n) {
+    var key = city.id + city.lat + "|" + y0 + "-" + m0 + "-" + d0 + "|" + n;
+    if (cache[key]) return cache[key];
+    var out = [];
+    for (var i = 0; i < n; i++) {
+      var dt = new Date(Date.UTC(y0, m0 - 1, d0 + i));
+      var y = dt.getUTCFullYear(), m = dt.getUTCMonth() + 1, d = dt.getUTCDate(), r = day(city, y, m, d);
+      out.push({ y: y, m: m, d: d, dow: dt.getUTCDay(), off: r.off, sunset: r.sunset });
+    }
+    return (cache[key] = out);
+  }
+  function yearDays(city, y) { return days(city, y, 1, 1, ((y % 4 === 0 && y % 100 !== 0) || y % 400 === 0) ? 366 : 365); }
+  function schoolYear(p) { var s = p[1] >= 7 ? p[0] : p[0] - 1; return [s, (Date.UTC(s + 1, 5, 15) - Date.UTC(s, 8, 1)) / 864e5 + 1]; }
+
+  /* Hero: a sky from the bell to well past dusk. */
+  function hero(city, end, p) {
+    var r = day(city, p[0], p[1], p[2]);
+    var a = after(r.sunset, end), u = after(r.dusk, end);
+    $("dl-big").textContent = dur(a);
+    $("dl-big-sub").textContent = a > 0 ? "of daylight after a " + clock(end) + " bell" : "of daylight. The sun sets before the " + clock(end) + " bell";
+    $("dl-usable").textContent = r.dusk != null && u > a ? "Plus " + dur(u - a) + " of soft twilight, " + dur(u) + " of usable light in all." : "";
+    var start = end, stop = Math.max(r.dusk || end, end + 60) + 40, span = stop - start;
+    var pct = function (v) { return Math.max(0, Math.min(100, (v - start) / span * 100)); };
+    var sp = pct(r.sunset), dp = pct(r.dusk);
+    var sky = $("dl-sky");
+    sky.style.setProperty("--sun", sp + "%");
+    sky.style.background = "linear-gradient(90deg," +
+      (sp > 0 ? "var(--sky-day) 0%,var(--sky-noon) " + Math.max(0, sp * 0.45) + "%,var(--sky-gold) " + Math.max(0, sp - 14) + "%," : "") +
+      "var(--sky-set) " + sp + "%,var(--sky-dusk) " + dp + "%,var(--sky-night) " + Math.min(100, dp + 14) + "%,var(--sky-night) 100%)";
+    var marks = [[0, clock(end), "School ends"], [sp, clock(r.sunset), "Sunset"], [dp, clock(r.dusk), "Civil dusk"]];
+    $("dl-sky-marks").innerHTML = marks.map(function (m, i) {
+      return '<li style="--at:' + m[0] + '%" class="m' + i + (i === 1 && sp < 12 ? " near-start" : "") + (i > 0 && dp - sp < 26 ? " pair" : "") + '"><span>' + m[2] + "</span>" + m[1] + "</li>";
+    }).join("");
+    $("dl-sun").hidden = r.sunset == null;
+    $("dl-sky-label").textContent = city.name + " on " + LONG[p[1] - 1] + " " + p[2] + ", " + p[0] + ": school ends at " + clock(end) +
+      ", sunset at " + clock(r.sunset) + ", civil twilight ends at " + clock(r.dusk) + ".";
+  }
+
+  /* The daylight river. */
+  var W = 760, H = 310, L = 40, RT = 12, T = 44, B = 34;
+  var keepTip = false;
+  function chart(city, end, p) {
+    var svgEl = $("dl-chart"), cw = svgEl.clientWidth || 760;
+    W = Math.round(Math.max(340, Math.min(760, cw))); H = W < 520 ? 260 : 310;
+    svgEl.setAttribute("viewBox", "0 0 " + W + " " + H);
+    var s = yearDays(city, p[0]).map(function (x) { return { y: x.y, m: x.m, d: x.d, off: x.off, sunset: x.sunset, v: after(x.sunset, end) }; });
+    series = s;
+    var max = 60 * Math.max(2, Math.ceil(Math.max.apply(null, s.map(function (x) { return x.v; })) / 60));
+    var X = function (i) { return L + i * (W - L - RT) / (s.length - 1); };
+    var Y = function (v) { return T + (H - T - B) * (1 - v / max); };
+    chart.X = X; chart.Y = Y;
+    var g = "";
+    for (var h = 60; h <= max; h += 60) g += '<line class="hgrid" x1="' + L + '" x2="' + (W - RT) + '" y1="' + Y(h) + '" y2="' + Y(h) + '"/><text class="tick" x="' + (L - 8) + '" y="' + (Y(h) + 4) + '" text-anchor="end">' + h / 60 + " h</text>";
+    s.forEach(function (x, i) { if (x.d === 1) g += '<line class="vgrid" x1="' + X(i) + '" x2="' + X(i) + '" y1="' + T + '" y2="' + (H - B) + '"/><text class="tick" x="' + (X(i) + (W < 520 ? 9 : 13)) + '" y="' + (H - 12) + '" text-anchor="middle">' + (W < 520 ? MONTHS[x.m - 1][0] : MONTHS[x.m - 1]) + "</text>"; });
+    var line = "";
+    s.forEach(function (x, i) { line += (i ? "L" : "M") + X(i).toFixed(1) + " " + Y(x.v).toFixed(1); });
+    var area = line + "L" + X(s.length - 1) + " " + Y(0) + "L" + X(0) + " " + Y(0) + "Z";
+    var notes = [], ann = "";
+    for (var i = 1; i < s.length; i++) if (s[i].off !== s[i - 1].off) {
+      var jump = s[i].off - s[i - 1].off, diff = Math.round(s[i].v - s[i - 1].v), fwd = jump > 0;
+      var x = X(i), yTop = Y(Math.max(s[i].v, s[i - 1].v));
+      var txt = W < 520 ? (fwd ? "spring forward +1 h" : "fall back \u22121 h") : (fwd ? "clocks spring forward: +1 h" : "clocks fall back: \u22121 h");
+      var anchor = fwd ? "start" : "end", dx = anchor === "end" ? -8 : 8;
+      ann += '<line class="dst" x1="' + x + '" x2="' + x + '" y1="' + (T - 12) + '" y2="' + Y(0) + '"/><text class="note" x="' + (x + dx) + '" y="' + (T - 14) + '" text-anchor="' + anchor + '">' + txt + "</text>";
+      notes.push("On " + label(s[i].m, s[i].d) + " the " + (fwd ? "clocks spring forward and daylight after school jumps " : "clocks fall back and daylight after school drops ") + dur(Math.abs(diff)) + " from the day before.");
+    }
+    var ti = s.findIndex(function (x) { return x.m === p[1] && x.d === p[2]; });
+    var lo = Infinity, hi = -1, li = 0, hiI = 0;
+    for (var k = 0; k + 7 <= s.length; k++) {
+      var sum = 0; for (var j = k; j < k + 7; j++) sum += s[j].v;
+      if (sum < lo) { lo = sum; li = k; } if (sum > hi) { hi = sum; hiI = k; }
+    }
+    var wk = function (k) { return label(s[k].m, s[k].d) + " to " + label(s[k + 6].m, s[k + 6].d); };
+    var svg = $("dl-chart");
+    svg.innerHTML = '<title id="dl-chart-title"></title><desc id="dl-chart-desc"></desc>' +
+      '<defs><linearGradient id="dl-fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="f0"/><stop offset="1" class="f1"/></linearGradient>' +
+      '<filter id="dl-glow" x="-1" y="-1" width="3" height="3"><feGaussianBlur stdDeviation="4"/></filter>' +
+      '<clipPath id="dl-clip"><rect id="dl-clip-rect" x="0" y="0" height="' + H + '" width="' + (drawn ? W : 0) + '"/></clipPath></defs>' +
+      g + '<g clip-path="url(#dl-clip)"><path class="area" d="' + area + '"/><path class="line" d="' + line + '"/></g>' + ann +
+      (ti >= 0 ? '<circle class="glow" cx="' + X(ti) + '" cy="' + Y(s[ti].v) + '" r="9" filter="url(#dl-glow)"/><circle class="today" cx="' + X(ti) + '" cy="' + Y(s[ti].v) + '" r="4.5"/>' +
+        '<text class="note today-note" x="' + X(ti) + '" y="' + (Y(s[ti].v) + 24) + '" text-anchor="middle">' + label(p[1], p[2]) + "</text>" : "") +
+      '<g id="dl-hover" class="hover" visibility="hidden"><line id="dl-hl" y1="' + T + '" y2="' + Y(0) + '"/><circle id="dl-hc" r="4"/></g>';
+    if (!drawn) requestAnimationFrame(function () { requestAnimationFrame(function () { var r = $("dl-clip-rect"); r.style.transition = "width 1.4s cubic-bezier(.3,.7,.2,1)"; r.setAttribute("width", W); drawn = true; }); });
+    var findings = ["The darkest week is " + wk(li) + ", with about " + dur(lo / 7) + " a day. The brightest is " + wk(hiI) + ", with about " + dur(hi / 7) + " a day."].concat(notes);
+    svg.querySelector("title").textContent = "Daylight after a " + clock(end) + " end time in " + city.name + ", every day of " + p[0];
+    svg.querySelector("desc").textContent = findings.join(" ");
+    $("dl-findings").innerHTML = findings.map(function (f) { return "<li>" + f + "</li>"; }).join("");
+    $("dl-chart-city").textContent = city.name;
+    hover(ti >= 0 ? ti : 0, keepTip);
+  }
+  var raf = 0;
+  function pick(i) {
+    var x = series[Math.max(0, Math.min(series.length - 1, i))]; if (!x) return;
+    var v = x.y + "-" + pad(x.m) + "-" + pad(x.d);
+    if (v === dateStr()) return;
+    picked = v === todayIn(cityById(selCity.value).tz) ? null : v;
+    cancelAnimationFrame(raf); raf = requestAnimationFrame(function () { render(true); });
+  }
+  function hover(i, show) {
+    var s = series; if (!s.length) return;
+    i = Math.max(0, Math.min(s.length - 1, i)); hover.i = i;
+    var x = chart.X(i), y = chart.Y(s[i].v), g = $("dl-hover");
+    $("dl-hl").setAttribute("x1", x); $("dl-hl").setAttribute("x2", x);
+    $("dl-hc").setAttribute("cx", x); $("dl-hc").setAttribute("cy", y);
+    g.setAttribute("visibility", show ? "visible" : "hidden");
+    var tip = $("dl-tip");
+    tip.innerHTML = "<strong>" + dur(s[i].v) + "</strong> " + LONG[s[i].m - 1] + " " + s[i].d + ", sunset " + clock(s[i].sunset);
+    tip.style.left = (x / W * 100) + "%";
+    tip.classList.toggle("is-right", x > W * 0.7); tip.classList.toggle("is-left", x < W * 0.3);
+    tip.hidden = !show;
+  }
+  (function () {
+    var svg = $("dl-chart");
+    function at(e) { var r = svg.getBoundingClientRect(), x = (e.clientX - r.left) / r.width * W; return Math.round((x - L) / (W - L - RT) * (series.length - 1)); }
+    var dragging = false;
+    svg.addEventListener("pointermove", function (e) { var i = at(e); hover(i, true); if (dragging) pick(i); });
+    svg.addEventListener("pointerdown", function (e) { dragging = true; try { svg.setPointerCapture(e.pointerId); } catch (x) {} var i = at(e); hover(i, true); pick(i); });
+    ["pointerup", "pointercancel"].forEach(function (t) { svg.addEventListener(t, function () { dragging = false; }); });
+    svg.addEventListener("pointerleave", function (e) { if (e.pointerType === "mouse") hover(hover.i, false); });
+    svg.addEventListener("focus", function () { hover(hover.i, true); });
+    svg.addEventListener("blur", function () { hover(hover.i, false); });
+    svg.addEventListener("keydown", function (e) {
+      var step = { ArrowRight: 1, ArrowLeft: -1, PageUp: 7, PageDown: -7, ArrowUp: 7, ArrowDown: -7 }[e.key];
+      if (e.key === "Home") step = -999; if (e.key === "End") step = 999;
+      if (!step) return; e.preventDefault(); var i = Math.max(0, Math.min(series.length - 1, hover.i + step)); hover(i, true); pick(i);
+    });
+  })();
+
+  /* Cities: small multiples of horizontal bars, plus a real table. */
+  var metric = /^(day|avg|school)$/.test(P.metric) ? P.metric : "day", showAll = P.daylightShowAll === true, rows = [];
+  var METRICS = {
+    day: { lab: "That day", fmt: function (r) { return dur(r.day); } },
+    avg: { lab: "Year average", fmt: function (r) { return dur(r.avg); } },
+    school: { lab: "School year", fmt: function (r) { return Math.round(r.school) + " h"; } }
+  };
+  function computeRows(end, p) {
+    var sy = schoolYear(p);
+    rows = CITIES.map(function (c) {
+      var r = day(c, p[0], p[1], p[2]), yr = yearDays(c, p[0]), tot = 0, sch = 0;
+      yr.forEach(function (x) { tot += after(x.sunset, end); });
+      days(c, sy[0], 9, 1, sy[1]).forEach(function (x) { if (x.dow > 0 && x.dow < 6) sch += after(x.sunset, end); });
+      return { c: c, sunset: r.sunset, day: after(r.sunset, end), avg: tot / yr.length, school: sch / 60 };
+    });
+    rows.sy = sy[0];
+  }
+  function bars() {
+    var key = metric, list = rows.slice().sort(function (a, b) { return b[key] - a[key] || (a.c.name < b.c.name ? -1 : 1); });
+    var max = Math.max.apply(null, list.map(function (r) { return r[key]; })) || 1, cur = selCity.value;
+    var html = "", prev = -1;
+    list.forEach(function (r, i) {
+      if (!(showAll || i < 10 || i >= list.length - 10 || r.c.id === cur)) return;
+      if (prev >= 0 && i !== prev + 1) html += '<li class="dl-gap" aria-hidden="true"></li>';
+      prev = i;
+      html += '<li><button type="button" data-city="' + r.c.id + '" class="dl-bar' + (r.c.id === cur ? " is-current" : "") + '"' + (r.c.id === cur ? ' aria-current="true"' : "") +
+        ' aria-label="' + (i + 1) + ". " + r.c.name + ", " + METRICS[key].fmt(r) + '. Show this city"><span class="dl-rank">' + (i + 1) + '</span><span class="dl-name">' + r.c.name +
+        '</span><span class="dl-track"><span class="dl-fill" style="width:' + (r[key] / max * 100).toFixed(1) + '%"></span></span><span class="dl-val">' + METRICS[key].fmt(r) + "</span></button></li>";
+    });
+    $("dl-bars").innerHTML = html;
+    $("dl-more").textContent = showAll ? "Show the top and bottom ten" : "Show all " + list.length + " cities";
+    $("dl-more").setAttribute("aria-expanded", showAll);
+    document.querySelectorAll("[data-metric]").forEach(function (b) { b.setAttribute("aria-pressed", b.getAttribute("data-metric") === metric); });
+    var p = ymd();
+    $("dl-metric-note").textContent = key === "day" ? "Daylight after the bell on " + LONG[p[1] - 1] + " " + p[2] + "." :
+      key === "avg" ? "The average day across all of " + p[0] + "." : "Hours of daylight after the bell on school weekdays, September 1, " + rows.sy + " to June 15, " + (rows.sy + 1) + ".";
+    $("dl-tbody").innerHTML = list.map(function (r, i) {
+      return "<tr><td>" + (i + 1) + '</td><th scope="row">' + r.c.name + "</th><td>" + clock(r.sunset) + "</td><td>" + dur(r.day) + "</td><td>" + dur(r.avg) + "</td><td>" + Math.round(r.school) + " h</td></tr>";
+    }).join("");
+    $("dl-table-caption").textContent = "Cities ranked by " + METRICS[key].lab.toLowerCase() + ", school ending at " + clock(endMin()) + ".";
+  }
+  document.querySelectorAll("[data-metric]").forEach(function (b) { b.addEventListener("click", function () { metric = b.getAttribute("data-metric"); remember(); bars(); }); });
+  $("dl-more").addEventListener("click", function () { showAll = !showAll; remember(); bars(); });
+  $("dl-bars").addEventListener("click", function (e) {
+    var b = e.target.closest("[data-city]"); if (!b) return;
+    selCity.value = b.getAttribute("data-city"); remember(); render();
+    var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    $("dl-big").closest(".dl-hero").scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "center" });
+  });
+
+  function render(fromChart) {
+    var city = cityById(selCity.value), end = endMin(), p = ymd();
+    var today = isToday();
+    $("dl-when").textContent = today ? "today" : "on " + label(p[1], p[2]);
+    $("dl-today").hidden = today;
+    keepTip = fromChart === true;
+    [selCity, selTime].forEach(fit);
+    hero(city, end, p); chart(city, end, p); computeRows(end, p); bars();
+    $("dl-answer").textContent = (city.id === "here" ? "Where you are" : "In " + city.name) + " on " + label(p[1], p[2]) + ", with school out at " + clock(end) + ", there " + ($("dl-big").textContent === "0 min" ? "is no daylight left." : "are about " + $("dl-big").textContent + " of daylight left.");
+    var params = new URLSearchParams();
+    params.set("city", selCity.value === "here" ? "redmond-wa" : selCity.value);
+    params.set("time", selTime.value);
+    if (!today) params.set("date", dateStr());
+    if (selCity.value !== "here") {
+      history.replaceState(null, "", "?" + params.toString());
+      var sh = document.querySelector(".post-share"); if (sh) sh.setAttribute("data-url", location.href);
+    }
+  }
+
+  if (geoBtn && navigator.geolocation) {
+    geoBtn.hidden = false;
+    geoBtn.addEventListener("click", function () {
+      if (geoBtn.disabled) return;
+      geoStatus.textContent = "Asking for your location...";
+      geoBtn.disabled = true; geoBtn.setAttribute("aria-busy", "true");
+      navigator.geolocation.getCurrentPosition(function (pos) {
+        myLoc = { id: "here", name: "your location", lat: pos.coords.latitude, lon: pos.coords.longitude,
+          tz: Intl.DateTimeFormat().resolvedOptions().timeZone || "America/Los_Angeles" };
+        var o = selCity.querySelector('option[value="here"]');
+        if (!o) { o = document.createElement("option"); o.value = "here"; o.textContent = "your location"; selCity.insertBefore(o, selCity.firstChild); }
+        selCity.value = "here";
+        geoStatus.textContent = "Using " + myLoc.lat.toFixed(2) + ", " + myLoc.lon.toFixed(2) + " in " + myLoc.tz + ". It stays in your browser.";
+        geoBtn.disabled = false; geoBtn.removeAttribute("aria-busy"); geoBtn.classList.add("is-on");
+        render();
+      }, function () { geoBtn.disabled = false; geoBtn.removeAttribute("aria-busy"); geoStatus.textContent = "We could not get your location, so pick a city instead."; }, { timeout: 10000 });
+    });
+  }
+  function remember() { var p = { end: endMin(), metric: metric, daylightShowAll: showAll }; if (selCity.value !== "here") p.city = selCity.value; savePrefs(p); }
+  [selCity, selTime].forEach(function (el) { el.addEventListener("change", function () { remember(); if (geoBtn) geoBtn.classList.toggle("is-on", selCity.value === "here"); render(); }); });
+  $("dl-today").addEventListener("click", function () { picked = null; render(); });
+  var rz = 0, lastW = 0;
+  addEventListener("resize", function () { clearTimeout(rz); rz = setTimeout(function () { var w = $("dl-chart").clientWidth; if (Math.abs(w - lastW) > 30) { lastW = w; chart(cityById(selCity.value), endMin(), ymd()); } }, 150); });
+
+  var cite = $("dl-cite-copy");
+  if (cite) cite.addEventListener("click", function () {
+    var text = cite.getAttribute("data-cite");
+    var done = function () { cite.textContent = "Copied"; setTimeout(function () { cite.textContent = "Copy"; }, 2000); };
+    if (navigator.clipboard) navigator.clipboard.writeText(text).then(done, function () {}); 
+  });
+  $("g-reset").addEventListener("click", function () { try { localStorage.removeItem(PK); } catch (e) {} location.href = location.pathname; });
+  render();
+})(this);
+});
+</script>
+{% include guide-select.html %}

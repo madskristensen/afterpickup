@@ -66,5 +66,7 @@ exclude:
   - .vs
   - .bundle
   - script
+  - scripts
+  - docs
   - node_modules
   - .share-cache

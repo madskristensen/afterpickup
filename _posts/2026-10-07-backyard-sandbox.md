@@ -7,6 +7,8 @@ image_alt: Backyard sandbox filled with light sand and scattered toys, bordered 
 image_caption: The backyard sandbox, photo from our house.
 tags: [kids, home]
 draft: false
+guide: /outdoor-hours-after-school/
+guide_text: "Wondering how much sandbox weather is left this month? We mapped [usable outdoor hours after school by city]."
 ---
 
 Years ago, when we moved into our 1961 rambler, we wanted to spruce up the backyard a bit. There was a section we did not really know what to do with, so we filled it with sand and called it the backyard sandbox until we figured out what that spot was for.

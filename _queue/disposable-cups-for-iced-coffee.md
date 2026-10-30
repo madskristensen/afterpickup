@@ -1,6 +1,6 @@
 ---
 title: "Disposable cups with lids for iced coffee on the go"
-description: "We keep a big pack of clear 16-ounce plastic cups with lids at home, so iced coffee and cold drinks can leave the house without a thermos to carry back or a travel mug to wash."
+description: "We keep a pack of clear 16-ounce plastic cups with lids at home, so iced coffee can leave the house and get tossed when empty, with no travel mug to bring back."
 date:
 image: /assets/images/posts/disposable-cups-for-iced-coffee.webp
 image_alt: Hand holding a lidded clear plastic cup of iced coffee with milk in front of faux cherry-blossom branches and a backyard garden with blue Adirondack chairs

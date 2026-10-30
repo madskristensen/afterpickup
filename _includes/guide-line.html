@@ -1,0 +1,19 @@
+{%- comment -%}
+  Opt-in guide line above Read next. Front matter:
+    guide: /daylight-after-school/
+    guide_text: "Sentence with [the linked part] in brackets."
+  Without brackets the whole sentence is the link; without guide_text the
+  guide's title is used.
+{%- endcomment -%}
+{%- if page.guide and page.guide != empty -%}
+{%- assign g = site.pages | where: "url", page.guide | first -%}
+{%- assign gurl = page.guide | relative_url -%}
+{%- assign gtext = page.guide_text | default: g.title | default: page.guide -%}
+{%- if gtext contains "[" and gtext contains "]" -%}
+{%- assign a = gtext | split: "[" -%}
+{%- assign rest = a[1] | split: "]" -%}
+<p class="guide-line">{{ a[0] }}<a href="{{ gurl }}">{{ rest[0] }}</a>{{ rest[1] }}</p>
+{%- else -%}
+<p class="guide-line"><a href="{{ gurl }}">{{ gtext }}</a></p>
+{%- endif -%}
+{%- endif -%}

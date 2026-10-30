@@ -1,7 +1,7 @@
 ---
 layout: default
 title: About After Pickup
-description: How we test, write, and share the family routines and household systems published on After Pickup.
+description: "We are Caitlin and Mads. We use each routine at home for a few weeks before we share it, credit our sources, and say so when a system stops working for us."
 permalink: /about/
 image: /assets/images/posts/family-after-pickup.webp
 image_alt: Caitlin and the kids on the couch after pickup, reading and drawing.

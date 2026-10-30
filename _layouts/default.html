@@ -14,6 +14,7 @@
     {%- include seo.html -%}
     <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}?v={{ site.time | date: '%s' }}">
     {%- feed_meta -%}
+    <link rel="alternate" type="application/rss+xml" title="After Pickup newsletter" href="https://buttondown.com/after-pickup/rss">
 </head>
   <body>
     <a class="skip-link" href="#content">Skip to content</a>
@@ -34,10 +35,22 @@
       {{ content }}
     </main>
 
+    <section class="newsletter" aria-labelledby="newsletter-title">
+      <h2 id="newsletter-title">A little Saturday note from our house to yours</h2>
+      <p>Pour a coffee and catch up on the small setups that help our kids get started on their own and keep the table ready for dinner. Short, friendly, once a week, and you can unsubscribe any time.</p>
+      <form class="newsletter-form" action="https://buttondown.com/api/emails/embed-subscribe/after-pickup" method="post">
+        <label for="bd-email" class="visually-hidden">Email address</label>
+        <input type="email" name="email" id="bd-email" placeholder="you@example.com" autocomplete="email" required>
+        <input type="hidden" name="tag" value="website">
+        <button type="submit">Subscribe</button>
+      </form>
+    </section>
+
     <footer class="site-footer">
       <nav class="site-nav" aria-label="Footer">
         <a href="{{ '/about/' | relative_url }}">Who we are</a>
         <a href="{{ '/things-we-use/' | relative_url }}">Things we use</a>
+        <a href="{{ '/guides/' | relative_url }}">Guides</a>
         <a href="{{ '/feed.xml' | relative_url }}">Feed</a>
       </nav>
       <p class="footer-family">More from our family: <a href="https://eastsidecalendar.com/">Eastside Family Calendar</a>, <a href="https://mathtable.fun/">Kids Learning Hub</a> and <a href="https://gamethetime.fun/">Game The Time</a>.</p>

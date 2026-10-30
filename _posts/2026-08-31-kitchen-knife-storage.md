@@ -1,6 +1,6 @@
 ---
 title: "Give every kitchen knife a labeled place"
-description: "A labeled drawer organizer gives every kitchen knife a place and makes the dishwasher easier to empty."
+description: "We put a knife organizer in a drawer with one slot per knife, so the sharp knives have a clear home and the kids can empty the dishwasher without guessing."
 date: 2026-08-31
 image: /assets/images/posts/where-the-knives-go.webp
 image_alt: A bamboo in-drawer knife organizer with labeled slots for paring, cheese, and serrated knives
