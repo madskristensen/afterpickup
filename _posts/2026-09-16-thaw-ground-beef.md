@@ -16,4 +16,4 @@ The fix is a bowl of tap water. Set the sealed package in and leave it. About th
 
 Keep the plastic closed so the water stays outside the meat. That matters for ground beef, and it matters more for steak. If water gets into a steak package, the texture goes wrong.
 
-Ground beef is what we reach for when the plan falls apart. Tacos, a quick skillet, something we already know how to make. We still try to thaw ahead when we can. When we cannot, tap water and half an hour usually get dinner back on the stove.
+Ground beef is what we reach for when the plan falls apart. Tacos, a quick skillet, [ground beef dinner bowls](/ground-beef-dinner-bowls/), something we already know how to make. We still try to thaw ahead when we can. When we cannot, tap water and half an hour usually get dinner back on the stove.
