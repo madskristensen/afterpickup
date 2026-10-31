@@ -28,6 +28,14 @@ black-bar-towels:
     - 1600
   avif: true
   source_hash: 2281662aefbed079da917ff37b573835b3f5ee12d044ed0817904f01719c37a1
+card-shop-birthday-party:
+  widths:
+    - 640
+    - 960
+    - 1280
+    - 1600
+  avif: true
+  source_hash: 51c867402ae7ba35e629f42c74c2d0498e4f87e2b5fd21b3f74fe66f5222becc
 cold-oven-bacon:
   widths:
     - 640
