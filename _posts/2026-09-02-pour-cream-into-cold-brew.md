@@ -1,5 +1,5 @@
 ---
-title: "Pour cream into cold brew without a spoon"
+title: "How to mix cream into cold brew without stirring"
 description: "We pour half the cold brew, add the cream, then pour the rest. That last pour mixes the cream through the glass, so we skip the spoon and the extra dish."
 date: 2026-09-02
 image: /assets/images/posts/pour-the-cream-in-the-middle.webp

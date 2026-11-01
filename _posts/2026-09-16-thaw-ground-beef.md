@@ -1,5 +1,5 @@
 ---
-title: "Thaw ground beef fast in tap water"
+title: "How to thaw ground beef in tap water in 30 minutes"
 description: "When nothing is out for dinner, we set a sealed pound of ground beef in a bowl of tap water. In about thirty minutes it is soft enough to cook as planned."
 date: 2026-09-16
 image: /assets/images/posts/thaw-ground-beef.webp
