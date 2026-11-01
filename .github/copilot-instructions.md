@@ -6,7 +6,7 @@ Site: **After Pickup**, <https://afterpickup.com>. Voice: **we**. Kids are 5, 8,
 
 ## How to write an After Pickup post
 
-Voice: we. Warm and friendly, a tad jovial, no jokes. Write the way we'd tell a friend. Model: `_posts/2026-09-09-steam-eggs-quarter-inch-of-water.md` (Steam eggs in a quarter inch of water).
+Voice: we. Warm and friendly, a tad jovial, no jokes. Write the way we'd tell a friend. Model: `_posts/2026-09-09-steam-eggs-quarter-inch-of-water.md` (How to steam eggs in a quarter inch of water).
 
 ### Shape
 

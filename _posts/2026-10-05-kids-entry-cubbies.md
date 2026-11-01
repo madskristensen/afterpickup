@@ -1,5 +1,5 @@
 ---
-title: "A cubby for each kid inside the front door"
+title: "Kids entryway cubbies for backpacks, coats, and shoes"
 description: "Built-in cubbies by the entry give coats, shoes, and backpacks a clear home so the kids can put things away after school without us chasing every pile."
 date: 2026-10-05
 image: /assets/images/posts/kids-entry-cubbies.webp
