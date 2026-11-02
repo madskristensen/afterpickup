@@ -75,6 +75,8 @@
         document.head.appendChild(link);
       }
       function addBeacon() {
+        var host = location.hostname;
+        if (host !== "afterpickup.com" && host !== "www.afterpickup.com") return;
         if (document.querySelector("script[data-cf-beacon]")) return;
         var script = document.createElement("script");
         script.src = "https://static.cloudflareinsights.com/beacon.min.js";
