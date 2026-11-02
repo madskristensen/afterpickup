@@ -1,12 +1,13 @@
 ---
 title: "The travel emergency kit we take on every trip"
 description: "A red first-aid case goes with us on flights, drives, and cruises, already packed with TSA-approved medicines, tools, and the small extras we always want."
-date:
+date: 2026-11-02
 image: /assets/images/posts/travel-emergency-kit.webp
 image_alt: Red first-aid case open on beige carpet, with medicines in baggies, small tools, laundry sheets, and the rest of the kit laid out beside it
 image_caption: The travel emergency kit we pack, photo from our house.
 tags: [travel, kids]
 printable: true
+draft: false
 ---
 
 We have always traveled with the same red first-aid case, our travel emergency kit. It comes on flights, it comes when we drive, and it comes on cruises, zipped at home and dropped in the bag so we already know what is inside.
