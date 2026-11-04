@@ -1,11 +1,12 @@
 ---
 title: "Small water bottles that fit in the lunch box"
 description: "We pack a small water bottle inside each lunch box, so the kids have water with lunch and the bottle comes home with the box instead of getting left at school."
-date:
+date: 2026-11-04
 image: /assets/images/posts/small-water-bottles-in-lunch-box.webp
 image_alt: Open black insulated lunch bag seen from above, packed with a small clear rectangular water bottle with a gray cap and loop, a meat stick, a sage-green insulated food jar, and a snack pouch, mesh lid open to the left
 image_caption: Small water bottles in the lunch boxes, photo from our house.
 tags: [kids]
+draft: false
 ---
 
 We pack a small water bottle that fits inside each lunch box. It holds just enough water for lunch and sits easily alongside the food. The kids still have their full-size water bottles for the rest of the school day and for after recess, so the small one has a single job, which is making sure they have something to drink with lunch. We try to avoid juice and milk at lunchtime, so water is what goes in the box, and the bottle and the box leave the house together and come back together at the end of the day.
