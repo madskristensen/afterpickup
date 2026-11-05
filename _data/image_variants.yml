@@ -236,6 +236,14 @@ snack-cabinet:
     - 1600
   avif: true
   source_hash: c689692f2c01d406eee963fe6c51e7c3511a99613cba4f5db2b93b9601e2991c
+spare-socks-by-the-door:
+  widths:
+    - 640
+    - 960
+    - 1280
+    - 1600
+  avif: true
+  source_hash: ecc9a9b5e97a36281c81ff0a00e36145582e3301abee5ef6529a914c90fde8f9
 thaw-ground-beef:
   widths:
     - 640
