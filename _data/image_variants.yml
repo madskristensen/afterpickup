@@ -243,7 +243,7 @@ spare-socks-by-the-door:
     - 1280
     - 1600
   avif: true
-  source_hash: ecc9a9b5e97a36281c81ff0a00e36145582e3301abee5ef6529a914c90fde8f9
+  source_hash: 9d4904d71b6028744c08d804fd3d1b5a82ad5f608d628604b02882c7d8d3a2cc
 thaw-ground-beef:
   widths:
     - 640
