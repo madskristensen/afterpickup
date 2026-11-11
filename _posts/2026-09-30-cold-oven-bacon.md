@@ -10,9 +10,9 @@ printable: true
 draft: false
 ---
 
-We cook a lot of bacon in this house, and we have for years. The way that works best for us is cold oven bacon, thick strips on a foil-lined baking sheet that is already covered and waiting in the kitchen, so in the morning I pull it out, lay the bacon on, and slide the sheet into a cold oven set to 400.
+Cold oven bacon is how we get bacon that is crisp outside and soft inside with almost no cleanup: thick strips on a foil-lined baking sheet go into a cold oven set to 400, and they usually come out in about twenty-five minutes. We cook a lot of bacon in this house, and we have for years, so the sheet is already covered and waiting in the kitchen, and in the morning I pull it out, lay the bacon on, and slide it in.
 
-Then I go take a shower. About fifteen or twenty minutes later I come back to check, and usually it still needs more time, closer to twenty-five minutes before it is done. When I can see how far along it is, I set a short timer on my Apple Watch, sometimes three minutes, so I know when to look again.
+Then I go take a shower. About fifteen or twenty minutes later I come back to check, and usually it still needs a few more minutes before it is done. When I can see how far along it is, I set a short timer on my Apple Watch, sometimes three minutes, so I know when to look again.
 
 Pull it when it is just starting to look a little brown, which is usually earlier than you think, then move the strips onto paper towel to dry and cool. That is what gives you the crisp outside with a soft bite still in the middle, which is the whole point.
 
