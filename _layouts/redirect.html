@@ -4,21 +4,28 @@
   front matter, and sitemap: false so it never gets listed.
 {%- endcomment -%}
 {%- assign redirect_url = page.redirect_to | default: "/" -%}
+{%- if redirect_url == "/" -%}
+  {%- assign redirect_description = "We moved this page. Head to " | append: site.title | append: " for all our posts." -%}
+{%- else -%}
+  {%- assign redirect_description = "We moved this page. Use the link to read it at its new address." -%}
+{%- endif -%}
 <!doctype html>
 <html lang="{{ site.lang | default: 'en-US' }}">
 <head>
   <meta charset="utf-8">
   <meta name="p:domain_verify" content="fb3d69cb7190e79e05bfe2a0f0c1c434"/>
-  <title>{{ site.title }}</title>
+  <title>We moved this page | {{ site.title }}</title>
+  <meta name="description" content="{{ redirect_description }}">
   <meta name="robots" content="noindex,follow">
   <link rel="canonical" href="{{ redirect_url | absolute_url }}">
   <meta http-equiv="refresh" content="0; url={{ redirect_url | relative_url }}">
 </head>
 <body>
+  <h1>We moved this page</h1>
   {%- if redirect_url == "/" %}
-  <p>We moved this page. <a href="{{ redirect_url | relative_url }}">Head to {{ site.title }}</a> for all our posts.</p>
+  <p><a href="{{ redirect_url | relative_url }}">Head to {{ site.title }}</a> for all our posts.</p>
   {%- else %}
-  <p>We moved this page. <a href="{{ redirect_url | relative_url }}">Read it at its new address</a>.</p>
+  <p><a href="{{ redirect_url | relative_url }}">Read it at its new address</a>.</p>
   {%- endif %}
 </body>
 </html>
