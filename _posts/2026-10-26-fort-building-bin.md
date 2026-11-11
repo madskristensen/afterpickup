@@ -11,7 +11,7 @@ guide: /daylight-after-school/
 guide_text: "Fort season starts for us when [the daylight after school runs short]."
 ---
 
-All the kids love building forts, and they do it often, so we keep a fort-building bin ready. Inside are two large king-size bed sheets and a bunch of clamps, and that combination is the whole kit.
+All the kids love building forts, and they do it often, so we keep a fort-building bin ready. Inside are two large king-size bed sheets and a bunch of [clamps](/things-we-use/#spring-clamps), and that combination is the whole kit.
 
 The sheets are big and relatively light, which means the forts can get pretty large without weighing everything down. There is enough fabric to cover a lot of chairs and cushions, and because the sheets stay light, the kids can keep adding on.
 
