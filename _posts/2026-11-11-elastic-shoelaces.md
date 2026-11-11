@@ -1,11 +1,12 @@
 ---
 title: "Elastic shoelaces for kids who outgrow Velcro shoes"
 description: "When the shoes our boys want only come with laces, we swap in elastic no-tie shoelaces so they can slide their feet in and tighten a toggle instead of tying a bow."
-date:
+date: 2026-11-11
 image: /assets/images/posts/elastic-shoelaces.webp
 image_alt: Pair of black kids' soccer turf shoes laced with black elastic laces and toggle lock clips, sitting on a white marble counter
 image_caption: Soccer turf shoes with elastic laces, photo from our house.
 tags: [kids]
+draft: false
 ---
 
 When our boys were little, getting shoes on at the front door was a quick rip and press of the Velcro straps, and off they went. Nobody had to learn to tie a bow back then, because nothing on their feet needed tying, and on a busy school morning that suited all of us just fine. Elastic shoelaces came later, once Velcro stopped being an option.
