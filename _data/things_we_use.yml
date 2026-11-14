@@ -209,3 +209,11 @@
   asin: "B07D1BXJT4"
   image: "https://m.media-amazon.com/images/I/41V-No8bz7L._SS270_.jpg"
   post: "cutting-hair-at-home"
+
+- name: "ULG 6.5-inch hair thinning shears"
+  id: "thinning-shears"
+  description: "These 6.5-inch thinning shears have teeth on one blade, and Caitlin uses them for bangs and natural-looking edges when she cuts our hair at home."
+  category: "Home"
+  asin: "B0722K651D"
+  image: "https://m.media-amazon.com/images/I/41qyNwlNTmL._SS270_.jpg"
+  post: "cutting-hair-at-home"
