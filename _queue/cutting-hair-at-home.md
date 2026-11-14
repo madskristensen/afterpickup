@@ -8,7 +8,7 @@ image_caption: The tools we use to cut our family's hair at home, on the barstoo
 tags: [kids, home]
 ---
 
-When one of us needs a haircut, we get up on the wooden barstool and Caitlin plugs in the clipper. That's how we cut our family's hair at home, and the scissors, a comb, and a neck brush sit on the seat too.
+Caitlin cuts our family's hair at home on the wooden barstool. One of us climbs up, she plugs in the clipper, and the scissors, a comb, and a neck brush sit on the seat.
 
 It started during COVID, when Caitlin first began cutting hair for Mads and the kids, and then for her mom too. It took a lot of trial and error. She was terrified the first time she tried to cut Mads's hair, and it didn't turn out well, so he had to go to the hairdresser and have it fixed. That was actually a mechanical issue. Mads has short hair, and we tried to use his beard trimmer for the edging and the neck, which was the wrong tool, and it didn't go so well.
 
