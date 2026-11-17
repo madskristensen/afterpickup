@@ -204,6 +204,14 @@ party-trash-recycle-compost-bins:
     - 1600
   avif: true
   source_hash: 9a0ce2b052b389083defccba475c521f7c3499b2294cae448f05d446e25a0e81
+plastic-banker-boxes:
+  widths:
+    - 640
+    - 960
+    - 1280
+    - 1600
+  avif: true
+  source_hash: e84209f3d31758166f51c56239b7fe8a256f0dfe2636779be09f9a0df296b2f2
 pour-the-cream-in-the-middle:
   widths:
     - 640
