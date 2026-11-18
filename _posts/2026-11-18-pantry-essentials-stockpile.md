@@ -1,11 +1,12 @@
 ---
 title: "We keep a stockpile of pantry essentials"
 description: "Since Covid we keep a backup of the pantry staples we use, and we add each item to the shopping list when we open it, so dinner rarely waits on a store run."
-date:
+date: 2026-11-18
 image: /assets/images/posts/pantry-stockpile.webp
 image_alt: Deep kitchen drawer packed with pantry staples including pasta, cans, jars, and condiments
 image_caption: Our pantry stockpile drawer, photo from our kitchen.
 tags: [kitchen, home]
+draft: false
 ---
 
 During Covid we started keeping a stockpile of pantry essentials, the non-perishable food items we reach for all the time, and we have kept that habit ever since, which means we almost never run out of those staples anymore.
