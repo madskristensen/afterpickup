@@ -3,8 +3,8 @@ title: "The kids help set the table, starting at four"
 description: "We put plates, utensils, and sauces on the counter, and the kids help set the table from four on, first clearing it and later carrying warm dishes too."
 date:
 image: /assets/images/posts/kids-help-set-the-table.webp
-image_alt: Wooden dining table set with patterned plates, folded cloth napkins, silverware, and glasses in sunlight
-image_caption: Photo by Joaquin Carfagna / Pexels
+image_alt: White plate on a light wooden table next to a folded black cloth napkin with a fork and a serrated knife on top
+image_caption: A place setting at our table, photo from our house.
 tags: [kids, kitchen]
 ---
 
