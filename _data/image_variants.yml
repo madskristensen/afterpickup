@@ -68,6 +68,14 @@ disposable-cups-for-iced-coffee:
     - 1600
   avif: true
   source_hash: e4facfb499a9a7d12e261904b64555faa68bb933468da89fe494d9b27c974c60
+drying-rack-for-building-forts:
+  widths:
+    - 640
+    - 960
+    - 1280
+    - 1600
+  avif: true
+  source_hash: f92aa872f71b4689b80bd026d2f1ec02d690e52aaa1c3e66927b427754856c81
 duct-tape-marker-lids:
   widths:
     - 640
