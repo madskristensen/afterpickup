@@ -6,6 +6,7 @@ image: /assets/images/posts/kids-help-set-the-table.webp
 image_alt: White plate on a light wooden table next to a folded black cloth napkin with a fork and a serrated knife on top
 image_caption: A place setting at our table, photo from our house.
 tags: [kids, kitchen]
+clusters: [kids-independence]
 ---
 
 There are often [art projects](/craft-mats/) on the table, or other things left there, and when the kids help set the table they start by getting those out of the way so it's ready for dinner. They've been doing that since they were four.
