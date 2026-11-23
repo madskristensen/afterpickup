@@ -148,6 +148,14 @@ kids-entry-cubbies:
     - 1600
   avif: true
   source_hash: 6c1ed37b4610fd08b7892c3927ee5d4f137b441d6a89517f6943440a46ed4786
+kids-help-set-the-table:
+  widths:
+    - 640
+    - 960
+    - 1280
+    - 1600
+  avif: true
+  source_hash: 86ae2c9e2b387bb1f3802e3871d7ce94e141c7a242281a3a52737af294a50f08
 laundry-bins:
   widths:
     - 640
