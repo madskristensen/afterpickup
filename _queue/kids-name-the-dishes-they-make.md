@@ -6,6 +6,7 @@ image: /assets/images/posts/kids-name-the-dishes-they-make.webp
 image_alt: White bowl of spaghetti with chopped breaded chicken nugget pieces and ketchup on a light wooden table
 image_caption: A bowl of Chispetti at our table, photo from our house.
 tags: [kids, kitchen]
+clusters: [household]
 ---
 
 The kids always like butter pasta, and they've started mixing in other things we set out with it on the table, then they name the dishes they make.
