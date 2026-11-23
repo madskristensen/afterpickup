@@ -6,6 +6,7 @@ image: /assets/images/posts/drying-rack-for-building-forts.webp
 image_alt: Smiling child in a pink shirt peeking over a wooden table, with white sheets draped over the tall white legs of a drying rack in front of a grey couch
 image_caption: Sheets draped over a drying rack for a fort, photo from our house.
 tags: [kids, home]
+clusters: [kids-independence]
 ---
 
 The kids love building forts, and they do it often enough that we keep the sheets and clamps ready in our [fort-building bin](/fort-building-bin/). When it's time to put a fort up, they use chairs and couch cushions, and we also set out a [drying rack](https://www.amazon.com/dp/B0DQ3RR8TY/ref=nosim?tag=afterpickup-20){:rel="sponsored nofollow noopener" target="_blank"} for them to clamp those sheets onto, the kind that stands on its feet and folds out a little.
