@@ -1,11 +1,12 @@
 ---
 title: "Our shared grocery list lives in iPhone Reminders"
 description: "A shared grocery list in the iPhone Reminders app keeps both our phones in sync, with store lists for Trader Joe's and Costco and Siri on the watch."
-date:
+date: 2026-11-23
 image: /assets/images/posts/shared-grocery-list.webp
 image_alt: A smartphone on a kitchen counter showing our shared Costco list in the iPhone Reminders app, with paper towels, tortilla soup, Italian soup, butter, and Greek yogurt.
 image_caption: Our shared Costco list in Reminders, screenshot from our phone.
 tags: [kitchen, home]
+draft: false
 ---
 
 When Mads heads out to the store, he says the same thing on his way out the door every time, which is that if there is anything we need, just add it to the list. That works because our shared grocery list lives in the Reminders app on our iPhones, and he has it open the whole time he is walking through the store, so anything that gets added at home shows up on his screen pretty much right away.
