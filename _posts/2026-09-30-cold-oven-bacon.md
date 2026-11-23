@@ -8,6 +8,16 @@ image_caption: Bacon from a cold oven start, photo from our kitchen.
 tags: [kitchen]
 printable: true
 draft: false
+recipe:
+  ingredients:
+    - Thick bacon strips
+  steps:
+    - Line a baking sheet with foil and lay the thick bacon strips on it.
+    - Slide the sheet into a cold oven and set the oven to 400.
+    - Check it at twenty minutes. It usually needs about twenty-five, so if it is not done yet, set a short timer and look again. If the oven is already warm, check earlier.
+    - Pull it when it is just starting to look a little brown, then move the strips onto paper towel to dry and cool.
+  cook_time: PT25M
+  total_time: PT25M
 ---
 
 Cold oven bacon is how we get bacon that is crisp outside and soft inside with almost no cleanup: thick strips on a foil-lined baking sheet go into a cold oven set to 400, and they usually come out in about twenty-five minutes. We cook a lot of bacon in this house, and we have for years, so the sheet is already covered and waiting in the kitchen, and in the morning I pull it out, lay the bacon on, and slide it in.

@@ -6,6 +6,7 @@ image: /assets/images/posts/disposable-cups-for-iced-coffee.webp
 image_alt: Hand holding a lidded clear plastic cup of iced coffee with milk in front of faux cherry-blossom branches and a backyard garden with blue Adirondack chairs
 image_caption: A cold brew in one of our disposable cups, photo from our house.
 tags: [kitchen, coffee]
+clusters: [household]
 ---
 
 On a lot of mornings Mads heads out the door with a cold brew in one of our disposable cups, the clear plastic kind with the lid pressed on snug, much like the cups a coffee shop hands you across the counter when you order iced coffee. He drinks it on the way and through the morning at work, and when it is empty he simply throws it out right there, so nothing comes back home with him at the end of the day and nothing is waiting by the sink.

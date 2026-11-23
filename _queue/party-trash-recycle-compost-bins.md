@@ -6,6 +6,7 @@ image: /assets/images/posts/party-trash-recycle-compost-bins.webp
 image_alt: Two sets of large bins labeled Trash, Recycle, and Compost, each lined with a matching bag.
 image_caption: The labeled party bins, photo from our house.
 tags: [home]
+clusters: [household]
 ---
 
 We entertain a lot, with Thanksgiving and Christmas as holiday dinners indoors, an end-of-year BBQ for the kids' school friends and their families, the 4th of July with friends and family, and Oktoberfest once a year. Some of those gatherings stay inside, some stay outside, and some use both, so before people arrive we set out large labeled trash, recycle, and compost bins, and guests sort as they go. That is what makes cleanup fast and easy when the gathering is over.

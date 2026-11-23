@@ -8,9 +8,18 @@ image_caption: Soft-boiled eggs from our kitchen, photo from our house.
 tags: [kitchen]
 printable: true
 draft: false
+recipe:
+  category: Breakfast
+  ingredients:
+    - Eggs
+    - About a quarter inch of water
+  steps:
+    - Put about a quarter inch of water in any size pot and bring it to a boil.
+    - Lower in however many eggs you need. They do not have to touch the water, because the steam under the lid cooks them.
+    - Close the lid and start the timer. 6 minutes for soft-boiled eggs, 9 minutes for an almost-hard egg with a soft center, 10 minutes for hard-boiled eggs. Add 30 seconds for large eggs.
 ---
 
-Mads's dad has been making eggs this way since Mads was a kid, which means this house never learned the version where you fill a pot and stand there while it thinks about boiling. Breakfast was a quarter inch of water, a lid, and a timer to steam eggs, and that is still breakfast. After pickup the kids want eggs, and they are usually done before anyone has found the salt.
+Mads's dad has been making eggs this way since Mads was a kid, which means this house never learned the version where you fill a pot and stand there while it thinks about boiling. Breakfast was a quarter inch of water, a lid, and a timer to steam eggs, and that is still [breakfast](/cold-oven-bacon/). After pickup the kids want eggs, and they are usually done before anyone has found the salt.
 
 You put about a quarter inch of water in any size pot and bring it to a boil, which does not take long even on an old slow stove, then you lower in however many eggs you need. They do not even have to touch the water, because what cooks them is the steam under the lid. Close it, start the timer, and stay out of the pot.
 

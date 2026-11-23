@@ -8,6 +8,17 @@ image_caption: Ground beef thawing in tap water, photo from our kitchen.
 tags: [kitchen]
 printable: true
 draft: false
+recipe:
+  ingredients:
+    - 1 pound ground beef in a sealed package
+    - Cold tap water
+  steps:
+    - Fill a bowl with cold tap water. Leave the hot faucet alone, because hot water is not a safe way to thaw.
+    - Set the sealed package in the bowl and leave it. Keep the plastic closed so the water stays outside the meat.
+    - After about thirty minutes it has softened through, so cook it the way you planned.
+    - If the package opens in the bowl, cook that meat right away and do not put it back in the freezer.
+  total_time: PT30M
+  yield: 1 pound
 ---
 
 Some nights we get home and nothing is out for dinner. We forgot to pull anything that morning, or the day just ran long. We prioritize protein for ourselves and the kids, so there is usually a sealed pound of ground beef in the freezer for exactly those nights, as long as we can thaw ground beef fast.
