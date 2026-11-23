@@ -6,6 +6,7 @@ image: /assets/images/posts/cutting-hair-at-home.webp
 image_alt: Plug-in corded hair trimmer, neck duster brush, black comb, thinning shears, and cutting shears laid out on a light wooden barstool
 image_caption: The tools we use to cut our family's hair at home, on the barstool we sit on, photo from our house.
 tags: [kids, home]
+clusters: [household]
 ---
 
 Caitlin cuts our hair at home. We sit on the wooden barstool, and she plugs in the clipper.
