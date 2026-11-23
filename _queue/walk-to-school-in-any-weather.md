@@ -6,6 +6,7 @@ image: /assets/images/posts/walk-to-school-in-any-weather.webp
 image_alt: Black mesh umbrella bin on a slate porch next to the front door and doormat, with two tall black umbrellas and a rainbow umbrella with a white hook handle, and shoes on the mat
 image_caption: The umbrella bin by our front door, photo from our house.
 tags: [kids, home]
+clusters: [school-and-morning, kids-independence]
 ---
 
 The kids always walk to school, no matter the weather, and we make sure there are umbrellas for everybody and that they know how to use them, so there's never an excuse to drive just because it's raining.
