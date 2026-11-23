@@ -6,6 +6,7 @@ image: /assets/images/posts/spare-socks-by-the-door.webp
 image_alt: Open wooden shoe drawer seen from above with a frosted white plastic bin of colorful kids' socks at the front left, and a jumble of kids' sneakers, tan sheepskin boots, pink rain boots, and black dress shoes filling the rest
 image_caption: Spare socks in the shoe drawer by our front door, photo from our house.
 tags: [kids, home]
+clusters: [school-and-morning, kids-independence]
 ---
 
 All of our kids have spent their little years running around the house barefoot, and none of them ever wanted socks, so we keep spare socks in a small bin right in the shoe drawer by the front door. The five-year-old is no different from her brothers at that age, and when it is time to leave the house she is almost always padding around with bare feet, happily unaware that socks have to come before shoes.

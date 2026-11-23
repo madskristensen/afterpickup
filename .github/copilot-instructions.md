@@ -40,7 +40,24 @@ description: ""   # 150-160 character summary of the tip, not the opening paragr
 date:             # leave empty in the queue
 image: ""         # path or empty
 tags: []
+clusters: []      # topic hubs: school-and-morning, household, travel, kids-independence (see _data/clusters.yml)
 ---
+```
+
+`clusters` puts the post on those topic hub pages (/school-and-morning/, /household/, /travel/, /kids-independence/) once it publishes. Pick the one or two that fit; leave it empty if none do.
+
+For a recipe or kitchen method, add a `recipe:` block so the page gets Recipe structured data (`_includes/recipe-jsonld.html`). Use only facts that are in the post, and leave out any field the post does not support:
+
+```yaml
+recipe:
+  category: Breakfast        # optional
+  ingredients:
+    - Thick bacon strips
+  steps:
+    - One step per line, in the post's own words.
+  cook_time: PT25M           # optional ISO 8601 durations
+  total_time: PT25M
+  yield: 1 glass             # optional
 ```
 
 Every post shows the Share and Print icons. There is no `printable` flag to set.

@@ -1,0 +1,64 @@
+{%- comment -%}
+  Recipe JSON-LD, driven by a `recipe:` block in a post's front matter.
+  Only facts that are already in the post go in. Every field except
+  ingredients and steps is optional and is left out when it is not set.
+    recipe:
+      name:        optional, defaults to the post title
+      category:    optional, for example Breakfast
+      ingredients: list of strings
+      steps:       list of strings, one per step
+      prep_time:   optional ISO 8601 duration, for example PT5M
+      cook_time:   optional ISO 8601 duration
+      total_time:  optional ISO 8601 duration
+      yield:       optional, for example 1 glass
+{%- endcomment -%}
+{%- assign r = page.recipe -%}
+{%- assign recipe_url = page.url | absolute_url -%}
+{%- assign recipe_image = page.image | absolute_url -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Recipe",
+  "@id": {{ recipe_url | append: '#recipe' | jsonify }},
+  "name": {{ r.name | default: page.title | jsonify }},
+  "description": {{ page.description | jsonify }},
+  "image": [{{ recipe_image | jsonify }}],
+  "url": {{ recipe_url | jsonify }},
+  "datePublished": {{ page.date | date: '%Y-%m-%d' | jsonify }},
+  "author": [
+    {%- for author in site.data.authors %}
+    {
+      "@type": "Person",
+      "@id": {{ site.author.url | absolute_url | append: '#' | append: author.id | jsonify }},
+      "name": {{ author.name | jsonify }},
+      "url": {{ site.author.url | absolute_url | jsonify }}
+    }{% unless forloop.last %},{% endunless %}
+    {%- endfor %}
+  ],
+  {%- if r.category %}
+  "recipeCategory": {{ r.category | jsonify }},
+  {%- endif %}
+  {%- if r.prep_time %}
+  "prepTime": {{ r.prep_time | jsonify }},
+  {%- endif %}
+  {%- if r.cook_time %}
+  "cookTime": {{ r.cook_time | jsonify }},
+  {%- endif %}
+  {%- if r.total_time %}
+  "totalTime": {{ r.total_time | jsonify }},
+  {%- endif %}
+  {%- if r.yield %}
+  "recipeYield": {{ r.yield | jsonify }},
+  {%- endif %}
+  "recipeIngredient": {{ r.ingredients | jsonify }},
+  "recipeInstructions": [
+    {%- for step in r.steps %}
+    {
+      "@type": "HowToStep",
+      "position": {{ forloop.index }},
+      "text": {{ step | jsonify }}
+    }{% unless forloop.last %},{% endunless %}
+    {%- endfor %}
+  ]
+}
+</script>

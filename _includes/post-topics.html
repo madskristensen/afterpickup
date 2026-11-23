@@ -1,0 +1,14 @@
+{%- comment -%}
+  Quiet links from a post to the topic hubs it belongs to.
+{%- endcomment -%}
+{%- assign topic_slug = page.url | remove_first: "/" | split: "/" | first -%}
+{%- assign topic_links = "" | split: "" -%}
+{%- for hub in site.data.clusters -%}
+{%- if page.clusters contains hub.id or hub.posts contains topic_slug -%}
+{%- capture topic_link %}<a href="{{ hub.url | relative_url }}">{{ hub.name }}</a>{% endcapture -%}
+{%- assign topic_links = topic_links | push: topic_link -%}
+{%- endif -%}
+{%- endfor -%}
+{%- if topic_links.size > 0 %}
+<p class="post-topics">More in {{ topic_links | join: ", " }}</p>
+{%- endif %}

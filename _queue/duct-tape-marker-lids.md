@@ -6,6 +6,7 @@ image: /assets/images/posts/duct-tape-marker-lids.webp
 image_alt: A child colors a cartoon cow with a pink marker at a restaurant table, next to a row of washable markers whose lids are duct-taped together in one bundle.
 image_caption: Our duct-taped markers at a restaurant, photo from our table.
 tags: [kids, travel]
+clusters: [travel]
 ---
 
 When the kids sit down at a restaurant with a coloring page, our markers come out as one piece, because we duct tape the marker lids together into a single bundle. Each kid pulls out the color they want, the lid stays behind in the taped row, and when they are done the marker goes right back into its spot, which is exactly what is happening with the pink one in the photo.

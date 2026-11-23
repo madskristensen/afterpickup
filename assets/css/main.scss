@@ -608,6 +608,40 @@ figcaption {
   content: "#";
 }
 
+.post-topics {
+  margin: 0.75rem 0 0;
+  font-family: var(--ui);
+  font-size: 0.85rem;
+  color: var(--summary-ink);
+}
+
+.post-topics a {
+  color: var(--quiet-green);
+}
+
+.tags + .post-topics {
+  margin-top: 0.5rem;
+}
+
+.hub-kicker {
+  margin: 0 0 0.6rem;
+  font-family: var(--ui);
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--quiet-green);
+}
+
+.hub-intro {
+  margin-bottom: 2rem;
+}
+
+.hub-others {
+  margin-top: 2.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--rule);
+}
+
 .guide-line {
   margin: 1.25rem 0 0;
   padding-left: 1.1em;
@@ -810,6 +844,10 @@ figcaption {
 
 .site-footer .site-nav {
   margin-bottom: 0.5rem;
+}
+
+.footer-topics {
+  margin: 0 0 0.45rem;
 }
 
 .footer-family {

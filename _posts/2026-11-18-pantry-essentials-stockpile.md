@@ -15,4 +15,4 @@ Whenever we move something from the pantry into the fridge, we add it to [the sh
 
 We hardly run out of any pantry item in a given year, maybe every other year, and even then it is rare, which matters with three kids who often change their minds last minute about what they want to eat. That buffer lets dinner pivot without someone having to dash out for a single bottle of ketchup.
 
-The stockpile is not fancy. It is just the boring essentials kept deep enough that the house stays ready when the plan changes after pickup, the same way [warm tap water thaws a pound of ground beef](/thaw-ground-beef/) when we forgot to pull anything that morning.
+The stockpile is not fancy. It is just the boring essentials kept deep enough that [the house stays ready](/cards-for-every-occasion/) when the plan changes after pickup, the same way [warm tap water thaws a pound of ground beef](/thaw-ground-beef/) when we forgot to pull anything that morning.
