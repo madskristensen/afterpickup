@@ -1,12 +1,13 @@
 ---
 title: "Nosebleed stoppers for kids that stay put"
 description: "Two of our kids get nosebleeds, so we keep a pack of small nosebleed stoppers at home. They fit little nostrils, stay in place, and are handy on trips too."
-date:
+date: 2026-11-25
 image: /assets/images/posts/nosebleed-stoppers-for-kids.webp
 image_alt: A clear plastic bag of white cotton nosebleed stoppers on a wood table, with two loose stoppers lying beside it
 image_caption: The nosebleed stoppers we keep on hand, photo from our house.
 tags: [kids, travel]
 clusters: [household]
+draft: false
 ---
 
 When Mads was a kid he got nosebleeds all the time, and the fix back then was whatever was closest, a wad of tissue or a folded paper towel held up to his nose until it stopped. That works, and it still works, but now that two of our kids sometimes get nosebleeds too, what we reach for first is a little pack of nosebleed stoppers for kids that we bought on Amazon.
