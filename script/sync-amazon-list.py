@@ -68,10 +68,16 @@ def main():
             print(f"{a}\t{i}\t{t}")
         return 0
     data = pathlib.Path(__file__).resolve().parent.parent / "_data" / "things_we_use.yml"
-    have = set(re.findall(r'asin:\s*"?([A-Z0-9]{10})', data.read_text()))
+    text = data.read_text()
+    have = set(re.findall(r'asin:\s*"?([A-Z0-9]{10})', text))
+    # Entries marked `manual: true` were added by hand and are not on the Amazon list; never report them as removed.
+    manual = set()
+    for entry in re.split(r'\n(?=- name:)', text):
+        if re.search(r'^\s*manual:\s*true', entry, re.M):
+            manual.update(re.findall(r'asin:\s*"?([A-Z0-9]{10})', entry))
     live = {a: t for a, _, t in items}
     added = [a for a in live if a not in have]
-    removed = sorted(have - set(live))
+    removed = sorted(have - set(live) - manual)
     for a in added: print(f"+ {a}\t{live[a]}")
     for a in removed: print(f"- {a}")
     if not added and not removed: print("in sync")
