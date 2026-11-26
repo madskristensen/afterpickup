@@ -1,6 +1,6 @@
 ---
-title: "Small water bottles that fit in the lunch box"
-description: "We pack a small water bottle inside each lunch box, so the kids have water with lunch and the bottle comes home with the box instead of getting left at school."
+title: "A small water bottle for the lunch box that actually comes home"
+description: "We pack a small water bottle for the lunch box, so the kids have water with lunch and the bottle rides home inside the box instead of getting left at school."
 date: 2026-11-04
 image: /assets/images/posts/small-water-bottles-in-lunch-box.webp
 image_alt: Open black insulated lunch bag seen from above, packed with a small clear rectangular water bottle with a gray cap and loop, a meat stick, a sage-green insulated food jar, and a snack pouch, mesh lid open to the left
@@ -9,7 +9,7 @@ tags: [kids]
 draft: false
 ---
 
-We pack a small water bottle that fits inside each lunch box. It holds just enough water for lunch and sits easily alongside the food. The kids still have their full-size water bottles for the rest of the school day and for after recess, so the small one has a single job, which is making sure they have something to drink with lunch. We try to avoid juice and milk at lunchtime, so water is what goes in the box, and the bottle and the box leave the house together and come back together at the end of the day.
+We pack a [small water bottle](/things-we-use/#flat-water-bottle) that fits inside each lunch box. It holds just enough water for lunch and sits easily alongside the food. The kids still have their full-size water bottles for the rest of the school day and for after recess, so the small one has a single job, which is making sure they have something to drink with lunch. We try to avoid juice and milk at lunchtime, so water is what goes in the box, and the bottle and the box leave the house together and come back together at the end of the day.
 
 At school, lunchboxes and water bottles are trolleyed to the lunch room, and after lunch the kids are responsible for putting the lunch box and the water bottle back on the trolley. When the lunch bottle lives inside the box, it goes back on the trolley with the lunch, so it comes home instead of getting left behind.
 

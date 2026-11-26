@@ -1,0 +1,15 @@
+{%- comment -%}
+  Published posts in one topic hub, newest first. A post is in the hub
+  when its `clusters` front matter has the hub id, or its slug is listed
+  under that hub in _data/clusters.yml.
+  cluster: required hub id.
+  Sets `cluster_posts` for the caller.
+{%- endcomment -%}
+{%- assign cluster_def = site.data.clusters | where: "id", include.cluster | first -%}
+{%- assign cluster_posts = "" | split: "" -%}
+{%- for post in site.posts -%}
+{%- assign post_slug = post.url | remove_first: "/" | split: "/" | first -%}
+{%- if post.clusters contains include.cluster or cluster_def.posts contains post_slug -%}
+{%- assign cluster_posts = cluster_posts | push: post -%}
+{%- endif -%}
+{%- endfor -%}

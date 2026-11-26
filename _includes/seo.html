@@ -128,7 +128,7 @@
     "@id": {{ website_id | jsonify }}
   },
   {%- else %}
-  "@type": "WebPage",
+  "@type": {{ page.schema_type | default: "WebPage" | jsonify }},
   "name": {{ seo_title | jsonify }},
   "url": {{ canonical_url | jsonify }},
   {%- if page.updated %}
@@ -161,5 +161,8 @@
 <script type="application/ld+json">
 {{ page.breadcrumb_json | safe }}
 </script>
+{%- endif %}
+{%- if page.recipe and page.recipe.steps %}
+{% include recipe-jsonld.html %}
 {%- endif %}
 {%- endunless %}

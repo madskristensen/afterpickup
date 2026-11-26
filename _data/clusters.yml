@@ -1,0 +1,50 @@
+# Topic hubs. Each hub lists every published post whose `clusters`
+# front matter includes the hub id, plus the published slugs under
+# `posts` (posts that were live before the hubs existed, listed here so
+# their files and git dates stay untouched). New posts only need
+# `clusters: [id]` in their front matter. _queue/ is excluded from the
+# build, so queued posts show up only once they publish.
+- id: school-and-morning
+  name: School and morning
+  url: /school-and-morning/
+  posts:
+    - its-time-to-brush-teeth
+    - kids-entry-cubbies
+    - small-water-bottles-in-lunch-box
+    - elastic-shoelaces
+- id: household
+  name: Household
+  url: /household/
+  posts:
+    - kitchen-knife-storage
+    - pour-cream-into-cold-brew
+    - steam-eggs-quarter-inch-of-water
+    - thaw-ground-beef
+    - craft-closet
+    - one-sacagawea-dollar-per-tooth
+    - cold-oven-bacon
+    - laundry-bins
+    - black-bar-towels
+    - craft-mats
+    - cards-for-every-occasion
+    - pantry-essentials-stockpile
+    - shared-grocery-list
+- id: travel
+  name: Travel
+  url: /travel/
+  posts:
+    - pack-a-foldable-hamper
+    - one-sacagawea-dollar-per-tooth
+    - travel-toys
+    - travel-emergency-kit
+- id: kids-independence
+  name: Kids independence
+  url: /kids-independence/
+  posts:
+    - kitchen-knife-storage
+    - snack-cabinet
+    - craft-closet
+    - kids-entry-cubbies
+    - laundry-bins
+    - fort-building-bin
+    - elastic-shoelaces

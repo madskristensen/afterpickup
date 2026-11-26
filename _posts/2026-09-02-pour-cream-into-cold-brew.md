@@ -8,6 +8,15 @@ image_caption: Photo by Abdulrhman Alkady / Pexels
 tags: [kitchen, coffee]
 printable: true
 draft: false
+recipe:
+  ingredients:
+    - Cold brew
+    - Cream
+  steps:
+    - Pour half the cold brew into the glass.
+    - Add the cream.
+    - Pour in the rest of the cold brew. The last pour pulls the cream through the coffee, so there is no need to stir.
+  yield: 1 glass
 ---
 
 We used to make a cold brew the long way. Fill the glass, pour the cream on top, then stand there looking for a spoon so the cream would not sit in a pale cloud on the surface. That spoon is never quite where you left it, and even when it is, you have added a thing to wash.

@@ -1,11 +1,12 @@
 ---
 title: "A box of cards for every occasion"
 description: "Caitlin keeps a box of cards for every occasion at home, so teacher appreciation, thank-yous, and birthdays get a card written at home instead of a store run."
-date:
+date: 2026-11-16
 image: /assets/images/posts/greeting-card-box.webp
 image_alt: Open yellow celebrate-themed card box with tabbed dividers for Father's Day, birthday, thank you, and holidays
 image_caption: The greeting card box at our house, photo from Caitlin.
 tags: [home, kids]
+draft: false
 ---
 
 Years ago Caitlin bought a box of cards for every occasion, with a slot for birthdays, thank-yous, teacher appreciation, the usual ones, and it has sat on the shelf in this house ever since. The box is how we keep a card ready, instead of hunting the night before.

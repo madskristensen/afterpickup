@@ -6,6 +6,7 @@ image: /assets/images/posts/ground-beef-dinner-bowls.webp
 image_alt: Two white bowls of taco-seasoned ground beef, white rice, yellow scrambled eggs, sauteed mushrooms, and halved cherry tomatoes on a grey counter, each with chopsticks resting in it.
 image_caption: Two ground beef dinner bowls with rice, scrambled eggs, mushrooms, and tomatoes, from our kitchen.
 tags: [kitchen]
+clusters: [household]
 guide: /after-school-time/
 guide_text: "Dinner like this fits easily into [the time between pickup and bedtime]."
 ---

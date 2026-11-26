@@ -1,0 +1,24 @@
+---
+layout: default
+---
+{%- include cluster-posts.html cluster=page.cluster -%}
+<article class="post hub">
+  <p class="hub-kicker">After Pickup topics</p>
+  <h1>{{ page.title }}</h1>
+  <div class="prose hub-intro">
+    {{ content }}
+  </div>
+  {%- if cluster_posts.size > 0 %}
+  <div class="hub-posts">
+    {%- include post-cards.html posts=cluster_posts -%}
+  </div>
+  {%- endif %}
+  {%- assign other_hubs = "" | split: "" -%}
+  {%- for hub in site.data.clusters -%}
+  {%- unless hub.id == page.cluster -%}
+  {%- capture other_hub %}<a href="{{ hub.url | relative_url }}">{{ hub.name }}</a>{% endcapture -%}
+  {%- assign other_hubs = other_hubs | push: other_hub -%}
+  {%- endunless -%}
+  {%- endfor %}
+  <p class="post-topics hub-others">Other topics: {{ other_hubs | join: ", " }}</p>
+</article>
