@@ -14,3 +14,5 @@ The kids love building forts, and they do it often enough that we keep the sheet
 Cushions on their own can fall down or they're not very tall, and chairs aren't always the best thing to attach the blankets or sheets to, so the drying rack gives them some added height and something solid to clamp to. It's relatively tall and lightweight, so the kids can move it around themselves, and it's strong enough to hold a lot of weight, including the blankets they put on top.
 
 It's easy for them to work with too. They can shift it where they want it and clamp the sheets from the bin right onto it, and the chairs and couch cushions stay in the mix as the fort takes shape.
+
+Rather than have a designated fort building kit, we like to repurpose the drying rack (when it's not being used to dry Caitlin's sweaters), sheets and clamps. On a rainy day, letting the kids build a fort in the house occupies them for hours and helps them create a world of their own within our home.
