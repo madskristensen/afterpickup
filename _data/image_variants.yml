@@ -308,6 +308,14 @@ travel-toys:
     - 1600
   avif: true
   source_hash: 4ba9c6307713dfa5ed30394bdbc8662c0fa4e285333ab00cbb0e1b2109829cb3
+walk-to-school-in-any-weather:
+  widths:
+    - 640
+    - 960
+    - 1280
+    - 1600
+  avif: true
+  source_hash: 5155c2d18f89e83ce0711ca354ae95e598ff62e483e2fa2e24b493565e70d3c4
 where-the-knives-go:
   widths:
     - 640
