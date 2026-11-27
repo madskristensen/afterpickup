@@ -76,6 +76,14 @@ disposable-cups-for-iced-coffee:
     - 1600
   avif: true
   source_hash: e4facfb499a9a7d12e261904b64555faa68bb933468da89fe494d9b27c974c60
+drying-rack-for-building-forts:
+  widths:
+    - 640
+    - 960
+    - 1280
+    - 1600
+  avif: true
+  source_hash: f92aa872f71b4689b80bd026d2f1ec02d690e52aaa1c3e66927b427754856c81
 duct-tape-marker-lids:
   widths:
     - 640
@@ -156,6 +164,14 @@ kids-entry-cubbies:
     - 1600
   avif: true
   source_hash: 6c1ed37b4610fd08b7892c3927ee5d4f137b441d6a89517f6943440a46ed4786
+kids-name-the-dishes-they-make:
+  widths:
+    - 640
+    - 960
+    - 1280
+    - 1600
+  avif: true
+  source_hash: bdffe665544aff28b55b7aeebf2075e678dc03f28203ac90cd6480e6b4548a01
 laundry-bins:
   widths:
     - 640
@@ -212,6 +228,14 @@ party-trash-recycle-compost-bins:
     - 1600
   avif: true
   source_hash: 9a0ce2b052b389083defccba475c521f7c3499b2294cae448f05d446e25a0e81
+plastic-banker-boxes:
+  widths:
+    - 640
+    - 960
+    - 1280
+    - 1600
+  avif: true
+  source_hash: e84209f3d31758166f51c56239b7fe8a256f0dfe2636779be09f9a0df296b2f2
 pour-the-cream-in-the-middle:
   widths:
     - 640

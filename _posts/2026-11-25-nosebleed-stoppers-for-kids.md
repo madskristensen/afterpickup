@@ -1,14 +1,16 @@
 ---
 title: "Nosebleed stoppers for kids that stay put"
 description: "Two of our kids get nosebleeds, so we keep a pack of small nosebleed stoppers at home. They fit little nostrils, stay in place, and are handy on trips too."
-date:
+date: 2026-11-25
 image: /assets/images/posts/nosebleed-stoppers-for-kids.webp
 image_alt: A clear plastic bag of white cotton nosebleed stoppers on a wood table, with two loose stoppers lying beside it
 image_caption: The nosebleed stoppers we keep on hand, photo from our house.
 tags: [kids, travel]
+clusters: [household]
+draft: false
 ---
 
-When Mads was a kid he got nosebleeds all the time, and the fix back then was whatever was closest, a wad of tissue or a folded paper towel held up to his nose until it stopped. That works, and it still works, but now that two of our kids sometimes get nosebleeds too, what we reach for first is a little pack of nosebleed stoppers for kids that we bought on Amazon.
+When Mads was a kid he got nosebleeds all the time, and the fix back then was whatever was closest, a wad of tissue or a folded paper towel held up to his nose until it stopped. That works, and it still works, but now that two of our kids sometimes get nosebleeds too, what we reach for first is a little [pack of nosebleed stoppers for kids](https://www.amazon.com/dp/B0GKC75SCK/ref=nosim?tag=afterpickup-20){:rel="sponsored nofollow noopener" target="_blank"} that we bought on Amazon.
 
 The idea actually came from one of our boys, because nosebleed stoppers are what they use at school, and once we had a pack at home it was easy to see why. What a bloody nose really needs is calm and for nobody to touch it, and a stopper gives you both beautifully. They are small and cheap, and they fit a child's nostril pretty perfectly. In our experience they help the bleeding stop, and they stay where you put them, so you just pop one in and that is it. They are not the kind of thing that can get stuck, so they feel safe to us in that regard, and they do not fall out when a kid turns their head or gets up to come find one of us.
 

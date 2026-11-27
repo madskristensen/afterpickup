@@ -5,6 +5,7 @@
 # Every entry needs an id: a short kebab-case slug, unique, used as the #fragment on
 # /things-we-use/ (posts link to /things-we-use/#<id>). Never change an existing id.
 # Entries with several ASINs are color variants of one product; the first ASIN is the link.
+# manual: true marks an entry added by hand that is not on the Amazon list; the sync keeps it.
 
 - name: "In-drawer bamboo knife block"
   id: "knife-block"
@@ -187,14 +188,28 @@
   asin: "B0BM892H45"
   image: "https://m.media-amazon.com/images/I/41DeKc4InmL._SS270_.jpg"
   post: ""
-- name: "Woctec 6-inch spring clamps (4 pack)"
-  id: "spring-clamps"
-  description: "These 6-inch spring clamps live in our fort-building bin and hold the king sheets tight between chairs and cushions. The large ones can also grip heavier blankets when the build calls for them."
+- name: "Flat travel water bottle (8.2 oz)"
+  id: "flat-water-bottle"
+  description: "We pack a small water bottle like this one inside each lunch box, so the kids have water with lunch and the bottle comes home with the box. This flat 8.2 oz style is slim enough to slide in beside the food."
   category: "Kids"
-  asin: "B0C5361MNQ"
-  image: "https://m.media-amazon.com/images/I/71beWm0XXjL._SS270_.jpg"
-  post: "fort-building-bin"
-
+  asin: "B0F7XQWDW9"
+  image: "https://m.media-amazon.com/images/I/21RHjJwx-GL._SS270_.jpg"
+  post: "small-water-bottles-in-lunch-box"
+- name: "Cotton nosebleed plugs"
+  id: "nosebleed-plugs"
+  description: "A 100-count pack of small cotton nosebleed stoppers that fit a child's nostril and stay put. We keep some at home and a few in our travel emergency kit."
+  category: "Kids"
+  asin: "B0GKC75SCK"
+  image: "/assets/images/things/nosebleed-plugs.webp"
+  post: "nosebleed-stoppers-for-kids"
+  manual: true
+- name: "IRIS USA WeatherPro Portable File Box Organizer, 19 Qt. Pearl"
+  id: "plastic-banker-box"
+  description: "Each of our three kids has one of these plastic banker boxes with hanging file folders for their important papers and keepsakes. We stack them in the garage, out of the way but easy to get to."
+  category: "Home"
+  asin: "B09FVM5RNL"
+  image: "https://m.media-amazon.com/images/I/61Evi6F+0bL._SS270_.jpg"
+  post: "plastic-banker-boxes"
 - name: "Wahl Elite Pro corded haircut kit"
   id: "corded-hair-clipper"
   description: "This corded Wahl Elite Pro is the proper plug-in trimmer Caitlin uses when she cuts our hair at home. It goes through hair easily and is much easier to use without mistakes than a beard trimmer."
@@ -209,7 +224,6 @@
   asin: "B07D1BXJT4"
   image: "https://m.media-amazon.com/images/I/41V-No8bz7L._SS270_.jpg"
   post: "cutting-hair-at-home"
-
 - name: "ULG 6.5-inch hair thinning shears"
   id: "thinning-shears"
   description: "These 6.5-inch thinning shears have teeth on one blade, and Caitlin uses them for bangs and natural-looking edges when she cuts our hair at home."

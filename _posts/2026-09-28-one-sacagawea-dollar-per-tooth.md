@@ -9,7 +9,7 @@ tags: [kids, travel]
 draft: false
 ---
 
-The tooth fairy in our house leaves a Sacagawea dollar for every lost tooth, and when the kids were about six or seven that shiny golden coin felt like a much bigger deal than a paper dollar. It still does. One coin, one tooth, and we are not digging through a wallet at bedtime.
+The tooth fairy in our house leaves a Sacagawea dollar for every lost tooth, and when the kids were about six or seven that shiny golden coin felt like a much bigger deal than a paper dollar. It still does. One coin, one tooth, and we are not digging through a wallet at [bedtime](/mother-west-wind/).
 
 We bought a roll of twenty-five from the bank and keep it somewhere safe, which turns out to be plenty for a long stretch of loose teeth. When someone has left a tooth under the pillow, we already know where the next dollar is.
 

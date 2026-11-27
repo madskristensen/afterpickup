@@ -6,6 +6,7 @@ image: /assets/images/posts/indoor-soccer-ball.webp
 image_alt: Child in socks and goalkeeper gloves with one foot on a colorful patchwork soccer ball on a light wood floor in the kitchen
 image_caption: A little after-dinner soccer in the kitchen, photo from our house.
 tags: [kids]
+clusters: [kids-independence]
 ---
 
 After dinner, while we clean up the kitchen, the boys often have the [indoor soccer ball](https://www.amazon.com/dp/B0BM892H45/ref=nosim?tag=afterpickup-20){:rel="sponsored nofollow noopener" target="_blank"} out and are dribbling around the kitchen floor, and it is one of our favorite parts of the evening. They love playing inside, and for a long time we said no to soccer in the house for the obvious reasons, but they kept asking, so we started experimenting to find something that would work.
